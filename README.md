@@ -57,22 +57,23 @@ const steveKaplan = {
 
 </div>
 
-## 🚀 Featured Projects
+## 🚀 Featured AI Products
 
 <table>
   <tr>
     <td width="50%">
-      <h3 align="center">🏠 Home Services AI Suite</h3>
+      <h3 align="center">🛍️ ProductDescriptions.ai</h3>
       <div align="center">
         <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Active"/>
-        <img src="https://img.shields.io/badge/Users-127%2B-blue?style=flat-square" alt="Users"/>
+        <img src="https://img.shields.io/badge/Users-5K%2B-blue?style=flat-square" alt="Users"/>
+        <img src="https://img.shields.io/badge/Descriptions-100K%2B-purple?style=flat-square" alt="Descriptions"/>
       </div>
       <p align="center">
-        AI automation for Housecall Pro, Jobber & ServiceTitan. Never miss another lead.
+        AI-powered product description generator for e-commerce. Create compelling, SEO-optimized descriptions in seconds.
       </p>
       <p align="center">
-        <a href="https://gtmvp.com/home-services">
-          <img src="https://img.shields.io/badge/View_Project-8B5CF6?style=for-the-badge" alt="View Project"/>
+        <a href="https://productdescriptions.ai">
+          <img src="https://img.shields.io/badge/Try_It_Free-8B5CF6?style=for-the-badge" alt="Try It Free"/>
         </a>
       </p>
     </td>
@@ -81,13 +82,14 @@ const steveKaplan = {
       <div align="center">
         <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Active"/>
         <img src="https://img.shields.io/badge/Accuracy-99.7%25-blue?style=flat-square" alt="Accuracy"/>
+        <img src="https://img.shields.io/badge/Schools-200%2B-purple?style=flat-square" alt="Schools"/>
       </div>
       <p align="center">
-        Advanced AI detection technology for educational institutions.
+        Advanced AI detection technology for educational institutions. Helping maintain academic integrity.
       </p>
       <p align="center">
         <a href="#">
-          <img src="https://img.shields.io/badge/View_Project-8B5CF6?style=for-the-badge" alt="View Project"/>
+          <img src="https://img.shields.io/badge/Learn_More-8B5CF6?style=for-the-badge" alt="Learn More"/>
         </a>
       </p>
     </td>
@@ -98,13 +100,14 @@ const steveKaplan = {
       <div align="center">
         <img src="https://img.shields.io/badge/Status-Beta-yellow?style=flat-square" alt="Beta"/>
         <img src="https://img.shields.io/badge/ROAS-3.2x-blue?style=flat-square" alt="ROAS"/>
+        <img src="https://img.shields.io/badge/Ad_Spend-%242M%2B-purple?style=flat-square" alt="Ad Spend"/>
       </div>
       <p align="center">
-        Automated media buying platform with AI-powered optimization.
+        Automated media buying platform with AI-powered bid optimization and creative testing.
       </p>
       <p align="center">
         <a href="#">
-          <img src="https://img.shields.io/badge/View_Project-8B5CF6?style=for-the-badge" alt="View Project"/>
+          <img src="https://img.shields.io/badge/Join_Waitlist-8B5CF6?style=for-the-badge" alt="Join Waitlist"/>
         </a>
       </p>
     </td>
@@ -112,14 +115,34 @@ const steveKaplan = {
       <h3 align="center">📄 DocDoctor.ai</h3>
       <div align="center">
         <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Active"/>
-        <img src="https://img.shields.io/badge/Docs_Processed-10K%2B-blue?style=flat-square" alt="Docs"/>
+        <img src="https://img.shields.io/badge/Docs-10K%2B-blue?style=flat-square" alt="Docs"/>
+        <img src="https://img.shields.io/badge/Time_Saved-500h%2B-purple?style=flat-square" alt="Time Saved"/>
       </div>
       <p align="center">
-        AI-powered document analysis and automation platform.
+        AI-powered document analysis and automation. Extract insights from any document instantly.
       </p>
       <p align="center">
         <a href="#">
-          <img src="https://img.shields.io/badge/View_Project-8B5CF6?style=for-the-badge" alt="View Project"/>
+          <img src="https://img.shields.io/badge/Get_Started-8B5CF6?style=for-the-badge" alt="Get Started"/>
+        </a>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <h3 align="center">🏠 Home Services AI Automation Suite</h3>
+      <div align="center">
+        <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Active"/>
+        <img src="https://img.shields.io/badge/Companies-127%2B-blue?style=flat-square" alt="Companies"/>
+        <img src="https://img.shields.io/badge/Revenue_Captured-%244.7M-purple?style=flat-square" alt="Revenue"/>
+        <img src="https://img.shields.io/badge/Leads_Saved-23K%2B-green?style=flat-square" alt="Leads"/>
+      </div>
+      <p align="center">
+        Complete AI automation for Housecall Pro, Jobber & ServiceTitan users. Never miss another lead with 24/7 AI agents.
+      </p>
+      <p align="center">
+        <a href="https://gtmvp.com/home-services">
+          <img src="https://img.shields.io/badge/Get_Free_Assessment-10B981?style=for-the-badge" alt="Get Assessment"/>
         </a>
       </p>
     </td>
@@ -190,6 +213,12 @@ Transform your business operations with custom AI solutions
 📱 **Phone:** (954) 228-5908  
 🌐 **Website:** [gtmvp.com](https://gtmvp.com)  
 📅 **Book a Call:** [cal.com/stevekaplanai](https://cal.com/stevekaplanai)
+
+### My AI Products
+🛍️ [ProductDescriptions.ai](https://productdescriptions.ai) - AI Product Description Generator  
+🎓 [StudentAIDetector](https://studentaidetector.com) - Academic AI Detection  
+📊 [Media Buy AI](https://mediabuy.ai) - Automated Ad Optimization  
+📄 [DocDoctor.ai](https://docdoctor.ai) - Document Intelligence Platform  
 
 ---
 
