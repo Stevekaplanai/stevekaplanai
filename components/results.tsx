@@ -148,7 +148,7 @@ export function Results() {
                   className="bg-slate/30 rounded-lg p-4 text-center"
                 >
                   <span className="text-2xl md:text-3xl font-mono font-bold text-emerald block mb-1">
-                    {metric.value}
+                    {"value" in metric ? metric.value : metric.after}
                   </span>
                   <span className="text-xs text-muted-foreground uppercase tracking-wider">
                     {metric.label}
