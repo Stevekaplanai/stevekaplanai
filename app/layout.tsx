@@ -1,33 +1,54 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({ 
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
+
 export const metadata: Metadata = {
-  title: "Steve Kaplan | Growth Marketing, Engineered",
+  title: "Steve Kaplan | The CMO Who Writes Code",
   description:
-    "I don't advise. I build. Growth marketer who writes code. $50M+ ad spend managed. 8 AI products built. I build the growth engine — not just the strategy.",
+    "Growth marketer who writes code. Published author. $50M+ ad spend managed. 9 AI products built. I don't advise. I build.",
   keywords: [
-    "fractional CMO",
+    "Steve Kaplan",
     "growth marketing",
+    "fractional CMO",
+    "AI products",
     "marketing data stack",
     "BigQuery",
     "PostHog",
-    "AI marketing",
     "marketing automation",
+    "published author",
+    "AI builder",
   ],
   authors: [{ name: "Steve Kaplan" }],
+  creator: "Steve Kaplan",
   openGraph: {
-    title: "Steve Kaplan | Growth Marketing, Engineered",
+    title: "Steve Kaplan | The CMO Who Writes Code",
     description:
-      "I don't advise. I build. The $259K marketing data stack that replaces enterprise platforms at 88% less cost.",
+      "Growth marketer who writes code. Published author. $50M+ ad spend managed. 9 AI products built. I don't advise. I build.",
     url: "https://stevekaplan.ai",
     siteName: "stevekaplan.ai",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Steve Kaplan | Growth Marketing, Engineered",
+    title: "Steve Kaplan | The CMO Who Writes Code",
     description:
-      "I don't advise. I build. The $259K marketing data stack that replaces enterprise platforms at 88% less cost.",
+      "Growth marketer who writes code. Published author. $50M+ ad spend managed. 9 AI products built.",
+    creator: "@stevekaplanai",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -43,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

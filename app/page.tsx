@@ -1,12 +1,10 @@
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
-import { Stats } from "@/components/stats";
-import { Problem } from "@/components/problem";
+import { About } from "@/components/about";
+import { Products } from "@/components/products";
 import { WhitePaperPreview } from "@/components/white-paper-preview";
-import { Stack } from "@/components/stack";
+import { GitHub } from "@/components/github";
 import { Results } from "@/components/results";
-import { Timeline } from "@/components/timeline";
-import { CTA } from "@/components/cta";
 import { Newsletter } from "@/components/newsletter";
 import { Footer } from "@/components/footer";
 
@@ -16,13 +14,11 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Stats />
-        <Problem />
+        <About />
+        <Products />
         <WhitePaperPreview />
-        <Stack />
+        <GitHub />
         <Results />
-        <Timeline />
-        <CTA />
         <Newsletter />
       </main>
       <Footer />
