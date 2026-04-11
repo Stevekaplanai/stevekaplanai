@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const credentials = [
@@ -26,6 +27,34 @@ const expertise = [
   },
 ];
 
+const timeline = [
+  {
+    year: "2016",
+    title: "Click Then Convert",
+    description: "Founded performance marketing agency. Scaled to manage $50M+ in client ad spend.",
+  },
+  {
+    year: "2020",
+    title: "BarkBox Partnership",
+    description: "Delivered 204% increase in conversions, 254% ROAS improvement for D2C subscription leader.",
+  },
+  {
+    year: "2023",
+    title: "Neil Jesani Advisors",
+    description: "Director of Marketing. $300K+/month paid media, full martech stack implementation.",
+  },
+  {
+    year: "2024",
+    title: "AI Builder Era",
+    description: "Shipped 9 AI products solo using Claude Code. DocDoctor.ai, GTMVP, ClaudeSkillsHQ, and more.",
+  },
+  {
+    year: "2025",
+    title: "Published Author",
+    description: "Released &apos;Marketing, Sales and Service with AI&apos; - practical frameworks for AI implementation.",
+  },
+];
+
 export function About() {
   return (
     <section id="about" className="py-24 bg-midnight">
@@ -45,8 +74,18 @@ export function About() {
         
         {/* Two column layout */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left column - Background */}
+          {/* Left column - Background with headshot */}
           <div>
+            {/* Large headshot */}
+            <div className="relative w-full aspect-square max-w-sm rounded-2xl overflow-hidden mb-8 border border-border">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg"
+                alt="Steve Kaplan"
+                fill
+                className="object-cover"
+              />
+            </div>
+            
             <h3 className="text-xl font-bold text-foreground mb-4">
               The Short Version
             </h3>
@@ -96,24 +135,51 @@ export function About() {
             </div>
           </div>
           
-          {/* Right column - Expertise cards */}
-          <div className="space-y-4">
-            {expertise.map((item, index) => (
-              <div
-                key={item.title}
-                className="p-6 bg-slate/20 border border-border rounded-xl hover:border-electric/30 transition-colors group"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-electric/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-electric/20 transition-colors">
-                    <span className="text-sm font-bold text-electric">{index + 1}</span>
+          {/* Right column - Timeline + Expertise */}
+          <div className="space-y-8">
+            {/* Timeline */}
+            <div>
+              <h3 className="text-xl font-bold text-foreground mb-6">The Journey</h3>
+              <div className="space-y-0 relative">
+                <div className="absolute left-[19px] top-8 bottom-8 w-px bg-border" />
+                {timeline.map((item) => (
+                  <div key={item.year} className="flex gap-4 pb-6 last:pb-0">
+                    <div className="w-10 flex-shrink-0 flex items-start pt-1">
+                      <div className="w-10 h-10 bg-electric/10 rounded-full flex items-center justify-center relative z-10">
+                        <span className="text-xs font-mono font-bold text-electric">{item.year.slice(2)}</span>
+                      </div>
+                    </div>
+                    <div className="pt-1">
+                      <h4 className="font-bold text-foreground">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-foreground mb-1">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+            
+            {/* Expertise cards */}
+            <div>
+              <h3 className="text-xl font-bold text-foreground mb-6">Core Expertise</h3>
+              <div className="space-y-4">
+                {expertise.map((item, index) => (
+                  <div
+                    key={item.title}
+                    className="p-5 bg-slate/20 border border-border rounded-xl hover:border-electric/30 transition-colors group"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 bg-electric/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-electric/20 transition-colors">
+                        <span className="text-sm font-bold text-electric">{index + 1}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-foreground mb-1">{item.title}</h4>
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
             
             {/* CTA */}
             <div className="pt-4">

@@ -15,10 +15,10 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Products />
-        <WhitePaperPreview />
-        <GitHub />
         <Results />
+        <Products />
+        <GitHub />
+        <WhitePaperPreview />
         <Newsletter />
       </main>
       <Footer />

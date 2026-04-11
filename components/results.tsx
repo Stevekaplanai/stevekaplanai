@@ -2,35 +2,68 @@ import Link from "next/link";
 
 const trackRecord = [
   { value: "$50M+", label: "Lifetime Ad Spend Managed" },
+  { value: "36:1", label: "Lifetime Ad ROI" },
   { value: "100+", label: "Clients Served" },
-  { value: "3.2x", label: "Average ROAS" },
-  { value: "40%", label: "CPA Reduction" },
+  { value: "9", label: "AI Products Shipped" },
 ];
 
 const caseStudies = [
   {
+    company: "BarkBox",
+    logo: "B",
+    logoColor: "bg-amber",
+    context: "D2C subscription service for dog owners. Needed aggressive growth while maintaining CAC efficiency.",
+    testimonial: {
+      quote: "He understands the big picture yet focuses on the metrics that matter - Cost to Acquire a Customer and New Customers Acquired.",
+      author: "Todd Kane",
+      title: "VP Growth, BarkBox",
+    },
+    metrics: [
+      { value: "204%", label: "Increase in Conversions" },
+      { value: "254%", label: "Increase in ROAS" },
+      { value: "31%", label: "Decrease in Cost/Click" },
+    ],
+  },
+  {
     company: "Air Canada",
-    context: "37M customers. 185 destinations. Fragmented data across multiple environments.",
+    logo: "AC",
+    logoColor: "bg-electric",
+    context: "37M customers. 185 destinations. Fragmented data across multiple environments. Campaign analysis took weeks.",
     metrics: [
       { before: "2 weeks", after: "3.5 hours", label: "Campaign Analysis" },
       { before: "20 hours", after: "1 hour", label: "Analyst Time / Week" },
     ],
   },
   {
-    company: "BVK Agency",
-    context: "Previous all-in-one platform lacked customization. Row-based pricing drove costs up.",
+    company: "Neil Jesani Advisors",
+    logo: "NJ",
+    logoColor: "bg-emerald",
+    context: "76-person financial advisory. $300K+/month in paid media. Full-stack martech implementation.",
     metrics: [
-      { value: "50%", label: "Faster Reports" },
-      { value: "0", label: "Data Workarounds" },
+      { value: "$300K+", label: "Monthly Ad Spend" },
+      { value: "Full Stack", label: "Martech Implementation" },
     ],
   },
 ];
 
-const testimonial = {
-  quote: "Steve doesn't just understand marketing theory — he builds the systems that execute it. The combination of strategic thinking and technical ability is rare.",
-  author: "Marketing Director",
-  company: "Mid-Market SaaS",
-};
+const philosophy = [
+  {
+    title: "Grand Slam Offers",
+    description: "Make offers so good people feel stupid saying no. Every campaign I build starts with an irresistible offer, not just clever ad copy.",
+  },
+  {
+    title: "36:1 Returns",
+    description: "For every $1 spent on advertising, I average $36 back. That&apos;s not theory - that&apos;s my lifetime track record across all campaigns.",
+  },
+  {
+    title: "Leads First",
+    description: "It&apos;s hard to be poor with leads banging down your door. I build systems that generate qualified leads on demand.",
+  },
+  {
+    title: "Builder Not Advisor",
+    description: "Most consultants give you a deck. I build the system that executes it. I write the code. I deploy the infrastructure.",
+  },
+];
 
 export function Results() {
   return (
@@ -66,75 +99,134 @@ export function Results() {
           ))}
         </div>
         
-        {/* Case studies */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
-          {caseStudies.map((study) => (
-            <div
-              key={study.company}
-              className="bg-midnight border border-border rounded-xl p-6"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-bold text-foreground">
-                  {study.company}
-                </h3>
-                <span className="text-xs text-muted-foreground uppercase tracking-wider">
-                  Case Study
-                </span>
+        {/* Philosophy section - inspired by $100M books */}
+        <div className="mb-16">
+          <h3 className="text-xl font-bold text-foreground mb-6 text-center">My Operating Principles</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {philosophy.map((item) => (
+              <div
+                key={item.title}
+                className="bg-midnight border border-border rounded-xl p-5 hover:border-electric/30 transition-colors"
+              >
+                <h4 className="font-bold text-foreground mb-2">{item.title}</h4>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
-              <p className="text-sm text-muted-foreground mb-6">
-                {study.context}
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {study.metrics.map((metric) => (
-                  <div
-                    key={metric.label}
-                    className="bg-slate/30 rounded-lg p-4 text-center"
-                  >
-                    {metric.before ? (
-                      <div className="mb-2">
-                        <span className="text-sm font-mono text-muted-foreground line-through">
-                          {metric.before}
-                        </span>
-                        <span className="text-xl font-mono font-bold text-emerald block">
-                          {metric.after}
-                        </span>
-                      </div>
-                    ) : (
-                      <span className="text-xl font-mono font-bold text-cyan block mb-2">
-                        {metric.value}
-                      </span>
-                    )}
-                    <span className="text-xs text-muted-foreground uppercase tracking-wider">
-                      {metric.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         
-        {/* Testimonial */}
-        <div className="bg-gradient-to-r from-electric/5 to-emerald/5 border border-electric/20 rounded-xl p-8 md:p-12 text-center">
-          <svg
-            className="w-10 h-10 text-electric/30 mx-auto mb-6"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-          </svg>
-          <blockquote className="text-xl md:text-2xl text-foreground font-medium mb-6 max-w-3xl mx-auto text-balance">
-            &ldquo;{testimonial.quote}&rdquo;
-          </blockquote>
-          <div className="text-muted-foreground">
-            <span className="font-medium text-foreground">{testimonial.author}</span>
-            <span className="mx-2">&mdash;</span>
-            <span>{testimonial.company}</span>
+        {/* Case studies */}
+        <div className="space-y-6 mb-16">
+          <h3 className="text-xl font-bold text-foreground mb-6 text-center">Client Case Studies</h3>
+          
+          {/* BarkBox - Featured */}
+          <div className="bg-midnight border border-amber/30 rounded-xl p-8">
+            <div className="flex items-start justify-between mb-6">
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 ${caseStudies[0].logoColor} rounded-lg flex items-center justify-center`}>
+                  <span className="text-lg font-bold text-midnight">{caseStudies[0].logo}</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground">
+                    {caseStudies[0].company}
+                  </h3>
+                  <span className="text-xs text-amber uppercase tracking-wider font-medium">
+                    Featured Case Study
+                  </span>
+                </div>
+              </div>
+            </div>
+            <p className="text-muted-foreground mb-6">
+              {caseStudies[0].context}
+            </p>
+            
+            {/* BarkBox metrics */}
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              {caseStudies[0].metrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="bg-slate/30 rounded-lg p-4 text-center"
+                >
+                  <span className="text-2xl md:text-3xl font-mono font-bold text-emerald block mb-1">
+                    {metric.value}
+                  </span>
+                  <span className="text-xs text-muted-foreground uppercase tracking-wider">
+                    {metric.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            
+            {/* BarkBox testimonial */}
+            {caseStudies[0].testimonial && (
+              <div className="border-l-2 border-amber pl-4">
+                <p className="text-foreground italic mb-2">
+                  &ldquo;{caseStudies[0].testimonial.quote}&rdquo;
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  <span className="text-foreground font-medium">{caseStudies[0].testimonial.author}</span>
+                  {" "}&mdash; {caseStudies[0].testimonial.title}
+                </p>
+              </div>
+            )}
+          </div>
+          
+          {/* Other case studies */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {caseStudies.slice(1).map((study) => (
+              <div
+                key={study.company}
+                className="bg-midnight border border-border rounded-xl p-6"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 ${study.logoColor} rounded-lg flex items-center justify-center`}>
+                      <span className="text-sm font-bold text-midnight">{study.logo}</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground">
+                      {study.company}
+                    </h3>
+                  </div>
+                  <span className="text-xs text-muted-foreground uppercase tracking-wider">
+                    Case Study
+                  </span>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {study.context}
+                </p>
+                <div className="grid grid-cols-2 gap-3">
+                  {study.metrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="bg-slate/30 rounded-lg p-3 text-center"
+                    >
+                      {"before" in metric ? (
+                        <div className="mb-1">
+                          <span className="text-xs font-mono text-muted-foreground line-through block">
+                            {metric.before}
+                          </span>
+                          <span className="text-lg font-mono font-bold text-emerald">
+                            {metric.after}
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-lg font-mono font-bold text-cyan block mb-1">
+                          {metric.value}
+                        </span>
+                      )}
+                      <span className="text-xs text-muted-foreground uppercase tracking-wider">
+                        {metric.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center">
           <Link
             href="#get-white-paper"
             className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -7,7 +8,7 @@ const stats = [
   { value: "$50M+", label: "Ad Spend Managed" },
   { value: "9", label: "AI Products Built" },
   { value: "3.2x", label: "Avg ROAS" },
-  { value: "100+", label: "Clients Served" },
+  { value: "36:1", label: "Lifetime Ad ROI" },
 ];
 
 export function Hero() {
@@ -40,22 +41,39 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left column - Identity */}
           <div>
+            {/* Headshot + name */}
+            <div className="flex items-center gap-4 mb-6">
+              <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-electric/30">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg"
+                  alt="Steve Kaplan"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Hi, I&apos;m</p>
+                <h2 className="text-xl md:text-2xl font-bold text-foreground">Steve Kaplan</h2>
+              </div>
+            </div>
+            
             <div className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 text-emerald text-sm font-medium px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-emerald rounded-full animate-pulse" />
               Published Author
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.1] tracking-tight mb-6">
-              The CMO who{" "}
-              <span className="text-emerald">writes code</span>.
+              I don&apos;t <span className="text-muted-foreground">advise</span>. I{" "}
+              <span className="text-emerald">build</span>.
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
-              Growth marketer. Solo builder. $50M+ in ad spend managed. 9 AI products shipped. I don&apos;t just talk about AI &mdash; I build it.
+              Growth marketer who writes code. $50M+ in ad spend. 9 AI products shipped. BarkBox, Neil Jesani Advisors, and 100+ clients served.
             </p>
             
             <p className="text-base text-muted-foreground mb-8">
-              Director of Marketing at Neil Jesani Advisors by day. Building the future of marketing automation by night.
+              Most fractional CMOs hand you a strategy deck. I build the system that executes it.
             </p>
             
             {/* Stats row */}
