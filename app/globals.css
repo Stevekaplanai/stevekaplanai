@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand Colors - stevekaplan.ai */
+  --color-midnight: #0f172a;
+  --color-slate: #1e293b;
+  --color-electric: #3b82f6;
+  --color-cyan: #06b6d4;
+  --color-emerald: #10b981;
+  --color-amber: #f59e0b;
+  --color-coral: #ef4444;
+  
+  /* Design Tokens */
+  --color-background: #0f172a;
+  --color-foreground: #f8fafc;
+  --color-card: #1e293b;
+  --color-card-foreground: #f8fafc;
+  --color-muted: #334155;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #3b82f6;
+  --color-accent-foreground: #f8fafc;
+  --color-border: #334155;
+  
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  
+  /* Spacing & Radius */
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--color-electric);
+  color: var(--color-foreground);
+}
