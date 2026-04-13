@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BookAuditButton } from "@/components/book-audit-modal";
+import { StackDiagram, MetricBars, QuadrantChart, GanttTimeline, FunnelImpact } from "@/components/audit-visuals";
 
 export const metadata: Metadata = {
   title: "Sample Audit Output | Profit Loop Audit | Steve Kaplan",
@@ -190,6 +191,11 @@ export default function SampleAuditPage() {
           </div>
         </section>
 
+        {/* Stack Architecture Diagram */}
+        <section className="max-w-5xl mx-auto px-6 mb-16">
+          <StackDiagram />
+        </section>
+
         {/* Data Baseline */}
         <section className="max-w-4xl mx-auto px-6 mb-16">
           <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">
@@ -213,6 +219,11 @@ export default function SampleAuditPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Metric Comparison Bars */}
+        <section className="max-w-4xl mx-auto px-6 mb-16">
+          <MetricBars />
         </section>
 
         {/* Top 5 Wins */}
@@ -316,6 +327,11 @@ export default function SampleAuditPage() {
           </div>
         </section>
 
+        {/* Effort vs Lift Quadrant */}
+        <section className="max-w-4xl mx-auto px-6 py-8">
+          <QuadrantChart />
+        </section>
+
         {/* 30/60/90 Roadmap */}
         <section className="py-16 bg-slate/20">
           <div className="max-w-4xl mx-auto px-6">
@@ -385,6 +401,16 @@ export default function SampleAuditPage() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Gantt Timeline */}
+        <section className="max-w-5xl mx-auto px-6 py-8">
+          <GanttTimeline />
+        </section>
+
+        {/* Funnel Impact */}
+        <section className="max-w-4xl mx-auto px-6 py-8">
+          <FunnelImpact />
         </section>
 
         {/* What I Did NOT Find */}
