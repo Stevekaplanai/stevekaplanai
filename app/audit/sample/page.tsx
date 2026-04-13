@@ -4,14 +4,25 @@ import { BookAuditButton } from "@/components/book-audit-modal";
 import { StackDiagram, MetricBars, QuadrantChart, GanttTimeline, FunnelImpact } from "@/components/audit-visuals";
 
 export const metadata: Metadata = {
-  title: "Sample Audit Output | Profit Loop Audit | Steve Kaplan",
+  title: "Sample Audit Output — Profit Loop Audit",
   description:
-    "See exactly what a Profit Loop Audit delivers. Sample audit for a $28M B2B SaaS company with 65 employees.",
+    "See exactly what a Profit Loop Audit delivers. Full sample audit for a $28M B2B SaaS company: stack diagram, data baseline, top 5 wins, effort vs lift matrix, 90-day roadmap.",
+  alternates: {
+    canonical: "https://stevekaplan.ai/audit/sample",
+  },
   openGraph: {
-    title: "Sample Audit Output | Profit Loop Audit",
+    title: "Sample Audit Output — Profit Loop Audit | Steve Kaplan",
     description:
-      "See exactly what a Profit Loop Audit delivers. Real structure, real numbers, fictional company.",
+      "Full sample audit: stack diagram, top 5 wins ranked, 90-day roadmap. See what you get before you buy.",
     url: "https://stevekaplan.ai/audit/sample",
+    siteName: "stevekaplan.ai",
+    locale: "en_US",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sample Audit Output — See What a Profit Loop Audit Delivers",
+    description: "Full sample: stack diagrams, 5 ranked wins, 90-day roadmap. Fictional company, real depth.",
   },
 };
 

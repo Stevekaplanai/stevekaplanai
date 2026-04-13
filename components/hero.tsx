@@ -46,8 +46,9 @@ export function Hero() {
               <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-electric/30">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg"
-                  alt="Steve Kaplan"
+                  alt="Steve Kaplan - AI Automation Consultant and Growth Marketer in Fort Lauderdale"
                   fill
+                  sizes="(max-width: 768px) 64px, 80px"
                   className="object-cover"
                   priority
                 />

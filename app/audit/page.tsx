@@ -4,13 +4,16 @@ import Link from "next/link";
 import { ROICalculator } from "@/components/roi-calculator";
 
 export const metadata: Metadata = {
-  title: "Profit Loop Audit | Steve Kaplan",
+  title: "Profit Loop Audit — 5-Day GTM Stack Audit",
   description:
-    "5-day flat-fee GTM stack audit for $10M to $100M companies. Find the top 5 AI and automation wins. $3,500. Money-back guarantee.",
+    "5-day flat-fee GTM stack audit for $10M to $100M companies. Find the top 5 AI and automation wins, ranked by effort vs lift. $3,500 flat. Money-back guarantee. By Steve Kaplan.",
+  alternates: {
+    canonical: "https://stevekaplan.ai/audit",
+  },
   openGraph: {
-    title: "Profit Loop Audit | Steve Kaplan",
+    title: "Profit Loop Audit — 5-Day GTM Stack Audit | Steve Kaplan",
     description:
-      "5-day flat-fee GTM stack audit. Top 5 AI and automation wins, ranked by effort vs lift. $3,500. Money-back guarantee.",
+      "Find the top 5 AI and automation wins in your GTM stack. $3,500 flat. 5 business days. Money-back guarantee.",
     url: "https://stevekaplan.ai/audit",
     siteName: "stevekaplan.ai",
     locale: "en_US",
@@ -18,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Profit Loop Audit | Steve Kaplan",
-    description: "5-day flat-fee GTM stack audit. $3,500. Money-back guarantee.",
+    title: "Profit Loop Audit — 5-Day GTM Stack Audit",
+    description: "Find the top 5 AI and automation wins in your GTM stack. $3,500 flat. Money-back guarantee.",
   },
 };
 
@@ -84,7 +87,7 @@ export default function AuditPage() {
                 {/* Headshot + name */}
                 <div className="flex items-center gap-4 mb-6">
                   <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-electric/30">
-                    <Image src={HEADSHOT_URL} alt="Steve Kaplan" fill className="object-cover" priority />
+                    <Image src={HEADSHOT_URL} alt="Steve Kaplan - AI Automation Consultant" fill sizes="(max-width: 768px) 80px, 96px" className="object-cover" priority />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Steve Kaplan</p>
@@ -218,7 +221,7 @@ export default function AuditPage() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="flex-shrink-0">
                   <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-xl overflow-hidden border-2 border-electric/20">
-                    <Image src={HEADSHOT_URL} alt="Steve Kaplan" fill className="object-cover" />
+                    <Image src={HEADSHOT_URL} alt="Steve Kaplan - Founder of GTMVP Inc" fill sizes="(max-width: 768px) 112px, 144px" className="object-cover" loading="lazy" />
                   </div>
                 </div>
                 <div>
