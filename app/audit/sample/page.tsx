@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BookAuditButton } from "@/components/book-audit-modal";
 
 export const metadata: Metadata = {
   title: "Sample Audit Output | Profit Loop Audit | Steve Kaplan",
@@ -108,12 +109,9 @@ export default function SampleAuditPage() {
           <Link href="/audit" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
             &larr; Back to Audit
           </Link>
-          <a
-            href="mailto:steve@gtmvp.com?subject=Profit%20Loop%20Audit"
-            className="bg-electric hover:bg-electric/90 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"
-          >
+          <BookAuditButton className="bg-electric hover:bg-electric/90 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
             Book Your Audit
-          </a>
+          </BookAuditButton>
         </div>
       </nav>
 
@@ -449,15 +447,7 @@ export default function SampleAuditPage() {
             <p className="text-lg text-muted-foreground mb-8">
               $3,500 flat. 5 business days. Money-back guarantee.
             </p>
-            <a
-              href="mailto:steve@gtmvp.com?subject=Profit%20Loop%20Audit"
-              className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 text-lg"
-            >
-              Book Your Audit
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+            <BookAuditButton />
           </div>
         </section>
       </main>
@@ -475,9 +465,7 @@ export default function SampleAuditPage() {
             <Link href="/" className="hover:text-foreground transition-colors">
               stevekaplan.ai
             </Link>
-            <a href="mailto:steve@gtmvp.com" className="hover:text-foreground transition-colors">
-              steve@gtmvp.com
-            </a>
+            <span>steve@stevekaplan.ai</span>
           </div>
         </div>
       </footer>

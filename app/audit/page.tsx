@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { BookAuditButton } from "@/components/book-audit-modal";
 
 export const metadata: Metadata = {
   title: "Profit Loop Audit | Steve Kaplan",
@@ -30,42 +32,12 @@ const proofStats = [
 ];
 
 const timeline = [
-  {
-    day: "Day 0",
-    title: "Kickoff",
-    description:
-      "60-minute call. I lock scope, get access to your stack, and confirm what we are looking for.",
-  },
-  {
-    day: "Day 1",
-    title: "Stack Inventory",
-    description:
-      "I map every tool, integration, and manual handoff in your GTM operation. CRM, ads, analytics, ops, email, reporting.",
-  },
-  {
-    day: "Day 2",
-    title: "Data Review",
-    description:
-      "I pull your pipeline data, ad spend, conversion rates, and attribution. I look for the gaps your dashboards do not show you.",
-  },
-  {
-    day: "Day 3",
-    title: "Opportunity Mapping",
-    description:
-      "I rank the top 5 wins by effort vs lift. Each one gets a specific number: expected revenue impact, hours saved, or cost reduced.",
-  },
-  {
-    day: "Day 4",
-    title: "Roadmap",
-    description:
-      "I build a phased 30/60/90 day plan. Which wins to ship first, what to sequence, what to skip.",
-  },
-  {
-    day: "Day 5",
-    title: "Delivery",
-    description:
-      "Live call. Recorded walkthrough. Written audit document you can hand to your board.",
-  },
+  { day: "Day 0", title: "Kickoff", description: "60-minute call. I lock scope, get access to your stack, and confirm what we are looking for." },
+  { day: "Day 1", title: "Stack Inventory", description: "I map every tool, integration, and manual handoff in your GTM operation. CRM, ads, analytics, ops, email, reporting." },
+  { day: "Day 2", title: "Data Review", description: "I pull your pipeline data, ad spend, conversion rates, and attribution. I look for the gaps your dashboards do not show you." },
+  { day: "Day 3", title: "Opportunity Mapping", description: "I rank the top 5 wins by effort vs lift. Each one gets a specific number: expected revenue impact, hours saved, or cost reduced." },
+  { day: "Day 4", title: "Roadmap", description: "I build a phased 30/60/90 day plan. Which wins to ship first, what to sequence, what to skip." },
+  { day: "Day 5", title: "Delivery", description: "Live call. Recorded walkthrough. Written audit document you can hand to your board." },
 ];
 
 const deliverables = [
@@ -78,31 +50,15 @@ const deliverables = [
 ];
 
 const faqs = [
-  {
-    q: "How is this different from a consulting engagement?",
-    a: "I do not write strategy decks. I inventory your stack, pull your data, and deliver a ranked list of wins with numbers attached. Five days, not five months.",
-  },
-  {
-    q: "Can I see what the final deliverable looks like?",
-    a: "Yes. I published a full sample audit for a fictional $28M B2B SaaS company. Same structure, same level of detail. See it at /audit/sample.",
-  },
-  {
-    q: "What access do you need?",
-    a: "CRM (read-only), ad accounts, analytics, and email marketing. I send an access checklist on Day 0. No access, no audit.",
-  },
-  {
-    q: "What if AI is not the right move for us?",
-    a: "I will tell you. And I will refund the audit. I would rather lose a retainer than sell a lie.",
-  },
-  {
-    q: "Can you do this for a company larger than 80 people?",
-    a: "Yes, but the sweet spot is 50 to 80. The audit scope stays the same. Larger companies sometimes need a longer inventory phase.",
-  },
-  {
-    q: "What happens after the audit?",
-    a: "Most clients move into a monthly retainer where I build and run the stack. The $3,500 audit fee is fully credited toward your first month. Some clients execute the roadmap internally. Both are fine.",
-  },
+  { q: "How is this different from a consulting engagement?", a: "I do not write strategy decks. I inventory your stack, pull your data, and deliver a ranked list of wins with numbers attached. Five days, not five months." },
+  { q: "Can I see what the final deliverable looks like?", a: "Yes. I published a full sample audit for a fictional $28M B2B SaaS company. Same structure, same level of detail. See it at /audit/sample." },
+  { q: "What access do you need?", a: "CRM (read-only), ad accounts, analytics, and email marketing. I send an access checklist on Day 0. No access, no audit." },
+  { q: "What if AI is not the right move for us?", a: "I will tell you. And I will refund the audit. I would rather lose a retainer than sell a lie." },
+  { q: "Can you do this for a company larger than 80 people?", a: "Yes, but the sweet spot is 50 to 80. The audit scope stays the same. Larger companies sometimes need a longer inventory phase." },
+  { q: "What happens after the audit?", a: "Most clients move into a monthly retainer where I build and run the stack. The $3,500 audit fee is fully credited toward your first month. Some clients execute the roadmap internally. Both are fine." },
 ];
+
+const HEADSHOT_URL = "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg";
 
 export default function AuditPage() {
   return (
@@ -113,12 +69,9 @@ export default function AuditPage() {
           <Link href="/" className="text-foreground font-bold text-lg">
             stevekaplan.ai
           </Link>
-          <a
-            href="mailto:steve@gtmvp.com?subject=Profit%20Loop%20Audit"
-            className="bg-electric hover:bg-electric/90 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"
-          >
+          <BookAuditButton className="bg-electric hover:bg-electric/90 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
             Book Your Audit
-          </a>
+          </BookAuditButton>
         </div>
       </nav>
 
@@ -134,6 +87,17 @@ export default function AuditPage() {
           />
 
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            {/* Steve's headshot */}
+            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-electric/30 mx-auto mb-6">
+              <Image
+                src={HEADSHOT_URL}
+                alt="Steve Kaplan"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+
             <div className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 text-emerald text-sm font-medium px-4 py-2 rounded-full mb-8">
               <span className="w-2 h-2 bg-emerald rounded-full animate-pulse" />
               5 days. $3,500 flat. Money-back guarantee.
@@ -150,15 +114,7 @@ export default function AuditPage() {
               your stack, ranked by effort vs lift, with a 30/60/90 day roadmap.
             </p>
 
-            <a
-              href="mailto:steve@gtmvp.com?subject=Profit%20Loop%20Audit"
-              className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 text-lg"
-            >
-              Book Your Audit
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+            <BookAuditButton />
             <p className="text-sm text-muted-foreground mt-4">
               $3,500 flat. Fully credited toward a retainer.
             </p>
@@ -195,32 +151,18 @@ export default function AuditPage() {
         <section className="py-24">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">
-                How It Works
-              </p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
-                5 days. 6 steps. Zero guesswork.
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Your total time commitment: about 3 hours across 5 days.
-              </p>
+              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">How It Works</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">5 days. 6 steps. Zero guesswork.</h2>
+              <p className="text-lg text-muted-foreground">Your total time commitment: about 3 hours across 5 days.</p>
             </div>
-
             <div className="space-y-6">
-              {timeline.map((step, i) => (
-                <div
-                  key={step.day}
-                  className="flex gap-6 items-start bg-midnight border border-border rounded-xl p-6 hover:border-electric/30 transition-colors"
-                >
+              {timeline.map((step) => (
+                <div key={step.day} className="flex gap-6 items-start bg-midnight border border-border rounded-xl p-6 hover:border-electric/30 transition-colors">
                   <div className="flex-shrink-0 w-16 h-16 bg-electric/10 border border-electric/20 rounded-xl flex items-center justify-center">
-                    <span className="text-sm font-bold font-mono text-electric">
-                      {step.day}
-                    </span>
+                    <span className="text-sm font-bold font-mono text-electric">{step.day}</span>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-foreground mb-1">
-                      {step.title}
-                    </h3>
+                    <h3 className="text-lg font-bold text-foreground mb-1">{step.title}</h3>
                     <p className="text-muted-foreground">{step.description}</p>
                   </div>
                 </div>
@@ -233,33 +175,22 @@ export default function AuditPage() {
         <section className="py-24 bg-slate/20">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-16">
-              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">
-                Deliverables
-              </p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-                What you walk away with
-              </h2>
+              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">Deliverables</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">What you walk away with</h2>
             </div>
-
             <div className="bg-midnight border border-border rounded-xl overflow-hidden">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-border">
-                    <th className="text-left text-sm font-semibold text-foreground px-6 py-4">
-                      Deliverable
-                    </th>
-                    <th className="text-left text-sm font-semibold text-foreground px-6 py-4">
-                      Format
-                    </th>
+                    <th className="text-left text-sm font-semibold text-foreground px-6 py-4">Deliverable</th>
+                    <th className="text-left text-sm font-semibold text-foreground px-6 py-4">Format</th>
                   </tr>
                 </thead>
                 <tbody>
                   {deliverables.map((d) => (
                     <tr key={d.item} className="border-b border-border/50 last:border-0">
                       <td className="text-muted-foreground px-6 py-4">{d.item}</td>
-                      <td className="text-foreground font-medium px-6 py-4 font-mono text-sm">
-                        {d.format}
-                      </td>
+                      <td className="text-foreground font-medium px-6 py-4 font-mono text-sm">{d.format}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -272,21 +203,13 @@ export default function AuditPage() {
         <section className="py-24">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-12">
-              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">
-                Is This For You?
-              </p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-                Built for operators, not browsers.
-              </h2>
+              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">Is This For You?</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Built for operators, not browsers.</h2>
             </div>
-
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Good fit */}
               <div className="bg-emerald/5 border border-emerald/20 rounded-xl p-8">
                 <h3 className="text-lg font-bold text-emerald mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                   This is for you if
                 </h3>
                 <ul className="space-y-3 text-muted-foreground">
@@ -297,13 +220,9 @@ export default function AuditPage() {
                   <li className="flex gap-2"><span className="text-emerald mt-1">&#8226;</span>You are tired of agencies and freelancers who disappear</li>
                 </ul>
               </div>
-
-              {/* Bad fit */}
               <div className="bg-coral/5 border border-coral/20 rounded-xl p-8">
                 <h3 className="text-lg font-bold text-coral mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                   This is not for you if
                 </h3>
                 <ul className="space-y-3 text-muted-foreground">
@@ -322,27 +241,43 @@ export default function AuditPage() {
         <section className="py-24 bg-slate/20">
           <div className="max-w-4xl mx-auto px-6">
             <div className="bg-midnight border border-border rounded-xl p-8 md:p-12">
-              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-6">
-                Who runs this
-              </p>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-6">
-                Steve Kaplan. Fort Lauderdale, FL.
-              </h2>
-              <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
-                <p>
-                  10 years running my own company. $50M+ in managed ad spend across 100+ clients
-                  at a 3.2x average ROAS. Google Partner. Facebook Blueprint Certified.
-                </p>
-                <p>
-                  Right now I am Director of Marketing at a 76-person financial advisory firm,
-                  running $300K/month in paid media across Meta, Google, and TikTok. I also
-                  ship software. 9+ products built solo using AI.
-                </p>
-                <p className="text-foreground font-medium">
-                  I am not a consultant. I am an operator. The audit is not a deck with
-                  recommendations. It is a ranked list of wins with dollars attached, built
-                  by someone who fights the same friction you do, every day.
-                </p>
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                {/* Headshot */}
+                <div className="flex-shrink-0">
+                  <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-xl overflow-hidden border-2 border-electric/20">
+                    <Image
+                      src={HEADSHOT_URL}
+                      alt="Steve Kaplan"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Bio */}
+                <div>
+                  <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">Who runs this</p>
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4">
+                    Steve Kaplan
+                  </h2>
+                  <p className="text-sm text-muted-foreground mb-4">Fort Lauderdale, FL</p>
+                  <div className="space-y-4 text-muted-foreground leading-relaxed">
+                    <p>
+                      10 years running my own company. $50M+ in managed ad spend across 100+ clients
+                      at a 3.2x average ROAS. Google Partner. Facebook Blueprint Certified.
+                    </p>
+                    <p>
+                      Right now I am Director of Marketing at a 76-person financial advisory firm,
+                      running $300K/month in paid media across Meta, Google, and TikTok. I also
+                      ship software. 9+ products built solo using AI.
+                    </p>
+                    <p className="text-foreground font-medium">
+                      I am not a consultant. I am an operator. The audit is not a deck with
+                      recommendations. It is a ranked list of wins with dollars attached, built
+                      by someone who fights the same friction you do, every day.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -356,13 +291,10 @@ export default function AuditPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">
-              Money-back guarantee.
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">Money-back guarantee.</h2>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
               If you do not walk out of Day 5 with at least 3 clear wins you can
-              execute on (with or without me), you pay nothing. Full refund.
-              No questions.
+              execute on (with or without me), you pay nothing. Full refund. No questions.
             </p>
           </div>
         </section>
@@ -371,52 +303,22 @@ export default function AuditPage() {
         <section className="py-24 bg-slate/20">
           <div className="max-w-3xl mx-auto px-6">
             <div className="bg-midnight border border-electric/30 rounded-2xl p-8 md:p-12 text-center">
-              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-4">
-                One price. No surprises.
-              </p>
+              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-4">One price. No surprises.</p>
               <div className="mb-6">
-                <span className="text-6xl md:text-7xl font-extrabold font-mono text-foreground">
-                  $3,500
-                </span>
+                <span className="text-6xl md:text-7xl font-extrabold font-mono text-foreground">$3,500</span>
                 <span className="text-xl text-muted-foreground ml-2">flat</span>
               </div>
-
               <div className="space-y-3 text-muted-foreground mb-8 max-w-md mx-auto">
-                <p className="flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4 text-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  5 business days, start to finish
-                </p>
-                <p className="flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4 text-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Fully credited toward a retainer if you sign within 30 days
-                </p>
-                <p className="flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4 text-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  Money-back guarantee if fewer than 3 wins
-                </p>
-                <p className="flex items-center justify-center gap-2">
-                  <svg className="w-4 h-4 text-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  No hourly billing. No scope creep. No surprise invoice.
-                </p>
+                {["5 business days, start to finish", "Fully credited toward a retainer if you sign within 30 days", "Money-back guarantee if fewer than 3 wins", "No hourly billing. No scope creep. No surprise invoice."].map((text) => (
+                  <p key={text} className="flex items-center justify-center gap-2">
+                    <svg className="w-4 h-4 text-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {text}
+                  </p>
+                ))}
               </div>
-
-              <a
-                href="mailto:steve@gtmvp.com?subject=Profit%20Loop%20Audit"
-                className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 text-lg"
-              >
-                Book Your Audit
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
+              <BookAuditButton />
             </div>
           </div>
         </section>
@@ -425,14 +327,9 @@ export default function AuditPage() {
         <section className="py-24">
           <div className="max-w-3xl mx-auto px-6">
             <div className="text-center mb-16">
-              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">
-                FAQ
-              </p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-                Questions I get asked
-              </h2>
+              <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">FAQ</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Questions I get asked</h2>
             </div>
-
             <div className="space-y-4">
               {faqs.map((faq) => (
                 <div key={faq.q} className="bg-midnight border border-border rounded-xl p-6">
@@ -447,23 +344,12 @@ export default function AuditPage() {
         {/* Final CTA */}
         <section className="py-24 bg-slate/20">
           <div className="max-w-3xl mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">
-              Ready?
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">Ready?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              Email steve@gtmvp.com with subject &ldquo;Profit Loop Audit&rdquo; and one
-              sentence about your company. I reply within 24 hours.
+              Fill out the form. I reply within 24 hours to schedule your kickoff.
             </p>
-            <a
-              href="mailto:steve@gtmvp.com?subject=Profit%20Loop%20Audit"
-              className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 text-lg mb-4"
-            >
-              Book Your Audit
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <p className="text-sm text-muted-foreground">
+            <BookAuditButton />
+            <p className="text-sm text-muted-foreground mt-4">
               $3,500 flat. 5 business days. Fully credited toward a retainer.
             </p>
           </div>
@@ -477,23 +363,9 @@ export default function AuditPage() {
             &copy; {new Date().getFullYear()} GTMVP Inc. Fort Lauderdale, FL.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-foreground transition-colors">
-              stevekaplan.ai
-            </Link>
-            <a
-              href="https://linkedin.com/in/stevekaplanai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="mailto:steve@gtmvp.com"
-              className="hover:text-foreground transition-colors"
-            >
-              steve@gtmvp.com
-            </a>
+            <Link href="/" className="hover:text-foreground transition-colors">stevekaplan.ai</Link>
+            <a href="https://linkedin.com/in/stevekaplanai" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>
+            <span>steve@stevekaplan.ai</span>
           </div>
         </div>
       </footer>
