@@ -83,6 +83,10 @@ const faqs = [
     a: "I do not write strategy decks. I inventory your stack, pull your data, and deliver a ranked list of wins with numbers attached. Five days, not five months.",
   },
   {
+    q: "Can I see what the final deliverable looks like?",
+    a: "Yes. I published a full sample audit for a fictional $28M B2B SaaS company. Same structure, same level of detail. See it at /audit/sample.",
+  },
+  {
     q: "What access do you need?",
     a: "CRM (read-only), ad accounts, analytics, and email marketing. I send an access checklist on Day 0. No access, no audit.",
   },
@@ -157,6 +161,14 @@ export default function AuditPage() {
             </a>
             <p className="text-sm text-muted-foreground mt-4">
               $3,500 flat. Fully credited toward a retainer.
+            </p>
+            <p className="mt-6">
+              <Link
+                href="/audit/sample"
+                className="text-electric hover:text-electric/80 text-sm font-medium underline underline-offset-4 transition-colors"
+              >
+                See a sample audit output &rarr;
+              </Link>
             </p>
           </div>
         </section>
