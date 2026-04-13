@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export function BookAuditButton({ className, children }: { className?: string; children?: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,9 +22,16 @@ export function BookAuditButton({ className, children }: { className?: string; c
         )}
       </button>
 
-      {isOpen && <BookAuditModal onClose={() => setIsOpen(false)} />}
+      {isOpen && <PortaledModal onClose={() => setIsOpen(false)} />}
     </>
   );
+}
+
+function PortaledModal({ onClose }: { onClose: () => void }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!mounted) return null;
+  return createPortal(<BookAuditModal onClose={onClose} />, document.body);
 }
 
 function BookAuditModal({ onClose }: { onClose: () => void }) {
