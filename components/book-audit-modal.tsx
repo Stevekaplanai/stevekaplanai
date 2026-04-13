@@ -69,12 +69,12 @@ function BookAuditModal({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-lg bg-midnight border border-border rounded-2xl p-8 shadow-2xl">
+      <div className="relative w-full sm:max-w-lg bg-midnight border border-border sm:rounded-2xl rounded-t-2xl p-8 shadow-2xl my-auto">
         {/* Close button */}
         <button
           onClick={onClose}
