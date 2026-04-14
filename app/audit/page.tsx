@@ -56,6 +56,19 @@ const deliverables = [
 export default function AuditPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            { "@type": "Question", name: "How is the Profit Loop Audit different from consulting?", acceptedAnswer: { "@type": "Answer", text: "I do not write strategy decks. I inventory your stack, pull your data, and deliver a ranked list of wins with numbers attached. Five days, not five months." } },
+            { "@type": "Question", name: "How much does the Profit Loop Audit cost?", acceptedAnswer: { "@type": "Answer", text: "$3,500 flat fee. 5 business days. Money-back guarantee if fewer than 3 executable wins. Fully credited toward a retainer if you sign within 30 days." } },
+            { "@type": "Question", name: "What if AI is not the right move for my company?", acceptedAnswer: { "@type": "Answer", text: "I will tell you. And I will refund the audit. I would rather lose a retainer than sell a lie." } },
+            { "@type": "Question", name: "Can I see what the audit deliverable looks like?", acceptedAnswer: { "@type": "Answer", text: "Yes. A full sample audit for a fictional $28M B2B SaaS company is published at stevekaplan.ai/audit/sample." } },
+          ],
+        }) }}
+      />
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-midnight/80 backdrop-blur-lg border-b border-border">
         <div className="w-full max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -297,7 +310,7 @@ export default function AuditPage() {
       {/* Footer */}
       <footer className="py-8 border-t border-border">
         <div className="w-full max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} GTMVP Inc. Fort Lauderdale, FL.</p>
+          <p className="text-sm text-muted-foreground">&copy; 2026 GTMVP Inc. Fort Lauderdale, FL.</p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <Link href="/" className="hover:text-foreground transition-colors">stevekaplan.ai</Link>
             <a href="https://linkedin.com/in/stevekaplanai" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">LinkedIn</a>

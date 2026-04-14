@@ -114,7 +114,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Steve Kaplan. All rights reserved.
+            &copy; 2026 Steve Kaplan. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link

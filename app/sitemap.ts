@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://stevekaplan.ai";
-  const now = new Date().toISOString();
+  const now = "2026-04-13";
 
   return [
     {

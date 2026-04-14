@@ -128,6 +128,14 @@ export const metadata: Metadata = {
     siteName: "stevekaplan.ai",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg",
+        width: 400,
+        height: 400,
+        alt: "Steve Kaplan - AI Automation Consultant",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -135,6 +143,7 @@ export const metadata: Metadata = {
     description:
       "Growth marketer who writes code. $50M+ ad spend. 9 AI products built.",
     creator: "@stevekaplanai",
+    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg"],
   },
   robots: {
     index: true,
