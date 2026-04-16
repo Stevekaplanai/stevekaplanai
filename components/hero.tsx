@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { WhitePaperForm } from "./white-paper-form";
 
 const stats = [
   { value: "$50M+", label: "Ad Spend Managed" },
@@ -12,18 +12,6 @@ const stats = [
 ];
 
 export function Hero() {
-  const [formData, setFormData] = useState({ name: "", email: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-  };
-
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background */}
@@ -126,48 +114,7 @@ export function Hero() {
               </p>
             </div>
             
-            {isSubmitted ? (
-              <div className="bg-emerald/10 border border-emerald/20 rounded-xl p-6 text-center">
-                <div className="w-12 h-12 bg-emerald/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <svg className="w-6 h-6 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <p className="text-foreground font-medium">Check your inbox!</p>
-                <p className="text-sm text-muted-foreground">The white paper is on its way.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-midnight border border-slate rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-colors"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your email address"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-midnight border border-slate rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-colors"
-                />
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-electric hover:bg-electric/90 disabled:bg-electric/50 text-white font-semibold px-6 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? "Sending..." : "Get the Free Playbook"}
-                </button>
-                <p className="text-xs text-center text-muted-foreground">
-                  No spam. No sales pitch. Just the playbook.
-                </p>
-              </form>
-            )}
+            <WhitePaperForm variant="compact" />
           </div>
         </div>
       </div>
