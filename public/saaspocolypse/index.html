@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAASpocolypse 2026 | Steve Kaplan AI</title>
+  <meta name="description" content="26 days. 20 open-source repos. $4.7M in enterprise software — replaced. Watch it built live.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFFDF5;
+      --bg-card: #FFFFFF;
+      --border: #000000;
+      --text: #000000;
+      --text-body: #1a1a1a;
+      --cyan: #A6FAFF;
+      --yellow: #FFD166;
+      --coral: #FF6B6B;
+      --lime: #C3F73A;
+      --lavender: #B892FF;
+      --pink: #FF9ECD;
+      --green: #00C853;
+      --red: #FF3333;
+      --shadow: 6px 6px 0 #000;
+      --shadow-sm: 4px 4px 0 #000;
+      --shadow-hover: 2px 2px 0 #000;
+      --shadow-lg: 8px 8px 0 #000;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; position: relative; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--text);
+      margin-bottom: 16px;
+      display: inline-block;
+      background: var(--yellow);
+      padding: 4px 12px;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-body);
+      max-width: 640px;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+    .highlight {
+      background: var(--coral);
+      padding: 0 6px;
+      display: inline;
+    }
+    .highlight-green {
+      background: var(--lime);
+      padding: 0 6px;
+      display: inline;
+    }
+    .highlight-gold {
+      background: var(--yellow);
+      padding: 0 6px;
+      display: inline;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--bg);
+      border-bottom: 3px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Archivo Black', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span {
+      background: var(--coral);
+      padding: 0 4px;
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.15s;
+      padding: 2px 4px;
+    }
+    .nav-links a:hover { background: var(--yellow); }
+    .nav-cta {
+      background: var(--coral) !important;
+      color: var(--text) !important;
+      padding: 8px 20px !important;
+      border: 3px solid var(--border) !important;
+      box-shadow: var(--shadow-sm) !important;
+      font-weight: 700 !important;
+      transition: box-shadow 0.15s, transform 0.15s !important;
+    }
+    .nav-cta:hover {
+      box-shadow: var(--shadow-hover) !important;
+      transform: translate(2px, 2px) !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow);
+      border: 3px solid var(--border);
+      padding: 6px 16px;
+      box-shadow: var(--shadow-sm);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text);
+      margin-bottom: 32px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .hero-badge .pulse {
+      width: 10px;
+      height: 10px;
+      background: var(--red);
+      border: 2px solid var(--border);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+    .hero-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 400;
+      line-height: 0.95;
+      margin-bottom: 8px;
+      letter-spacing: -2px;
+      color: var(--text);
+    }
+    .hero-title .fire {
+      position: relative;
+      display: inline;
+    }
+    .hero-title .fire::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+      height: 16px;
+      background: var(--coral);
+      z-index: -1;
+      transform: skewX(-2deg);
+    }
+    .hero-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(14px, 2vw, 20px);
+      color: var(--text);
+      letter-spacing: 8px;
+      margin-bottom: 32px;
+      font-weight: 700;
+    }
+    .hero-subtitle {
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--text-body);
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+      background: var(--bg-card);
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 20px 32px;
+    }
+    .hero-stat-value {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .hero-stat-value.highlight { background: var(--coral); padding: 0 8px; }
+    .hero-stat-value.highlight-green { background: var(--lime); padding: 0 8px; }
+    .hero-stat-value.highlight-gold { background: var(--yellow); padding: 0 8px; }
+    .hero-stat-label {
+      font-size: 13px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: box-shadow 0.15s, transform 0.15s;
+      cursor: pointer;
+      border: 3px solid var(--border);
+      font-family: 'DM Sans', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .btn-primary {
+      background: var(--coral);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+    .btn-primary:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translate(4px, 4px);
+    }
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+    .btn-secondary:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translate(4px, 4px);
+    }
+
+    /* ─── TICKER ─── */
+    .ticker-wrap {
+      overflow: hidden;
+      background: var(--yellow);
+      border-top: 3px solid var(--border);
+      border-bottom: 3px solid var(--border);
+      padding: 14px 0;
+    }
+    .ticker {
+      display: flex;
+      gap: 48px;
+      animation: ticker 30s linear infinite;
+      width: max-content;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .ticker-item img {
+      height: 20px;
+      width: auto;
+      filter: brightness(0);
+    }
+    .ticker-item .name { color: var(--text); }
+    .ticker-item .loss {
+      color: var(--text);
+      font-weight: 700;
+      background: var(--bg-card);
+      padding: 2px 8px;
+      border: 2px solid var(--border);
+    }
+    .ticker-item .arrow { color: var(--red); font-size: 10px; font-weight: 700; }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── CRISIS SECTION ─── */
+    .crisis { background: var(--bg); }
+    .crisis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .crisis-card {
+      border: 3px solid var(--border);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .crisis-card:nth-child(1) { background: var(--cyan); }
+    .crisis-card:nth-child(2) { background: var(--yellow); }
+    .crisis-card:nth-child(3) { background: var(--coral); }
+    .crisis-card:nth-child(4) { background: var(--lime); }
+    .crisis-card:nth-child(5) { background: var(--lavender); }
+    .crisis-card:nth-child(6) { background: var(--pink); }
+    .crisis-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translate(4px, 4px);
+    }
+    .crisis-card .number {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .crisis-card h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .crisis-card p {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* ─── COST CHART ─── */
+    .cost-chart-section { background: var(--bg); }
+    .chart-container {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .chart-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 100px;
+      align-items: center;
+      gap: 16px;
+    }
+    .chart-label {
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+      color: var(--text);
+    }
+    .chart-label-green {
+      color: var(--text) !important;
+      background: var(--lime);
+      padding: 2px 8px;
+      display: inline-block;
+      border: 2px solid var(--border);
+    }
+    .chart-bar-wrap {
+      position: relative;
+      height: 40px;
+      background: #f0ede5;
+      border: 3px solid var(--border);
+      overflow: hidden;
+    }
+    .chart-bar {
+      height: 100%;
+      position: relative;
+      transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+      width: 0;
+    }
+    .chart-bar.enterprise {
+      background: var(--coral);
+    }
+    .chart-bar.opensource {
+      background: var(--lime);
+    }
+    .chart-savings {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .chart-savings.red {
+      background: var(--coral);
+      padding: 4px 8px;
+      border: 2px solid var(--border);
+    }
+    .chart-savings.green {
+      background: var(--lime);
+      padding: 4px 8px;
+      border: 2px solid var(--border);
+    }
+    .chart-legend {
+      display: flex;
+      gap: 32px;
+      margin-top: 24px;
+      justify-content: center;
+    }
+    .chart-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .chart-legend-dot {
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--border);
+    }
+
+    /* ─── PROJECTS ─── */
+    .projects-section { background: var(--bg); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .project-card {
+      border: 3px solid var(--border);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.15s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:nth-child(6n+1) { background: var(--cyan); }
+    .project-card:nth-child(6n+2) { background: var(--yellow); }
+    .project-card:nth-child(6n+3) { background: var(--coral); }
+    .project-card:nth-child(6n+4) { background: var(--lime); }
+    .project-card:nth-child(6n+5) { background: var(--lavender); }
+    .project-card:nth-child(6n+6) { background: var(--pink); }
+    .project-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translate(4px, 4px);
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .project-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 700;
+      background: var(--bg-card);
+      padding: 2px 8px;
+      border: 2px solid var(--border);
+    }
+    .project-gap {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 3px 8px;
+      font-weight: 700;
+      border: 2px solid var(--border);
+    }
+    .gap-critical {
+      background: var(--coral);
+      color: var(--text);
+    }
+    .gap-high {
+      background: var(--yellow);
+      color: var(--text);
+    }
+    .gap-medium {
+      background: var(--cyan);
+      color: var(--text);
+    }
+    .project-name {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-body);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .project-kills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .project-kills span {
+      font-size: 11px;
+      padding: 3px 10px;
+      background: var(--bg-card);
+      color: var(--text);
+      border: 2px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      text-decoration: line-through;
+      text-decoration-color: var(--red);
+      font-weight: 700;
+      box-shadow: 2px 2px 0 var(--border);
+    }
+    .project-savings {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 3px solid var(--border);
+    }
+    .project-savings-label {
+      font-size: 12px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .project-savings-value {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--bg-card);
+      padding: 2px 10px;
+      border: 2px solid var(--border);
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-section { background: var(--bg); }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .how-card {
+      text-align: center;
+      padding: 40px 24px;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .how-card:nth-child(1) { background: var(--coral); }
+    .how-card:nth-child(2) { background: var(--lime); }
+    .how-card:nth-child(3) { background: var(--yellow); }
+    .how-card:nth-child(4) { background: var(--cyan); }
+    .how-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translate(4px, 4px);
+    }
+    .how-icon {
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 20px;
+      border: 3px solid var(--border);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-sm);
+    }
+    .how-card h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .how-card p {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* ─── STREAMING PLATFORMS ─── */
+    .platforms-section {
+      background: var(--bg);
+    }
+    .platforms-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+    .platform-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 24px 32px;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      min-width: 140px;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .platform-badge:nth-child(1) { background: var(--coral); }
+    .platform-badge:nth-child(2) { background: var(--cyan); }
+    .platform-badge:nth-child(3) { background: var(--yellow); }
+    .platform-badge:nth-child(4) { background: var(--lavender); }
+    .platform-badge:nth-child(5) { background: var(--pink); }
+    .platform-badge:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translate(4px, 4px);
+    }
+    .platform-badge svg {
+      width: 40px;
+      height: 40px;
+      fill: var(--text);
+    }
+    .platform-badge span {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-section { background: var(--bg); }
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 48px;
+      margin-top: 48px;
+      align-items: start;
+    }
+    .about-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--cyan);
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      font-family: 'Archivo Black', sans-serif;
+      color: var(--text);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-text h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .about-text p {
+      font-size: 16px;
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .about-credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .credential {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .credential:nth-child(1) { background: var(--yellow); }
+    .credential:nth-child(2) { background: var(--cyan); }
+    .credential:nth-child(3) { background: var(--lime); }
+    .credential:nth-child(4) { background: var(--pink); }
+    .credential .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      background: var(--bg);
+      text-align: center;
+      padding: 120px 0;
+    }
+    .cta-box {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      background: var(--lime);
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .cta-box .section-title { margin-bottom: 16px; }
+    .cta-box p {
+      font-size: 16px;
+      color: var(--text-body);
+      margin-bottom: 32px;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+    .email-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto 16px;
+    }
+    .email-input {
+      flex: 1;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 3px solid var(--border);
+      color: var(--text);
+      font-size: 15px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      outline: none;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.15s;
+    }
+    .email-input::placeholder { color: #666; font-weight: 500; }
+    .email-input:focus {
+      box-shadow: var(--shadow-hover);
+    }
+    .cta-note {
+      font-size: 13px;
+      color: var(--text-body);
+      margin-top: 16px;
+      font-weight: 600;
+    }
+    .cta-urgency {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding: 10px 20px;
+      background: var(--yellow);
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 3px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      background: var(--bg);
+    }
+    footer p {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+      background: var(--yellow);
+      padding: 2px 6px;
+      border: 2px solid var(--border);
+      font-weight: 700;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    footer a:hover {
+      box-shadow: 2px 2px 0 var(--border);
+    }
+
+    /* ─── TOTAL SAVINGS COUNTER ─── */
+    .savings-counter {
+      margin-top: 48px;
+      text-align: center;
+      padding: 48px;
+      background: var(--cyan);
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    .savings-counter .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .savings-counter .value {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(48px, 8vw, 80px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1;
+    }
+    .savings-counter .sub {
+      font-size: 16px;
+      color: var(--text-body);
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* ─── DISRUPTION METER ─── */
+    .disruption-meters {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .meter {
+      background: var(--bg-card);
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 20px 24px;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .meter:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translate(4px, 4px);
+    }
+    .meter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .meter-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .meter-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      background: var(--coral);
+      padding: 2px 8px;
+      border: 2px solid var(--border);
+      font-weight: 700;
+    }
+    .meter-bar {
+      height: 12px;
+      background: #f0ede5;
+      border: 3px solid var(--border);
+      overflow: hidden;
+    }
+    .meter-fill {
+      height: 100%;
+      background: var(--coral);
+      transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
+      width: 0;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero-stats { gap: 16px; }
+      .hero-stat { padding: 16px 20px; }
+      .chart-row { grid-template-columns: 100px 1fr 80px; }
+      .chart-label { font-size: 11px; }
+      .about-content { grid-template-columns: 1fr; }
+      .email-form { flex-direction: column; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 40px 24px; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">steve<span>kaplan</span>.ai</a>
+    <div class="nav-links">
+      <a href="#crisis">The Crisis</a>
+      <a href="#projects">The 20 Builds</a>
+      <a href="#how">How It Works</a>
+      <a href="#cta" class="nav-cta">Get Access</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      LIVE EVENT // 26 DAYS // SUMMER 2026
+    </div>
+    <h1 class="hero-title">
+      <span class="fire">SAASpocolypse</span>
+    </h1>
+    <div class="hero-year">2 0 2 6</div>
+    <p class="hero-subtitle">
+      One developer + Claude Code. 26 days. 20 open-source repos targeting
+      <span class="highlight">$4.7 million</span> worth of enterprise software categories.
+      Each one built live, start to finish. Each one given away free.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value highlight">20</div>
+        <div class="hero-stat-label">Software Builds</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value highlight-green">$0</div>
+        <div class="hero-stat-label">Cost to You</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value highlight-gold">26</div>
+        <div class="hero-stat-label">Days Live</div>
+      </div>
+    </div>
+    <div class="hero-cta-group">
+      <a href="#cta" class="btn btn-primary">Get Notified &mdash; It's Free</a>
+      <a href="#projects" class="btn btn-secondary">See the 20 Builds</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/salesforce/00A1E0" alt="Salesforce"><span class="name">Salesforce</span><span class="arrow">&#9660;</span><span class="loss">$330K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/servicenow/81B5A1" alt="ServiceNow"><span class="name">ServiceNow</span><span class="arrow">&#9660;</span><span class="loss">$1M+/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/docusign/FFCC22" alt="Ironclad"><span class="name">Ironclad</span><span class="arrow">&#9660;</span><span class="loss">$150K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/sap/0FAAFF" alt="SAP"><span class="name">SAP Concur</span><span class="arrow">&#9660;</span><span class="loss">$110K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/gong/5C4EFF" alt="Gong"><span class="name">Gong</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/adobe/FF0000" alt="Marketo"><span class="name">Marketo</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/tableau/E97627" alt="Tableau"><span class="name">Tableau</span><span class="arrow">&#9660;</span><span class="loss">$200K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/zendesk/03363D" alt="Zendesk"><span class="name">Zendesk</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/openbugbounty/00B0D8" alt="Vanta"><span class="name">Vanta</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/qualtrics/B6DCFE" alt="Qualtrics"><span class="name">Qualtrics</span><span class="arrow">&#9660;</span><span class="loss">$323K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/workday/005CB9" alt="Workday"><span class="name">Workday</span><span class="arrow">&#9660;</span><span class="loss">$360K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/datadog/632CA6" alt="Datadog"><span class="name">Datadog</span><span class="arrow">&#9660;</span><span class="loss">$500K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/pandadoc/36D67B" alt="PandaDoc"><span class="name">PandaDoc</span><span class="arrow">&#9660;</span><span class="loss">$20K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/bamboo/0052CC" alt="BambooHR"><span class="name">BambooHR</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/intercom/6AFDEF" alt="Intercom"><span class="name">Intercom</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/onetrust/007F5F" alt="OneTrust"><span class="name">OneTrust</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/salesforce/00A1E0" alt="Salesforce"><span class="name">Salesforce</span><span class="arrow">&#9660;</span><span class="loss">$330K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/servicenow/81B5A1" alt="ServiceNow"><span class="name">ServiceNow</span><span class="arrow">&#9660;</span><span class="loss">$1M+/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/docusign/FFCC22" alt="Ironclad"><span class="name">Ironclad</span><span class="arrow">&#9660;</span><span class="loss">$150K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/sap/0FAAFF" alt="SAP"><span class="name">SAP Concur</span><span class="arrow">&#9660;</span><span class="loss">$110K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/gong/5C4EFF" alt="Gong"><span class="name">Gong</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/adobe/FF0000" alt="Marketo"><span class="name">Marketo</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/tableau/E97627" alt="Tableau"><span class="name">Tableau</span><span class="arrow">&#9660;</span><span class="loss">$200K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/zendesk/03363D" alt="Zendesk"><span class="name">Zendesk</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/openbugbounty/00B0D8" alt="Vanta"><span class="name">Vanta</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/qualtrics/B6DCFE" alt="Qualtrics"><span class="name">Qualtrics</span><span class="arrow">&#9660;</span><span class="loss">$323K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/workday/005CB9" alt="Workday"><span class="name">Workday</span><span class="arrow">&#9660;</span><span class="loss">$360K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/datadog/632CA6" alt="Datadog"><span class="name">Datadog</span><span class="arrow">&#9660;</span><span class="loss">$500K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/pandadoc/36D67B" alt="PandaDoc"><span class="name">PandaDoc</span><span class="arrow">&#9660;</span><span class="loss">$20K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/bamboo/0052CC" alt="BambooHR"><span class="name">BambooHR</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/intercom/6AFDEF" alt="Intercom"><span class="name">Intercom</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.simpleicons.org/onetrust/007F5F" alt="OneTrust"><span class="name">OneTrust</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+  </div>
+</div>
+
+<!-- CRISIS -->
+<section class="section crisis" id="crisis">
+  <div class="container">
+    <span class="section-label fade-up">The Data</span>
+    <h2 class="section-title fade-up">Enterprise SaaS has a<br><span class="highlight">pricing problem.</span></h2>
+    <p class="section-subtitle fade-up">These are real numbers from real analyst reports. Enterprise software is overpriced, underused, and increasingly replaceable.</p>
+
+    <div class="crisis-grid">
+      <div class="crisis-card fade-up stagger-1">
+        <div class="number">$2T</div>
+        <h3>Market Cap Evaporated</h3>
+        <p>Software stocks lost ~$2 trillion in early 2026. Analysts are calling it the SAASpocalypse. The market is repricing what enterprise software is actually worth.</p>
+      </div>
+      <div class="crisis-card fade-up stagger-2">
+        <div class="number">$21M</div>
+        <h3>Wasted Per Enterprise</h3>
+        <p>The average enterprise wastes $21 million per year on unused SaaS licenses. 47% of licensed seats go completely untouched. (Source: Zylos Research 2026)</p>
+      </div>
+      <div class="crisis-card fade-up stagger-3">
+        <div class="number">35%</div>
+        <h3>Already Replacing SaaS</h3>
+        <p>Over a third of enterprises have already replaced at least one SaaS tool with custom-built software. 78% plan to build more in 2026.</p>
+      </div>
+      <div class="crisis-card fade-up stagger-4">
+        <div class="number">$285B</div>
+        <h3>Erased in February Alone</h3>
+        <p>$285 billion in software stock value disappeared in a single month. Thomson Reuters dropped 15.8%. The era of unchallenged enterprise pricing is over.</p>
+      </div>
+      <div class="crisis-card fade-up stagger-5">
+        <div class="number">80%</div>
+        <h3>Features Never Used</h3>
+        <p>Enterprises use only 20% of features in the average SaaS tool. They're paying full price for software that's 80% bloat. The 80/20 rule is a death sentence.</p>
+      </div>
+      <div class="crisis-card fade-up stagger-6">
+        <div class="number">10x</div>
+        <h3>AI Speed Multiplier</h3>
+        <p>AI coding tools like Claude Code have fundamentally changed what a single developer can ship. I'm going to show you exactly how much, live on camera.</p>
+      </div>
+    </div>
+
+    <!-- DISRUPTION METERS -->
+    <div class="disruption-meters fade-up">
+      <div class="meter">
+        <div class="meter-header">
+          <span class="meter-label">CRM (Salesforce)</span>
+          <span class="meter-value">HIGH RISK</span>
+        </div>
+        <div class="meter-bar"><div class="meter-fill" data-width="88"></div></div>
+      </div>
+      <div class="meter">
+        <div class="meter-header">
+          <span class="meter-label">ITSM (ServiceNow)</span>
+          <span class="meter-value">CRITICAL</span>
+        </div>
+        <div class="meter-bar"><div class="meter-fill" data-width="95"></div></div>
+      </div>
+      <div class="meter">
+        <div class="meter-header">
+          <span class="meter-label">Help Desk (Zendesk)</span>
+          <span class="meter-value">HIGH RISK</span>
+        </div>
+        <div class="meter-bar"><div class="meter-fill" data-width="85"></div></div>
+      </div>
+      <div class="meter">
+        <div class="meter-header">
+          <span class="meter-label">Compliance (Vanta)</span>
+          <span class="meter-value">CRITICAL</span>
+        </div>
+        <div class="meter-bar"><div class="meter-fill" data-width="92"></div></div>
+      </div>
+      <div class="meter">
+        <div class="meter-header">
+          <span class="meter-label">Expense Mgmt (Concur)</span>
+          <span class="meter-value">HIGH RISK</span>
+        </div>
+        <div class="meter-bar"><div class="meter-fill" data-width="90"></div></div>
+      </div>
+      <div class="meter">
+        <div class="meter-header">
+          <span class="meter-label">BI/Analytics (Tableau)</span>
+          <span class="meter-value">HIGH RISK</span>
+        </div>
+        <div class="meter-bar"><div class="meter-fill" data-width="82"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COST COMPARISON CHART -->
+<section class="section cost-chart-section">
+  <div class="container">
+    <span class="section-label fade-up">The Math</span>
+    <h2 class="section-title fade-up">What they charge vs.<br><span class="highlight-green">what it actually costs.</span></h2>
+    <p class="section-subtitle fade-up">Here's what companies pay today for enterprise software versus the self-hosted open-source cost. The software license is free &mdash; you just need hosting.</p>
+
+    <div class="chart-container fade-up">
+      <div class="chart-row">
+        <div class="chart-label">ServiceNow</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar enterprise" data-width="100"></div>
+        </div>
+        <div class="chart-savings red">$1M+/yr</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label"><span class="chart-label-green">ServiceForge</span></div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar opensource" data-width="3"></div>
+        </div>
+        <div class="chart-savings green">$0/yr</div>
+      </div>
+
+      <div class="chart-row" style="margin-top: 12px;">
+        <div class="chart-label">Salesforce</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar enterprise" data-width="66"></div>
+        </div>
+        <div class="chart-savings red">$330K/yr</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label"><span class="chart-label-green">ContractPilot</span></div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar opensource" data-width="3"></div>
+        </div>
+        <div class="chart-savings green">$0/yr</div>
+      </div>
+
+      <div class="chart-row" style="margin-top: 12px;">
+        <div class="chart-label">Qualtrics</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar enterprise" data-width="55"></div>
+        </div>
+        <div class="chart-savings red">$323K/yr</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label"><span class="chart-label-green">InsightPulse</span></div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar opensource" data-width="3"></div>
+        </div>
+        <div class="chart-savings green">$0/yr</div>
+      </div>
+
+      <div class="chart-row" style="margin-top: 12px;">
+        <div class="chart-label">Tableau + Looker</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar enterprise" data-width="40"></div>
+        </div>
+        <div class="chart-savings red">$200K/yr</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label"><span class="chart-label-green">DataTalk</span></div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar opensource" data-width="3"></div>
+        </div>
+        <div class="chart-savings green">$0/yr</div>
+      </div>
+
+      <div class="chart-row" style="margin-top: 12px;">
+        <div class="chart-label">Marketo</div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar enterprise" data-width="36"></div>
+        </div>
+        <div class="chart-savings red">$180K/yr</div>
+      </div>
+      <div class="chart-row">
+        <div class="chart-label"><span class="chart-label-green">MarketFlow</span></div>
+        <div class="chart-bar-wrap">
+          <div class="chart-bar opensource" data-width="3"></div>
+        </div>
+        <div class="chart-savings green">$0/yr</div>
+      </div>
+    </div>
+
+    <div class="chart-legend">
+      <div class="chart-legend-item">
+        <div class="chart-legend-dot" style="background: var(--coral);"></div>
+        Enterprise Annual Cost
+      </div>
+      <div class="chart-legend-item">
+        <div class="chart-legend-dot" style="background: var(--lime);"></div>
+        Open-Source (Self-Hosted)
+      </div>
+    </div>
+
+    <!-- TOTAL SAVINGS -->
+    <div class="savings-counter fade-up">
+      <div class="label">Total annual enterprise software replaced</div>
+      <div class="value" id="savingsCounter">$0</div>
+      <div class="sub">across all 20 open-source builds</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE 20 PROJECTS -->
+<section class="section projects-section" id="projects">
+  <div class="container">
+    <span class="section-label fade-up">The 20 Builds</span>
+    <h2 class="section-title fade-up">20 open-source repos.<br><span class="highlight">20 enterprise alternatives.</span></h2>
+    <p class="section-subtitle fade-up">Each project targets a gap in the open-source ecosystem where no credible alternative exists. These are functional foundations &mdash; the core 20% of features that deliver 80% of the value &mdash; built with AI and given away as MIT-licensed repos you can fork, extend, and deploy.</p>
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#01</span>
+          <span class="project-gap gap-critical">GAP: 10/10</span>
+        </div>
+        <div class="project-name">ContractPilot</div>
+        <div class="project-desc">AI-native contract lifecycle management. Upload, extract, track, sign.</div>
+        <div class="project-kills">
+          <span>Ironclad</span><span>DocuSign CLM</span><span>Juro</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$60K - $150K</span>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#02</span>
+          <span class="project-gap gap-critical">GAP: 10/10</span>
+        </div>
+        <div class="project-name">ComplianceForge</div>
+        <div class="project-desc">AI-powered GRC & compliance automation. SOC 2, ISO 27001, HIPAA.</div>
+        <div class="project-kills">
+          <span>Vanta</span><span>Drata</span><span>SAP GRC</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$30K - $500K</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#03</span>
+          <span class="project-gap gap-critical">GAP: 9/10</span>
+        </div>
+        <div class="project-name">ExpenseZero</div>
+        <div class="project-desc">AI expense management. Snap receipt, auto-categorize, approve, reimburse.</div>
+        <div class="project-kills">
+          <span>SAP Concur</span><span>Expensify</span><span>Brex</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$20K - $110K</span>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#04</span>
+          <span class="project-gap gap-critical">GAP: 10/10</span>
+        </div>
+        <div class="project-name">ServiceForge</div>
+        <div class="project-desc">AI-native ITSM. Auto-resolve L1 tickets, SLA tracking, knowledge base.</div>
+        <div class="project-kills">
+          <span>ServiceNow</span><span>BMC Helix</span><span>Freshservice</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$240K - $1M+</span>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#05</span>
+          <span class="project-gap gap-critical">GAP: 9/10</span>
+        </div>
+        <div class="project-name">GongSlayer</div>
+        <div class="project-desc">AI sales conversation intelligence. Record, transcribe, analyze, coach.</div>
+        <div class="project-kills">
+          <span>Gong</span><span>Chorus.ai</span><span>Clari</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$30K - $100K</span>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#06</span>
+          <span class="project-gap gap-high">GAP: 7/10</span>
+        </div>
+        <div class="project-name">MarketFlow</div>
+        <div class="project-desc">AI marketing automation. Visual journeys, AI copy, lead scoring.</div>
+        <div class="project-kills">
+          <span>Marketo</span><span>Pardot</span><span>HubSpot</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$40K - $180K</span>
+        </div>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#07</span>
+          <span class="project-gap gap-high">GAP: 7/10</span>
+        </div>
+        <div class="project-name">DataTalk</div>
+        <div class="project-desc">Talk to your data. Natural language queries, AI-generated charts.</div>
+        <div class="project-kills">
+          <span>Tableau</span><span>Looker</span><span>Power BI</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$25K - $200K</span>
+        </div>
+      </div>
+
+      <!-- Project 8 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#08</span>
+          <span class="project-gap gap-critical">GAP: 9/10</span>
+        </div>
+        <div class="project-name">ProposalForge</div>
+        <div class="project-desc">AI proposal generator. Brief in, beautiful proposal out, e-sign included.</div>
+        <div class="project-kills">
+          <span>PandaDoc</span><span>Proposify</span><span>Qwilr</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$5K - $20K</span>
+        </div>
+      </div>
+
+      <!-- Project 9 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#09</span>
+          <span class="project-gap gap-high">GAP: 8/10</span>
+        </div>
+        <div class="project-name">PeopleOS</div>
+        <div class="project-desc">AI-native HR & employee management. Directory, PTO, onboarding, reviews.</div>
+        <div class="project-kills">
+          <span>BambooHR</span><span>Gusto</span><span>Rippling</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$24K - $100K</span>
+        </div>
+      </div>
+
+      <!-- Project 10 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#10</span>
+          <span class="project-gap gap-high">GAP: 8/10</span>
+        </div>
+        <div class="project-name">InvoiceAgent</div>
+        <div class="project-desc">AI accounts payable. Invoice ingestion, 3-way match, approval routing.</div>
+        <div class="project-kills">
+          <span>Coupa</span><span>SAP Ariba</span><span>Bill.com</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$30K - $150K</span>
+        </div>
+      </div>
+
+      <!-- Project 11 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#11</span>
+          <span class="project-gap gap-high">GAP: 8/10</span>
+        </div>
+        <div class="project-name">StatusBrew</div>
+        <div class="project-desc">Modern status pages & incident management. AI postmortems included.</div>
+        <div class="project-kills">
+          <span>Statuspage</span><span>PagerDuty</span><span>Instatus</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$5K - $25K</span>
+        </div>
+      </div>
+
+      <!-- Project 12 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#12</span>
+          <span class="project-gap gap-high">GAP: 7/10</span>
+        </div>
+        <div class="project-name">InsightPulse</div>
+        <div class="project-desc">AI survey, NPS & feedback. AI-generated insight reports from responses.</div>
+        <div class="project-kills">
+          <span>Qualtrics</span><span>Medallia</span><span>SurveyMonkey</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$20K - $323K</span>
+        </div>
+      </div>
+
+      <!-- Project 13 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#13</span>
+          <span class="project-gap gap-high">GAP: 8/10</span>
+        </div>
+        <div class="project-name">RecruiterAI</div>
+        <div class="project-desc">AI-powered ATS. AI resume screening, pipeline tracking, scheduling.</div>
+        <div class="project-kills">
+          <span>Greenhouse</span><span>Lever</span><span>iCIMS</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$20K - $50K</span>
+        </div>
+      </div>
+
+      <!-- Project 14 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#14</span>
+          <span class="project-gap gap-critical">GAP: 9/10</span>
+        </div>
+        <div class="project-name">CompeteWatcher</div>
+        <div class="project-desc">AI competitive intelligence. Auto-track competitors, generate battlecards.</div>
+        <div class="project-kills">
+          <span>Crayon</span><span>Klue</span><span>Kompyte</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$20K - $60K</span>
+        </div>
+      </div>
+
+      <!-- Project 15 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#15</span>
+          <span class="project-gap gap-high">GAP: 8/10</span>
+        </div>
+        <div class="project-name">ContentMultiplier</div>
+        <div class="project-desc">AI content repurposing. One input, 10+ platform-native outputs.</div>
+        <div class="project-kills">
+          <span>Repurpose.io</span><span>Agencies</span><span>Castmagic</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$36K - $120K</span>
+        </div>
+      </div>
+
+      <!-- Project 16 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#16</span>
+          <span class="project-gap gap-critical">GAP: 9/10</span>
+        </div>
+        <div class="project-name">VendorShield</div>
+        <div class="project-desc">AI vendor risk management. Auto-fill questionnaires, parse SOC reports.</div>
+        <div class="project-kills">
+          <span>OneTrust</span><span>Prevalent</span><span>SecurityScorecard</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$25K - $100K</span>
+        </div>
+      </div>
+
+      <!-- Project 17 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#17</span>
+          <span class="project-gap gap-critical">GAP: 9/10</span>
+        </div>
+        <div class="project-name">BoardReady</div>
+        <div class="project-desc">AI board meeting & reporting portal. Secure docs, AI minutes, voting.</div>
+        <div class="project-kills">
+          <span>Diligent</span><span>BoardEffect</span><span>OnBoard</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$20K - $100K</span>
+        </div>
+      </div>
+
+      <!-- Project 18 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#18</span>
+          <span class="project-gap gap-high">GAP: 7/10</span>
+        </div>
+        <div class="project-name">SupportGenius</div>
+        <div class="project-desc">AI-first help desk. Auto-resolves 80% of tickets from your own docs.</div>
+        <div class="project-kills">
+          <span>Zendesk</span><span>Intercom</span><span>Freshdesk</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$50K - $180K</span>
+        </div>
+      </div>
+
+      <!-- Project 19 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#19</span>
+          <span class="project-gap gap-high">GAP: 8/10</span>
+        </div>
+        <div class="project-name">DocuVault</div>
+        <div class="project-desc">AI document intelligence. Auto-classify, semantic search, Q&A across docs.</div>
+        <div class="project-kills">
+          <span>M-Files</span><span>SharePoint</span><span>DocuWare</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$20K - $80K</span>
+        </div>
+      </div>
+
+      <!-- Project 20 -->
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <span class="project-number">#20</span>
+          <span class="project-gap gap-high">GAP: 7/10</span>
+        </div>
+        <div class="project-name">FinOpsLite</div>
+        <div class="project-desc">AI cloud cost optimizer. Anomaly detection, rightsizing, waste elimination.</div>
+        <div class="project-kills">
+          <span>CloudHealth</span><span>Spot.io</span><span>Kubecost</span>
+        </div>
+        <div class="project-savings">
+          <span class="project-savings-label">Annual savings</span>
+          <span class="project-savings-value">$20K - $100K</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOTAL SAVINGS -->
+    <div class="savings-counter fade-up" style="margin-top: 48px;">
+      <div class="label">Combined enterprise software costs these 20 builds address</div>
+      <div class="value">$4,748,000</div>
+      <div class="sub">per year in enterprise licensing &mdash; each build is MIT licensed, free to fork and deploy</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-section" id="how">
+  <div class="container">
+    <span class="section-label fade-up">The Format</span>
+    <h2 class="section-title fade-up">Over-the-shoulder builds.<br><span class="highlight-gold">Streamed live everywhere.</span></h2>
+    <p class="section-subtitle fade-up">Every build is coded live. You watch me architect and build each project from scratch in real-time, pair-programming with Claude Code. Real problems, real debugging, real shipping.</p>
+
+    <div class="how-grid">
+      <div class="how-card fade-up stagger-1">
+        <div class="how-icon">&#9654;</div>
+        <h3>Watch Live</h3>
+        <p>Every build streams simultaneously across Facebook, LinkedIn, X (Twitter), Instagram, and YouTube. Pick your platform.</p>
+      </div>
+      <div class="how-card fade-up stagger-2">
+        <div class="how-icon">&#60;/&#62;</div>
+        <h3>See Every Line</h3>
+        <p>Over-the-shoulder screen share. The architecture decisions, the Claude Code prompts, the debugging, the mistakes. Nothing hidden, nothing pre-recorded.</p>
+      </div>
+      <div class="how-card fade-up stagger-3">
+        <div class="how-icon">&#9733;</div>
+        <h3>Get the Repo</h3>
+        <p>Each completed build ships as a public GitHub repo with an MIT license. Full code, full docs, full freedom. Viewers who tune in live get access first.</p>
+      </div>
+      <div class="how-card fade-up stagger-4">
+        <div class="how-icon">&#8734;</div>
+        <h3>Fork & Ship</h3>
+        <p>Every repo is yours to fork, extend, deploy, and build on. MIT license means zero restrictions. Take the foundation and make it your own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STREAMING PLATFORMS -->
+<section class="section platforms-section">
+  <div class="container" style="text-align: center;">
+    <span class="section-label fade-up">Live On</span>
+    <h2 class="section-title fade-up">Streaming <span class="highlight">everywhere</span> at once.</h2>
+    <p class="section-subtitle fade-up" style="margin: 0 auto 0;">Every session goes live across all major platforms simultaneously. No exclusive access &mdash; pick the platform you already use.</p>
+
+    <div class="platforms-row">
+      <div class="platform-badge fade-up stagger-1">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <span>YouTube</span>
+      </div>
+      <div class="platform-badge fade-up stagger-2">
+        <svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg>
+        <span>Facebook</span>
+      </div>
+      <div class="platform-badge fade-up stagger-3">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span>LinkedIn</span>
+      </div>
+      <div class="platform-badge fade-up stagger-4">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span>X / Twitter</span>
+      </div>
+      <div class="platform-badge fade-up stagger-5">
+        <svg viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.882 0 1.441 1.441 0 012.882 0z"/></svg>
+        <span>Instagram</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about-section" id="about">
+  <div class="container">
+    <span class="section-label fade-up">The Builder</span>
+    <div class="about-content">
+      <div class="about-image fade-up">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg" alt="Steve Kaplan" style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1;">
+      </div>
+      <div class="about-text fade-up">
+        <h3>Steve Kaplan</h3>
+        <p>I don't advise. I build. I wrote a whitepaper showing how a 6-tool open stack can do the job of a $259K enterprise marketing data platform &mdash; at 88% less cost. That was one stack. This is twenty.</p>
+        <p>The SAASpocolypse is what happens when one person with Claude Code takes that same approach and applies it to the 20 most overpriced enterprise software categories, live on camera, in 26 days.</p>
+        <p>These won't be full enterprise replacements on day one &mdash; they'll be functional, AI-native foundations that nail the core 20% of features most teams actually use. The kind of starting point that would cost a company six figures to build from scratch, given away as open-source repos anyone can fork and extend.</p>
+        <div class="about-credentials">
+          <div class="credential"><span class="dot"></span>$259K Stack Whitepaper</div>
+          <div class="credential"><span class="dot"></span>BigQuery + PostHog Expert</div>
+          <div class="credential"><span class="dot"></span>AI-First Architecture</div>
+          <div class="credential"><span class="dot"></span>Open Source Advocate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section" id="cta">
+  <div class="container">
+    <div class="cta-box">
+      <span class="section-label">Don't miss it</span>
+      <h2 class="section-title" style="font-size: clamp(28px, 4vw, 40px);">Get notified when the<br><span class="highlight">SAASpocolypse</span> goes live.</h2>
+      <p>26 days. 20 builds. Every session streamed live across all platforms. Every repo published to GitHub as MIT open source. Sign up to know exactly when each build starts.</p>
+      <form class="email-form" onsubmit="handleSubmit(event)">
+        <input type="email" class="email-input" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Notify Me</button>
+      </form>
+      <p class="cta-note">No spam. Just one email when each build goes live. Unsubscribe anytime.</p>
+      <div class="cta-urgency">
+        Live viewers get early access to each repo before public release.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom: 8px;">
+      <a href="https://stevekaplan.ai">stevekaplan.ai</a>
+    </p>
+    <p>SAASpocolypse 2026 &mdash; Built by one developer. Given to everyone.</p>
+  </div>
+</footer>
+
+<script>
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Animate chart bars and meter fills on scroll
+const chartObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bars = entry.target.querySelectorAll('[data-width]');
+      bars.forEach(bar => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.width + '%';
+        }, 200);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.chart-container, .disruption-meters').forEach(el => chartObserver.observe(el));
+
+// Savings counter animation
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.target.id === 'savingsCounter') {
+      animateCounter(entry.target, 0, 4748000, 2500);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+const counter = document.getElementById('savingsCounter');
+if (counter) counterObserver.observe(counter);
+
+function animateCounter(el, start, end, duration) {
+  const startTime = performance.now();
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 4);
+    const current = Math.floor(start + (end - start) * eased);
+    el.textContent = '$' + current.toLocaleString();
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Form handler
+function handleSubmit(e) {
+  e.preventDefault();
+  const input = e.target.querySelector('input');
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'You\'re In!';
+  btn.style.background = 'var(--lime)';
+  btn.style.color = '#000';
+  input.value = '';
+  setTimeout(() => {
+    btn.textContent = 'Notify Me';
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 3000);
+}
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
