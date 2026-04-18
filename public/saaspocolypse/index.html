@@ -1762,6 +1762,10 @@ function animateCounter(el, start, end, duration) {
   requestAnimationFrame(update);
 }
 
+// Get referral code from URL
+const urlParams = new URLSearchParams(window.location.search);
+const refCode = urlParams.get('ref') || '';
+
 // Form handler
 async function handleSubmit(e) {
   e.preventDefault();
@@ -1778,14 +1782,23 @@ async function handleSubmit(e) {
     const res = await fetch('/api/saaspocolypse-subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, ref: refCode }),
     });
+
+    const data = await res.json();
 
     if (res.ok) {
       btn.textContent = "You're In!";
       btn.style.background = 'var(--lime)';
       btn.style.color = '#000';
       input.value = '';
+
+      // Redirect to share page after a moment
+      if (data.share_code) {
+        setTimeout(() => {
+          window.location.href = '/saaspocolypse/share.html?code=' + data.share_code;
+        }, 1500);
+      }
     } else {
       btn.textContent = 'Try Again';
       btn.style.background = 'var(--coral)';
