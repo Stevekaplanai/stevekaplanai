@@ -13,11 +13,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/saaspocolypse/admin",
-        destination: "/saaspocolypse/admin/index.html",
+        destination: "/saaspocolypse/admin.html",
       },
       {
         source: "/saaspocolypse/share",
-        destination: "/saaspocolypse/share/index.html",
+        destination: "/saaspocolypse/share.html",
       },
     ];
   },

@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
     }
 
     const shareLink = shareCode
-      ? `https://stevekaplan.ai/saaspocolypse/share?code=${shareCode}`
+      ? `https://stevekaplan.ai/saaspocolypse/share.html?code=${shareCode}`
       : "https://stevekaplan.ai/saaspocolypse";
 
     // Send confirmation email with giveaway CTA
