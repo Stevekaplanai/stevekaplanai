@@ -9,6 +9,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/saaspocolypse/admin",
+        destination: "/saaspocolypse/admin/index.html",
+      },
+      {
+        source: "/saaspocolypse/share",
+        destination: "/saaspocolypse/share/index.html",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
