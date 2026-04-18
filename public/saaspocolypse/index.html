@@ -1762,14 +1762,39 @@ function animateCounter(el, start, end, duration) {
 }
 
 // Form handler
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
   const input = e.target.querySelector('input');
   const btn = e.target.querySelector('button');
-  btn.textContent = 'You\'re In!';
-  btn.style.background = 'var(--lime)';
-  btn.style.color = '#000';
-  input.value = '';
+  const email = input.value.trim();
+
+  if (!email) return;
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/saaspocolypse-subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    if (res.ok) {
+      btn.textContent = "You're In!";
+      btn.style.background = 'var(--lime)';
+      btn.style.color = '#000';
+      input.value = '';
+    } else {
+      btn.textContent = 'Try Again';
+      btn.style.background = 'var(--coral)';
+    }
+  } catch {
+    btn.textContent = 'Try Again';
+    btn.style.background = 'var(--coral)';
+  }
+
+  btn.disabled = false;
   setTimeout(() => {
     btn.textContent = 'Notify Me';
     btn.style.background = '';
