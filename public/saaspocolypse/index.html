@@ -1796,7 +1796,7 @@ async function handleSubmit(e) {
       // Redirect to share page after a moment
       if (data.share_code) {
         setTimeout(() => {
-          window.location.href = '/saaspocolypse/share.html?code=' + data.share_code;
+          window.location.href = '/saaspocolypse/share?code=' + data.share_code;
         }, 1500);
       }
     } else {
