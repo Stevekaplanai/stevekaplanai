@@ -232,13 +232,12 @@ async function main() {
       console.log(`  Scheduled for: ${email.scheduledAt}`);
       console.log(`  Subject: ${email.subject}\n`);
 
-      // To auto-schedule, uncomment this:
-      // if (broadcast.data?.id) {
-      //   await resend.broadcasts.send(broadcast.data.id, {
-      //     scheduledAt: email.scheduledAt,
-      //   });
-      //   console.log(`  → Scheduled!\n`);
-      // }
+      if (broadcast.data?.id) {
+        await resend.broadcasts.send(broadcast.data.id, {
+          scheduledAt: email.scheduledAt,
+        });
+        console.log(`  → Scheduled!\n`);
+      }
     } catch (err) {
       console.error(`Failed: "${email.name}"`, err);
     }

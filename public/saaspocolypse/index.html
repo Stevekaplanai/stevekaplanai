@@ -654,6 +654,106 @@
       font-weight: 500;
     }
 
+    /* ─── BUILD SCHEDULE ─── */
+    .schedule-section { background: var(--bg); }
+    .schedule-container {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .schedule-week {
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .schedule-week-header {
+      background: #000;
+      color: #fff;
+      padding: 16px 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .schedule-week-header .week-dates {
+      color: var(--lime);
+      font-size: 13px;
+    }
+    .schedule-day {
+      display: grid;
+      grid-template-columns: 80px 1fr 200px;
+      align-items: center;
+      padding: 14px 24px;
+      border-bottom: 2px solid var(--border);
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.1s;
+    }
+    .schedule-day:last-child { border-bottom: none; }
+    .schedule-day:nth-child(odd) { background: var(--bg-card); }
+    .schedule-day:nth-child(even) { background: var(--bg); }
+    .schedule-day:hover { background: var(--cyan); }
+    .schedule-day-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .schedule-day-date {
+      font-size: 11px;
+      color: #666;
+      font-weight: 500;
+    }
+    .schedule-day-project {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .schedule-day-replaces {
+      font-size: 13px;
+      color: #555;
+      margin-top: 2px;
+    }
+    .schedule-day-savings {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .schedule-polish {
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--lime);
+      padding: 24px;
+      text-align: center;
+    }
+    .schedule-polish h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .schedule-polish p {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+    @media (max-width: 700px) {
+      .schedule-day {
+        grid-template-columns: 60px 1fr;
+        gap: 4px;
+      }
+      .schedule-day-savings {
+        grid-column: 2;
+        text-align: left;
+        font-size: 12px;
+      }
+    }
+
     /* ─── STREAMING PLATFORMS ─── */
     .platforms-section {
       background: var(--bg);
@@ -980,6 +1080,7 @@
       <a href="#crisis">The Crisis</a>
       <a href="#projects">The 20 Builds</a>
       <a href="#how">How It Works</a>
+      <a href="#schedule">Schedule</a>
       <a href="#cta" class="nav-cta">Get Access</a>
     </div>
   </div>
@@ -1639,6 +1740,157 @@
         <h3>Fork & Ship</h3>
         <p>Every repo is yours to fork, extend, deploy, and build on. MIT license means zero restrictions. Take the foundation and make it your own.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD SCHEDULE -->
+<section class="section schedule-section" id="schedule">
+  <div class="container">
+    <span class="section-label fade-up">The Schedule</span>
+    <h2 class="section-title fade-up">26 days. 20 builds.<br><span class="highlight-gold">Day by day.</span></h2>
+    <p class="section-subtitle fade-up">Every project has a date. Every stream is live. Here's the full build order, optimized for skill reuse and maximum impact.</p>
+
+    <div class="schedule-container">
+
+      <!-- WEEK 1 -->
+      <div class="schedule-week fade-up">
+        <div class="schedule-week-header">
+          <span>Week 1 &mdash; Quick Wins</span>
+          <span class="week-dates">Jul 3 &ndash; Jul 7</span>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 1</span><br><span class="schedule-day-date">Jul 3</span></div>
+          <div><div class="schedule-day-project">StatusBrew</div><div class="schedule-day-replaces">Replaces Atlassian Statuspage</div></div>
+          <div class="schedule-day-savings">$16K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 2</span><br><span class="schedule-day-date">Jul 4</span></div>
+          <div><div class="schedule-day-project">ProposalForge</div><div class="schedule-day-replaces">Replaces PandaDoc</div></div>
+          <div class="schedule-day-savings">$20K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 3</span><br><span class="schedule-day-date">Jul 5</span></div>
+          <div><div class="schedule-day-project">ExpenseZero</div><div class="schedule-day-replaces">Replaces SAP Concur</div></div>
+          <div class="schedule-day-savings">$110K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 4</span><br><span class="schedule-day-date">Jul 6</span></div>
+          <div><div class="schedule-day-project">InsightPulse</div><div class="schedule-day-replaces">Replaces Qualtrics</div></div>
+          <div class="schedule-day-savings">$323K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 5</span><br><span class="schedule-day-date">Jul 7</span></div>
+          <div><div class="schedule-day-project">ContentMultiplier</div><div class="schedule-day-replaces">Replaces Repurpose.io + Agencies</div></div>
+          <div class="schedule-day-savings">$120K/yr</div>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div class="schedule-week fade-up">
+        <div class="schedule-week-header">
+          <span>Week 2 &mdash; High Impact</span>
+          <span class="week-dates">Jul 8 &ndash; Jul 12</span>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 6</span><br><span class="schedule-day-date">Jul 8</span></div>
+          <div><div class="schedule-day-project">ContractPilot</div><div class="schedule-day-replaces">Replaces Ironclad</div></div>
+          <div class="schedule-day-savings">$150K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 7</span><br><span class="schedule-day-date">Jul 9</span></div>
+          <div><div class="schedule-day-project">ComplianceForge</div><div class="schedule-day-replaces">Replaces Vanta / Drata</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 8</span><br><span class="schedule-day-date">Jul 10</span></div>
+          <div><div class="schedule-day-project">InvoiceAgent</div><div class="schedule-day-replaces">Replaces Coupa / SAP Ariba</div></div>
+          <div class="schedule-day-savings">$200K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 9</span><br><span class="schedule-day-date">Jul 11</span></div>
+          <div><div class="schedule-day-project">DataTalk</div><div class="schedule-day-replaces">Replaces Tableau / Looker</div></div>
+          <div class="schedule-day-savings">$200K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 10</span><br><span class="schedule-day-date">Jul 12</span></div>
+          <div><div class="schedule-day-project">GongSlayer</div><div class="schedule-day-replaces">Replaces Gong</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div class="schedule-week fade-up">
+        <div class="schedule-week-header">
+          <span>Week 3 &mdash; Enterprise Core</span>
+          <span class="week-dates">Jul 13 &ndash; Jul 18</span>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 11-12</span><br><span class="schedule-day-date">Jul 13-14</span></div>
+          <div><div class="schedule-day-project">ServiceForge</div><div class="schedule-day-replaces">Replaces ServiceNow</div></div>
+          <div class="schedule-day-savings">$1M+/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 13</span><br><span class="schedule-day-date">Jul 15</span></div>
+          <div><div class="schedule-day-project">SupportGenius</div><div class="schedule-day-replaces">Replaces Zendesk</div></div>
+          <div class="schedule-day-savings">$180K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 14</span><br><span class="schedule-day-date">Jul 16</span></div>
+          <div><div class="schedule-day-project">RecruiterAI</div><div class="schedule-day-replaces">Replaces Greenhouse / Lever</div></div>
+          <div class="schedule-day-savings">$50K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 15</span><br><span class="schedule-day-date">Jul 17</span></div>
+          <div><div class="schedule-day-project">PeopleOS</div><div class="schedule-day-replaces">Replaces BambooHR / Rippling</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 16</span><br><span class="schedule-day-date">Jul 18</span></div>
+          <div><div class="schedule-day-project">MarketFlow</div><div class="schedule-day-replaces">Replaces Marketo / Pardot</div></div>
+          <div class="schedule-day-savings">$180K/yr</div>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div class="schedule-week fade-up">
+        <div class="schedule-week-header">
+          <span>Week 4 &mdash; Differentiation</span>
+          <span class="week-dates">Jul 19 &ndash; Jul 24</span>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 17</span><br><span class="schedule-day-date">Jul 19</span></div>
+          <div><div class="schedule-day-project">CompeteWatcher</div><div class="schedule-day-replaces">Replaces Crayon / Klue</div></div>
+          <div class="schedule-day-savings">$60K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 18</span><br><span class="schedule-day-date">Jul 20</span></div>
+          <div><div class="schedule-day-project">VendorShield</div><div class="schedule-day-replaces">Replaces OneTrust Vendorpedia</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 19</span><br><span class="schedule-day-date">Jul 21</span></div>
+          <div><div class="schedule-day-project">BoardReady</div><div class="schedule-day-replaces">Replaces Diligent Boards</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 20</span><br><span class="schedule-day-date">Jul 22</span></div>
+          <div><div class="schedule-day-project">DocuVault</div><div class="schedule-day-replaces">Replaces M-Files / SharePoint</div></div>
+          <div class="schedule-day-savings">$80K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 21-22</span><br><span class="schedule-day-date">Jul 23-24</span></div>
+          <div><div class="schedule-day-project">FinOpsLite</div><div class="schedule-day-replaces">Replaces CloudHealth / Spot.io</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+      </div>
+
+      <!-- POLISH -->
+      <div class="schedule-polish fade-up">
+        <h3>Days 23-26 &mdash; Jul 25-28</h3>
+        <p>Polish, documentation, demo videos, README standardization across all 20 repos. Launch blog post, Product Hunt, and Hacker News submissions.</p>
+      </div>
+
     </div>
   </div>
 </section>
