@@ -1,16 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.GIVEAWAY_SUPABASE_URL!,
-  process.env.GIVEAWAY_SUPABASE_SERVICE_KEY!
-);
+function getSupabase() {
+  return createClient(
+    process.env.GIVEAWAY_SUPABASE_URL!,
+    process.env.GIVEAWAY_SUPABASE_SERVICE_KEY!
+  );
+}
 
-const ADMIN_KEY = process.env.SAASPOCOLYPSE_ADMIN_KEY!;
 
 function checkAuth(req: NextRequest): boolean {
   const auth = req.headers.get("x-admin-key");
-  return auth === ADMIN_KEY;
+  return auth === process.env.SAASPOCOLYPSE_ADMIN_KEY;
 }
 
 // GET /api/saaspocolypse-admin — get all participants with stats
@@ -18,6 +19,8 @@ export async function GET(req: NextRequest) {
   if (!checkAuth(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
+
+  const supabase = getSupabase();
 
   const { data: participants } = await supabase
     .from("participants")
@@ -68,6 +71,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const supabase = getSupabase();
   const { action } = await req.json();
 
   if (action === "pick_winner") {

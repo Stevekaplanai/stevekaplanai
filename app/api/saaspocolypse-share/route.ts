@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.GIVEAWAY_SUPABASE_URL!,
-  process.env.GIVEAWAY_SUPABASE_SERVICE_KEY!
-);
+function getSupabase() {
+  return createClient(
+    process.env.GIVEAWAY_SUPABASE_URL!,
+    process.env.GIVEAWAY_SUPABASE_SERVICE_KEY!
+  );
+}
 
 function generateCode(): string {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -17,6 +19,7 @@ function generateCode(): string {
 
 // POST /api/saaspocolypse-share — register a participant or track a share
 export async function POST(req: NextRequest) {
+  const supabase = getSupabase();
   const body = await req.json();
   const { action } = body;
 
@@ -168,6 +171,8 @@ export async function GET(req: NextRequest) {
   if (!code) {
     return NextResponse.json({ error: "code required" }, { status: 400 });
   }
+
+  const supabase = getSupabase();
 
   const { data: participant } = await supabase
     .from("participants")
