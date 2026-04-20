@@ -174,19 +174,6 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 
 ---
 
-## Timeline
-
-```
-2016  Click Then Convert ......... Founded performance marketing agency. $50M+ ad spend.
-2020  BarkBox Partnership ........ 204% conversion increase, 254% ROAS improvement.
-2023  Neil Jesani Advisors ....... Director of Marketing. $300K+/mo paid media.
-2024  AI Builder Era ............. 9 products shipped solo with Claude Code.
-2025  Published Author ........... "Marketing, Sales and Service with AI"
-2026  SAASpocolypse .............. 20 open-source enterprise SaaS alternatives, live.
-```
-
----
-
 ## Published Work
 
 **The $259K Marketing Data Stack** — How a 6-tool open stack replaces $295K enterprise platforms at 88% less cost. [Download at stevekaplan.ai](https://stevekaplan.ai)
