@@ -6,7 +6,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-17K+_Followers-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/stevekaplanai)
 [![SAASpocolypse](https://img.shields.io/badge/SAASpocolypse_2026-20_Builds_Live-FF3333?style=for-the-badge)](https://stevekaplan.ai/saaspocolypse)
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=24&pause=1000&color=3B82F6&center=true&vCenter=true&width=600&lines=Growth+Marketer+Who+Writes+Code;%2450M%2B+Ad+Spend+Managed;9+AI+Products+Shipped+Solo;Published+Author;Building+20+SaaS+Killers+Live" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=24&pause=1000&color=3B82F6&center=true&vCenter=true&width=600&lines=Growth+Marketer+Who+Writes+Code;%2450M%2B+Ad+Spend+Managed;13+Live+Products+%E2%80%94+All+Self-Built;Published+Author;Building+20+SaaS+Killers+Live" alt="Typing SVG" />
 
 </div>
 
@@ -14,7 +14,7 @@
 
 ## The Short Version
 
-A year ago I was "just" a growth marketer with $50M+ in lifetime ad spend. Then I started building with Claude Code. Nine products later, I'm shipping faster than most funded startups.
+Growth marketer who writes code. $50M+ in ad spend managed across 200+ clients — B2B services, D2C ecom, SaaS, and everything in between. Then I started building with Claude Code and haven't stopped shipping since.
 
 By day: **Director of Marketing** at Neil Jesani Advisors — 76-person financial advisory firm, $300K+/month paid media.
 
@@ -26,9 +26,9 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 
 <div align="center">
 
-| $50M+ | 36:1 | 100+ | 9 |
+| $50M+ | 4:1+ | 200+ | 13 |
 |:---:|:---:|:---:|:---:|
-| **Ad Spend Managed** | **Lifetime Ad ROI** | **Clients Served** | **AI Products Shipped** |
+| **Ad Spend Managed** | **Avg Ad ROI** | **Clients Served** | **Live Products** |
 
 </div>
 
@@ -56,7 +56,7 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 
 ---
 
-## 9 Products. All Self-Built. All Live.
+## Live Products — All Self-Built
 
 <table>
 <tr>
@@ -64,7 +64,6 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 <h3 align="center">GTMVP</h3>
 <p align="center">
 <img src="https://img.shields.io/badge/Agency-3B82F6?style=flat-square" />
-<img src="https://img.shields.io/badge/Status-Active-10B981?style=flat-square" />
 </p>
 <p align="center">AI automation + managed ads agency. Turn AI hype into business results.</p>
 <p align="center"><a href="https://gtmvp.com"><img src="https://img.shields.io/badge/Visit-gtmvp.com-000?style=for-the-badge" /></a></p>
@@ -73,7 +72,6 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 <h3 align="center">ClaudeSkillsHQ</h3>
 <p align="center">
 <img src="https://img.shields.io/badge/Marketplace-8B5CF6?style=flat-square" />
-<img src="https://img.shields.io/badge/Skills-140+-10B981?style=flat-square" />
 </p>
 <p align="center">140+ verified Claude MCP skills. One command. Instant skills.</p>
 <p align="center"><a href="https://claudeskillshq.com"><img src="https://img.shields.io/badge/Visit-claudeskillshq.com-000?style=for-the-badge" /></a></p>
@@ -84,16 +82,14 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 <h3 align="center">DocDoctor.ai</h3>
 <p align="center">
 <img src="https://img.shields.io/badge/Healthcare-EF4444?style=flat-square" />
-<img src="https://img.shields.io/badge/Status-Active-10B981?style=flat-square" />
 </p>
 <p align="center">AI-powered healthcare platform. Enhancing value-based care intelligence.</p>
-<p align="center"><a href="https://demo.docdoctor.ai"><img src="https://img.shields.io/badge/Visit-docdoctor.ai-000?style=for-the-badge" /></a></p>
+<p align="center"><a href="https://docdoctor.ai"><img src="https://img.shields.io/badge/Visit-docdoctor.ai-000?style=for-the-badge" /></a></p>
 </td>
 <td width="50%">
 <h3 align="center">SynapMarketing</h3>
 <p align="center">
 <img src="https://img.shields.io/badge/MarTech-F59E0B?style=flat-square" />
-<img src="https://img.shields.io/badge/Agents-16-10B981?style=flat-square" />
 </p>
 <p align="center">16 AI agents to run your marketing department.</p>
 <p align="center"><a href="https://synapmarketing.com"><img src="https://img.shields.io/badge/Visit-synapmarketing.com-000?style=for-the-badge" /></a></p>
@@ -101,10 +97,35 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 </tr>
 <tr>
 <td width="50%">
+<h3 align="center">AttriByte</h3>
+<p align="center">
+<img src="https://img.shields.io/badge/Analytics-669DF6?style=flat-square" />
+</p>
+<p align="center">B2B marketing analytics and attribution platform.</p>
+<p align="center"><a href="https://attribyte.xyz"><img src="https://img.shields.io/badge/Visit-attribyte.xyz-000?style=for-the-badge" /></a></p>
+</td>
+<td width="50%">
+<h3 align="center">CompanyOS</h3>
+<p align="center">
+<img src="https://img.shields.io/badge/SaaS-10B981?style=flat-square" />
+</p>
+<p align="center">AI-powered company operating system and website builder.</p>
+<p align="center"><a href="https://companyos.ai"><img src="https://img.shields.io/badge/Visit-companyos.ai-000?style=for-the-badge" /></a></p>
+</td>
+<td width="50%">
+<h3 align="center">VibeKick</h3>
+<p align="center">
+<img src="https://img.shields.io/badge/Developer_Tools-06B6D4?style=flat-square" />
+</p>
+<p align="center">Your vibe coding sidekick. 100+ curated prompts for AI-assisted development.</p>
+<p align="center"><a href="https://vibekick.co"><img src="https://img.shields.io/badge/Visit-vibekick.co-000?style=for-the-badge" /></a></p>
+</td>
+</tr>
+<tr>
+<td width="50%">
 <h3 align="center">AIHomeworkHelp</h3>
 <p align="center">
 <img src="https://img.shields.io/badge/EdTech-06B6D4?style=flat-square" />
-<img src="https://img.shields.io/badge/Status-Active-10B981?style=flat-square" />
 </p>
 <p align="center">Free AI tutor for all subjects. Student-friendly learning assistant.</p>
 <p align="center"><a href="https://aihomeworkhelp.net"><img src="https://img.shields.io/badge/Visit-aihomeworkhelp.net-000?style=for-the-badge" /></a></p>
@@ -113,7 +134,6 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 <h3 align="center">StudentAIDetector</h3>
 <p align="center">
 <img src="https://img.shields.io/badge/EdTech-06B6D4?style=flat-square" />
-<img src="https://img.shields.io/badge/Accuracy-99.4%25-10B981?style=flat-square" />
 </p>
 <p align="center">Identify AI-generated content with 99.4% accuracy.</p>
 <p align="center"><a href="https://studentaidetector.com"><img src="https://img.shields.io/badge/Visit-studentaidetector.com-000?style=for-the-badge" /></a></p>
@@ -124,11 +144,20 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 <h3 align="center">VentureVault</h3>
 <p align="center">
 <img src="https://img.shields.io/badge/Tools-6366F1?style=flat-square" />
-<img src="https://img.shields.io/badge/Status-Active-10B981?style=flat-square" />
 </p>
 <p align="center">Free startup ideas for builders. Curated opportunities.</p>
 <p align="center"><a href="https://venturevault.space"><img src="https://img.shields.io/badge/Visit-venturevault.space-000?style=for-the-badge" /></a></p>
 </td>
+<td width="50%">
+<h3 align="center">Over The Hill</h3>
+<p align="center">
+<img src="https://img.shields.io/badge/Content-EC4899?style=flat-square" />
+</p>
+<p align="center">Blog and content platform.</p>
+<p align="center"><a href="https://over-the-hill.com"><img src="https://img.shields.io/badge/Visit-over--the--hill.com-000?style=for-the-badge" /></a></p>
+</td>
+</tr>
+<tr>
 <td width="50%">
 <h3 align="center">Barfliz</h3>
 <p align="center">
@@ -138,18 +167,14 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 <p align="center">Never drink alone. The social network for nightlife.</p>
 <p align="center"><a href="https://barfliz.com"><img src="https://img.shields.io/badge/Visit-barfliz.com-000?style=for-the-badge" /></a></p>
 </td>
-</tr>
-<tr>
-<td colspan="2">
+<td width="50%">
 <h3 align="center">SAASpocolypse 2026</h3>
 <p align="center">
 <img src="https://img.shields.io/badge/Open_Source-FF3333?style=flat-square" />
-<img src="https://img.shields.io/badge/Projects-20-10B981?style=flat-square" />
-<img src="https://img.shields.io/badge/Enterprise_Value-$4.7M+-FF3333?style=flat-square" />
-<img src="https://img.shields.io/badge/License-MIT-10B981?style=flat-square" />
+<img src="https://img.shields.io/badge/20_Projects-10B981?style=flat-square" />
 </p>
-<p align="center">26 days. 20 open-source enterprise SaaS alternatives. Built live on camera with Claude Code. All MIT licensed. All free.</p>
-<p align="center"><a href="https://stevekaplan.ai/saaspocolypse"><img src="https://img.shields.io/badge/Watch_Live-stevekaplan.ai/saaspocolypse-FF3333?style=for-the-badge" /></a></p>
+<p align="center">20 open-source enterprise SaaS alternatives. Built live. All MIT licensed.</p>
+<p align="center"><a href="https://stevekaplan.ai/saaspocolypse"><img src="https://img.shields.io/badge/Watch_Live-FF3333?style=for-the-badge" /></a></p>
 </td>
 </tr>
 </table>
@@ -157,6 +182,18 @@ By night: I build products that solve real problems. Healthcare. EdTech. Marketi
 <div align="center">
 <i>None of this required a dev team. None of it required VC funding.<br/>It required Claude Code, clear thinking, and the willingness to ship.</i>
 </div>
+
+---
+
+## Timeline
+
+```
+2016  Click Then Convert ......... Founded performance marketing agency. Scaled to $50M+ in ad spend.
+2023  Published Author ........... "Marketing, Sales and Service with AI"
+2025  AI Builder Era ............. Started shipping products solo with Claude Code. Haven't stopped.
+2026  Neil Jesani Advisors ....... Director of Marketing. $300K+/mo paid media. 76-person firm.
+2026  SAASpocolypse .............. 20 open-source enterprise SaaS alternatives, built live on camera.
+```
 
 ---
 
