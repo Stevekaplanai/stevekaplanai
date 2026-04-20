@@ -3,7 +3,7 @@
 
 <p align="center">
 <a href="https://github.com/DenverCoder1/readme-typing-svg">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1500&color=F59E0B&center=true&vCenter=true&repeat=true&width=500&lines=I+don't+advise.+I+build.;Growth+marketer+who+writes+code.;13+live+products.+All+self-built.;%2450M%2B+ad+spend.+200%2B+clients." alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1500&color=F59E0B&center=true&vCenter=true&repeat=true&width=500&lines=I+don't+advise.+I+build.;Growth+marketer+who+writes+code.;12+live+products.+All+self-built.;%2450M%2B+ad+spend.+200%2B+clients." alt="Typing SVG" />
 </a>
 </p>
 
@@ -16,7 +16,7 @@
 
 ---
 
-Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ clients** — B2B services, D2C ecom, SaaS, and everything in between. In 2025 I picked up Claude Code, started building, and haven't stopped shipping since. **13 live products** and counting — no dev team, no VC.
+Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ clients** — B2B services, D2C ecom, SaaS, and everything in between. In 2025 I picked up Claude Code, started building, and haven't stopped shipping since. **12 live products** and counting — no dev team, no VC.
 
 > **By day:** Director of Marketing at Neil Jesani Advisors — 76-person financial advisory, $300K+/mo paid media.
 > **By night:** I build products. Healthcare. EdTech. MarTech. Social. Open source. All solo.
@@ -26,7 +26,7 @@ Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ cli
 <img src="https://img.shields.io/badge/%2450M%2B-Ad_Spend_Managed-F59E0B?style=for-the-badge&labelColor=1F222E" />
 <img src="https://img.shields.io/badge/4%3A1%2B-Avg_Ad_ROI-10B981?style=for-the-badge&labelColor=1F222E" />
 <img src="https://img.shields.io/badge/200%2B-Clients_Served-3B82F6?style=for-the-badge&labelColor=1F222E" />
-<img src="https://img.shields.io/badge/13-Live_Products-F85D7F?style=for-the-badge&labelColor=1F222E" />
+<img src="https://img.shields.io/badge/12-Live_Products-F85D7F?style=for-the-badge&labelColor=1F222E" />
 </p>
 
 ---
@@ -93,14 +93,6 @@ Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ cli
 </tr>
 <tr>
 <td width="50%" valign="top">
-<h3 align="center"><a href="https://companyos.ai">CompanyOS</a></h3>
-<p align="center">
-<a href="https://companyos.ai"><img src="https://img.shields.io/badge/SaaS-10B981?style=flat-square&logoColor=white" /></a>
-</p>
-<p align="center">AI-powered company operating system.</p>
-<p align="center"><a href="https://companyos.ai">companyos.ai</a></p>
-</td>
-<td width="50%" valign="top">
 <h3 align="center"><a href="https://aihomeworkhelp.net">AIHomeworkHelp</a></h3>
 <p align="center">
 <a href="https://aihomeworkhelp.net"><img src="https://img.shields.io/badge/EdTech-06B6D4?style=flat-square&logoColor=white" /></a>
@@ -108,8 +100,6 @@ Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ cli
 <p align="center">Free AI tutor for all subjects. Student-friendly learning assistant.</p>
 <p align="center"><a href="https://aihomeworkhelp.net">aihomeworkhelp.net</a></p>
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 <h3 align="center"><a href="https://studentaidetector.com">StudentAIDetector</a></h3>
 <p align="center">
@@ -118,6 +108,8 @@ Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ cli
 <p align="center">Identify AI-generated content with 99.4% accuracy.</p>
 <p align="center"><a href="https://studentaidetector.com">studentaidetector.com</a></p>
 </td>
+</tr>
+<tr>
 <td width="50%" valign="top">
 <h3 align="center"><a href="https://venturevault.space">VentureVault</a></h3>
 <p align="center">
@@ -126,8 +118,6 @@ Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ cli
 <p align="center">Curated startup ideas for builders. Free forever.</p>
 <p align="center"><a href="https://venturevault.space">venturevault.space</a></p>
 </td>
-</tr>
-<tr>
 <td width="50%" valign="top">
 <h3 align="center"><a href="https://over-the-hill.com">Over The Hill</a></h3>
 <p align="center">
@@ -191,7 +181,7 @@ Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ cli
 |:----:|:----------|:-|
 | `2016` | **Click Then Convert** | Founded performance marketing agency. Scaled to $50M+ in client ad spend across 200+ clients. |
 | `2023` | **Published Author** | Released *Marketing, Sales and Service with AI* — frameworks for AI in growth teams. |
-| `2025` | **AI Builder Era** | Started shipping products solo with Claude Code. 13 live products and counting. |
+| `2025` | **AI Builder Era** | Started shipping products solo with Claude Code. 12 live products and counting. |
 | `2026` | **Neil Jesani Advisors** | Director of Marketing. $300K+/mo paid media. 76-person financial advisory firm. |
 | `2026` | **SAASpocolypse** | 20 open-source enterprise SaaS alternatives. Built live on camera in 26 days. |
 
