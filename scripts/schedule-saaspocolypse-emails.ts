@@ -545,13 +545,78 @@ const emails: EmailDraft[] = [
 // RUNNER
 // ───────────────────────────────────────────
 
-async function main() {
-  console.log(`Creating ${emails.length} SAASpocolypse email broadcasts...\n`);
+// Resend's broadcasts.send caps scheduledAt at 30 days in the future.
+// Anything beyond that fires immediately. Run the script periodically; on each
+// run only emails inside the 30-day window get scheduled. Already-scheduled
+// broadcasts are detected via name match and skipped (idempotent re-runs).
+const MAX_WINDOW_DAYS = 30;
 
-  let scheduled = 0;
+async function main() {
+  const now = Date.now();
+  const MAX_WINDOW_MS = MAX_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+  const cutoff = now + MAX_WINDOW_MS;
+
+  console.log(`SAASpocolypse 2026 — Email Schedule Run`);
+  console.log(`Run time: ${new Date().toISOString()}`);
+  console.log(`Audience: ${AUDIENCE_ID}`);
+  console.log(`Resend max scheduling window: ${MAX_WINDOW_DAYS} days`);
+  console.log("");
+
+  // Fetch existing broadcasts to enable idempotent re-runs
+  let inFlightByName: Map<string, string>;
+  try {
+    const listResult = await resend.broadcasts.list();
+    const allBroadcasts = listResult.data?.data || [];
+    inFlightByName = new Map();
+    for (const b of allBroadcasts) {
+      if (b.name && (b.status === "scheduled" || b.status === "draft")) {
+        inFlightByName.set(b.name, b.id);
+      }
+    }
+    console.log(
+      `Existing in-flight broadcasts (scheduled/draft): ${inFlightByName.size}`,
+    );
+    console.log("");
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`FATAL: could not list existing broadcasts — ${msg}`);
+    process.exit(1);
+  }
+
+  let scheduledCount = 0;
+  let skippedExisting = 0;
+  let skippedWindow = 0;
   let failed = 0;
+  const pending: typeof emails = [];
 
   for (const email of emails) {
+    const sendTime = new Date(email.scheduledAt).getTime();
+    const daysOut =
+      Math.round(((sendTime - now) / (24 * 60 * 60 * 1000)) * 10) / 10;
+
+    if (inFlightByName.has(email.name)) {
+      console.log(`[skip already-scheduled] ${email.name}`);
+      skippedExisting++;
+      continue;
+    }
+
+    if (sendTime > cutoff) {
+      console.log(
+        `[skip beyond-window ${daysOut}d] ${email.name} → ${email.scheduledAt}`,
+      );
+      pending.push(email);
+      skippedWindow++;
+      continue;
+    }
+
+    if (sendTime < now) {
+      console.log(
+        `[skip past-due ${daysOut}d] ${email.name} → ${email.scheduledAt}`,
+      );
+      skippedWindow++;
+      continue;
+    }
+
     try {
       const broadcast = await resend.broadcasts.create({
         audienceId: AUDIENCE_ID,
@@ -562,30 +627,62 @@ async function main() {
       });
 
       const id = broadcast.data?.id;
-      console.log(`Created: "${email.name}"`);
-      console.log(`  ID: ${id}`);
-      console.log(`  Send at: ${email.scheduledAt}`);
-
-      if (id) {
-        await resend.broadcasts.send(id, {
-          scheduledAt: email.scheduledAt,
-        });
-        console.log(`  -> Scheduled!\n`);
-        scheduled++;
-      } else {
-        console.log(`  !! No ID returned — schedule manually in Resend dashboard\n`);
+      if (!id) {
+        console.error(`[FAIL no-id] ${email.name}`);
         failed++;
+        continue;
       }
-    } catch (err: unknown) {
+
+      await resend.broadcasts.send(id, {
+        scheduledAt: email.scheduledAt,
+      });
+
+      console.log(
+        `[OK ${daysOut}d] ${email.name} → ${email.scheduledAt} (${id})`,
+      );
+      scheduledCount++;
+    } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      console.error(`FAILED: "${email.name}" — ${msg}\n`);
+      console.error(`[FAIL] ${email.name} — ${msg}`);
       failed++;
     }
   }
 
-  console.log("─".repeat(50));
-  console.log(`Done. ${scheduled} scheduled, ${failed} need manual attention.`);
-  console.log("Review all at: https://resend.com/broadcasts");
+  console.log("");
+  console.log("─".repeat(60));
+  console.log(`Scheduled this run: ${scheduledCount}`);
+  console.log(`Skipped (already in-flight): ${skippedExisting}`);
+  console.log(`Skipped (beyond ${MAX_WINDOW_DAYS}-day window or past-due): ${skippedWindow}`);
+  console.log(`Failed: ${failed}`);
+  console.log("");
+
+  if (pending.length > 0) {
+    pending.sort(
+      (a, b) =>
+        new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime(),
+    );
+    const earliest = pending[0];
+    const earliestDate = new Date(earliest.scheduledAt);
+    const nextRunDate = new Date(earliestDate.getTime() - MAX_WINDOW_MS);
+
+    console.log(
+      `Next run window opens: ${nextRunDate.toISOString().split("T")[0]} (UTC)`,
+    );
+    console.log(
+      `That run will pick up ${pending.length} pending email(s). Earliest:`,
+    );
+    for (const p of pending.slice(0, 5)) {
+      console.log(`  - ${p.name} → ${p.scheduledAt}`);
+    }
+    if (pending.length > 5) {
+      console.log(`  - ...and ${pending.length - 5} more`);
+    }
+  } else {
+    console.log("All emails scheduled. Done.");
+  }
+
+  console.log("");
+  console.log("Review at: https://resend.com/broadcasts");
 }
 
 main();
