@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { AnnouncementBanner } from "@/components/announcement-banner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -178,7 +179,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <AnnouncementBanner />
+        {children}
+      </body>
     </html>
   );
 }

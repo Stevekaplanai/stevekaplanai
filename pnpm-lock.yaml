@@ -25,7 +25,7 @@ importers:
         version: 19.2.5(react@19.2.5)
       resend:
         specifier: ^6.12.0
-        version: 6.12.0
+        version: 6.12.2
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -580,8 +580,8 @@ packages:
     resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
     engines: {node: '>=0.10.0'}
 
-  resend@6.12.0:
-    resolution: {integrity: sha512-CaxEvX1z+/MGbgnhsM/bvmkbnZd1v1sEXELAjBNSDBQNMaB7MgqOyrBgI27CYikEgdaDnBrXghAXYWTBs/h5Bw==}
+  resend@6.12.2:
+    resolution: {integrity: sha512-xwgmU4b0OqoabJsIoK/x0Whk0Fcs3bpbK4i/DEWPiE5hYJHyHl0TbB6QbI3gIr+bLdLUJ1GYm/fe41aVFuHXgw==}
     engines: {node: '>=20'}
     peerDependencies:
       '@react-email/render': '*'
@@ -1066,7 +1066,7 @@ snapshots:
 
   react@19.2.5: {}
 
-  resend@6.12.0:
+  resend@6.12.2:
     dependencies:
       postal-mime: 2.7.4
       svix: 1.90.0
@@ -1136,5 +1136,3 @@ snapshots:
   undici-types@6.21.0: {}
 
   uuid@10.0.0: {}
-
-  ws@8.20.0: {}
