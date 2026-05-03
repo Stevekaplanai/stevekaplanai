@@ -12,7 +12,7 @@ const messages = [
       </>
     ),
     cta: "Join Free",
-    href: "https://stevekaplan.ai/saaspocolypse",
+    href: "/saaspocolypse",
   },
   {
     text: (
@@ -22,7 +22,7 @@ const messages = [
       </>
     ),
     cta: "Watch Live",
-    href: "https://stevekaplan.ai/saaspocolypse",
+    href: "/saaspocolypse",
   },
 ];
 
