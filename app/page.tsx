@@ -1,6 +1,5 @@
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
-import { LiveEventCard } from "@/components/live-event-card";
 import { About } from "@/components/about";
 import { Products } from "@/components/products";
 import { GitHub } from "@/components/github";
@@ -15,10 +14,9 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <LiveEventCard />
-        <About />
-        <Results />
         <AuditFeature />
+        <Results />
+        <About />
         <Products />
         <GitHub />
         <Newsletter />

@@ -52,6 +52,13 @@ const products = [
     image: "/images/products/venturevault.jpg",
   },
   {
+    name: "CompetitorIntelligence.co",
+    url: "https://competitorintelligence.co",
+    description: "Real-time competitive signal for B2B teams. Track every move your competitors make.",
+    category: "Intelligence",
+    image: "/images/products/competitorintelligence.jpg",
+  },
+  {
     name: "Barfliz",
     url: "https://barfliz.com",
     description: "Never drink alone. The social network for nightlife.",

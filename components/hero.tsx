@@ -3,9 +3,9 @@ import Link from "next/link";
 import { BookAuditButton } from "./book-audit-modal";
 
 const stats = [
-  { value: "$50M+", label: "Ad Spend Managed" },
-  { value: "9", label: "AI Products Built" },
-  { value: "3.2x", label: "Avg ROAS" },
+  { value: "$50M+", label: "Lifetime Ad Spend" },
+  { value: "$300K/mo", label: "Run Today" },
+  { value: "9", label: "AI Products Shipped" },
   { value: "36:1", label: "Lifetime Ad ROI" },
 ];
 
@@ -47,32 +47,35 @@ export function Hero() {
 
             <div className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 text-emerald text-sm font-medium px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-emerald rounded-full animate-pulse" />
-              Profit Loop Audit · 5 days · $3,500 flat · Money-back guarantee
+              5 days · $3,500 flat · money back if fewer than 3 wins
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-foreground leading-[1.05] tracking-tight mb-6">
-              I find the top 5{" "}
-              <span className="text-electric">AI and automation wins</span>{" "}
-              in your GTM stack.{" "}
-              <span className="text-emerald">In 5 days.</span>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-foreground leading-[1.05] tracking-tight mb-6">
+              I find your{" "}
+              <span className="text-electric">AI and automation opportunities</span>
+              {" "}&mdash; the ones that{" "}
+              <span className="text-emerald">lift profit and productivity</span>.{" "}
+              With the <span className="text-emerald">least lift</span>.{" "}
+              <span className="text-electric">In 5 days.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
-              I don&apos;t advise. I build. Growth marketer who writes code &mdash; $50M+ in ad
-              spend, 9 AI products shipped, 100+ clients served.
+              Most fractional CMOs hand you a deck. I hand you a ranked list of wins with dollars
+              attached &mdash; built by someone who runs $300K/month in paid media every day and
+              has shipped 9 products solo.
             </p>
 
             <p className="text-base text-muted-foreground mb-8">
-              Most fractional CMOs hand you a strategy deck. I deliver a ranked list of wins
-              with effort-vs-lift scores and dollars attached &mdash; built by someone who
-              fights the same friction you do, every day.
+              You&apos;re flying blind on what&apos;s actually working. I find the 5 highest-leverage moves,
+              rank them by effort vs lift, and hand you a 30/60/90 day plan your team can execute &mdash;
+              with or without me.
             </p>
 
             {/* Stats row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center md:text-left">
-                  <div className="text-2xl md:text-3xl font-bold font-mono text-electric">
+                  <div className="text-2xl md:text-[1.75rem] font-bold font-mono text-electric">
                     {stat.value}
                   </div>
                   <div className="text-xs text-muted-foreground uppercase tracking-wide">
@@ -84,7 +87,7 @@ export function Hero() {
 
             <div className="flex flex-wrap gap-3">
               <BookAuditButton className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
-                Book Your Audit
+                Book your audit
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -93,7 +96,7 @@ export function Hero() {
                 href="/audit/sample"
                 className="inline-flex items-center gap-2 bg-transparent border border-electric text-electric hover:bg-electric/10 text-sm font-semibold px-6 py-3.5 rounded-lg transition-colors"
               >
-                See a sample audit
+                See what you walk away with
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -101,38 +104,52 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right column - Pricing card */}
+          {/* Right column - Outcomes card */}
           <div className="bg-midnight border border-electric/30 rounded-2xl p-8 shadow-2xl shadow-electric/5">
             <div className="inline-flex items-center gap-2 bg-electric/10 border border-electric/20 text-electric text-xs font-medium px-3 py-1 rounded-full mb-5 font-mono uppercase tracking-wider">
-              Profit Loop Audit
+              Profit Loop Audit · $3,500 flat
             </div>
-            <div className="mb-6">
-              <span className="text-5xl md:text-6xl font-extrabold font-mono text-foreground">
-                $3,500
-              </span>
-              <span className="text-lg text-muted-foreground ml-2">flat</span>
-            </div>
-            <ul className="space-y-3 mb-6 text-sm text-muted-foreground">
-              {[
-                "5 business days end-to-end",
-                "Top 5 wins ranked by effort vs lift",
-                "30/60/90 day phased roadmap",
-                "Money-back guarantee",
-                "Credited toward a retainer",
-              ].map((line) => (
-                <li key={line} className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {line}
-                </li>
-              ))}
+
+            <h3 className="text-xl md:text-2xl font-extrabold text-foreground leading-tight mb-5">
+              What you walk away with on Day 5:
+            </h3>
+
+            <ul className="space-y-3.5 mb-6 text-[15px] text-muted-foreground leading-relaxed">
+              <li className="flex items-start gap-3">
+                <span className="text-electric font-mono mt-0.5 flex-shrink-0">→</span>
+                <span><span className="text-foreground font-semibold">5 wins, ranked.</span> Each with a dollar number attached and an effort score.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-electric font-mono mt-0.5 flex-shrink-0">→</span>
+                <span><span className="text-foreground font-semibold">A stack map</span> of every tool, integration, and manual handoff &mdash; the one nobody on your team has time to draw.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-electric font-mono mt-0.5 flex-shrink-0">→</span>
+                <span><span className="text-foreground font-semibold">A data baseline:</span> spend, pipeline, attribution gaps. So you stop arguing about what&apos;s working.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-electric font-mono mt-0.5 flex-shrink-0">→</span>
+                <span><span className="text-foreground font-semibold">A 30/60/90 plan</span> your team executes &mdash; with or without me.</span>
+              </li>
             </ul>
+
+            <div className="bg-slate/30 border border-border rounded-lg px-4 py-3 mb-6 text-xs text-muted-foreground space-y-1.5">
+              <p className="flex items-center gap-2">
+                <span className="text-emerald">✓</span> Total of your time: <span className="text-foreground font-semibold">~3 hours across 5 days.</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="text-emerald">✓</span> Money back if I find <span className="text-foreground font-semibold">fewer than 3 executable wins.</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <span className="text-emerald">✓</span> 100% credited toward a retainer if you sign within 30 days.
+              </p>
+            </div>
+
             <BookAuditButton className="w-full inline-flex items-center justify-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
-              Book Your Audit
+              Book your audit
             </BookAuditButton>
             <p className="text-xs text-center text-muted-foreground mt-4">
-              No spam. No sales sequence. Reply within 24 hours.
+              No sales sequence. Reply from steve@stevekaplan.ai within 24 hours.
             </p>
           </div>
         </div>

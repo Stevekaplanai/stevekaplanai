@@ -46,7 +46,10 @@ export default function AuditPage() {
         }) }}
       />
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-midnight/80 backdrop-blur-lg border-b border-border">
+      <nav
+        className="fixed left-0 right-0 z-50 bg-midnight/80 backdrop-blur-lg border-b border-border transition-[top] duration-200"
+        style={{ top: "var(--banner-h, 0px)" }}
+      >
         <div className="w-full max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="text-foreground font-bold text-lg">stevekaplan.ai</Link>
           <div className="flex items-center gap-4">

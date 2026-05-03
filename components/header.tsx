@@ -8,7 +8,10 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-midnight/90 backdrop-blur-md border-b border-border">
+    <header
+      className="fixed left-0 right-0 z-50 bg-midnight/90 backdrop-blur-md border-b border-border transition-[top] duration-200"
+      style={{ top: "var(--banner-h, 0px)" }}
+    >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-1">
           <span className="text-xl font-bold text-foreground tracking-tight">
