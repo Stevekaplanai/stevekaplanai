@@ -10,10 +10,11 @@ const products = [
 const resources = [
   { name: "Profit Loop Audit", url: "/audit", external: false },
   { name: "Sample Audit", url: "/audit/sample", external: false },
+  { name: "Standards", url: "/standards", external: false },
+  { name: "Compare", url: "/compare", external: false },
   { name: "SAASpocolypse 2026", url: "/saaspocolypse", external: false },
   { name: "White Paper", url: "/white-paper", external: false },
   { name: "Newsletter", url: "https://aimoneyminute.beehiiv.com", external: true },
-  { name: "Medium", url: "https://medium.com/@stevekaplanai", external: true },
 ];
 
 const social = [

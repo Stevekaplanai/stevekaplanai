@@ -60,15 +60,15 @@ export function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
-              Most fractional CMOs hand you a deck. I hand you a ranked list of wins with dollars
-              attached &mdash; built by someone who runs $300K/month in paid media every day and
-              has shipped 9 products solo.
+              Most fractional CMOs ship a strategy deck. I ship the system that executes it &mdash;
+              and the receipts behind every recommendation.
             </p>
 
             <p className="text-base text-muted-foreground mb-8">
               You&apos;re flying blind on what&apos;s actually working. I find the 5 highest-leverage moves,
-              rank them by effort vs lift, and hand you a 30/60/90 day plan your team can execute &mdash;
-              with or without me.
+              rank them by effort vs lift, and hand you a 30/60/90 day plan your team can execute
+              &mdash; with or without me. Built by someone who runs $300K/month in paid media every
+              day and has shipped 9 products solo.
             </p>
 
             {/* Stats row */}

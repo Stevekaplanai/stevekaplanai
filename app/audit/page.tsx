@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ROICalculator } from "@/components/roi-calculator";
+import { AuditComparison } from "@/components/audit-comparison";
 import { proofStats, timeline, deliverables } from "./data";
 
 export const metadata: Metadata = {
@@ -205,6 +206,9 @@ export default function AuditPage() {
             </div>
           </div>
         </section>
+
+        {/* Comparison anchor table */}
+        <AuditComparison />
 
         {/* Who I Am */}
         <section className="py-24 bg-slate/20">

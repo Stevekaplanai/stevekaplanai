@@ -28,6 +28,18 @@ export function Header() {
             Audit
           </Link>
           <Link
+            href="/standards"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Standards
+          </Link>
+          <Link
+            href="/compare"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Compare
+          </Link>
+          <Link
             href="/saaspocolypse"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
@@ -38,20 +50,6 @@ export function Header() {
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             Products
-          </Link>
-          <Link
-            href="/white-paper"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            White Paper
-          </Link>
-          <Link
-            href="https://aimoneyminute.beehiiv.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Newsletter
           </Link>
         </nav>
 
@@ -104,6 +102,20 @@ export function Header() {
               Audit
             </Link>
             <Link
+              href="/standards"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Standards
+            </Link>
+            <Link
+              href="/compare"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Compare
+            </Link>
+            <Link
               href="/saaspocolypse"
               onClick={() => setMobileMenuOpen(false)}
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -123,14 +135,6 @@ export function Header() {
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               White Paper
-            </Link>
-            <Link
-              href="https://aimoneyminute.beehiiv.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Newsletter
             </Link>
             <BookAuditButton className="bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-3 rounded-lg transition-colors text-center cursor-pointer">
               Book Your Audit
