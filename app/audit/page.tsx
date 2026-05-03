@@ -20,11 +20,13 @@ export const metadata: Metadata = {
     siteName: "stevekaplan.ai",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit — 5 days, $3,500 flat" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Profit Loop Audit — 5-Day GTM Stack Audit",
     description: "Find the top 5 AI and automation wins in your GTM stack. $3,500 flat. Money-back guarantee.",
+    images: ["/og-card.jpg"],
   },
 };
 

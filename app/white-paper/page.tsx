@@ -18,11 +18,13 @@ export const metadata: Metadata = {
     siteName: "stevekaplan.ai",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "The $259K Marketing Data Stack — Steve Kaplan" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The $259K Marketing Data Stack — Free White Paper",
     description: "The 6-tool stack I use to replace $295K enterprise platforms — at 88% less cost.",
+    images: ["/og-card.jpg"],
   },
 };
 

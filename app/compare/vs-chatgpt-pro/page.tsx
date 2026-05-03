@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   description:
     "Why ChatGPT Pro can't run a stack inventory or rank wins by effort vs lift. $200/mo + your evenings vs $3,500 once.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-chatgpt-pro" },
+  openGraph: {
+    title: "Profit Loop Audit vs DIY with ChatGPT Pro | Steve Kaplan",
+    description:
+      "ChatGPT Pro can't pull your data, inventory your stack, or rank wins by effort vs lift. $200/mo vs $3,500 once.",
+    url: "https://stevekaplan.ai/compare/vs-chatgpt-pro",
+    type: "article",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs DIY with ChatGPT Pro" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Profit Loop Audit vs DIY with ChatGPT Pro",
+    description: "What ChatGPT can't do. And why you still want both.",
+    images: ["/og-card.jpg"],
+  },
 };
 
 const rows = [

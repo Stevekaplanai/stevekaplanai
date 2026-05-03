@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   description:
     "Why agency retainers optimize for agency retention, not your pipeline. $6K-25K/mo of dashboard theater vs $3,500 once.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-agency-retainer" },
+  openGraph: {
+    title: "Profit Loop Audit vs an agency retainer | Steve Kaplan",
+    description:
+      "Quarterly cadence and dashboard theater, or 5 days and a written audit. $3,500 vs $6K-25K/mo.",
+    url: "https://stevekaplan.ai/compare/vs-agency-retainer",
+    type: "article",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs an agency retainer" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Profit Loop Audit vs an agency retainer",
+    description: "I ran an agency for 10 years. I closed it. Here's why.",
+    images: ["/og-card.jpg"],
+  },
 };
 
 const rows = [

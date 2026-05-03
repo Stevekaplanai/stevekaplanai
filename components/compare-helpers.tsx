@@ -9,44 +9,75 @@ interface CompareRow {
 
 export function CompareTable({ rows, altLabel }: { rows: CompareRow[]; altLabel: string }) {
   return (
-    <div className="bg-slate/30 border border-border rounded-xl overflow-hidden mb-10">
-      <table className="w-full">
-        <thead className="bg-slate/50 border-b border-border">
-          <tr>
-            <th className="text-left text-xs font-mono uppercase tracking-wider text-electric px-4 py-3 w-1/4">
-              Dimension
-            </th>
-            <th className="text-left text-xs font-mono uppercase tracking-wider text-muted-foreground px-4 py-3">
-              {altLabel}
-            </th>
-            <th className="text-left text-xs font-mono uppercase tracking-wider text-electric px-4 py-3">
-              Profit Loop Audit
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r.dim} className="border-b border-border/50 last:border-0">
-              <td className="px-4 py-4 text-sm font-semibold text-foreground align-top">
-                {r.dim}
-              </td>
-              <td className="px-4 py-4 text-sm text-muted-foreground align-top leading-relaxed">
-                {r.alt}
-              </td>
-              <td className="px-4 py-4 text-sm text-foreground align-top leading-relaxed bg-electric/5">
-                {r.audit}
-              </td>
+    <>
+      {/* Desktop table */}
+      <div className="hidden md:block bg-slate/30 border border-border rounded-xl overflow-hidden mb-10">
+        <table className="w-full">
+          <thead className="bg-slate/50 border-b border-border">
+            <tr>
+              <th className="text-left text-xs font-mono uppercase tracking-wider text-electric px-4 py-3 w-1/4">
+                Dimension
+              </th>
+              <th className="text-left text-xs font-mono uppercase tracking-wider text-muted-foreground px-4 py-3">
+                {altLabel}
+              </th>
+              <th className="text-left text-xs font-mono uppercase tracking-wider text-electric px-4 py-3">
+                Profit Loop Audit
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.dim} className="border-b border-border/50 last:border-0">
+                <td className="px-4 py-4 text-sm font-semibold text-foreground align-top">
+                  {r.dim}
+                </td>
+                <td className="px-4 py-4 text-sm text-muted-foreground align-top leading-relaxed">
+                  {r.alt}
+                </td>
+                <td className="px-4 py-4 text-sm text-foreground align-top leading-relaxed bg-electric/5">
+                  {r.audit}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Mobile stacked cards */}
+      <div className="md:hidden space-y-3 mb-10">
+        {rows.map((r) => (
+          <div
+            key={r.dim}
+            className="bg-slate/30 border border-border rounded-xl overflow-hidden"
+          >
+            <div className="px-4 py-2 bg-slate/50 border-b border-border">
+              <p className="text-xs font-mono uppercase tracking-wider text-electric font-semibold">
+                {r.dim}
+              </p>
+            </div>
+            <div className="px-4 py-3 border-b border-border/50">
+              <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground/70 mb-1">
+                {altLabel}
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{r.alt}</p>
+            </div>
+            <div className="px-4 py-3 bg-electric/5">
+              <p className="text-[10px] font-mono uppercase tracking-wider text-electric mb-1">
+                Profit Loop Audit
+              </p>
+              <p className="text-sm text-foreground leading-relaxed">{r.audit}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 
 export function CompareCTA() {
   return (
-    <div className="bg-midnight border border-electric/30 rounded-xl p-8 text-center mt-12">
+    <div className="bg-midnight border border-electric/30 rounded-xl p-6 md:p-8 text-center mt-12">
       <p className="text-sm uppercase tracking-wider text-electric font-mono font-medium mb-3">
         Ready to skip the comparison shopping?
       </p>

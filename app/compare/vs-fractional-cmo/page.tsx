@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   description:
     "Why fractional CMOs become slide-deck factories, and when an audit beats the retainer. $3,500 flat vs $8K-15K/mo.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-fractional-cmo" },
+  openGraph: {
+    title: "Profit Loop Audit vs hiring a fractional CMO | Steve Kaplan",
+    description:
+      "Don't fire your in-house growth hire. Quarterback them. $3,500 flat vs $8K-15K/mo retainer.",
+    url: "https://stevekaplan.ai/compare/vs-fractional-cmo",
+    type: "article",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs hiring a fractional CMO" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Profit Loop Audit vs hiring a fractional CMO",
+    description: "Quarterback your team. Don't replace it.",
+    images: ["/og-card.jpg"],
+  },
 };
 
 const rows = [

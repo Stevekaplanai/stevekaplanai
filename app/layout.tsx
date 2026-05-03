@@ -124,17 +124,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Steve Kaplan | AI Automation & Growth Marketing",
     description:
-      "Growth marketer who writes code. $50M+ ad spend managed. 9 AI products built solo. I don't advise. I build.",
+      "I find your AI and automation opportunities — the ones that lift profit and productivity, with the least lift. In 5 days. $3,500 flat. Money back if fewer than 3 wins.",
     url: "https://stevekaplan.ai",
     siteName: "stevekaplan.ai",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg",
-        width: 400,
-        height: 400,
-        alt: "Steve Kaplan - AI Automation Consultant",
+        url: "/og-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Profit Loop Audit — 5 days, $3,500 flat, money-back guarantee. By Steve Kaplan.",
       },
     ],
   },
@@ -142,9 +142,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Steve Kaplan | AI Automation & Growth Marketing",
     description:
-      "Growth marketer who writes code. $50M+ ad spend. 9 AI products built.",
+      "5-day GTM stack audit. Top 5 AI and automation wins. $3,500 flat. Money back if fewer than 3.",
     creator: "@stevekaplanai",
-    images: ["https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg"],
+    images: ["/og-card.jpg"],
   },
   robots: {
     index: true,

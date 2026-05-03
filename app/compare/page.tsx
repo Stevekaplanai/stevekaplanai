@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   description:
     "Side-by-side comparisons of the Profit Loop Audit against fractional CMOs, strategy decks, junior hires, agency retainers, and DIY with ChatGPT Pro.",
   alternates: { canonical: "https://stevekaplan.ai/compare" },
+  openGraph: {
+    title: "Compare — Profit Loop Audit vs the alternatives | Steve Kaplan",
+    description:
+      "Five honest comparisons. No straw men. Fractional CMO, strategy deck, junior hire, agency retainer, ChatGPT Pro — and where the audit beats each.",
+    url: "https://stevekaplan.ai/compare",
+    type: "website",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit comparisons" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Profit Loop Audit vs the alternatives",
+    description: "Five honest comparisons. No straw men. $3,500 vs the next-tier hire.",
+    images: ["/og-card.jpg"],
+  },
 };
 
 const comparisons = [

@@ -50,7 +50,7 @@ export function Hero() {
               5 days · $3,500 flat · money back if fewer than 3 wins
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-foreground leading-[1.05] tracking-tight mb-6">
+            <h1 className="text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-foreground leading-[1.1] sm:leading-[1.05] tracking-tight mb-6 text-balance">
               I find your{" "}
               <span className="text-electric">AI and automation opportunities</span>
               {" "}&mdash; the ones that{" "}

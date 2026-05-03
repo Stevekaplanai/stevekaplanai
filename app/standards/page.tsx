@@ -15,6 +15,13 @@ export const metadata: Metadata = {
       "Six things I won't do, in writing. No decks. No scope creep. No vendor kickbacks. No fake guarantees. No AI for the sake of AI. No work I can't ship myself.",
     url: "https://stevekaplan.ai/standards",
     type: "article",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Standards — Steve Kaplan" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Standards — six things I won't do, in writing.",
+    description: "No decks. No vendor kickbacks. No AI for AI's sake. No fake guarantees.",
+    images: ["/og-card.jpg"],
   },
 };
 

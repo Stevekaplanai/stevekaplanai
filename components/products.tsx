@@ -1,10 +1,20 @@
-import Link from "next/link";
 import Image from "next/image";
 
-const products = [
+interface Product {
+  name: string;
+  url: string;
+  urlDisplay: string;
+  description: string;
+  category: string;
+  image: string;
+  flagship?: boolean;
+}
+
+const products: Product[] = [
   {
     name: "GTMVP",
     url: "https://gtmvp.com",
+    urlDisplay: "gtmvp.com",
     description: "AI automation + managed ads agency. Turn AI hype into business results.",
     category: "Agency",
     image: "/images/products/gtmvp.jpg",
@@ -12,6 +22,7 @@ const products = [
   {
     name: "ClaudeSkillsHQ",
     url: "https://claudeskillshq.com",
+    urlDisplay: "claudeskillshq.com",
     description: "140+ verified Claude MCP skills. One command. Instant skills.",
     category: "Marketplace",
     image: "/images/products/claudeskillshq.jpg",
@@ -19,6 +30,7 @@ const products = [
   {
     name: "DocDoctor.ai",
     url: "https://demo.docdoctor.ai",
+    urlDisplay: "demo.docdoctor.ai",
     description: "AI-powered healthcare platform. Enhancing value-based care intelligence.",
     category: "Healthcare",
     image: "/images/products/docdoctor.jpg",
@@ -26,6 +38,7 @@ const products = [
   {
     name: "SynapMarketing",
     url: "https://synapmarketing.com",
+    urlDisplay: "synapmarketing.com",
     description: "16 AI agents to run your marketing department.",
     category: "MarTech",
     image: "/images/products/synapmarketing.jpg",
@@ -33,6 +46,7 @@ const products = [
   {
     name: "AIHomeworkHelp",
     url: "https://aihomeworkhelp.net",
+    urlDisplay: "aihomeworkhelp.net",
     description: "Free AI tutor for all subjects. Student-friendly learning assistant.",
     category: "EdTech",
     image: "/images/products/aihomeworkhelp.jpg",
@@ -40,6 +54,7 @@ const products = [
   {
     name: "StudentAIDetector",
     url: "https://studentaidetector.com",
+    urlDisplay: "studentaidetector.com",
     description: "Identify AI-generated content with 99.4% accuracy.",
     category: "EdTech",
     image: "/images/products/studentaidetector.jpg",
@@ -47,6 +62,7 @@ const products = [
   {
     name: "VentureVault",
     url: "https://venturevault.space",
+    urlDisplay: "venturevault.space",
     description: "Free startup ideas for builders. Curated opportunities.",
     category: "Tools",
     image: "/images/products/venturevault.jpg",
@@ -54,6 +70,7 @@ const products = [
   {
     name: "CompetitorIntelligence.co",
     url: "https://competitorintelligence.co",
+    urlDisplay: "competitorintelligence.co",
     description: "Real-time competitive signal for B2B teams. Track every move your competitors make.",
     category: "Intelligence",
     image: "/images/products/competitorintelligence.jpg",
@@ -61,6 +78,7 @@ const products = [
   {
     name: "Barfliz",
     url: "https://barfliz.com",
+    urlDisplay: "barfliz.com",
     description: "Never drink alone. The social network for nightlife.",
     category: "Consumer",
     image: "/images/products/barfliz.jpg",
@@ -78,23 +96,20 @@ export function Products() {
             Portfolio
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6 text-balance">
-            9 Products. All Self-Built. All Live.
+            9 products. All self-built. All live.
           </h2>
           <p className="text-lg text-muted-foreground">
             Not prototypes. Not Figma mocks. Live, working products with real users.
           </p>
         </div>
 
-        {/* Products grid - Clean 3-column layout */}
+        {/* Products grid - 3-column layout, static (no external links) */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
-            <Link
+            <article
               key={product.name}
-              href={product.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group relative flex flex-col bg-slate/30 border border-border rounded-xl overflow-hidden transition-all duration-300 hover:border-electric/50 hover:shadow-xl hover:shadow-electric/5 hover:-translate-y-1 ${
-                product.flagship ? "md:col-span-2 lg:col-span-1" : ""
+              className={`relative flex flex-col bg-slate/30 border border-border rounded-xl overflow-hidden ${
+                product.flagship ? "md:col-span-2 lg:col-span-1 border-emerald/30" : ""
               }`}
             >
               {/* Flagship badge */}
@@ -105,16 +120,14 @@ export function Products() {
               )}
 
               {/* Screenshot */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate/50">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate/50 border-b border-border">
                 <Image
                   src={product.image}
-                  alt={`${product.name} homepage screenshot`}
+                  alt={`Screenshot of ${product.urlDisplay}`}
                   fill
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-top"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                {/* Subtle overlay on hover */}
-                <div className="absolute inset-0 bg-electric/0 group-hover:bg-electric/5 transition-colors duration-300" />
               </div>
 
               {/* Content */}
@@ -123,28 +136,21 @@ export function Products() {
                   <span className="text-xs font-medium text-electric uppercase tracking-wider">
                     {product.category}
                   </span>
-                  <svg
-                    className="w-4 h-4 text-muted-foreground group-hover:text-electric transition-colors"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
                 </div>
-                <h3 className="text-xl font-bold text-foreground group-hover:text-electric transition-colors mb-2">
+                <h3 className="text-xl font-bold text-foreground mb-2">
                   {product.name}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-4">
                   {product.description}
                 </p>
+                <p
+                  className="text-xs font-mono text-muted-foreground/80 select-text"
+                  aria-label={`URL: ${product.urlDisplay}`}
+                >
+                  {product.urlDisplay}
+                </p>
               </div>
-            </Link>
+            </article>
           ))}
         </div>
 

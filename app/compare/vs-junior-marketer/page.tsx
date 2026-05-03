@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   description:
     "Why a junior marketer learning on your dollar costs more than the audit. $70K-110K/yr + benefits vs $3,500 once.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-junior-marketer" },
+  openGraph: {
+    title: "Profit Loop Audit vs hiring a junior in-house marketer | Steve Kaplan",
+    description:
+      "$70K-110K/yr learning on your dollar, or $3,500 once for someone who's already managed $50M+ in spend.",
+    url: "https://stevekaplan.ai/compare/vs-junior-marketer",
+    type: "article",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs hiring a junior in-house" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Profit Loop Audit vs hiring a junior in-house",
+    description: "$70K to learn, or $3,500 from someone who's already shipped.",
+    images: ["/og-card.jpg"],
+  },
 };
 
 const rows = [

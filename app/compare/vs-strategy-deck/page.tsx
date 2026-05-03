@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   description:
     "Why most consultancy decks decay in 60 days, and what an audit hands you instead. $3,500 vs $8K-15K/mo retainer.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-strategy-deck" },
+  openGraph: {
+    title: "Profit Loop Audit vs a strategy deck | Steve Kaplan",
+    description:
+      "Most consultants ship a deck. I ship the system that executes it. $3,500 vs $8K-15K/mo retainer.",
+    url: "https://stevekaplan.ai/compare/vs-strategy-deck",
+    type: "article",
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs a strategy deck" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Profit Loop Audit vs a strategy deck",
+    description: "Most consultants ship a deck. I ship the system that executes it.",
+    images: ["/og-card.jpg"],
+  },
 };
 
 const rows = [
