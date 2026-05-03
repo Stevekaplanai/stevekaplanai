@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   const { email } = await req.json();
@@ -8,7 +9,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Valid email required" }, { status: 400 });
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
   const audienceId = process.env.RESEND_SAASPOCOLYPSE_AUDIENCE_ID;
 
   if (!audienceId) {
@@ -16,6 +16,9 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const { Resend } = await import("resend");
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     await resend.contacts.create({
       email,
       audienceId,
