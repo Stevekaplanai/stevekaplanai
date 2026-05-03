@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { createClient } from "@supabase/supabase-js";
 
+export const dynamic = "force-dynamic";
+
 function getResend(): Resend {
   const key = process.env.RESEND_API_KEY;
   if (!key) {
@@ -9,8 +11,6 @@ function getResend(): Resend {
   }
   return new Resend(key);
 }
-
-const AUDIENCE_ID = process.env.RESEND_SAASPOCOLYPSE_AUDIENCE_ID;
 
 const supabase = process.env.GIVEAWAY_SUPABASE_URL
   ? createClient(
@@ -35,19 +35,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Valid email required" }, { status: 400 });
   }
 
+  const audienceId = process.env.RESEND_SAASPOCOLYPSE_AUDIENCE_ID;
+
+  if (!audienceId) {
+    return NextResponse.json({ error: "Configuration error" }, { status: 500 });
+  }
+
   try {
-    if (!AUDIENCE_ID) {
-      return NextResponse.json(
-        { error: "Subscribe is not configured" },
-        { status: 500 }
-      );
-    }
     const resend = getResend();
 
     // Add to Resend audience
     await resend.contacts.create({
       email,
-      audienceId: AUDIENCE_ID,
+      audienceId,
     });
 
     // Register in giveaway system

@@ -25,7 +25,7 @@ importers:
         version: 19.2.5(react@19.2.5)
       resend:
         specifier: ^6.12.0
-        version: 6.12.0
+        version: 6.12.2
     devDependencies:
       '@tailwindcss/postcss':
         specifier: ^4
@@ -580,8 +580,8 @@ packages:
     resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
     engines: {node: '>=0.10.0'}
 
-  resend@6.12.0:
-    resolution: {integrity: sha512-CaxEvX1z+/MGbgnhsM/bvmkbnZd1v1sEXELAjBNSDBQNMaB7MgqOyrBgI27CYikEgdaDnBrXghAXYWTBs/h5Bw==}
+  resend@6.12.2:
+    resolution: {integrity: sha512-xwgmU4b0OqoabJsIoK/x0Whk0Fcs3bpbK4i/DEWPiE5hYJHyHl0TbB6QbI3gIr+bLdLUJ1GYm/fe41aVFuHXgw==}
     engines: {node: '>=20'}
     peerDependencies:
       '@react-email/render': '*'
@@ -641,7 +641,19 @@ packages:
 
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
-
+  
+  ws@8.20.0:
+    resolution: {integrity: sha512-F4LXYR71jYNi3GzT7ZfMdqTiKxYZ6KJzX1VezSzHJBqD5jPHPi0/3k9wEJoYOFhJ3GJsdqvw/FPjIswIL3tMcw==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+        
   uuid@10.0.0:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
     hasBin: true
@@ -1066,7 +1078,7 @@ snapshots:
 
   react@19.2.5: {}
 
-  resend@6.12.0:
+  resend@6.12.2:
     dependencies:
       postal-mime: 2.7.4
       svix: 1.90.0
@@ -1136,5 +1148,3 @@ snapshots:
   undici-types@6.21.0: {}
 
   uuid@10.0.0: {}
-
-  ws@8.20.0: {}
