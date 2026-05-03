@@ -29,6 +29,10 @@
   --radius: 0.75rem;
 }
 
+:root {
+  --banner-h: 0px;
+}
+
 * {
   border-color: var(--color-border);
 }

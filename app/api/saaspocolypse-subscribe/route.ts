@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+import { createClient } from "@supabase/supabase-js";
 
 export const dynamic = "force-dynamic";
+
+function getResend(): Resend {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) {
+    throw new Error("RESEND_API_KEY is not configured");
+  }
+  return new Resend(key);
+}
 
 const supabase = process.env.GIVEAWAY_SUPABASE_URL
   ? createClient(
@@ -32,6 +42,8 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const resend = getResend();
+
     // Add to Resend audience
     await resend.contacts.create({
       email,
