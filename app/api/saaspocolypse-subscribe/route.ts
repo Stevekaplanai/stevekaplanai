@@ -1,13 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+import { Resend } from "resend";
 
 export const dynamic = "force-dynamic";
 
-const supabase = process.env.GIVEAWAY_SUPABASE_URL
-  ? createClient(
-      process.env.GIVEAWAY_SUPABASE_URL!,
-      process.env.GIVEAWAY_SUPABASE_SERVICE_KEY!
-    )
-  : null;
+function getResend() {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error("RESEND_API_KEY is not configured");
+  }
+  return new Resend(process.env.RESEND_API_KEY);
+}
+
+function getSupabase() {
+  if (!process.env.GIVEAWAY_SUPABASE_URL || !process.env.GIVEAWAY_SUPABASE_SERVICE_KEY) {
+    return null;
+  }
+  return createClient(
+    process.env.GIVEAWAY_SUPABASE_URL,
+    process.env.GIVEAWAY_SUPABASE_SERVICE_KEY
+  );
+}
 
 function generateCode(): string {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -32,6 +44,9 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const resend = getResend();
+    const supabase = getSupabase();
+
     // Add to Resend audience
     await resend.contacts.create({
       email,
