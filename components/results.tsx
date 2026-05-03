@@ -172,10 +172,10 @@ export function Results() {
         {/* CTA */}
         <div className="text-center">
           <Link
-            href="#get-white-paper"
+            href="/audit"
             className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"
           >
-            See How I Build Marketing Systems
+            See How I Audit GTM Stacks
             <svg
               className="w-4 h-4"
               fill="none"

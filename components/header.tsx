@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { BookAuditButton } from "./book-audit-modal";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,13 +16,19 @@ export function Header() {
           </span>
           <span className="text-xl font-bold text-electric">.ai</span>
         </Link>
-        
-        <nav className="hidden md:flex items-center gap-8">
+
+        <nav className="hidden md:flex items-center gap-7">
           <Link
-            href="#about"
+            href="/audit"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            About
+            Audit
+          </Link>
+          <Link
+            href="/saaspocolypse"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            SAASpocolypse
           </Link>
           <Link
             href="#products"
@@ -30,16 +37,10 @@ export function Header() {
             Products
           </Link>
           <Link
-            href="#white-paper"
+            href="/white-paper"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             White Paper
-          </Link>
-          <Link
-            href="#github"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            GitHub
           </Link>
           <Link
             href="https://aimoneyminute.beehiiv.com"
@@ -50,15 +51,12 @@ export function Header() {
             Newsletter
           </Link>
         </nav>
-        
+
         <div className="flex items-center gap-4">
-          <Link
-            href="#get-white-paper"
-            className="hidden sm:block bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-          >
-            Get the Playbook
-          </Link>
-          
+          <BookAuditButton className="hidden sm:inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer">
+            Book Your Audit
+          </BookAuditButton>
+
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -90,17 +88,24 @@ export function Header() {
           </button>
         </div>
       </div>
-      
+
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-midnight border-t border-border">
           <nav className="flex flex-col px-6 py-4 space-y-4">
             <Link
-              href="#about"
+              href="/audit"
               onClick={() => setMobileMenuOpen(false)}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              About
+              Audit
+            </Link>
+            <Link
+              href="/saaspocolypse"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              SAASpocolypse
             </Link>
             <Link
               href="#products"
@@ -110,18 +115,11 @@ export function Header() {
               Products
             </Link>
             <Link
-              href="#white-paper"
+              href="/white-paper"
               onClick={() => setMobileMenuOpen(false)}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               White Paper
-            </Link>
-            <Link
-              href="#github"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              GitHub
             </Link>
             <Link
               href="https://aimoneyminute.beehiiv.com"
@@ -131,13 +129,9 @@ export function Header() {
             >
               Newsletter
             </Link>
-            <Link
-              href="#get-white-paper"
-              onClick={() => setMobileMenuOpen(false)}
-              className="bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-3 rounded-lg transition-colors text-center"
-            >
-              Get the Playbook
-            </Link>
+            <BookAuditButton className="bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-3 rounded-lg transition-colors text-center cursor-pointer">
+              Book Your Audit
+            </BookAuditButton>
           </nav>
         </div>
       )}
