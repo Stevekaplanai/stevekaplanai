@@ -1,0 +1,688 @@
+/**
+ * SAASpocolypse 2026 — Complete Email Series
+ *
+ * 30 emails total:
+ *   - 3 pre-event (May 9 / May 16 / May 22) — compressed for accelerated launch
+ *   - 20 daily build emails (May 23 → Jun 14, with rest days on Jun 2 + Jun 9)
+ *   - 3 week recaps (after Day 5, Day 10, Day 17)
+ *   - 4 post-event (Jun 15, Jun 17, Jun 24, Jul 1)
+ *
+ * Schedule: May 23 — Jun 17, 2026. ServiceForge is the Days 22-23 finale.
+ * Run order matches new schedule — builds[i] corresponds to the (i+1)th build day.
+ *
+ * Usage: source .env.local && npx tsx scripts/schedule-saaspocolypse-emails.ts
+ */
+
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+const AUDIENCE_ID = process.env.RESEND_SAASPOCOLYPSE_AUDIENCE_ID!;
+const FROM = "Steve Kaplan <steve@stevekaplan.ai>";
+
+interface EmailDraft {
+  name: string;
+  subject: string;
+  scheduledAt: string;
+  html: string;
+}
+
+// ───────────────────────────────────────────
+// SHARED STYLES
+// ───────────────────────────────────────────
+
+const wrapper = (body: string) => `
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 580px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a;">
+  ${body}
+  <p style="font-size: 14px; color: #666; margin-top: 32px; border-top: 1px solid #eee; padding-top: 16px;">&mdash; Steve<br><a href="https://stevekaplan.ai" style="color: #666;">stevekaplan.ai</a></p>
+</div>`;
+
+const h1 = (text: string) =>
+  `<h1 style="font-size: 26px; font-weight: 800; margin-bottom: 20px; color: #000;">${text}</h1>`;
+
+const p = (text: string) =>
+  `<p style="font-size: 16px; line-height: 1.7; margin-bottom: 16px;">${text}</p>`;
+
+const cta = (label: string, href: string, color = "#000") =>
+  `<a href="${href}" style="display: inline-block; background: ${color}; color: #fff; padding: 12px 24px; text-decoration: none; font-weight: 700; font-size: 14px; margin-top: 8px;">${label}</a>`;
+
+const box = (content: string, borderColor = "#000") =>
+  `<div style="background: #f7f7f5; border-left: 4px solid ${borderColor}; padding: 20px; margin-bottom: 20px;">${content}</div>`;
+
+const dailyBuildEmail = (opts: {
+  day: string;
+  date: string;
+  project: string;
+  replaces: string;
+  savings: string;
+  desc: string;
+  prevProject?: string;
+  prevDay?: string;
+}) => wrapper(`
+  ${h1(`Day ${opts.day}: ${opts.project}`)}
+  ${opts.prevProject ? p(`Yesterday's build &mdash; <strong>${opts.prevProject}</strong> &mdash; is done. Repo goes public after the event. ${opts.prevDay ? `(Day ${opts.prevDay})` : ""}`) : ""}
+  ${p(`Today I'm building <strong>${opts.project}</strong> &mdash; ${opts.desc}`)}
+  ${box(`
+    <p style="margin: 0 0 6px; font-size: 15px;"><strong>Replaces:</strong> ${opts.replaces}</p>
+    <p style="margin: 0; font-size: 15px;"><strong>Enterprise cost:</strong> <span style="color: #e53e3e; font-weight: 700;">${opts.savings}/yr</span></p>
+  `)}
+  ${p("Going live across all platforms now. Pick yours and join:")}
+  ${cta("Watch Live", "https://stevekaplan.ai/saaspocolypse", "#e53e3e")}
+`);
+
+// ───────────────────────────────────────────
+// BUILD SCHEDULE DATA
+// ───────────────────────────────────────────
+
+const builds = [
+  // Index 0 — Day 1 (Sat May 23) — Week 1 Quick Wins
+  { day: "1", date: "May 23", project: "StatusBrew", replaces: "Atlassian Statuspage", savings: "$16K", desc: "modern status pages and incident management with AI-generated postmortems." },
+  // Index 1 — Day 2 (Sun May 24)
+  { day: "2", date: "May 24", project: "ProposalForge", replaces: "PandaDoc, Proposify", savings: "$20K", desc: "AI proposal generator. Brief in, professional proposal out, e-signature included." },
+  // Index 2 — Day 3 (Mon May 25)
+  { day: "3", date: "May 25", project: "InsightPulse", replaces: "Qualtrics, SurveyMonkey Enterprise", savings: "$323K", desc: "AI survey and NPS platform. Drag-and-drop builder, AI-generated insight reports from open-ended responses." },
+  // Index 3 — Day 4 (Tue May 26)
+  { day: "4", date: "May 26", project: "BoardReady", replaces: "Diligent Boards", savings: "$100K", desc: "AI board meeting platform. Board book assembly, AI-generated meeting minutes, resolution tracking, e-signatures." },
+  // Index 4 — Day 5 (Wed May 27) — Week 1 wrap
+  { day: "5", date: "May 27", project: "RecruiterAI", replaces: "Greenhouse, Lever", savings: "$25K", desc: "AI recruiting and ATS. AI resume screening, candidate scoring, interview scorecards, careers page builder." },
+  // Index 5 — Day 6 (Thu May 28) — Week 2 Core Builds
+  { day: "6", date: "May 28", project: "ExpenseZero", replaces: "SAP Concur, Expensify", savings: "$110K", desc: "AI expense management. Snap a receipt, AI extracts everything, approval workflows handle the rest." },
+  // Index 6 — Day 7 (Fri May 29)
+  { day: "7", date: "May 29", project: "ContractPilot", replaces: "Ironclad, DocuSign CLM", savings: "$150K", desc: "AI contract lifecycle management. Upload a PDF, AI extracts every clause, date, and obligation." },
+  // Index 7 — Day 8 (Sat May 30)
+  { day: "8", date: "May 30", project: "ComplianceForge", replaces: "Vanta, Drata, SAP GRC", savings: "$100K", desc: "AI compliance automation. SOC 2, ISO 27001, HIPAA frameworks with auto-mapped controls and evidence collection." },
+  // Index 8 — Day 9 (Sun May 31)
+  { day: "9", date: "May 31", project: "PeopleOS", replaces: "BambooHR, Rippling", savings: "$100K", desc: "AI HR platform. Employee directory, PTO management, onboarding checklists, AI-generated review templates." },
+  // Index 9 — Day 10 (Mon Jun 1) — Week 2 wrap
+  { day: "10", date: "Jun 1", project: "InvoiceAgent", replaces: "Coupa, SAP Ariba", savings: "$200K", desc: "AI accounts payable. Invoice ingestion, 3-way matching, approval routing, GL coding suggestions." },
+  // ── Day 11 (Tue Jun 2) — REST DAY ──
+  // Index 10 — Day 12 (Wed Jun 3) — Week 3 Advanced Builds
+  { day: "12", date: "Jun 3", project: "GongSlayer", replaces: "Gong, Chorus.ai", savings: "$100K", desc: "AI sales conversation intelligence. Record calls, AI generates summaries, deal risk scores, and coaching insights." },
+  // Index 11 — Day 13 (Thu Jun 4)
+  { day: "13", date: "Jun 4", project: "CompeteWatcher", replaces: "Crayon, Klue", savings: "$60K", desc: "AI competitive intelligence. Track competitor websites, job postings, and news. AI generates battlecards for your sales team." },
+  // Index 12 — Day 14 (Fri Jun 5)
+  { day: "14", date: "Jun 5", project: "ContentMultiplier", replaces: "Repurpose.io, content agencies", savings: "$120K", desc: "one piece of content in, 10+ platform-specific formats out. Blog to Twitter thread to LinkedIn article to TikTok script." },
+  // Index 13 — Day 15 (Sat Jun 6)
+  { day: "15", date: "Jun 6", project: "DocuVault", replaces: "M-Files, SharePoint Premium", savings: "$80K", desc: "AI document intelligence. Upload anything, AI classifies and extracts metadata, semantic search across your entire library." },
+  // Index 14 — Day 16 (Sun Jun 7)
+  { day: "16", date: "Jun 7", project: "FinOpsLite", replaces: "CloudHealth, Spot.io", savings: "$100K", desc: "AI cloud cost optimizer. Connect AWS/GCP/Azure, get anomaly detection, rightsizing recommendations, and FinOps reports." },
+  // Index 15 — Day 17 (Mon Jun 8) — Week 3 wrap
+  { day: "17", date: "Jun 8", project: "VendorShield", replaces: "OneTrust Vendorpedia", savings: "$100K", desc: "AI vendor risk management. Security questionnaire auto-completion, SOC 2 report parsing, continuous monitoring." },
+  // ── Day 18 (Tue Jun 9) — REST DAY ──
+  // Index 16 — Day 19 (Wed Jun 10) — Week 4 Boss Fights
+  { day: "19", date: "Jun 10", project: "SupportGenius", replaces: "Zendesk, Intercom", savings: "$180K", desc: "AI-first customer support. AI agent auto-resolves 60-80% of tickets, smart escalation for the rest." },
+  // Index 17 — Day 20 (Thu Jun 11)
+  { day: "20", date: "Jun 11", project: "MarketFlow", replaces: "Marketo, Pardot", savings: "$180K", desc: "AI marketing automation. Visual journey builder, AI-generated email campaigns, lead scoring, drip sequences." },
+  // Index 18 — Day 21 (Fri Jun 12)
+  { day: "21", date: "Jun 12", project: "DataTalk", replaces: "Tableau, Looker", savings: "$200K", desc: "talk-to-your-data BI. Connect a database, ask questions in English, get charts and dashboards." },
+  // Index 19 — Days 22-23 (Sat-Sun Jun 13-14) — ServiceForge finale, 2-day build
+  { day: "22-23", date: "Jun 13-14", project: "ServiceForge", replaces: "ServiceNow", savings: "$1M+", desc: "AI IT service management. Ticket auto-categorization, AI auto-resolves L1 tickets, knowledge base, SLA tracking. Two-day finale build." },
+];
+
+// ───────────────────────────────────────────
+// EMAIL DEFINITIONS
+// ───────────────────────────────────────────
+
+const emails: EmailDraft[] = [
+
+  // ═══════════════════════════════════════
+  // PRE-EVENT (3 emails — compressed for accelerated launch)
+  // ═══════════════════════════════════════
+
+  {
+    name: "SAASpocolypse [Pre-1] The 20 Projects Revealed",
+    subject: "Here are the 20 enterprise tools I'm replacing",
+    scheduledAt: "2026-05-09T14:00:00Z",
+    html: wrapper(`
+      ${h1("The 20 projects are locked.")}
+      ${p("I committed to building twenty open-source replacements for enterprise SaaS tools, live on stream, in twenty-six days. Today the slate is set.")}
+      ${p("Here's what I'm building &mdash; and what each one replaces:")}
+      <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 24px;">
+        <tr style="border-bottom: 2px solid #000;">
+          <th style="text-align: left; padding: 8px 0; font-weight: 800;">Build</th>
+          <th style="text-align: left; padding: 8px 0; font-weight: 800;">Replaces</th>
+          <th style="text-align: right; padding: 8px 0; font-weight: 800;">They Charge</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">ServiceForge</td><td>ServiceNow</td><td style="text-align: right; color: #e53e3e;">$1M+/yr</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">InsightPulse</td><td>Qualtrics</td><td style="text-align: right; color: #e53e3e;">$323K/yr</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">DataTalk</td><td>Tableau</td><td style="text-align: right; color: #e53e3e;">$200K/yr</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">InvoiceAgent</td><td>Coupa</td><td style="text-align: right; color: #e53e3e;">$200K/yr</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">SupportGenius</td><td>Zendesk</td><td style="text-align: right; color: #e53e3e;">$180K/yr</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">MarketFlow</td><td>Marketo</td><td style="text-align: right; color: #e53e3e;">$180K/yr</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">ContractPilot</td><td>Ironclad</td><td style="text-align: right; color: #e53e3e;">$150K/yr</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">ContentMultiplier</td><td>Repurpose.io + Agencies</td><td style="text-align: right; color: #e53e3e;">$120K/yr</td></tr>
+        <tr><td style="padding: 6px 0;" colspan="3"><em>+ 12 more builds. Total: $4.7M+ in replaced enterprise software.</em></td></tr>
+      </table>
+      ${p("Every single one will be built live on camera, start to finish, and published as an MIT-licensed open-source repo.")}
+      ${p("Why now: I had this lined up for July. Got fired May 1st. Two weeks notice. So I'm starting one week after my last day instead of two months later. Same plan, earlier ship date.")}
+      ${cta("See the Full Lineup", "https://stevekaplan.ai/saaspocolypse")}
+    `),
+  },
+
+  {
+    name: "SAASpocolypse [Pre-2] Schedule + How I'm Preparing",
+    subject: "26-day schedule is live + how I'm prepping",
+    scheduledAt: "2026-05-16T14:00:00Z",
+    html: wrapper(`
+      ${h1("One week out. Here's the schedule.")}
+      ${p("Starting Saturday May 23rd, I'm building one project per day. Here's the first two weeks:")}
+      <div style="font-family: 'Courier New', monospace; font-size: 14px; background: #000; color: #fff; padding: 24px; margin-bottom: 20px; line-height: 1.8;">
+        <div style="color: #C3F73A; margin-bottom: 8px; font-weight: 700;">WEEK 1 &mdash; QUICK WINS</div>
+        <div>Day 1 &nbsp;May 23&nbsp; StatusBrew (Atlassian Statuspage)</div>
+        <div>Day 2 &nbsp;May 24&nbsp; ProposalForge (PandaDoc)</div>
+        <div>Day 3 &nbsp;May 25&nbsp; InsightPulse (Qualtrics)</div>
+        <div>Day 4 &nbsp;May 26&nbsp; BoardReady (Diligent)</div>
+        <div>Day 5 &nbsp;May 27&nbsp; RecruiterAI (Greenhouse)</div>
+        <div style="color: #C3F73A; margin: 12px 0 8px; font-weight: 700;">WEEK 2 &mdash; CORE BUILDS</div>
+        <div>Day 6 &nbsp;May 28&nbsp; ExpenseZero (SAP Concur)</div>
+        <div>Day 7 &nbsp;May 29&nbsp; ContractPilot (Ironclad)</div>
+        <div>Day 8 &nbsp;May 30&nbsp; ComplianceForge (Vanta)</div>
+        <div>Day 9 &nbsp;May 31&nbsp; PeopleOS (BambooHR)</div>
+        <div>Day 10 Jun 1 &nbsp; InvoiceAgent (Coupa)</div>
+      </div>
+      ${p("Rest day on Day 11 (Jun 2). Weeks 3 &amp; 4 follow with the heavy hitters &mdash; ServiceForge as the Days 22-23 finale.")}
+      ${h1("And I'm not winging this.")}
+      ${p("Some people might think building 20 projects in 26 days sounds reckless. It would be &mdash; if I hadn't spent weeks architecting everything before writing a single line of code.")}
+      ${box(`
+        <p style="margin: 0 0 8px; font-size: 15px;"><strong>20 Product Requirements Documents</strong> &mdash; features, user flows, success metrics</p>
+        <p style="margin: 0 0 8px; font-size: 15px;"><strong>20 Architecture Documents</strong> &mdash; data models, API routes, AI integration points</p>
+        <p style="margin: 0 0 8px; font-size: 15px;"><strong>20 SQL Migrations</strong> &mdash; 204 database tables, ready to deploy to Supabase</p>
+        <p style="margin: 0 0 8px; font-size: 15px;"><strong>Shared Boilerplate</strong> &mdash; auth, dashboard, AI wrapper, UI components all built</p>
+        <p style="margin: 0; font-size: 15px;"><strong>Build Sequence for Each Project</strong> &mdash; what to code first for maximum impact</p>
+      `)}
+      ${p("The streams are the <em>execution</em>, not the thinking. When I go live, I already know every table, every route, and every prompt.")}
+      ${cta("Add to Calendar", "https://luma.com/event/evt-xtCTLY71gnGQkvp")}
+    `),
+  },
+
+  {
+    name: "SAASpocolypse [Pre-3] Tomorrow",
+    subject: "Tomorrow morning. Be there.",
+    scheduledAt: "2026-05-22T18:00:00Z",
+    html: wrapper(`
+      ${h1("It starts tomorrow.")}
+      ${p("Everything is ready. 20 PRDs written. 204 database tables designed. 20 architecture docs complete. Boilerplate deployed. OBS configured. Coffee stocked.")}
+      ${p("Tomorrow morning I'm going live to build <strong>StatusBrew</strong> &mdash; a modern open-source status page and incident management tool. It replaces Atlassian Statuspage (which charges up to $16K/year) and Cachet (which was abandoned).")}
+      ${p("Where to watch:")}
+      ${box(`
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>YouTube</strong> &mdash; best for full screen coding view</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>LinkedIn</strong> &mdash; if you want to comment professionally</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>X (Twitter)</strong> &mdash; for the live commentary thread</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>Facebook</strong> &mdash; if that's your platform</p>
+        <p style="margin: 0; font-size: 15px;"><strong>Instagram</strong> &mdash; for the vertical view</p>
+      `)}
+      ${p("This isn't a tutorial. It's a live build. Things will break. That's the point &mdash; you'll see exactly how a developer works through real problems in real time.")}
+      ${p("I'll send one more email tomorrow morning when the stream goes live with direct links. See you there.")}
+    `),
+  },
+
+  // ═══════════════════════════════════════
+  // DAILY BUILD EMAILS (Days 1-22, 20 emails)
+  // Day 11 + Day 18 are rest days — no email
+  // ═══════════════════════════════════════
+
+  // Day 1 — special launch framing
+  {
+    name: "SAASpocolypse [Day 1] We're Live — StatusBrew",
+    subject: "We're live. Day 1: StatusBrew.",
+    scheduledAt: "2026-05-23T13:30:00Z",
+    html: wrapper(`
+      ${h1("The SAASpocolypse starts now.")}
+      ${p("Going live in 30 minutes. Day 1: <strong>StatusBrew</strong> &mdash; open-source status pages and incident management.")}
+      ${p("Pick your platform and join:")}
+      ${cta("Watch Live Now", "https://stevekaplan.ai/saaspocolypse", "#e53e3e")}
+      <br><br>
+      ${p("When the build is done, the GitHub repo goes public. MIT license. Yours to fork.")}
+      ${p("Let's go.")}
+    `),
+  },
+
+  // Day 2 — ProposalForge
+  {
+    name: "SAASpocolypse [Day 2] ProposalForge",
+    subject: "Day 2: Building ProposalForge (kills PandaDoc)",
+    scheduledAt: "2026-05-24T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[1], prevProject: "StatusBrew", prevDay: "1" }),
+  },
+
+  // Day 3 — InsightPulse
+  {
+    name: "SAASpocolypse [Day 3] InsightPulse",
+    subject: "Day 3: Building InsightPulse (kills Qualtrics)",
+    scheduledAt: "2026-05-25T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[2], prevProject: "ProposalForge", prevDay: "2" }),
+  },
+
+  // Day 4 — BoardReady
+  {
+    name: "SAASpocolypse [Day 4] BoardReady",
+    subject: "Day 4: Building BoardReady (kills Diligent)",
+    scheduledAt: "2026-05-26T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[3], prevProject: "InsightPulse", prevDay: "3" }),
+  },
+
+  // Day 5 — RecruiterAI
+  {
+    name: "SAASpocolypse [Day 5] RecruiterAI",
+    subject: "Day 5: Building RecruiterAI (kills Greenhouse)",
+    scheduledAt: "2026-05-27T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[4], prevProject: "BoardReady", prevDay: "4" }),
+  },
+
+  // Week 1 Recap (May 27 evening)
+  {
+    name: "SAASpocolypse [Week 1 Recap]",
+    subject: "Week 1 done. 5 builds shipped. Here's what happened.",
+    scheduledAt: "2026-05-27T22:00:00Z",
+    html: wrapper(`
+      ${h1("Week 1: 5 builds shipped.")}
+      ${p("Five days. Five enterprise SaaS alternatives. All built live on camera. Here's the scoreboard:")}
+      <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-bottom: 24px;">
+        <tr style="border-bottom: 2px solid #000;">
+          <th style="text-align: left; padding: 8px 0; font-weight: 800;">Day</th>
+          <th style="text-align: left; padding: 8px 0; font-weight: 800;">Project</th>
+          <th style="text-align: right; padding: 8px 0; font-weight: 800;">Replaces</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">1</td><td>StatusBrew</td><td style="text-align: right;">Statuspage ($16K/yr)</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">2</td><td>ProposalForge</td><td style="text-align: right;">PandaDoc ($20K/yr)</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">3</td><td>InsightPulse</td><td style="text-align: right;">Qualtrics ($323K/yr)</td></tr>
+        <tr style="border-bottom: 1px solid #eee;"><td style="padding: 6px 0;">4</td><td>BoardReady</td><td style="text-align: right;">Diligent ($100K/yr)</td></tr>
+        <tr><td style="padding: 6px 0;">5</td><td>RecruiterAI</td><td style="text-align: right;">Greenhouse ($25K/yr)</td></tr>
+      </table>
+      ${p("That's $484K in enterprise software replaced in the first week. 15 more builds to go.")}
+      ${p("Week 2 starts tomorrow with the core builds: ExpenseZero (SAP Concur), ContractPilot (Ironclad), ComplianceForge (Vanta), PeopleOS (BambooHR), and InvoiceAgent (Coupa).")}
+      ${cta("Catch Up on Recordings", "https://stevekaplan.ai/saaspocolypse")}
+    `),
+  },
+
+  // Day 6 — ExpenseZero
+  {
+    name: "SAASpocolypse [Day 6] ExpenseZero",
+    subject: "Day 6: Building ExpenseZero (kills SAP Concur)",
+    scheduledAt: "2026-05-28T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[5], prevProject: "RecruiterAI", prevDay: "5" }),
+  },
+
+  // Day 7 — ContractPilot
+  {
+    name: "SAASpocolypse [Day 7] ContractPilot",
+    subject: "Day 7: Building ContractPilot (kills Ironclad)",
+    scheduledAt: "2026-05-29T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[6], prevProject: "ExpenseZero", prevDay: "6" }),
+  },
+
+  // Day 8 — ComplianceForge
+  {
+    name: "SAASpocolypse [Day 8] ComplianceForge",
+    subject: "Day 8: Building ComplianceForge (kills Vanta)",
+    scheduledAt: "2026-05-30T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[7], prevProject: "ContractPilot", prevDay: "7" }),
+  },
+
+  // Day 9 — PeopleOS
+  {
+    name: "SAASpocolypse [Day 9] PeopleOS",
+    subject: "Day 9: Building PeopleOS (kills BambooHR)",
+    scheduledAt: "2026-05-31T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[8], prevProject: "ComplianceForge", prevDay: "8" }),
+  },
+
+  // Day 10 — InvoiceAgent
+  {
+    name: "SAASpocolypse [Day 10] InvoiceAgent",
+    subject: "Day 10: Building InvoiceAgent (kills Coupa)",
+    scheduledAt: "2026-06-01T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[9], prevProject: "PeopleOS", prevDay: "9" }),
+  },
+
+  // Week 2 Recap (Jun 1 evening)
+  {
+    name: "SAASpocolypse [Week 2 Recap]",
+    subject: "Week 2 done. 10 builds shipped. Halfway there.",
+    scheduledAt: "2026-06-01T22:00:00Z",
+    html: wrapper(`
+      ${h1("Halfway. 10 builds shipped.")}
+      ${p("Two weeks in. Ten enterprise tools replaced. Tomorrow is the first rest day &mdash; built in for build overruns and stream prep. Then we go again.")}
+      ${p("Week 2 delivered:")}
+      ${box(`
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>ExpenseZero</strong> &mdash; SAP Concur killer ($110K/yr)</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>ContractPilot</strong> &mdash; Ironclad killer ($150K/yr)</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>ComplianceForge</strong> &mdash; Vanta killer ($100K/yr)</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>PeopleOS</strong> &mdash; BambooHR killer ($100K/yr)</p>
+        <p style="margin: 0; font-size: 15px;"><strong>InvoiceAgent</strong> &mdash; Coupa killer ($200K/yr)</p>
+      `)}
+      ${p("Running total: <strong>$1.144M</strong> in enterprise software replaced with open source. And we're only halfway.")}
+      ${p("Week 3 (after Tuesday's rest day) brings the advanced builds: GongSlayer, CompeteWatcher, ContentMultiplier, DocuVault, FinOpsLite, and VendorShield.")}
+      ${cta("Watch the Recordings", "https://stevekaplan.ai/saaspocolypse")}
+    `),
+  },
+
+  // Day 12 — GongSlayer (Day 11 was rest)
+  {
+    name: "SAASpocolypse [Day 12] GongSlayer",
+    subject: "Day 12: Back at it. Building GongSlayer (kills Gong)",
+    scheduledAt: "2026-06-03T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[10], prevProject: "InvoiceAgent", prevDay: "10" }),
+  },
+
+  // Day 13 — CompeteWatcher
+  {
+    name: "SAASpocolypse [Day 13] CompeteWatcher",
+    subject: "Day 13: Building CompeteWatcher (kills Crayon)",
+    scheduledAt: "2026-06-04T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[11], prevProject: "GongSlayer", prevDay: "12" }),
+  },
+
+  // Day 14 — ContentMultiplier
+  {
+    name: "SAASpocolypse [Day 14] ContentMultiplier",
+    subject: "Day 14: Building ContentMultiplier (kills content agencies)",
+    scheduledAt: "2026-06-05T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[12], prevProject: "CompeteWatcher", prevDay: "13" }),
+  },
+
+  // Day 15 — DocuVault
+  {
+    name: "SAASpocolypse [Day 15] DocuVault",
+    subject: "Day 15: Building DocuVault (kills SharePoint)",
+    scheduledAt: "2026-06-06T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[13], prevProject: "ContentMultiplier", prevDay: "14" }),
+  },
+
+  // Day 16 — FinOpsLite
+  {
+    name: "SAASpocolypse [Day 16] FinOpsLite",
+    subject: "Day 16: Building FinOpsLite (kills CloudHealth)",
+    scheduledAt: "2026-06-07T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[14], prevProject: "DocuVault", prevDay: "15" }),
+  },
+
+  // Day 17 — VendorShield
+  {
+    name: "SAASpocolypse [Day 17] VendorShield",
+    subject: "Day 17: Building VendorShield (kills OneTrust)",
+    scheduledAt: "2026-06-08T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[15], prevProject: "FinOpsLite", prevDay: "16" }),
+  },
+
+  // Week 3 Recap (Jun 8 evening)
+  {
+    name: "SAASpocolypse [Week 3 Recap]",
+    subject: "Week 3 done. 17 builds shipped. The boss fights start Wednesday.",
+    scheduledAt: "2026-06-08T22:00:00Z",
+    html: wrapper(`
+      ${h1("17 down. 4 to go.")}
+      ${p("Week 3 was the longest stretch &mdash; six builds across six days, no breaks. All shipped. Tomorrow is the second rest day, then the boss fights.")}
+      ${p("Week 3 delivered:")}
+      ${box(`
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>GongSlayer</strong> &mdash; Gong killer ($100K/yr)</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>CompeteWatcher</strong> &mdash; Crayon killer ($60K/yr)</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>ContentMultiplier</strong> &mdash; agencies killer ($120K/yr)</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>DocuVault</strong> &mdash; M-Files / SharePoint killer ($80K/yr)</p>
+        <p style="margin: 0 0 6px; font-size: 15px;"><strong>FinOpsLite</strong> &mdash; CloudHealth killer ($100K/yr)</p>
+        <p style="margin: 0; font-size: 15px;"><strong>VendorShield</strong> &mdash; OneTrust killer ($100K/yr)</p>
+      `)}
+      ${p("Running total: <strong>$1.704M</strong> in enterprise software replaced.")}
+      ${p("Week 4 is the boss fights: SupportGenius (Zendesk), MarketFlow (Marketo), DataTalk (Tableau), and ServiceForge (ServiceNow &mdash; the 2-day finale).")}
+      ${cta("Catch Up Before the Finale", "https://stevekaplan.ai/saaspocolypse")}
+    `),
+  },
+
+  // Day 19 — SupportGenius (Day 18 was rest)
+  {
+    name: "SAASpocolypse [Day 19] SupportGenius",
+    subject: "Day 19: Boss fights begin. Building SupportGenius (kills Zendesk)",
+    scheduledAt: "2026-06-10T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[16], prevProject: "VendorShield", prevDay: "17" }),
+  },
+
+  // Day 20 — MarketFlow
+  {
+    name: "SAASpocolypse [Day 20] MarketFlow",
+    subject: "Day 20: Building MarketFlow (kills Marketo)",
+    scheduledAt: "2026-06-11T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[17], prevProject: "SupportGenius", prevDay: "19" }),
+  },
+
+  // Day 21 — DataTalk
+  {
+    name: "SAASpocolypse [Day 21] DataTalk",
+    subject: "Day 21: Building DataTalk (kills Tableau)",
+    scheduledAt: "2026-06-12T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[18], prevProject: "MarketFlow", prevDay: "20" }),
+  },
+
+  // Days 22-23 — ServiceForge finale (2-day build)
+  {
+    name: "SAASpocolypse [Days 22-23] ServiceForge — THE FINALE",
+    subject: "Days 22-23: ServiceForge (kills ServiceNow) — THE FINALE",
+    scheduledAt: "2026-06-13T13:30:00Z",
+    html: dailyBuildEmail({ ...builds[19], prevProject: "DataTalk", prevDay: "21" }),
+  },
+
+  // ═══════════════════════════════════════
+  // POST-EVENT (4 emails)
+  // ═══════════════════════════════════════
+
+  {
+    name: "SAASpocolypse [Post-1] All 20 Builds Complete",
+    subject: "20 builds. Done. Here's the final scoreboard.",
+    scheduledAt: "2026-06-15T14:00:00Z",
+    html: wrapper(`
+      ${h1("20 builds. All done.")}
+      ${p("23 build days ago I opened my terminal and started streaming. Today, 20 functional open-source enterprise software alternatives exist that didn't before.")}
+      ${p("The final scoreboard:")}
+      <div style="font-family: 'Courier New', monospace; font-size: 14px; background: #000; color: #fff; padding: 24px; margin-bottom: 20px; line-height: 1.6;">
+        <div>Projects completed: <span style="color: #C3F73A;">20</span></div>
+        <div>Total enterprise cost replaced: <span style="color: #C3F73A;">$4.7M+/yr</span></div>
+        <div>Hours streamed: <span style="color: #C3F73A;">200+</span></div>
+        <div>Lines of code: <span style="color: #C3F73A;">TBD</span></div>
+        <div>License: <span style="color: #C3F73A;">MIT (free forever)</span></div>
+      </div>
+      ${p("Over the next two days I'm polishing documentation, recording demo videos, and preparing all 20 repos for public release.")}
+      ${p("If you watched even one session &mdash; thank you. This wouldn't have been the same without the live audience asking questions, catching bugs, and keeping me honest.")}
+      ${cta("See All 20 Projects", "https://stevekaplan.ai/saaspocolypse")}
+    `),
+  },
+
+  {
+    name: "SAASpocolypse [Post-2] All Repos Are Public",
+    subject: "All 20 repos are now public. Fork anything.",
+    scheduledAt: "2026-06-17T14:00:00Z",
+    html: wrapper(`
+      ${h1("All 20 repos are live.")}
+      ${p("Every repo is now public on GitHub. MIT license. No restrictions. Fork them, deploy them, build on them, sell services on top of them &mdash; whatever you want.")}
+      ${p("Quick links to every project:")}
+      ${box(`
+        <p style="margin: 0 0 4px; font-size: 14px;"><strong>Week 1:</strong> StatusBrew, ProposalForge, InsightPulse, BoardReady, RecruiterAI</p>
+        <p style="margin: 0 0 4px; font-size: 14px;"><strong>Week 2:</strong> ExpenseZero, ContractPilot, ComplianceForge, PeopleOS, InvoiceAgent</p>
+        <p style="margin: 0 0 4px; font-size: 14px;"><strong>Week 3:</strong> GongSlayer, CompeteWatcher, ContentMultiplier, DocuVault, FinOpsLite, VendorShield</p>
+        <p style="margin: 0; font-size: 14px;"><strong>Week 4:</strong> SupportGenius, MarketFlow, DataTalk, ServiceForge</p>
+      `)}
+      ${p("All repos follow the same pattern: Next.js 15 + Supabase + Claude API + Tailwind + shadcn/ui. If you can run one, you can run all twenty.")}
+      ${cta("Browse All Repos on GitHub", "https://github.com/Stevekaplanai")}
+    `),
+  },
+
+  {
+    name: "SAASpocolypse [Post-3] What I Learned",
+    subject: "What I learned building 20 SaaS tools in 26 days",
+    scheduledAt: "2026-06-24T14:00:00Z",
+    html: wrapper(`
+      ${h1("What I actually learned.")}
+      ${p("A week of distance gives perspective. Here's what 26 days of live building taught me:")}
+      ${box(`
+        <p style="margin: 0 0 10px; font-size: 15px;"><strong>1. AI doesn't replace thinking.</strong> Claude Code is incredible at execution, but the architecture decisions, the product taste, the knowing-what-to-cut &mdash; that's still human work. The prep mattered more than the tools.</p>
+        <p style="margin: 0 0 10px; font-size: 15px;"><strong>2. 80% of enterprise software is CRUD + permissions + workflows.</strong> Once you have auth, a database, and an AI wrapper, you're 60% done on any enterprise tool.</p>
+        <p style="margin: 0 0 10px; font-size: 15px;"><strong>3. The market is ready.</strong> The messages I got from CTOs and engineering leaders during the streams told me everything. People are done paying $200K/year for what should cost $200/month.</p>
+        <p style="margin: 0; font-size: 15px;"><strong>4. Open source wins.</strong> The repos with the most stars aren't the fanciest. They're the ones that solve a painful problem simply.</p>
+      `)}
+      ${p("If this resonated with you &mdash; if you're thinking about building instead of buying &mdash; I'd love to hear what you're working on. Reply to this email.")}
+      ${cta("Star Your Favorites on GitHub", "https://github.com/Stevekaplanai")}
+    `),
+  },
+
+  {
+    name: "SAASpocolypse [Post-4] What's Next",
+    subject: "What's next after SAASpocolypse",
+    scheduledAt: "2026-07-01T14:00:00Z",
+    html: wrapper(`
+      ${h1("So... what now?")}
+      ${p("The SAASpocolypse proved a thesis: one developer with AI can build functional alternatives to enterprise software that costs $20K-$1M/year.")}
+      ${p("But building an MVP in a day and building a production-ready tool are different things. Here's what's happening next:")}
+      ${box(`
+        <p style="margin: 0 0 10px; font-size: 15px;"><strong>Community contributions.</strong> Several repos already have PRs from the community. The best part of open source is that the project doesn't stop when I stop streaming.</p>
+        <p style="margin: 0 0 10px; font-size: 15px;"><strong>Cloud-hosted versions.</strong> For teams that want managed hosting, I'm exploring cloud-hosted versions of the most popular projects. Self-hosted stays free forever.</p>
+        <p style="margin: 0; font-size: 15px;"><strong>More builds.</strong> The SAASpocolypse was 20 projects. The enterprise SaaS market has hundreds. I'm not done.</p>
+      `)}
+      ${p("If your company is evaluating any of these tools &mdash; or if you want help deploying one &mdash; reply to this email. I'm doing a limited number of deployment consults.")}
+      ${p("Thanks for being part of this. It was the most fun I've had building software in 20 years.")}
+      ${cta("Visit stevekaplan.ai", "https://stevekaplan.ai")}
+    `),
+  },
+];
+
+// ───────────────────────────────────────────
+// RUNNER
+// ───────────────────────────────────────────
+
+// Resend's broadcasts.send caps scheduledAt at 30 days in the future.
+// Anything beyond that fires immediately. Run the script periodically; on each
+// run only emails inside the 30-day window get scheduled. Already-scheduled
+// broadcasts are detected via name match and skipped (idempotent re-runs).
+const MAX_WINDOW_DAYS = 30;
+
+async function main() {
+  const now = Date.now();
+  const MAX_WINDOW_MS = MAX_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+  const cutoff = now + MAX_WINDOW_MS;
+
+  console.log(`SAASpocolypse 2026 — Email Schedule Run`);
+  console.log(`Run time: ${new Date().toISOString()}`);
+  console.log(`Audience: ${AUDIENCE_ID}`);
+  console.log(`Resend max scheduling window: ${MAX_WINDOW_DAYS} days`);
+  console.log("");
+
+  // Fetch existing broadcasts to enable idempotent re-runs
+  let inFlightByName: Map<string, string>;
+  try {
+    const listResult = await resend.broadcasts.list();
+    const allBroadcasts = listResult.data?.data || [];
+    inFlightByName = new Map();
+    for (const b of allBroadcasts) {
+      if (b.name && (b.status === "scheduled" || b.status === "draft")) {
+        inFlightByName.set(b.name, b.id);
+      }
+    }
+    console.log(
+      `Existing in-flight broadcasts (scheduled/draft): ${inFlightByName.size}`,
+    );
+    console.log("");
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`FATAL: could not list existing broadcasts — ${msg}`);
+    process.exit(1);
+  }
+
+  let scheduledCount = 0;
+  let skippedExisting = 0;
+  let skippedWindow = 0;
+  let failed = 0;
+  const pending: typeof emails = [];
+
+  for (const email of emails) {
+    const sendTime = new Date(email.scheduledAt).getTime();
+    const daysOut =
+      Math.round(((sendTime - now) / (24 * 60 * 60 * 1000)) * 10) / 10;
+
+    if (inFlightByName.has(email.name)) {
+      console.log(`[skip already-scheduled] ${email.name}`);
+      skippedExisting++;
+      continue;
+    }
+
+    if (sendTime > cutoff) {
+      console.log(
+        `[skip beyond-window ${daysOut}d] ${email.name} → ${email.scheduledAt}`,
+      );
+      pending.push(email);
+      skippedWindow++;
+      continue;
+    }
+
+    if (sendTime < now) {
+      console.log(
+        `[skip past-due ${daysOut}d] ${email.name} → ${email.scheduledAt}`,
+      );
+      skippedWindow++;
+      continue;
+    }
+
+    try {
+      const broadcast = await resend.broadcasts.create({
+        audienceId: AUDIENCE_ID,
+        from: FROM,
+        subject: email.subject,
+        html: email.html,
+        name: email.name,
+      });
+
+      const id = broadcast.data?.id;
+      if (!id) {
+        console.error(`[FAIL no-id] ${email.name}`);
+        failed++;
+        continue;
+      }
+
+      await resend.broadcasts.send(id, {
+        scheduledAt: email.scheduledAt,
+      });
+
+      console.log(
+        `[OK ${daysOut}d] ${email.name} → ${email.scheduledAt} (${id})`,
+      );
+      scheduledCount++;
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error(`[FAIL] ${email.name} — ${msg}`);
+      failed++;
+    }
+  }
+
+  console.log("");
+  console.log("─".repeat(60));
+  console.log(`Scheduled this run: ${scheduledCount}`);
+  console.log(`Skipped (already in-flight): ${skippedExisting}`);
+  console.log(`Skipped (beyond ${MAX_WINDOW_DAYS}-day window or past-due): ${skippedWindow}`);
+  console.log(`Failed: ${failed}`);
+  console.log("");
+
+  if (pending.length > 0) {
+    pending.sort(
+      (a, b) =>
+        new Date(a.scheduledAt).getTime() - new Date(b.scheduledAt).getTime(),
+    );
+    const earliest = pending[0];
+    const earliestDate = new Date(earliest.scheduledAt);
+    const nextRunDate = new Date(earliestDate.getTime() - MAX_WINDOW_MS);
+
+    console.log(
+      `Next run window opens: ${nextRunDate.toISOString().split("T")[0]} (UTC)`,
+    );
+    console.log(
+      `That run will pick up ${pending.length} pending email(s). Earliest:`,
+    );
+    for (const p of pending.slice(0, 5)) {
+      console.log(`  - ${p.name} → ${p.scheduledAt}`);
+    }
+    if (pending.length > 5) {
+      console.log(`  - ...and ${pending.length - 5} more`);
+    }
+  } else {
+    console.log("All emails scheduled. Done.");
+  }
+
+  console.log("");
+  console.log("Review at: https://resend.com/broadcasts");
+}
+
+main();

@@ -4,7 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SAASpocolypse 2026 | Steve Kaplan AI</title>
-  <meta name="description" content="26 days. 20 open-source repos. $4.7M in enterprise software — replaced. Watch it built live.">
+  <meta name="description" content="26 days. 20 open-source repos. One developer + Claude Code targeting $4.7M in enterprise software. Built live, given away free. May 23rd, 2026.">
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp, iMessage, Slack, Discord) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stevekaplan.ai/saaspocolypse">
+  <meta property="og:title" content="SAASpocolypse 2026 — 20 SaaS Killers, Built Live">
+  <meta property="og:description" content="One developer + Claude Code. 26 days. 20 open-source enterprise alternatives. All MIT licensed. Starts May 23.">
+  <meta property="og:image" content="https://stevekaplan.ai/saaspocolypse/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SAASpocolypse 2026 — 26 Days, 20 Builds, All Free">
+  <meta property="og:site_name" content="Steve Kaplan AI">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SAASpocolypse 2026 — 20 SaaS Killers, Built Live">
+  <meta name="twitter:description" content="One developer + Claude Code. 26 days. 20 open-source enterprise alternatives. All MIT licensed. Starts May 23.">
+  <meta name="twitter:image" content="https://stevekaplan.ai/saaspocolypse/og-card.jpg">
+  <meta name="twitter:site" content="@Stevekaplanai">
+  <meta name="twitter:creator" content="@Stevekaplanai">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -633,6 +654,106 @@
       font-weight: 500;
     }
 
+    /* ─── BUILD SCHEDULE ─── */
+    .schedule-section { background: var(--bg); }
+    .schedule-container {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .schedule-week {
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .schedule-week-header {
+      background: #000;
+      color: #fff;
+      padding: 16px 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .schedule-week-header .week-dates {
+      color: var(--lime);
+      font-size: 13px;
+    }
+    .schedule-day {
+      display: grid;
+      grid-template-columns: 80px 1fr 200px;
+      align-items: center;
+      padding: 14px 24px;
+      border-bottom: 2px solid var(--border);
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.1s;
+    }
+    .schedule-day:last-child { border-bottom: none; }
+    .schedule-day:nth-child(odd) { background: var(--bg-card); }
+    .schedule-day:nth-child(even) { background: var(--bg); }
+    .schedule-day:hover { background: var(--cyan); }
+    .schedule-day-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .schedule-day-date {
+      font-size: 11px;
+      color: #666;
+      font-weight: 500;
+    }
+    .schedule-day-project {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .schedule-day-replaces {
+      font-size: 13px;
+      color: #555;
+      margin-top: 2px;
+    }
+    .schedule-day-savings {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--red);
+    }
+    .schedule-polish {
+      border: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--lime);
+      padding: 24px;
+      text-align: center;
+    }
+    .schedule-polish h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .schedule-polish p {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+    @media (max-width: 700px) {
+      .schedule-day {
+        grid-template-columns: 60px 1fr;
+        gap: 4px;
+      }
+      .schedule-day-savings {
+        grid-column: 2;
+        text-align: left;
+        font-size: 12px;
+      }
+    }
+
     /* ─── STREAMING PLATFORMS ─── */
     .platforms-section {
       background: var(--bg);
@@ -959,6 +1080,7 @@
       <a href="#crisis">The Crisis</a>
       <a href="#projects">The 20 Builds</a>
       <a href="#how">How It Works</a>
+      <a href="#schedule">Schedule</a>
       <a href="#cta" class="nav-cta">Get Access</a>
     </div>
   </div>
@@ -969,7 +1091,7 @@
   <div class="container hero-content">
     <div class="hero-badge">
       <span class="pulse"></span>
-      LIVE EVENT // 26 DAYS // SUMMER 2026
+      LIVE EVENT // 26 DAYS // MAY 23 — JUN 17
     </div>
     <h1 class="hero-title">
       <span class="fire">SAASpocolypse</span>
@@ -995,8 +1117,8 @@
       </div>
     </div>
     <div class="hero-cta-group">
-      <a href="#cta" class="btn btn-primary">Get Notified &mdash; It's Free</a>
-      <a href="#projects" class="btn btn-secondary">See the 20 Builds</a>
+      <a href="https://luma.com/event/evt-xtCTLY71gnGQkvp" class="luma-checkout--button btn btn-primary" data-luma-action="checkout" data-luma-event-id="evt-xtCTLY71gnGQkvp">Register for Event</a>
+      <a href="#cta" class="btn btn-secondary">Get Email Updates</a>
     </div>
   </div>
 </section>
@@ -1004,39 +1126,39 @@
 <!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker" aria-hidden="true">
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/salesforce/00A1E0" alt="Salesforce"><span class="name">Salesforce</span><span class="arrow">&#9660;</span><span class="loss">$330K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/servicenow/81B5A1" alt="ServiceNow"><span class="name">ServiceNow</span><span class="arrow">&#9660;</span><span class="loss">$1M+/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/docusign/FFCC22" alt="Ironclad"><span class="name">Ironclad</span><span class="arrow">&#9660;</span><span class="loss">$150K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/sap/0FAAFF" alt="SAP"><span class="name">SAP Concur</span><span class="arrow">&#9660;</span><span class="loss">$110K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/gong/5C4EFF" alt="Gong"><span class="name">Gong</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/adobe/FF0000" alt="Marketo"><span class="name">Marketo</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/tableau/E97627" alt="Tableau"><span class="name">Tableau</span><span class="arrow">&#9660;</span><span class="loss">$200K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/zendesk/03363D" alt="Zendesk"><span class="name">Zendesk</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/openbugbounty/00B0D8" alt="Vanta"><span class="name">Vanta</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/qualtrics/B6DCFE" alt="Qualtrics"><span class="name">Qualtrics</span><span class="arrow">&#9660;</span><span class="loss">$323K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/workday/005CB9" alt="Workday"><span class="name">Workday</span><span class="arrow">&#9660;</span><span class="loss">$360K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/datadog/632CA6" alt="Datadog"><span class="name">Datadog</span><span class="arrow">&#9660;</span><span class="loss">$500K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/pandadoc/36D67B" alt="PandaDoc"><span class="name">PandaDoc</span><span class="arrow">&#9660;</span><span class="loss">$20K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/bamboo/0052CC" alt="BambooHR"><span class="name">BambooHR</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/intercom/6AFDEF" alt="Intercom"><span class="name">Intercom</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/onetrust/007F5F" alt="OneTrust"><span class="name">OneTrust</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/salesforce.svg" alt="Salesforce"><span class="name">Salesforce</span><span class="arrow">&#9660;</span><span class="loss">$330K/yr</span></div>
+    <div class="ticker-item"><span class="name">ServiceNow</span><span class="arrow">&#9660;</span><span class="loss">$1M+/yr</span></div>
+    <div class="ticker-item"><span class="name">Ironclad</span><span class="arrow">&#9660;</span><span class="loss">$150K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/sap.svg" alt="SAP"><span class="name">SAP Concur</span><span class="arrow">&#9660;</span><span class="loss">$110K/yr</span></div>
+    <div class="ticker-item"><span class="name">Gong</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><span class="name">Marketo</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
+    <div class="ticker-item"><span class="name">Tableau</span><span class="arrow">&#9660;</span><span class="loss">$200K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/zendesk.svg" alt="Zendesk"><span class="name">Zendesk</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
+    <div class="ticker-item"><span class="name">Vanta</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><span class="name">Qualtrics</span><span class="arrow">&#9660;</span><span class="loss">$323K/yr</span></div>
+    <div class="ticker-item"><span class="name">Workday</span><span class="arrow">&#9660;</span><span class="loss">$360K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/datadog.svg" alt="Datadog"><span class="name">Datadog</span><span class="arrow">&#9660;</span><span class="loss">$500K/yr</span></div>
+    <div class="ticker-item"><span class="name">PandaDoc</span><span class="arrow">&#9660;</span><span class="loss">$20K/yr</span></div>
+    <div class="ticker-item"><span class="name">BambooHR</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/intercom.svg" alt="Intercom"><span class="name">Intercom</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><span class="name">OneTrust</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
     <!-- duplicate for seamless loop -->
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/salesforce/00A1E0" alt="Salesforce"><span class="name">Salesforce</span><span class="arrow">&#9660;</span><span class="loss">$330K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/servicenow/81B5A1" alt="ServiceNow"><span class="name">ServiceNow</span><span class="arrow">&#9660;</span><span class="loss">$1M+/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/docusign/FFCC22" alt="Ironclad"><span class="name">Ironclad</span><span class="arrow">&#9660;</span><span class="loss">$150K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/sap/0FAAFF" alt="SAP"><span class="name">SAP Concur</span><span class="arrow">&#9660;</span><span class="loss">$110K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/gong/5C4EFF" alt="Gong"><span class="name">Gong</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/adobe/FF0000" alt="Marketo"><span class="name">Marketo</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/tableau/E97627" alt="Tableau"><span class="name">Tableau</span><span class="arrow">&#9660;</span><span class="loss">$200K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/zendesk/03363D" alt="Zendesk"><span class="name">Zendesk</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/openbugbounty/00B0D8" alt="Vanta"><span class="name">Vanta</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/qualtrics/B6DCFE" alt="Qualtrics"><span class="name">Qualtrics</span><span class="arrow">&#9660;</span><span class="loss">$323K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/workday/005CB9" alt="Workday"><span class="name">Workday</span><span class="arrow">&#9660;</span><span class="loss">$360K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/datadog/632CA6" alt="Datadog"><span class="name">Datadog</span><span class="arrow">&#9660;</span><span class="loss">$500K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/pandadoc/36D67B" alt="PandaDoc"><span class="name">PandaDoc</span><span class="arrow">&#9660;</span><span class="loss">$20K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/bamboo/0052CC" alt="BambooHR"><span class="name">BambooHR</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/intercom/6AFDEF" alt="Intercom"><span class="name">Intercom</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
-    <div class="ticker-item"><img src="https://cdn.simpleicons.org/onetrust/007F5F" alt="OneTrust"><span class="name">OneTrust</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/salesforce.svg" alt="Salesforce"><span class="name">Salesforce</span><span class="arrow">&#9660;</span><span class="loss">$330K/yr</span></div>
+    <div class="ticker-item"><span class="name">ServiceNow</span><span class="arrow">&#9660;</span><span class="loss">$1M+/yr</span></div>
+    <div class="ticker-item"><span class="name">Ironclad</span><span class="arrow">&#9660;</span><span class="loss">$150K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/sap.svg" alt="SAP"><span class="name">SAP Concur</span><span class="arrow">&#9660;</span><span class="loss">$110K/yr</span></div>
+    <div class="ticker-item"><span class="name">Gong</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><span class="name">Marketo</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
+    <div class="ticker-item"><span class="name">Tableau</span><span class="arrow">&#9660;</span><span class="loss">$200K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/zendesk.svg" alt="Zendesk"><span class="name">Zendesk</span><span class="arrow">&#9660;</span><span class="loss">$180K/yr</span></div>
+    <div class="ticker-item"><span class="name">Vanta</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><span class="name">Qualtrics</span><span class="arrow">&#9660;</span><span class="loss">$323K/yr</span></div>
+    <div class="ticker-item"><span class="name">Workday</span><span class="arrow">&#9660;</span><span class="loss">$360K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/datadog.svg" alt="Datadog"><span class="name">Datadog</span><span class="arrow">&#9660;</span><span class="loss">$500K/yr</span></div>
+    <div class="ticker-item"><span class="name">PandaDoc</span><span class="arrow">&#9660;</span><span class="loss">$20K/yr</span></div>
+    <div class="ticker-item"><span class="name">BambooHR</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13/icons/intercom.svg" alt="Intercom"><span class="name">Intercom</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
+    <div class="ticker-item"><span class="name">OneTrust</span><span class="arrow">&#9660;</span><span class="loss">$100K/yr</span></div>
   </div>
 </div>
 
@@ -1622,6 +1744,169 @@
   </div>
 </section>
 
+<!-- BUILD SCHEDULE -->
+<section class="section schedule-section" id="schedule">
+  <div class="container">
+    <span class="section-label fade-up">The Schedule</span>
+    <h2 class="section-title fade-up">26 days. 20 builds.<br><span class="highlight-gold">Day by day.</span></h2>
+    <p class="section-subtitle fade-up">Every project has a date. Every stream is live. Here's the full build order, optimized for skill reuse and maximum impact.</p>
+
+    <div class="schedule-container">
+
+      <!-- WEEK 1 -->
+      <div class="schedule-week fade-up">
+        <div class="schedule-week-header">
+          <span>Week 1 &mdash; Quick Wins</span>
+          <span class="week-dates">May 23 &ndash; May 27</span>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 1</span><br><span class="schedule-day-date">May 23</span></div>
+          <div><div class="schedule-day-project">StatusBrew</div><div class="schedule-day-replaces">Replaces Atlassian Statuspage</div></div>
+          <div class="schedule-day-savings">$16K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 2</span><br><span class="schedule-day-date">May 24</span></div>
+          <div><div class="schedule-day-project">ProposalForge</div><div class="schedule-day-replaces">Replaces PandaDoc</div></div>
+          <div class="schedule-day-savings">$20K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 3</span><br><span class="schedule-day-date">May 25</span></div>
+          <div><div class="schedule-day-project">InsightPulse</div><div class="schedule-day-replaces">Replaces Qualtrics</div></div>
+          <div class="schedule-day-savings">$323K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 4</span><br><span class="schedule-day-date">May 26</span></div>
+          <div><div class="schedule-day-project">BoardReady</div><div class="schedule-day-replaces">Replaces Diligent Boards</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 5</span><br><span class="schedule-day-date">May 27</span></div>
+          <div><div class="schedule-day-project">RecruiterAI</div><div class="schedule-day-replaces">Replaces Greenhouse</div></div>
+          <div class="schedule-day-savings">$25K/yr</div>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div class="schedule-week fade-up">
+        <div class="schedule-week-header">
+          <span>Week 2 &mdash; Core Builds</span>
+          <span class="week-dates">May 28 &ndash; Jun 1</span>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 6</span><br><span class="schedule-day-date">May 28</span></div>
+          <div><div class="schedule-day-project">ExpenseZero</div><div class="schedule-day-replaces">Replaces SAP Concur</div></div>
+          <div class="schedule-day-savings">$110K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 7</span><br><span class="schedule-day-date">May 29</span></div>
+          <div><div class="schedule-day-project">ContractPilot</div><div class="schedule-day-replaces">Replaces Ironclad</div></div>
+          <div class="schedule-day-savings">$150K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 8</span><br><span class="schedule-day-date">May 30</span></div>
+          <div><div class="schedule-day-project">ComplianceForge</div><div class="schedule-day-replaces">Replaces Vanta / Drata</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 9</span><br><span class="schedule-day-date">May 31</span></div>
+          <div><div class="schedule-day-project">PeopleOS</div><div class="schedule-day-replaces">Replaces BambooHR / Rippling</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 10</span><br><span class="schedule-day-date">Jun 1</span></div>
+          <div><div class="schedule-day-project">InvoiceAgent</div><div class="schedule-day-replaces">Replaces Coupa / SAP Ariba</div></div>
+          <div class="schedule-day-savings">$200K/yr</div>
+        </div>
+      </div>
+
+      <!-- REST DAY 1 -->
+      <div class="schedule-polish fade-up">
+        <h3>Day 11 &mdash; Rest Day &middot; Jun 2</h3>
+        <p>Buffer for build overruns. Stream prep. No new ship.</p>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div class="schedule-week fade-up">
+        <div class="schedule-week-header">
+          <span>Week 3 &mdash; Advanced Builds</span>
+          <span class="week-dates">Jun 3 &ndash; Jun 8</span>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 12</span><br><span class="schedule-day-date">Jun 3</span></div>
+          <div><div class="schedule-day-project">GongSlayer</div><div class="schedule-day-replaces">Replaces Gong</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 13</span><br><span class="schedule-day-date">Jun 4</span></div>
+          <div><div class="schedule-day-project">CompeteWatcher</div><div class="schedule-day-replaces">Replaces Crayon / Klue</div></div>
+          <div class="schedule-day-savings">$60K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 14</span><br><span class="schedule-day-date">Jun 5</span></div>
+          <div><div class="schedule-day-project">ContentMultiplier</div><div class="schedule-day-replaces">Replaces Repurpose.io + Agencies</div></div>
+          <div class="schedule-day-savings">$120K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 15</span><br><span class="schedule-day-date">Jun 6</span></div>
+          <div><div class="schedule-day-project">DocuVault</div><div class="schedule-day-replaces">Replaces M-Files / SharePoint</div></div>
+          <div class="schedule-day-savings">$80K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 16</span><br><span class="schedule-day-date">Jun 7</span></div>
+          <div><div class="schedule-day-project">FinOpsLite</div><div class="schedule-day-replaces">Replaces CloudHealth / Spot.io</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 17</span><br><span class="schedule-day-date">Jun 8</span></div>
+          <div><div class="schedule-day-project">VendorShield</div><div class="schedule-day-replaces">Replaces OneTrust Vendorpedia</div></div>
+          <div class="schedule-day-savings">$100K/yr</div>
+        </div>
+      </div>
+
+      <!-- REST DAY 2 -->
+      <div class="schedule-polish fade-up">
+        <h3>Day 18 &mdash; Rest Day &middot; Jun 9</h3>
+        <p>Buffer for build overruns. Stream prep. No new ship.</p>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div class="schedule-week fade-up">
+        <div class="schedule-week-header">
+          <span>Week 4 &mdash; Boss Fights</span>
+          <span class="week-dates">Jun 10 &ndash; Jun 14</span>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 19</span><br><span class="schedule-day-date">Jun 10</span></div>
+          <div><div class="schedule-day-project">SupportGenius</div><div class="schedule-day-replaces">Replaces Zendesk</div></div>
+          <div class="schedule-day-savings">$180K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 20</span><br><span class="schedule-day-date">Jun 11</span></div>
+          <div><div class="schedule-day-project">MarketFlow</div><div class="schedule-day-replaces">Replaces Marketo / Pardot</div></div>
+          <div class="schedule-day-savings">$180K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 21</span><br><span class="schedule-day-date">Jun 12</span></div>
+          <div><div class="schedule-day-project">DataTalk</div><div class="schedule-day-replaces">Replaces Tableau / Looker</div></div>
+          <div class="schedule-day-savings">$200K/yr</div>
+        </div>
+        <div class="schedule-day">
+          <div><span class="schedule-day-num">Day 22-23</span><br><span class="schedule-day-date">Jun 13-14</span></div>
+          <div><div class="schedule-day-project">ServiceForge</div><div class="schedule-day-replaces">Replaces ServiceNow &mdash; 2-day finale</div></div>
+          <div class="schedule-day-savings">$1M+/yr</div>
+        </div>
+      </div>
+
+      <!-- POLISH -->
+      <div class="schedule-polish fade-up">
+        <h3>Days 24-26 &mdash; Jun 15-17</h3>
+        <p>Polish, documentation, demo videos, README standardization across all 20 repos. Launch blog post, Product Hunt, and Hacker News submissions.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- STREAMING PLATFORMS -->
 <section class="section platforms-section">
   <div class="container" style="text-align: center;">
@@ -1635,7 +1920,7 @@
         <span>YouTube</span>
       </div>
       <div class="platform-badge fade-up stagger-2">
-        <svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
         <span>Facebook</span>
       </div>
       <div class="platform-badge fade-up stagger-3">
@@ -1693,6 +1978,7 @@
       <div class="cta-urgency">
         Live viewers get early access to each repo before public release.
       </div>
+      <a href="https://luma.com/event/evt-xtCTLY71gnGQkvp" class="luma-checkout--button btn btn-primary" data-luma-action="checkout" data-luma-event-id="evt-xtCTLY71gnGQkvp" style="margin-top: 20px; display: inline-flex;">Register for Calendar Reminders</a>
     </div>
   </div>
 </section>
@@ -1761,6 +2047,10 @@ function animateCounter(el, start, end, duration) {
   requestAnimationFrame(update);
 }
 
+// Get referral code from URL
+const urlParams = new URLSearchParams(window.location.search);
+const refCode = urlParams.get('ref') || '';
+
 // Form handler
 async function handleSubmit(e) {
   e.preventDefault();
@@ -1777,14 +2067,23 @@ async function handleSubmit(e) {
     const res = await fetch('/api/saaspocolypse-subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, ref: refCode }),
     });
+
+    const data = await res.json();
 
     if (res.ok) {
       btn.textContent = "You're In!";
       btn.style.background = 'var(--lime)';
       btn.style.color = '#000';
       input.value = '';
+
+      // Redirect to share page after a moment
+      if (data.share_code) {
+        setTimeout(() => {
+          window.location.href = '/saaspocolypse/share.html?code=' + data.share_code;
+        }, 1500);
+      }
     } else {
       btn.textContent = 'Try Again';
       btn.style.background = 'var(--coral)';
@@ -1812,5 +2111,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 
+<script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
 </body>
 </html>

@@ -1,229 +1,263 @@
-# 🚀 Steve Kaplan | AI Automation & Growth Engineering
+<!-- HEADER -->
+<h1 align="center">Steve Kaplan</h1>
 
-<div align="center">
-  
-  [![GTMVP](https://img.shields.io/badge/🔗_GTMVP-AI_Automation_for_Growth-8b5cf6?style=for-the-badge)](https://gtmvp.com)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/stevekaplan)
-  [![Email](https://img.shields.io/badge/Email-steve@gtmvp.com-EA4335?style=for-the-badge&logo=gmail)](mailto:steve@gtmvp.com)
-  
-  <img src="https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=24&pause=1000&color=8B5CF6&center=true&vCenter=true&width=600&lines=Building+AI+That+Actually+Works;127%2B+Companies+Automated;%244.7M+Revenue+Captured;Founder+%40+GTMVP" alt="Typing SVG" />
-  
-</div>
+<p align="center">
+<a href="https://github.com/DenverCoder1/readme-typing-svg">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1500&color=F59E0B&center=true&vCenter=true&repeat=true&width=500&lines=I+don't+advise.+I+build.;Growth+marketer+who+writes+code.;11+live+products.+All+self-built.;%2450M%2B+ad+spend.+200%2B+clients." alt="Typing SVG" />
+</a>
+</p>
 
-## 🎯 What I Do
-
-I build AI automation systems that turn businesses into revenue machines. Specializing in **home services**, **SaaS**, and **e-commerce** automation that delivers real ROI, not just cool demos.
-
-```javascript
-const steveKaplan = {
-  role: "Founder & AI Automation Engineer",
-  company: "GTMVP",
-  mission: "Turn AI hype into business results",
-  focus: ["AI Agents", "Workflow Automation", "Revenue Optimization"],
-  stats: {
-    companiesAutomated: 127,
-    revenueCaptured: "$4.7M+",
-    leadsProcessed: 23400,
-    avgROI: "5.2x in 30 days"
-  }
-};
-```
-
-## 🛠️ Tech Stack & Expertise
-
-<div align="center">
-
-### AI & Automation
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
-![Claude](https://img.shields.io/badge/Claude-8B5CF6?style=flat-square&logo=anthropic&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-121212?style=flat-square&logo=chainlink&logoColor=white)
-![n8n](https://img.shields.io/badge/n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white)
-![Zapier](https://img.shields.io/badge/Zapier-FF4A00?style=flat-square&logo=zapier&logoColor=white)
-![Make](https://img.shields.io/badge/Make-6D3EE3?style=flat-square&logo=make&logoColor=white)
-
-### Development
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
-
-### Marketing & CRM
-![Google Ads](https://img.shields.io/badge/Google_Ads-4285F4?style=flat-square&logo=google-ads&logoColor=white)
-![Meta](https://img.shields.io/badge/Meta_Ads-1877F2?style=flat-square&logo=meta&logoColor=white)
-![HubSpot](https://img.shields.io/badge/HubSpot-FF7A59?style=flat-square&logo=hubspot&logoColor=white)
-![Klaviyo](https://img.shields.io/badge/Klaviyo-222222?style=flat-square&logo=klaviyo&logoColor=white)
-
-</div>
-
-## 🚀 Featured AI Products
-
-<table>
-  <tr>
-    <td width="50%">
-      <h3 align="center">🛍️ ProductDescriptions.ai</h3>
-      <div align="center">
-        <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Active"/>
-        <img src="https://img.shields.io/badge/Users-5K%2B-blue?style=flat-square" alt="Users"/>
-        <img src="https://img.shields.io/badge/Descriptions-100K%2B-purple?style=flat-square" alt="Descriptions"/>
-      </div>
-      <p align="center">
-        AI-powered product description generator for e-commerce. Create compelling, SEO-optimized descriptions in seconds.
-      </p>
-      <p align="center">
-        <a href="https://productdescriptions.ai">
-          <img src="https://img.shields.io/badge/Try_It_Free-8B5CF6?style=for-the-badge" alt="Try It Free"/>
-        </a>
-      </p>
-    </td>
-    <td width="50%">
-      <h3 align="center">🎓 StudentAIDetector</h3>
-      <div align="center">
-        <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Active"/>
-        <img src="https://img.shields.io/badge/Accuracy-99.7%25-blue?style=flat-square" alt="Accuracy"/>
-        <img src="https://img.shields.io/badge/Schools-200%2B-purple?style=flat-square" alt="Schools"/>
-      </div>
-      <p align="center">
-        Advanced AI detection technology for educational institutions. Helping maintain academic integrity.
-      </p>
-      <p align="center">
-        <a href="#">
-          <img src="https://img.shields.io/badge/Learn_More-8B5CF6?style=for-the-badge" alt="Learn More"/>
-        </a>
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <h3 align="center">📊 Media Buy AI</h3>
-      <div align="center">
-        <img src="https://img.shields.io/badge/Status-Beta-yellow?style=flat-square" alt="Beta"/>
-        <img src="https://img.shields.io/badge/ROAS-3.2x-blue?style=flat-square" alt="ROAS"/>
-        <img src="https://img.shields.io/badge/Ad_Spend-%242M%2B-purple?style=flat-square" alt="Ad Spend"/>
-      </div>
-      <p align="center">
-        Automated media buying platform with AI-powered bid optimization and creative testing.
-      </p>
-      <p align="center">
-        <a href="#">
-          <img src="https://img.shields.io/badge/Join_Waitlist-8B5CF6?style=for-the-badge" alt="Join Waitlist"/>
-        </a>
-      </p>
-    </td>
-    <td width="50%">
-      <h3 align="center">📄 DocDoctor.ai</h3>
-      <div align="center">
-        <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Active"/>
-        <img src="https://img.shields.io/badge/Docs-10K%2B-blue?style=flat-square" alt="Docs"/>
-        <img src="https://img.shields.io/badge/Time_Saved-500h%2B-purple?style=flat-square" alt="Time Saved"/>
-      </div>
-      <p align="center">
-        AI-powered document analysis and automation. Extract insights from any document instantly.
-      </p>
-      <p align="center">
-        <a href="#">
-          <img src="https://img.shields.io/badge/Get_Started-8B5CF6?style=for-the-badge" alt="Get Started"/>
-        </a>
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <h3 align="center">🏠 Home Services AI Automation Suite</h3>
-      <div align="center">
-        <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Active"/>
-        <img src="https://img.shields.io/badge/Companies-127%2B-blue?style=flat-square" alt="Companies"/>
-        <img src="https://img.shields.io/badge/Revenue_Captured-%244.7M-purple?style=flat-square" alt="Revenue"/>
-        <img src="https://img.shields.io/badge/Leads_Saved-23K%2B-green?style=flat-square" alt="Leads"/>
-      </div>
-      <p align="center">
-        Complete AI automation for Housecall Pro, Jobber & ServiceTitan users. Never miss another lead with 24/7 AI agents.
-      </p>
-      <p align="center">
-        <a href="https://gtmvp.com/home-services">
-          <img src="https://img.shields.io/badge/Get_Free_Assessment-10B981?style=for-the-badge" alt="Get Assessment"/>
-        </a>
-      </p>
-    </td>
-  </tr>
-</table>
-
-## 📈 Current Focus Areas
-
-### 🤖 AI Agent Development
-Building specialized AI agents for business automation:
-- **Lead Capture Agents** - 24/7 response, never miss a lead
-- **Customer Service Agents** - Handle 80% of inquiries automatically
-- **Sales Qualification Agents** - Score and route leads intelligently
-- **Follow-up Agents** - Automated nurture sequences that convert
-
-### 🔧 n8n Workflow Templates
-Creating plug-and-play automation workflows for:
-- CRM integration (Housecall Pro, Jobber, ServiceTitan)
-- Lead response automation
-- Review management systems
-- Emergency triage workflows
-
-### 📊 Performance Marketing AI
-Developing AI tools for paid media optimization:
-- Automated bid management
-- Creative testing frameworks
-- Cross-channel attribution
-- Predictive ROAS modeling
-
-## 💼 Work With Me
-
-<div align="center">
-  
-### 🎯 AI Automation Consulting
-Transform your business operations with custom AI solutions
-
-[![Book a Demo](https://img.shields.io/badge/Book_Demo-15_Minutes-8B5CF6?style=for-the-badge)](https://cal.com/stevekaplanai)
-[![Get Assessment](https://img.shields.io/badge/Free_AI_Assessment-Get_Started-10B981?style=for-the-badge)](https://app--gtmvp-ai-automate-3e94df08.base44.app/Assessment)
-
-</div>
-
-## 📊 GitHub Stats
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=stevekaplanai&show_icons=true&theme=dark&hide_border=true&bg_color=0a0a0b&title_color=8b5cf6&icon_color=8b5cf6&text_color=f8fafc" alt="GitHub Stats" />
-  
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=stevekaplanai&theme=dark&hide_border=true&background=0a0a0b&ring=8b5cf6&fire=8b5cf6&currStreakLabel=8b5cf6" alt="GitHub Streak" />
-</div>
-
-## 🏆 Certifications & Achievements
-
-<div align="center">
-  
-![Google Ads](https://img.shields.io/badge/Google_Ads_Certified-4285F4?style=flat-square&logo=google&logoColor=white)
-![Meta Marketing](https://img.shields.io/badge/Meta_Marketing_Partner-1877F2?style=flat-square&logo=meta&logoColor=white)
-![Klaviyo](https://img.shields.io/badge/Klaviyo_Certified-222222?style=flat-square&logo=klaviyo&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS_Solutions_Architect-232F3E?style=flat-square&logo=amazon-aws&logoColor=white)
-
-</div>
-
-## 📫 Let's Connect
-
-<div align="center">
-  
-**Ready to automate your growth?**
-
-📧 **Email:** steve@gtmvp.com  
-📱 **Phone:** (954) 228-5908  
-🌐 **Website:** [gtmvp.com](https://gtmvp.com)  
-📅 **Book a Call:** [cal.com/stevekaplanai](https://cal.com/stevekaplanai)
-
-### My AI Products
-🛍️ [ProductDescriptions.ai](https://productdescriptions.ai) - AI Product Description Generator  
-🎓 [StudentAIDetector](https://studentaidetector.com) - Academic AI Detection  
-📊 [Media Buy AI](https://mediabuy.ai) - Automated Ad Optimization  
-📄 [DocDoctor.ai](https://docdoctor.ai) - Document Intelligence Platform  
+<p align="center">
+<a href="https://stevekaplan.ai"><img src="https://img.shields.io/badge/stevekaplan.ai-111?style=for-the-badge&logo=firefoxbrowser&logoColor=F59E0B" alt="Website" /></a>
+<a href="https://linkedin.com/in/stevekaplanai"><img src="https://img.shields.io/badge/LinkedIn_17K+-111?style=for-the-badge&logo=linkedin&logoColor=0A66C2" alt="LinkedIn" /></a>
+<a href="mailto:steve@stevekaplan.ai"><img src="https://img.shields.io/badge/Email-111?style=for-the-badge&logo=gmail&logoColor=EA4335" alt="Email" /></a>
+<a href="https://stevekaplan.ai/saaspocolypse"><img src="https://img.shields.io/badge/SAASpocolypse_2026-111?style=for-the-badge&logo=openbugbounty&logoColor=FF3333" alt="SAASpocolypse" /></a>
+</p>
 
 ---
 
-<img src="https://komarev.com/ghpvc/?username=stevekaplanai&color=8b5cf6&style=flat-square&label=Profile+Views" alt="Profile Views" />
+Growth marketer who writes code. **$50M+ in ad spend** managed across **200+ clients** — B2B services, D2C ecom, SaaS, and everything in between. In 2025 I picked up Claude Code, started building, and haven't stopped shipping since. **11 live products** and counting — no dev team, no VC.
 
-*"Stop watching from the sidelines while competitors automate their growth."*
+> **By day:** Director of Marketing at Neil Jesani Advisors — 76-person financial advisory, $300K+/mo paid media.
+> **By night:** I build products. Healthcare. EdTech. MarTech. Social. Open source. All solo.
 
-</div>
+<!-- STATS -->
+<p align="center">
+<img src="https://img.shields.io/badge/%2450M%2B-Ad_Spend_Managed-F59E0B?style=for-the-badge&labelColor=1F222E" />
+<img src="https://img.shields.io/badge/4%3A1%2B-Avg_Ad_ROI-10B981?style=for-the-badge&labelColor=1F222E" />
+<img src="https://img.shields.io/badge/200%2B-Clients_Served-3B82F6?style=for-the-badge&labelColor=1F222E" />
+<img src="https://img.shields.io/badge/11-Live_Products-F85D7F?style=for-the-badge&labelColor=1F222E" />
+</p>
+
+---
+
+<details open>
+<summary><h2>Products I've Built</h2></summary>
+
+<p>Everything below is live, self-built, and running in production right now.</p>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://gtmvp.com">GTMVP</a></h3>
+<p align="center">
+<a href="https://gtmvp.com"><img src="https://img.shields.io/badge/Agency-F59E0B?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">AI automation + managed ads agency. Turn AI hype into business results.</p>
+<p align="center"><a href="https://gtmvp.com">gtmvp.com</a></p>
+</td>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://claudeskillshq.com">ClaudeSkillsHQ</a></h3>
+<p align="center">
+<a href="https://claudeskillshq.com"><img src="https://img.shields.io/badge/Marketplace-8B5CF6?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">140+ verified Claude MCP skills. One command. Instant superpowers.</p>
+<p align="center"><a href="https://claudeskillshq.com">claudeskillshq.com</a></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://docdoctor.ai">DocDoctor.ai</a></h3>
+<p align="center">
+<a href="https://docdoctor.ai"><img src="https://img.shields.io/badge/Healthcare-EF4444?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">AI-powered healthcare platform. Enhancing value-based care intelligence.</p>
+<p align="center"><a href="https://docdoctor.ai">docdoctor.ai</a></p>
+</td>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://synapmarketing.com">SynapMarketing</a></h3>
+<p align="center">
+<a href="https://synapmarketing.com"><img src="https://img.shields.io/badge/MarTech-F59E0B?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">16 AI agents to run your entire marketing department.</p>
+<p align="center"><a href="https://synapmarketing.com">synapmarketing.com</a></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://attribyte.xyz">AttriByte</a></h3>
+<p align="center">
+<a href="https://attribyte.xyz"><img src="https://img.shields.io/badge/Analytics-3B82F6?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">B2B marketing analytics and multi-touch attribution platform.</p>
+<p align="center"><a href="https://attribyte.xyz">attribyte.xyz</a></p>
+</td>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://vibekick.co">VibeKick</a></h3>
+<p align="center">
+<a href="https://vibekick.co"><img src="https://img.shields.io/badge/Dev_Tools-06B6D4?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">Your vibe coding sidekick. 100+ curated prompts for AI-assisted dev.</p>
+<p align="center"><a href="https://vibekick.co">vibekick.co</a></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://aihomeworkhelp.net">AIHomeworkHelp</a></h3>
+<p align="center">
+<a href="https://aihomeworkhelp.net"><img src="https://img.shields.io/badge/EdTech-06B6D4?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">Free AI tutor for all subjects. Student-friendly learning assistant.</p>
+<p align="center"><a href="https://aihomeworkhelp.net">aihomeworkhelp.net</a></p>
+</td>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://studentaidetector.com">StudentAIDetector</a></h3>
+<p align="center">
+<a href="https://studentaidetector.com"><img src="https://img.shields.io/badge/EdTech-06B6D4?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">Identify AI-generated content with 99.4% accuracy.</p>
+<p align="center"><a href="https://studentaidetector.com">studentaidetector.com</a></p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://venturevault.space">VentureVault</a></h3>
+<p align="center">
+<a href="https://venturevault.space"><img src="https://img.shields.io/badge/Tools-6366F1?style=flat-square&logoColor=white" /></a>
+</p>
+<p align="center">Curated startup ideas for builders. Free forever.</p>
+<p align="center"><a href="https://venturevault.space">venturevault.space</a></p>
+</td>
+<td width="50%" valign="top">
+<h3 align="center"><a href="https://barfliz.com">Barfliz</a></h3>
+<p align="center">
+<a href="https://barfliz.com"><img src="https://img.shields.io/badge/Consumer-EC4899?style=flat-square&logoColor=white" /></a>
+<img src="https://img.shields.io/badge/Flagship-F59E0B?style=flat-square&logoColor=white" />
+</p>
+<p align="center">Never drink alone. The social network for nightlife.</p>
+<p align="center"><a href="https://barfliz.com">barfliz.com</a></p>
+</td>
+</tr>
+</table>
+
+<!-- SAASpocolypse gets its own featured section -->
+<h3 align="center"><a href="https://stevekaplan.ai/saaspocolypse">SAASpocolypse 2026</a></h3>
+<p align="center">
+<img src="https://img.shields.io/badge/Open_Source-FF3333?style=flat-square&logoColor=white" />
+<img src="https://img.shields.io/badge/20_Projects-10B981?style=flat-square&logoColor=white" />
+<img src="https://img.shields.io/badge/Enterprise_Value_%244.7M%2B-1F222E?style=flat-square&logoColor=white" />
+<img src="https://img.shields.io/badge/MIT_Licensed-1F222E?style=flat-square&logoColor=white" />
+</p>
+<p align="center">26 days. 20 open-source enterprise SaaS alternatives. Built live on camera with Claude Code. Every repo MIT licensed.</p>
+<p align="center"><a href="https://stevekaplan.ai/saaspocolypse"><img src="https://img.shields.io/badge/Watch_Live-stevekaplan.ai%2Fsaaspocolypse-FF3333?style=for-the-badge&labelColor=1F222E" /></a></p>
+
+<p align="center"><sub>No dev team. No VC. Claude Code, clear thinking, and the willingness to ship.</sub></p>
+
+</details>
+
+---
+
+<details open>
+<summary><h2>BarkBox Case Study</h2></summary>
+
+<p><i>Via Click Then Convert, my performance marketing agency (founded 2016). D2C subscription for dog owners.</i></p>
+
+<p align="center">
+<img src="https://img.shields.io/badge/204%25-Conversion_Increase-10B981?style=for-the-badge&labelColor=1F222E" />
+<img src="https://img.shields.io/badge/254%25-ROAS_Increase-3B82F6?style=for-the-badge&labelColor=1F222E" />
+<img src="https://img.shields.io/badge/31%25-CPC_Decrease-F59E0B?style=for-the-badge&labelColor=1F222E" />
+</p>
+
+> *"He understands the big picture yet focuses on the metrics that matter — Cost to Acquire a Customer and New Customers Acquired."*
+>
+> **Todd Kane**, VP Growth, BarkBox
+
+</details>
+
+---
+
+<details open>
+<summary><h2>Timeline</h2></summary>
+
+| Year | Milestone | |
+|:----:|:----------|:-|
+| `2016` | **Click Then Convert** | Founded performance marketing agency. Scaled to $50M+ in client ad spend across 200+ clients. |
+| `2023` | **Published Author** | Released *Marketing, Sales and Service with AI* — frameworks for AI in growth teams. |
+| `2025` | **AI Builder Era** | Started shipping products solo with Claude Code. 11 live products and counting. |
+| `2026` | **Neil Jesani Advisors** | Director of Marketing. $300K+/mo paid media. 76-person financial advisory firm. |
+| `2026` | **SAASpocolypse** | 20 open-source enterprise SaaS alternatives. Built live on camera in 26 days. |
+
+</details>
+
+---
+
+<details open>
+<summary><h2>Tech Stack</h2></summary>
+
+<p align="center">
+
+**AI & Automation**
+
+<img src="https://img.shields.io/badge/Claude_API-191919?style=for-the-badge&logo=anthropic&logoColor=white" />
+<img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" />
+<img src="https://img.shields.io/badge/n8n-EA4B71?style=for-the-badge&logo=n8n&logoColor=white" />
+
+**Development**
+
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+<img src="https://img.shields.io/badge/Next.js-000?style=for-the-badge&logo=next.js&logoColor=white" />
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+<img src="https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white" />
+<img src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+
+**Data & Marketing**
+
+<img src="https://img.shields.io/badge/BigQuery-669DF6?style=for-the-badge&logo=googlebigquery&logoColor=white" />
+<img src="https://img.shields.io/badge/dbt-FF694B?style=for-the-badge&logo=dbt&logoColor=white" />
+<img src="https://img.shields.io/badge/PostHog-000?style=for-the-badge&logo=posthog&logoColor=white" />
+<img src="https://img.shields.io/badge/Google_Ads-4285F4?style=for-the-badge&logo=googleads&logoColor=white" />
+<img src="https://img.shields.io/badge/Meta_Ads-0082FB?style=for-the-badge&logo=meta&logoColor=white" />
+<img src="https://img.shields.io/badge/HubSpot-FF7A59?style=for-the-badge&logo=hubspot&logoColor=white" />
+
+</p>
+
+<p align="center">
+<img src="https://img.shields.io/badge/Google_Partner-4285F4?style=flat-square&logo=google&logoColor=white" />
+<img src="https://img.shields.io/badge/Meta_Blueprint-0082FB?style=flat-square&logo=meta&logoColor=white" />
+<img src="https://img.shields.io/badge/Klaviyo_Partner-222?style=flat-square&logo=klaviyo&logoColor=white" />
+<img src="https://img.shields.io/badge/Published_Author-F59E0B?style=flat-square" />
+</p>
+
+</details>
+
+---
+
+<details open>
+<summary><h2>Published Work</h2></summary>
+
+**The $259K Marketing Data Stack** — How a 6-tool open stack replaces $295K enterprise platforms at 88% less cost. [Download free at stevekaplan.ai](https://stevekaplan.ai)
+
+**Marketing, Sales and Service with AI** — Published book with practical frameworks for implementing AI in growth teams.
+
+</details>
+
+---
+
+<details open>
+<summary><h2>GitHub Stats</h2></summary>
+
+<p align="center">
+<a href="https://github.com/Stevekaplanai">
+<img height="180" src="https://github-readme-stats.vercel.app/api?username=stevekaplanai&show_icons=true&theme=react&bg_color=1F222E&title_color=F59E0B&hide_border=true&icon_color=F85D7F&text_color=c9d1d9" alt="GitHub Stats" />
+</a>
+<a href="https://github.com/Stevekaplanai">
+<img height="180" src="https://github-readme-streak-stats.herokuapp.com?user=stevekaplanai&theme=react&hide_border=true&background=1F222E&ring=F59E0B&fire=F85D7F&currStreakLabel=F59E0B&sideLabels=c9d1d9&dates=6e7681" alt="GitHub Streak" />
+</a>
+</p>
+
+</details>
+
+---
+
+<p align="center">
+<a href="https://stevekaplan.ai"><img src="https://img.shields.io/badge/stevekaplan.ai-111?style=for-the-badge&logo=firefoxbrowser&logoColor=F59E0B" /></a>
+<a href="https://linkedin.com/in/stevekaplanai"><img src="https://img.shields.io/badge/LinkedIn-111?style=for-the-badge&logo=linkedin&logoColor=0A66C2" /></a>
+<a href="https://github.com/Stevekaplanai?tab=repositories&sort=stargazers"><img src="https://img.shields.io/badge/All_Repos-111?style=for-the-badge&logo=github&logoColor=white" /></a>
+</p>
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=stevekaplanai&color=1F222E&style=flat-square&label=Profile+Views" alt="Profile Views" />
+</p>
+
+<p align="center"><sub><i>"Most fractional CMOs hand you a strategy deck. I build the system that executes it."</i></sub></p>
