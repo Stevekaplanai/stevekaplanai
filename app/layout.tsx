@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { SaaspocolypseBanner } from "@/components/saaspocolypse-banner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -180,7 +179,6 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <SaaspocolypseBanner />
         {children}
       </body>
     </html>
