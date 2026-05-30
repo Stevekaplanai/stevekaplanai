@@ -202,7 +202,7 @@ export function GTMVPSection() {
           {[
             { stat: "$50M+", label: "Lifetime ad spend managed" },
             { stat: "10:1", label: "Sustained ROAS at $2M+/mo" },
-            { stat: "32:1", label: "Highest single result" },
+            { stat: "3.2x", label: "Average ROAS" },
             { stat: "100+", label: "Clients served" },
           ].map((item) => (
             <div

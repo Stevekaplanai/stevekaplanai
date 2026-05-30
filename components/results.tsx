@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const trackRecord = [
   { value: "$50M+", label: "Lifetime Ad Spend Managed" },
-  { value: "32:1", label: "Lifetime Ad ROI" },
+  { value: "3.2x", label: "Avg ROAS" },
   { value: "100+", label: "Clients Served" },
   { value: "9", label: "AI Products Shipped" },
 ];
@@ -34,9 +34,9 @@ const philosophy = [
       "Make offers so good people feel stupid saying no. Every campaign I build starts with an irresistible offer, not just clever ad copy.",
   },
   {
-    title: "32:1 Returns",
+    title: "3.2x Average ROAS",
     description:
-      "For every $1 spent on advertising, I average $32 back. That's not theory - that's my lifetime track record across all campaigns.",
+      "For every $1 spent on advertising, I average $3.20 back across all campaigns. That's the lifetime number, not a cherry-picked peak.",
   },
   {
     title: "Leads First",

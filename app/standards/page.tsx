@@ -44,7 +44,7 @@ const refusals = [
   {
     n: "04",
     title: "I won't promise a number I can't audit.",
-    body: "No guaranteed ROAS lift. No guaranteed pipeline. No guaranteed CPA reduction. The 32:1 lifetime ROI on my homepage is a documented track record across $50M+ of personally-managed spend, not a forward-looking promise. I'll guarantee the deliverable: 5 wins or full refund. That's it.",
+    body: "No guaranteed ROAS lift. No guaranteed pipeline. No guaranteed CPA reduction. The 3.2x average ROAS on my homepage is a documented track record across $50M+ of personally-managed spend, not a forward-looking promise. I'll guarantee the deliverable: 5 wins or full refund. That's it.",
   },
   {
     n: "05",

@@ -9,7 +9,7 @@ interface Stat {
 const stats: Stat[] = [
   { value: "$50M+", label: "Lifetime Ad Spend" },
   { value: "10:1", label: "Sustained ROAS" },
-  { value: "32:1", label: "Highest Single Result" },
+  { value: "3.2x", label: "Avg ROAS" },
   { value: "9", label: "Products Shipped Solo" },
 ];
 
@@ -121,8 +121,8 @@ export function Hero() {
               <li className="flex items-start gap-3">
                 <span className="text-electric font-mono mt-0.5 flex-shrink-0">+</span>
                 <span>
-                  <span className="text-foreground font-semibold">32:1 highest single result.</span>{" "}
-                  Not a footnote. A real number with a real audit trail.
+                  <span className="text-foreground font-semibold">3.2x average ROAS</span>{" "}
+                  across 100+ clients and $50M+ in spend. The lifetime number, not a cherry-picked peak.
                 </span>
               </li>
               <li className="flex items-start gap-3">
