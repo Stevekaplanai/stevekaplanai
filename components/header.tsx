@@ -2,7 +2,16 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { BookAuditButton } from "./book-audit-modal";
+
+const navLinks = [
+  { href: "https://www.gtmvp.com", label: "GTMVP", external: true },
+  { href: "/audit", label: "Audit" },
+  { href: "/standards", label: "Standards" },
+  { href: "/compare", label: "Compare" },
+  { href: "#products", label: "Products" },
+];
+
+const AUDIT_CTA = "https://www.gtmvp.com/smart-bidding-audit";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,42 +30,27 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-7">
-          <Link
-            href="/audit"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Audit
-          </Link>
-          <Link
-            href="/standards"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Standards
-          </Link>
-          <Link
-            href="/compare"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Compare
-          </Link>
-          <Link
-            href="/saaspocolypse"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            SAASpocolypse
-          </Link>
-          <Link
-            href="#products"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Products
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              {...(link.external
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <div className="flex items-center gap-4">
-          <BookAuditButton className="hidden sm:inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer">
-            Book Your Audit
-          </BookAuditButton>
+          <a
+            href={AUDIT_CTA}
+            className="hidden sm:inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            Free Smart Bidding Audit
+          </a>
 
           {/* Mobile menu button */}
           <button
@@ -94,51 +88,25 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-midnight border-t border-border">
           <nav className="flex flex-col px-6 py-4 space-y-4">
-            <Link
-              href="/audit"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                {...(link.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href={AUDIT_CTA}
+              className="bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-3 rounded-lg transition-colors text-center"
             >
-              Audit
-            </Link>
-            <Link
-              href="/standards"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Standards
-            </Link>
-            <Link
-              href="/compare"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Compare
-            </Link>
-            <Link
-              href="/saaspocolypse"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              SAASpocolypse
-            </Link>
-            <Link
-              href="#products"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Products
-            </Link>
-            <Link
-              href="/white-paper"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              White Paper
-            </Link>
-            <BookAuditButton className="bg-electric hover:bg-electric/90 text-white text-sm font-medium px-4 py-3 rounded-lg transition-colors text-center cursor-pointer">
-              Book Your Audit
-            </BookAuditButton>
+              Free Smart Bidding Audit
+            </a>
           </nav>
         </div>
       )}

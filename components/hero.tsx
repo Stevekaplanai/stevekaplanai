@@ -1,12 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BookAuditButton } from "./book-audit-modal";
 
-const stats = [
+interface Stat {
+  value: string;
+  label: string;
+}
+
+const stats: Stat[] = [
   { value: "$50M+", label: "Lifetime Ad Spend" },
-  { value: "$300K/mo", label: "Run Today" },
-  { value: "9", label: "AI Products Shipped" },
-  { value: "36:1", label: "Lifetime Ad ROI" },
+  { value: "10:1", label: "Sustained ROAS" },
+  { value: "32:1", label: "Highest Single Result" },
+  { value: "9", label: "Products Shipped Solo" },
 ];
 
 export function Hero() {
@@ -25,14 +29,14 @@ export function Hero() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 lg:py-24">
         <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
-          {/* Left column - Identity + Offer */}
+          {/* Left column */}
           <div>
             {/* Headshot + name */}
             <div className="flex items-center gap-4 mb-6">
               <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-electric/30">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg"
-                  alt="Steve Kaplan - AI Automation Consultant and Growth Marketer in Fort Lauderdale"
+                  alt="Steve Kaplan, growth marketer and solo builder"
                   fill
                   sizes="(max-width: 768px) 64px, 80px"
                   className="object-cover"
@@ -45,34 +49,25 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 text-emerald text-sm font-medium px-4 py-2 rounded-full mb-6">
-              <span className="w-2 h-2 bg-emerald rounded-full animate-pulse" />
-              5 days · $3,500 flat · money back if fewer than 3 wins
-            </div>
-
-            <h1 className="text-[2rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-foreground leading-[1.1] sm:leading-[1.05] tracking-tight mb-6 text-balance">
-              I find your{" "}
-              <span className="text-electric">AI and automation opportunities</span>
-              {" "}&mdash; the ones that{" "}
-              <span className="text-emerald">lift profit and productivity</span>.{" "}
-              With the <span className="text-emerald">least lift</span>.{" "}
-              <span className="text-electric">In 5 days.</span>
+            <h1 className="text-[1.85rem] sm:text-4xl md:text-5xl lg:text-[3rem] font-extrabold text-foreground leading-[1.1] sm:leading-[1.05] tracking-tight mb-6 text-balance">
+              I spent 15 years moving{" "}
+              <span className="text-electric">$50M+ in paid media</span>{" "}
+              for other people. Then I built the thing I always wished existed.
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground mb-4 leading-relaxed">
-              Most fractional CMOs ship a strategy deck. I ship the system that executes it &mdash;
-              and the receipts behind every recommendation.
+              Most marketers at this level give you a strategy deck. I give you the system that
+              executes it, and the receipts behind every number.
             </p>
 
             <p className="text-base text-muted-foreground mb-8">
-              You&apos;re flying blind on what&apos;s actually working. I find the 5 highest-leverage moves,
-              rank them by effort vs lift, and hand you a 30/60/90 day plan your team can execute
-              &mdash; with or without me. Built by someone who runs $300K/month in paid media every
-              day and has shipped 9 products solo.
+              I built GTMVP: eight AI agents that continuously map competitors, sharpen positioning,
+              score channels, and surface the moves most founders are too close to see. Start with
+              the free Smart Bidding Audit and find out exactly where your ad spend is leaking.
             </p>
 
-            {/* Stats row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {/* Stat strip */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center md:text-left">
                   <div className="text-2xl md:text-[1.75rem] font-bold font-mono text-electric">
@@ -85,71 +80,89 @@ export function Hero() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              <BookAuditButton className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
-                Book your audit
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </BookAuditButton>
-              <Link
-                href="/audit/sample"
-                className="inline-flex items-center gap-2 bg-transparent border border-electric text-electric hover:bg-electric/10 text-sm font-semibold px-6 py-3.5 rounded-lg transition-colors"
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-3 items-center">
+              <a
+                href="https://www.gtmvp.com/smart-bidding-audit"
+                className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"
               >
-                See what you walk away with
+                Get the free Smart Bidding Audit
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </Link>
+              </a>
+              <a
+                href="https://www.gtmvp.com"
+                className="text-sm text-electric hover:text-electric/80 underline underline-offset-4 transition-colors"
+              >
+                Explore GTMVP
+              </a>
             </div>
           </div>
 
-          {/* Right column - Outcomes card */}
+          {/* Right column - credential card */}
           <div className="bg-midnight border border-electric/30 rounded-2xl p-8 shadow-2xl shadow-electric/5">
             <div className="inline-flex items-center gap-2 bg-electric/10 border border-electric/20 text-electric text-xs font-medium px-3 py-1 rounded-full mb-5 font-mono uppercase tracking-wider">
-              Profit Loop Audit · $3,500 flat
+              Operator credentials
             </div>
 
             <h3 className="text-xl md:text-2xl font-extrabold text-foreground leading-tight mb-5">
-              What you walk away with on Day 5:
+              15 years. $50M+ managed. 9 products shipped. All solo.
             </h3>
 
             <ul className="space-y-3.5 mb-6 text-[15px] text-muted-foreground leading-relaxed">
               <li className="flex items-start gap-3">
-                <span className="text-electric font-mono mt-0.5 flex-shrink-0">→</span>
-                <span><span className="text-foreground font-semibold">5 wins, ranked.</span> Each with a dollar number attached and an effort score.</span>
+                <span className="text-electric font-mono mt-0.5 flex-shrink-0">+</span>
+                <span>
+                  <span className="text-foreground font-semibold">10:1 sustained ROAS</span>{" "}
+                  at $2M+/mo spend across Google and Meta.
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-electric font-mono mt-0.5 flex-shrink-0">→</span>
-                <span><span className="text-foreground font-semibold">A stack map</span> of every tool, integration, and manual handoff &mdash; the one nobody on your team has time to draw.</span>
+                <span className="text-electric font-mono mt-0.5 flex-shrink-0">+</span>
+                <span>
+                  <span className="text-foreground font-semibold">32:1 highest single result.</span>{" "}
+                  Not a footnote. A real number with a real audit trail.
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-electric font-mono mt-0.5 flex-shrink-0">→</span>
-                <span><span className="text-foreground font-semibold">A data baseline:</span> spend, pipeline, attribution gaps. So you stop arguing about what&apos;s working.</span>
+                <span className="text-electric font-mono mt-0.5 flex-shrink-0">+</span>
+                <span>
+                  <span className="text-foreground font-semibold">9 products shipped solo</span>{" "}
+                  with Claude Code, including GTMVP and Attribyte.
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-electric font-mono mt-0.5 flex-shrink-0">→</span>
-                <span><span className="text-foreground font-semibold">A 30/60/90 plan</span> your team executes &mdash; with or without me.</span>
+                <span className="text-electric font-mono mt-0.5 flex-shrink-0">+</span>
+                <span>
+                  Google Partner. Facebook Blueprint Certified. Klaviyo Partner.
+                  Amazon bestselling author (2023).
+                </span>
               </li>
             </ul>
 
             <div className="bg-slate/30 border border-border rounded-lg px-4 py-3 mb-6 text-xs text-muted-foreground space-y-1.5">
               <p className="flex items-center gap-2">
-                <span className="text-emerald">✓</span> Total of your time: <span className="text-foreground font-semibold">~3 hours across 5 days.</span>
+                <span className="text-emerald font-semibold">+</span>
+                100+ clients served across paid media, growth, and marketing ops.
               </p>
               <p className="flex items-center gap-2">
-                <span className="text-emerald">✓</span> Money back if I find <span className="text-foreground font-semibold">fewer than 3 executable wins.</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <span className="text-emerald">✓</span> 100% credited toward a retainer if you sign within 30 days.
+                <span className="text-emerald font-semibold">+</span>
+                17K+ LinkedIn followers. Writing on AI-powered growth since 2023.
               </p>
             </div>
 
-            <BookAuditButton className="w-full inline-flex items-center justify-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
-              Book your audit
-            </BookAuditButton>
+            <a
+              href="https://www.gtmvp.com/smart-bidding-audit"
+              className="w-full inline-flex items-center justify-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"
+            >
+              Get the free Smart Bidding Audit
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
             <p className="text-xs text-center text-muted-foreground mt-4">
-              No sales sequence. Reply from steve@stevekaplan.ai within 24 hours.
+              Free. No sales call required. Takes under 5 minutes.
             </p>
           </div>
         </div>

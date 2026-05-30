@@ -40,8 +40,8 @@ const timeline = [
   },
   {
     year: "2023",
-    title: "Neil Jesani Advisors",
-    description: "Director of Marketing. $300K+/month paid media, full martech stack implementation.",
+    title: "Published Author",
+    description: "Released 'Marketing, Sales and Service with AI.' Number 1 Amazon bestseller.",
   },
   {
     year: "2024",
@@ -49,9 +49,9 @@ const timeline = [
     description: "Shipped 9 AI products solo using Claude Code. DocDoctor.ai, GTMVP, ClaudeSkillsHQ, and more.",
   },
   {
-    year: "2025",
-    title: "Published Author",
-    description: "Released &apos;Marketing, Sales and Service with AI&apos; - practical frameworks for AI implementation.",
+    year: "2026",
+    title: "Went Solo. Full-time.",
+    description: "Left the in-house seat to build full-time. GTMVP and Attribyte are the focus. Operators do not code. Engineers do not run $50M in live spend. I do both.",
   },
 ];
 
@@ -65,10 +65,10 @@ export function About() {
             About
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-6">
-            Builder + Strategist = Results
+            Operators do not code. Engineers do not run $50M in live spend. I do both.
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Most fractional CMOs give you a strategy deck. I build the system that executes it.
+            15 years in growth marketing. 9 products shipped solo. The rare combination that lets me build the system and run it.
           </p>
         </div>
         
@@ -97,10 +97,10 @@ export function About() {
                 I didn&apos;t hire a dev team. I didn&apos;t wait for permission. I started building. Claude Code became my engineering partner. Nine products later, I&apos;m shipping faster than most funded startups.
               </p>
               <p>
-                By day, I lead marketing for Neil Jesani Advisors &mdash; a 76-person financial advisory firm. $300K+/month in paid media. HubSpot, SEO, prospecting, brand strategy.
+                For 15 years I ran paid media for other people: $50M+ in lifetime spend across Google and Meta, $300K+/month at peak, a 10:1 sustained ROAS at scale. In 2026 I left the in-house seat to go all in on my own products.
               </p>
               <p>
-                By night, I build products that solve real problems. Healthcare documentation. AI tutoring. Marketing automation. MCP skills marketplaces.
+                Now I build the systems I always wished existed. GTMVP, the paid media OS for founders still logging into the ad account themselves. Attribyte, the attribution platform that measures whether any of it actually worked. The marketing and the engineering, run by the same person.
               </p>
             </div>
             

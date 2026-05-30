@@ -8,18 +8,28 @@ export function AuditFeature() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="max-w-3xl mb-12">
-          <p className="text-sm uppercase tracking-wider text-electric font-mono font-medium mb-3">
-            The offer
+          <p className="text-sm uppercase tracking-wider text-amber font-mono font-medium mb-3">
+            Bridge offer. Want operator eyes first?
           </p>
           <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tight leading-[1.05]">
-            Stack audit. 5 days. 5 wins.
+            Profit Loop Audit. 5 days. 5 wins.
             <br />
             <span className="text-emerald">Ranked, scoped, dollar-attached.</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Most agencies optimize for retainer. Most fractional CMOs ship a deck. I run a
-            5-day audit on your stack, find the highest-leverage moves, and hand them to your
-            team in priority order. $3,500 flat. Money back if I find fewer than 3.
+            Not ready to commit to a full GTMVP Rebuild yet? This is the $3,500 flat engagement
+            for founders who want senior operator input before their ad spend warrants a full
+            build. I dig into your stack, find the highest-leverage moves, and hand them to your
+            team in priority order. Money back if I find fewer than 3.
+          </p>
+          <p className="text-sm text-muted-foreground mt-3">
+            Already running paid media?{" "}
+            <a
+              href="https://www.gtmvp.com/smart-bidding-audit"
+              className="text-electric underline underline-offset-4 hover:text-electric/80 transition-colors"
+            >
+              Start with the free Smart Bidding Audit instead.
+            </a>
           </p>
         </div>
 
@@ -33,9 +43,9 @@ export function AuditFeature() {
               Every win gets two scores. Effort and lift.
             </p>
             <p className="text-muted-foreground text-base leading-relaxed mb-6">
-              Effort is what it costs you to ship &mdash; tooling, time, integration risk. Lift
+              Effort is what it costs you to ship: tooling, time, integration risk. Lift
               is dollars and hours back. We start with the wins that lift profit fastest, with
-              the least effort. Slow lifts go on the 60- or 90-day track. Anything that doesn&apos;t
+              the least effort. Slow lifts go on the 60 or 90-day track. Anything that doesn&apos;t
               clear the bar gets cut.
             </p>
 
@@ -50,15 +60,15 @@ export function AuditFeature() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald font-mono mt-0.5">→</span>
-                  <span>$5K&ndash;$30K/month in paid media spent on broken audiences nobody noticed</span>
+                  <span>$5K to $30K/month in paid media spent on broken audiences nobody noticed</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald font-mono mt-0.5">→</span>
-                  <span>3&ndash;5 manual handoffs per deal that an AI workflow eats in an afternoon</span>
+                  <span>3 to 5 manual handoffs per deal that an AI workflow eats in an afternoon</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald font-mono mt-0.5">→</span>
-                  <span>Attribution gaps that make every channel look like it&apos;s working &mdash; or none</span>
+                  <span>Attribution gaps that make every channel look like it&apos;s working, or none at all</span>
                 </li>
               </ul>
             </div>

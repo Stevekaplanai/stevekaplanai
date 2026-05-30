@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const trackRecord = [
   { value: "$50M+", label: "Lifetime Ad Spend Managed" },
-  { value: "36:1", label: "Lifetime Ad ROI" },
+  { value: "32:1", label: "Lifetime Ad ROI" },
   { value: "100+", label: "Clients Served" },
   { value: "9", label: "AI Products Shipped" },
 ];
@@ -34,9 +34,9 @@ const philosophy = [
       "Make offers so good people feel stupid saying no. Every campaign I build starts with an irresistible offer, not just clever ad copy.",
   },
   {
-    title: "36:1 Returns",
+    title: "32:1 Returns",
     description:
-      "For every $1 spent on advertising, I average $36 back. That's not theory - that's my lifetime track record across all campaigns.",
+      "For every $1 spent on advertising, I average $32 back. That's not theory - that's my lifetime track record across all campaigns.",
   },
   {
     title: "Leads First",
@@ -163,7 +163,7 @@ export function Results() {
                 <span className="text-foreground font-semibold">
                   {barkBoxCaseStudy.testimonial.author}
                 </span>
-                {" "}&mdash; {barkBoxCaseStudy.testimonial.title}
+                {", "}{barkBoxCaseStudy.testimonial.title}
               </p>
             </div>
           </div>
@@ -172,10 +172,10 @@ export function Results() {
         {/* CTA */}
         <div className="text-center">
           <Link
-            href="/audit"
+            href="https://www.gtmvp.com/smart-bidding-audit"
             className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"
           >
-            See How I Audit GTM Stacks
+            Get Your Free Smart Bidding Audit
             <svg
               className="w-4 h-4"
               fill="none"
