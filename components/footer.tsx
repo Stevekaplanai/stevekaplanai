@@ -15,6 +15,7 @@ const resources = [
   { name: "SAASpocolypse 2026", url: "/saaspocolypse", external: false },
   { name: "White Paper", url: "/white-paper", external: false },
   { name: "Newsletter", url: "https://aimoneyminute.beehiiv.com", external: true },
+  { name: "Medium", url: "https://medium.com/@stevekaplanai", external: true },
 ];
 
 const social = [
