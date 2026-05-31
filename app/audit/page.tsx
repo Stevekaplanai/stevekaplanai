@@ -3,30 +3,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { ROICalculator } from "@/components/roi-calculator";
 import { AuditComparison } from "@/components/audit-comparison";
+import { BookAuditButton } from "@/components/book-audit-modal";
 import { proofStats, timeline, deliverables } from "./data";
 
 export const metadata: Metadata = {
-  title: "Profit Loop Audit — 5-Day GTM Stack Audit",
+  title: "Smart Bidding Audit: operator-written paid media audit",
   description:
-    "5-day flat-fee GTM stack audit for $10M to $100M companies. Find the top 5 AI and automation wins, ranked by effort vs lift. $3,500 flat. Money-back guarantee. By Steve Kaplan.",
+    "Free 14-checkpoint Smart Bidding Audit on your Google Ads, instant PDF, no call. Or the $129 operator-written Diagnostic: 22 modules, 24-hour turnaround, 7-day money-back. By Steve Kaplan.",
   alternates: {
     canonical: "https://stevekaplan.ai/audit",
   },
   openGraph: {
-    title: "Profit Loop Audit — 5-Day GTM Stack Audit | Steve Kaplan",
+    title: "Smart Bidding Audit: operator-written paid media audit | Steve Kaplan",
     description:
-      "Find the top 5 AI and automation wins in your GTM stack. $3,500 flat. 5 business days. Money-back guarantee.",
+      "Free 14-checkpoint Smart Bidding Audit, instant PDF, no call. Or the $129 Diagnostic in 24 hours, 7-day money-back.",
     url: "https://stevekaplan.ai/audit",
     siteName: "stevekaplan.ai",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit — 5 days, $3,500 flat" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Profit Loop Audit — 5-Day GTM Stack Audit",
-    description: "Find the top 5 AI and automation wins in your GTM stack. $3,500 flat. Money-back guarantee.",
-    images: ["/og-card.jpg"],
+    title: "Smart Bidding Audit: operator-written paid media audit",
+    description: "Free 14-checkpoint Smart Bidding Audit, instant PDF, no call. Or the $129 Diagnostic in 24 hours.",
   },
 };
 
@@ -41,9 +40,9 @@ export default function AuditPage() {
           "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: [
-            { "@type": "Question", name: "How is the Profit Loop Audit different from consulting?", acceptedAnswer: { "@type": "Answer", text: "I do not write strategy decks. I inventory your stack, pull your data, and deliver a ranked list of wins with numbers attached. Five days, not five months." } },
-            { "@type": "Question", name: "How much does the Profit Loop Audit cost?", acceptedAnswer: { "@type": "Answer", text: "$3,500 flat fee. 5 business days. Money-back guarantee if fewer than 3 executable wins. Fully credited toward a retainer if you sign within 30 days." } },
-            { "@type": "Question", name: "What if AI is not the right move for my company?", acceptedAnswer: { "@type": "Answer", text: "I will tell you. And I will refund the audit. I would rather lose a retainer than sell a lie." } },
+            { "@type": "Question", name: "How is the audit different from consulting?", acceptedAnswer: { "@type": "Answer", text: "I do not write strategy decks. I read your Google Ads bidding signals and write the remediation plan myself. The free Smart Bidding Audit is instant. The $129 Diagnostic ships in 24 hours." } },
+            { "@type": "Question", name: "How much does the audit cost?", acceptedAnswer: { "@type": "Answer", text: "The 14-checkpoint Smart Bidding Audit is free, instant PDF, no call. The operator-written Diagnostic is $129 one-time, 22 modules, 24-hour turnaround, 7-day money-back if it does not surface one move you would act on." } },
+            { "@type": "Question", name: "Do I have to book a call?", acceptedAnswer: { "@type": "Answer", text: "No. The free Smart Bidding Audit and the $129 Diagnostic are both fully self-serve. No call. Only the done-for-you Rebuild routes through a 30-minute discovery call." } },
             { "@type": "Question", name: "Can I see what the audit deliverable looks like?", acceptedAnswer: { "@type": "Answer", text: "Yes. A full sample audit for a fictional $28M B2B SaaS company is published at stevekaplan.ai/audit/sample." } },
           ],
         }) }}
@@ -92,18 +91,18 @@ export default function AuditPage() {
 
                 <div className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 text-emerald text-sm font-medium px-4 py-2 rounded-full mb-6">
                   <span className="w-2 h-2 bg-emerald rounded-full animate-pulse" />
-                  5 days. $3,500 flat. Money-back guarantee.
+                  Free Smart Bidding Audit. Instant PDF. No call.
                 </div>
 
                 <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-foreground leading-[1.1] tracking-tight mb-6">
-                  Your GTM stack has{" "}
-                  <span className="text-emerald">hidden wins</span>.
-                  <br />I find them in 5 days.
+                  Your Google Ads spend has{" "}
+                  <span className="text-emerald">hidden leaks</span>.
+                  <br />I find them in 14 checkpoints.
                 </h1>
 
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed max-w-xl">
-                  The Profit Loop Audit: I find the top 5 AI and automation wins in your stack,
-                  ranked by effort vs lift, with a 30/60/90 day roadmap.
+                  The free Smart Bidding Audit scores your Google Ads in 14 checkpoints, instant PDF, no call.
+                  Want it operator-written? The $129 Diagnostic ships in 24 hours: 22 modules, written remediation plan.
                 </p>
 
                 {/* Stats row */}
@@ -116,12 +115,23 @@ export default function AuditPage() {
                   ))}
                 </div>
 
-                <Link
-                  href="/audit/sample"
-                  className="text-electric hover:text-electric/80 text-sm font-medium underline underline-offset-4 transition-colors"
-                >
-                  See a sample audit output &rarr;
-                </Link>
+                <div className="flex flex-col sm:flex-row gap-4 mb-6">
+                  <BookAuditButton className="inline-flex items-center justify-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 text-sm cursor-pointer">
+                    Work with me directly
+                  </BookAuditButton>
+                  <a
+                    href="https://gtmvp.com"
+                    className="inline-flex items-center justify-center gap-2 bg-transparent border border-electric text-electric hover:bg-electric/10 font-semibold px-6 py-3.5 rounded-lg transition-colors text-sm"
+                  >
+                    Or run the free Smart Bidding Audit
+                  </a>
+                  <Link
+                    href="/audit/sample"
+                    className="inline-flex items-center justify-center gap-2 text-muted-foreground hover:text-foreground font-medium px-6 py-3.5 transition-colors text-sm"
+                  >
+                    See a sample
+                  </Link>
+                </div>
               </div>
 
               {/* Right Column - ROI Calculator */}
@@ -137,8 +147,8 @@ export default function AuditPage() {
           <div className="w-full max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">How It Works</p>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">5 days. 6 steps. Zero guesswork.</h2>
-              <p className="text-lg text-muted-foreground">Your total time commitment: about 3 hours across 5 days.</p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">22 modules. One operator. Zero guesswork.</h2>
+              <p className="text-lg text-muted-foreground">The free audit is instant. The $129 Diagnostic ships in 24 hours, written by me.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {timeline.map((step) => (
@@ -192,8 +202,8 @@ export default function AuditPage() {
                 <h3 className="text-xl font-bold text-foreground mb-3">Want to see the actual output?</h3>
                 <p className="text-muted-foreground mb-6">
                   I published a full sample audit for a fictional $28M B2B SaaS company with 65 employees.
-                  Same structure, same level of detail. Stack inventory, data baseline, top 5 wins, effort vs lift
-                  matrix, 30/60/90 roadmap.
+                  Same structure, same level of detail. Bidding signal stack, data baseline, ranked leaks,
+                  written remediation plan.
                 </p>
                 <Link
                   href="/audit/sample"
@@ -232,9 +242,8 @@ export default function AuditPage() {
                       at a 3.2x average ROAS. Google Partner. Facebook Blueprint Certified.
                     </p>
                     <p>
-                      Right now I am Director of Marketing at a 76-person financial advisory firm,
-                      running $300K/month in paid media across Meta, Google, and TikTok. I also
-                      ship software. 9+ products built solo using AI.
+                      I run live paid media at scale, $300K/month across Meta, Google, and
+                      TikTok. I also ship software. 9+ products built solo using AI.
                     </p>
                     <p className="text-foreground font-medium">
                       I am not a consultant. I am an operator. The audit is not a deck with
@@ -259,22 +268,22 @@ export default function AuditPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">Money-back guarantee.</h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">7-day money-back.</h3>
                 <p className="text-muted-foreground">
-                  If you do not walk out of Day 5 with at least 3 clear wins you can
-                  execute on (with or without me), you pay nothing. Full refund. No questions.
+                  If the $129 Diagnostic does not surface at least one move you would act on,
+                  email me inside 7 days. Full refund. No questions.
                 </p>
               </div>
 
               {/* Pricing */}
               <div className="bg-midnight border border-electric/30 rounded-xl p-8 text-center">
-                <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">One price. No surprises.</p>
+                <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">Two ways to start. No call.</p>
                 <div className="mb-4">
-                  <span className="text-5xl font-extrabold font-mono text-foreground">$3,500</span>
-                  <span className="text-lg text-muted-foreground ml-2">flat</span>
+                  <span className="text-5xl font-extrabold font-mono text-foreground">$129</span>
+                  <span className="text-lg text-muted-foreground ml-2">Diagnostic</span>
                 </div>
                 <div className="space-y-2 text-sm text-muted-foreground mb-4">
-                  {["5 business days", "Credited toward a retainer", "Money-back guarantee", "No scope creep"].map((text) => (
+                  {["Free Smart Bidding Audit first, no cost", "24-hour turnaround, operator-written", "22 modules, written remediation plan", "7-day money-back, zero sales calls"].map((text) => (
                     <p key={text} className="flex items-center justify-center gap-2">
                       <svg className="w-3.5 h-3.5 text-emerald flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -284,7 +293,9 @@ export default function AuditPage() {
                   ))}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Use the calculator above to estimate your ROI before committing.
+                  Start free at{" "}
+                  <a href="https://gtmvp.com" className="text-electric underline underline-offset-4 hover:text-electric/80 transition-colors">gtmvp.com</a>.
+                  Use the calculator above to estimate your ROI first.
                 </p>
               </div>
             </div>

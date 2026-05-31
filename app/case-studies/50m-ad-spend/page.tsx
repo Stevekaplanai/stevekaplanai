@@ -129,7 +129,7 @@ export default function FiftyMillionPage() {
 
         <div className="bg-midnight border border-electric/30 rounded-xl p-8 text-center">
           <h2 className="text-xl font-bold text-foreground mb-3">Same instinct. New model.</h2>
-          <p className="text-muted-foreground mb-6">The Profit Loop Audit brings 10 years of pattern recognition to your stack. $3,500. 5 days.</p>
+          <p className="text-muted-foreground mb-6">GTMVP brings 10 years of pattern recognition to your ad account. Start free with the Smart Bidding Audit.</p>
           <Link href="/audit" className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25">
             Get Your Audit
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>

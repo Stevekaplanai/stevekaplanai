@@ -5,23 +5,21 @@ import { Footer } from "@/components/footer";
 import { BookAuditButton } from "@/components/book-audit-modal";
 
 export const metadata: Metadata = {
-  title: "Compare — Profit Loop Audit vs the alternatives",
+  title: "Compare: GTMVP vs the alternatives",
   description:
-    "Side-by-side comparisons of the Profit Loop Audit against fractional CMOs, strategy decks, junior hires, agency retainers, and DIY with ChatGPT Pro.",
+    "Side-by-side comparisons of an operator-run paid media audit against fractional CMOs, strategy decks, junior hires, agency retainers, and DIY with ChatGPT Pro.",
   alternates: { canonical: "https://stevekaplan.ai/compare" },
   openGraph: {
-    title: "Compare — Profit Loop Audit vs the alternatives | Steve Kaplan",
+    title: "Compare: GTMVP vs the alternatives | Steve Kaplan",
     description:
-      "Five honest comparisons. No straw men. Fractional CMO, strategy deck, junior hire, agency retainer, ChatGPT Pro — and where the audit beats each.",
+      "Five honest comparisons. No straw men. Fractional CMO, strategy deck, junior hire, agency retainer, ChatGPT Pro. Where an operator-run paid media audit beats each.",
     url: "https://stevekaplan.ai/compare",
     type: "website",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit comparisons" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Profit Loop Audit vs the alternatives",
-    description: "Five honest comparisons. No straw men. $3,500 vs the next-tier hire.",
-    images: ["/og-card.jpg"],
+    title: "GTMVP vs the alternatives",
+    description: "Five honest comparisons. No straw men. A free Smart Bidding Audit vs the next-tier hire.",
   },
 };
 
@@ -29,32 +27,32 @@ const comparisons = [
   {
     slug: "vs-strategy-deck",
     title: "vs a strategy deck",
-    hook: "Most consultants ship a 47-slide PDF. I ship the system that executes it.",
-    cost: "$8K-15K vs $3,500",
+    hook: "Most consultants ship a 47-slide PDF. I ship the engine that finds the leaks and rebuilds the account.",
+    cost: "$8K to $15K vs a free audit",
   },
   {
     slug: "vs-fractional-cmo",
     title: "vs hiring a fractional CMO",
-    hook: "60-90 days of strategy work for a deck that decays in 60. Or 5 days for a ranked list of wins your team executes.",
-    cost: "$8K-15K/mo vs $3,500 flat",
+    hook: "60 to 90 days of strategy work for a deck that decays in 60. Or a $129 Diagnostic in 24 hours.",
+    cost: "$8K to $15K/mo vs $129",
   },
   {
     slug: "vs-junior-marketer",
     title: "vs hiring a junior in-house",
-    hook: "$70K-110K/yr learning on your dollar, or $3,500 once for someone who's already managed $50M+ in spend.",
-    cost: "$70K+/yr vs $3,500 flat",
+    hook: "$70K to $110K a year learning on your dollar, or $129 from an operator who has managed $50M+ in spend.",
+    cost: "$70K+/yr vs $129",
   },
   {
     slug: "vs-agency-retainer",
     title: "vs an agency retainer",
-    hook: "Quarterly cadence and dashboard theater, or 5 days and a written audit you actually act on.",
-    cost: "$6K-25K/mo vs $3,500 flat",
+    hook: "Quarterly cadence and dashboard theater, or a $129 operator-written Diagnostic in 24 hours.",
+    cost: "$6K to $25K/mo vs $129",
   },
   {
     slug: "vs-chatgpt-pro",
     title: "vs DIY with ChatGPT Pro",
-    hook: "Generic recommendations no operator has ever shipped. Or a ranked list from someone who runs $300K/mo every day.",
-    cost: "$200/mo + your evenings vs $3,500 once",
+    hook: "Generic recommendations no operator has ever shipped. Or an audit from someone who runs $300K/mo every day.",
+    cost: "$200/mo + your evenings vs a free audit",
   },
 ];
 
@@ -65,16 +63,16 @@ export default function ComparePage() {
       <main className="pt-28 pb-20">
         <section className="w-full max-w-4xl mx-auto px-6">
           <p className="text-sm uppercase tracking-wider text-electric font-mono font-medium mb-3">
-            Compare · the Profit Loop Audit
+            Compare · GTMVP
           </p>
           <h1 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight leading-[1.05]">
             Five honest comparisons.{" "}
             <span className="text-emerald">No straw men.</span>
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-            The audit isn&apos;t the only way to find your top wins. Here&apos;s how it stacks up
-            against every alternative an operator typically considers &mdash; with the
-            tradeoffs each one earns you.
+            GTMVP isn&apos;t the only way to find the leaks in your paid media. Here&apos;s how an
+            operator-run audit stacks up against every alternative a founder typically considers.
+            The tradeoffs each one earns you, in plain numbers.
           </p>
 
           <div className="space-y-3 mb-16">
@@ -87,7 +85,7 @@ export default function ComparePage() {
                 <div className="flex items-start gap-4">
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
-                      Profit Loop Audit
+                      GTMVP
                     </p>
                     <h2 className="text-xl md:text-2xl font-extrabold text-foreground mb-2 tracking-tight group-hover:text-electric transition-colors">
                       {c.title}
@@ -120,18 +118,18 @@ export default function ComparePage() {
               Skip the comparison shopping
             </p>
             <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4 leading-tight">
-              5 days. $3,500 flat. Money back if fewer than 3 wins.
+              Work with me directly. Or run the free audit yourself.
             </h2>
             <div className="flex flex-wrap justify-center gap-3">
               <BookAuditButton className="inline-flex items-center justify-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
-                Book your audit
+                Work with me directly
               </BookAuditButton>
-              <Link
-                href="/audit/sample"
+              <a
+                href="https://gtmvp.com"
                 className="inline-flex items-center gap-2 bg-transparent border border-electric text-electric hover:bg-electric/10 text-sm font-semibold px-6 py-3.5 rounded-lg transition-colors"
               >
-                See a sample audit &rarr;
-              </Link>
+                Or run the free Smart Bidding Audit
+              </a>
             </div>
           </div>
         </section>

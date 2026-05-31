@@ -22,19 +22,18 @@ export const proofStats: ProofStat[] = [
 ];
 
 export const timeline: TimelineStep[] = [
-  { day: "Day 0", title: "Kickoff", description: "60-minute call. Lock scope, get access, confirm targets." },
-  { day: "Day 1", title: "Stack Inventory", description: "Map every tool, integration, and manual handoff." },
-  { day: "Day 2", title: "Data Review", description: "Pull pipeline, spend, conversions, and attribution gaps." },
-  { day: "Day 3", title: "Opportunity Mapping", description: "Rank top 5 wins by effort vs lift with specific numbers." },
-  { day: "Day 4", title: "Roadmap", description: "Build a phased 30/60/90 day plan." },
-  { day: "Day 5", title: "Delivery", description: "Live call. Recorded walkthrough. Written audit document." },
+  { day: "Step 1", title: "Connect", description: "Grant read-only access to your Google Ads. No call required." },
+  { day: "Step 2", title: "Signal audit", description: "I read your Smart Bidding signal stack across 22 modules in 5 clusters." },
+  { day: "Step 3", title: "Leak map", description: "Every leak found, with the dollar number attached." },
+  { day: "Step 4", title: "Remediation plan", description: "The exact fixes, in the order to ship them." },
+  { day: "Step 5", title: "Delivery", description: "Written Diagnostic in your inbox within 24 hours. 7-day money-back." },
 ];
 
 export const deliverables: Deliverable[] = [
-  { item: "Stack inventory (every tool, integration, manual step)", format: "Table + diagram" },
-  { item: "Data baseline (spend, conversions, attribution)", format: "Dashboard snapshot" },
-  { item: "Top 5 wins, ranked by effort vs lift", format: "Doc with specific numbers" },
-  { item: "30/60/90 day phased roadmap", format: "Actionable plan" },
-  { item: "Live delivery call + recorded walkthrough", format: "60 minutes" },
-  { item: "Written audit document", format: "PDF you can share" },
+  { item: "Smart Bidding signal-stack audit, 22 modules across 5 clusters", format: "Operator-written" },
+  { item: "Every leak found, with the dollar number attached", format: "Doc with specific numbers" },
+  { item: "Written remediation plan, in the order to ship", format: "Actionable steps" },
+  { item: "Free 14-checkpoint Smart Bidding Audit", format: "Instant PDF" },
+  { item: "24-hour turnaround, no call", format: "Self-serve" },
+  { item: "7-day money-back", format: "If it does not surface one move you would act on" },
 ];

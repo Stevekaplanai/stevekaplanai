@@ -37,10 +37,10 @@ export default function Post() {
 
         <div className="prose-custom space-y-6 text-muted-foreground leading-relaxed text-[17px]">
           <p>
-            I manage $300K/month in paid media across Meta, Google, and TikTok at a 76-person firm.
+            I manage $300K/month in paid media across Meta, Google, and TikTok.
           </p>
           <p>
-            Last year I found an audience segment that converts to customers at 15.5%. The firm average is 5%.
+            Last year I found an audience segment that converts to customers at 15.5%. The account average is 5%.
           </p>
           <p>
             Same creative. Same offer. Same landing page. Just a different audience slice.
@@ -96,9 +96,9 @@ export default function Post() {
             Pull your CRM data. Match it back to ad source. Find which audience segments produce customers, not just leads. Then reallocate.
           </p>
           <p>
-            This is exactly the kind of win I find in the first 48 hours of a{" "}
-            <Link href="/audit" className="text-electric hover:text-electric/80 underline underline-offset-2">Profit Loop Audit</Link>.
-            $3,500 flat. 5 business days.
+            This is exactly the kind of win I surface in the{" "}
+            <Link href="/audit" className="text-electric hover:text-electric/80 underline underline-offset-2">$129 Diagnostic</Link>.
+            Operator-written, 24-hour turnaround, no call.
           </p>
         </div>
       </article>

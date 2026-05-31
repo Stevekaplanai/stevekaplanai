@@ -24,9 +24,9 @@ const jsonLd = {
       "@id": "https://stevekaplan.ai/#person",
       name: "Steve Kaplan",
       url: "https://stevekaplan.ai",
-      jobTitle: "AI Automation Consultant & Growth Marketer",
+      jobTitle: "Founder of GTMVP. Paid media operator and builder.",
       description:
-        "Growth marketer who writes code. $50M+ ad spend managed. 9 AI products built solo. Director of Marketing at a 76-person financial advisory firm.",
+        "Growth marketer who writes code. I ran my paid media agency, Click Then Convert, for almost 10 years: $50M+ managed at a 3.2x lifetime ROAS across 100+ clients. Now I build GTMVP, the paid media OS for B2B founders who still log into Google Ads. 9 products shipped solo with Claude Code.",
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Steve%20Headshot-LYW2CejUfUZzhDbWmR0cq4GVWRAgwJ.jpg",
       sameAs: [
@@ -54,27 +54,35 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://stevekaplan.ai/#website",
       url: "https://stevekaplan.ai",
-      name: "Steve Kaplan | AI Automation & Growth Marketing",
+      name: "Steve Kaplan | Paid media operator, building GTMVP",
       publisher: { "@id": "https://stevekaplan.ai/#person" },
     },
     {
       "@type": "Service",
       "@id": "https://stevekaplan.ai/audit#service",
-      name: "Profit Loop Audit",
+      name: "GTMVP Paid Media Audit and Rebuild",
       description:
-        "5-day flat-fee GTM stack audit for $10M to $100M companies. Find the top 5 AI and automation wins, ranked by effort vs lift, with a 30/60/90 day roadmap. $3,500 flat. Money-back guarantee.",
+        "An operator-built paid media OS for B2B founders who still log into Google Ads. A free 14-checkpoint Smart Bidding Audit, a $129 operator-written Diagnostic, and a done-for-you Rebuild service with a 20% CPA-reduction guarantee.",
       provider: { "@id": "https://stevekaplan.ai/#person" },
       url: "https://stevekaplan.ai/audit",
       areaServed: {
         "@type": "Country",
         name: "United States",
       },
-      offers: {
-        "@type": "Offer",
-        price: "3500",
-        priceCurrency: "USD",
-        description: "Flat fee, 5 business days, fully credited toward a retainer",
-      },
+      offers: [
+        {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          description: "Free Smart Bidding Audit. 14-checkpoint Google Ads self-audit, emailed instantly.",
+        },
+        {
+          "@type": "Offer",
+          price: "129",
+          priceCurrency: "USD",
+          description: "Diagnostic. Operator-written paid media audit, 22 modules, 24-hour turnaround, 7-day money-back.",
+        },
+      ],
     },
     {
       "@type": "Organization",
@@ -95,24 +103,23 @@ const jsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://stevekaplan.ai"),
   title: {
-    default: "Steve Kaplan | AI Automation & Growth Marketing",
+    default: "Steve Kaplan | Paid media operator, building GTMVP",
     template: "%s | Steve Kaplan",
   },
   description:
-    "Growth marketer who writes code. $50M+ ad spend managed. 9 AI products built solo. I don't advise. I build.",
+    "I ran my paid media agency, Click Then Convert, for almost 10 years. $50M+ managed at a 3.2x lifetime ROAS, 100+ clients. Now I build GTMVP, the paid media OS for B2B founders who still log into Google Ads. I don't advise. I build.",
   keywords: [
     "Steve Kaplan",
     "Steve Kaplan AI",
-    "AI automation consultant",
+    "GTMVP",
+    "paid media OS",
+    "Google Ads audit",
+    "Smart Bidding audit",
+    "paid media operator",
     "growth marketing",
-    "fractional CMO",
     "AI products",
-    "marketing data stack",
-    "GTM automation",
-    "Profit Loop Audit",
     "B2B SaaS marketing",
     "Fort Lauderdale marketing",
-    "GTMVP",
   ],
   authors: [{ name: "Steve Kaplan", url: "https://stevekaplan.ai" }],
   creator: "Steve Kaplan",
@@ -121,29 +128,20 @@ export const metadata: Metadata = {
     canonical: "https://stevekaplan.ai",
   },
   openGraph: {
-    title: "Steve Kaplan | AI Automation & Growth Marketing",
+    title: "Steve Kaplan | Paid media operator, building GTMVP",
     description:
-      "I find your AI and automation opportunities — the ones that lift profit and productivity, with the least lift. In 5 days. $3,500 flat. Money back if fewer than 3 wins.",
+      "I ran my agency, Click Then Convert, for almost 10 years: $50M+ managed at a 3.2x lifetime ROAS. Now I build GTMVP, the paid media OS for B2B founders who still log into Google Ads.",
     url: "https://stevekaplan.ai",
     siteName: "stevekaplan.ai",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/og-card.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Profit Loop Audit — 5 days, $3,500 flat, money-back guarantee. By Steve Kaplan.",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Steve Kaplan | AI Automation & Growth Marketing",
+    title: "Steve Kaplan | Paid media operator, building GTMVP",
     description:
-      "5-day GTM stack audit. Top 5 AI and automation wins. $3,500 flat. Money back if fewer than 3.",
+      "Ran my agency Click Then Convert for almost 10 years. $50M+ managed at 3.2x. Now building GTMVP, the paid media OS for founders who still log into Google Ads.",
     creator: "@stevekaplanai",
-    images: ["/og-card.jpg"],
   },
   robots: {
     index: true,

@@ -107,18 +107,18 @@ export default function Post() {
 
           <h2 className="text-xl font-bold text-foreground pt-4">Where I am now</h2>
           <p>
-            10 months in. 1 retainer client. Building the pipeline. Shipping every week.
-            9+ software products live. $300K/month in paid media at my day job keeping the instincts sharp.
+            Full-time on GTMVP. Building the pipeline. Shipping every week.
+            9+ software products live. Still running $300K/month in live paid media to keep the instincts sharp.
           </p>
           <p>It is not glamorous yet. But it is the right bet.</p>
           <p>
-            If you are running a mid-market company ($10M to $100M) and your GTM ops feel like they
-            need a senior hire you cannot find, that is exactly the problem I built GTMVP to solve.
+            If you are a Series A B2B SaaS founder still logging into Google Ads yourself, and you
+            cannot tell if the spend backs out on the backend, that is exactly the problem I built GTMVP to solve.
           </p>
           <p>
-            Start with a{" "}
-            <Link href="/audit" className="text-electric hover:text-electric/80 underline underline-offset-2">Profit Loop Audit</Link>.
-            $3,500. 5 business days. I find the wins. Then I build them.
+            Start with the free{" "}
+            <Link href="/audit" className="text-electric hover:text-electric/80 underline underline-offset-2">Smart Bidding Audit</Link>.
+            14 checkpoints. Instant PDF. No call. I find the leaks. Then I rebuild the account.
           </p>
         </div>
       </article>

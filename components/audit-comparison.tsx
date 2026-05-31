@@ -13,34 +13,34 @@ interface ComparisonRow {
 const rows: ComparisonRow[] = [
   {
     option: "Junior in-house marketer",
-    cost: "$70K&ndash;$110K/yr + benefits",
-    timeToValue: "3&ndash;6 months",
+    cost: "$70K to $110K/yr + benefits",
+    timeToValue: "3 to 6 months",
     output: "Tactical execution. Limited strategic surface area.",
-    riskOfMiss: "High &mdash; learning on your dollar, attribution skills not on the bench",
+    riskOfMiss: "High. Learning on your dollar, attribution skills not on the bench.",
     href: "/compare/vs-junior-marketer",
   },
   {
     option: "Fractional CMO / strategy consultant",
-    cost: "$8K&ndash;$15K/mo retainer",
-    timeToValue: "60&ndash;90 days for first deck",
+    cost: "$8K to $15K/mo retainer",
+    timeToValue: "60 to 90 days for first deck",
     output: "Strategy deck. No execution. Decays in 60 days.",
-    riskOfMiss: "Medium &mdash; output is talk, not ship",
+    riskOfMiss: "Medium. Output is talk, not ship.",
     href: "/compare/vs-fractional-cmo",
   },
   {
-    option: "Profit Loop Audit",
-    cost: "$3,500 flat",
-    timeToValue: "5 business days",
-    output: "Stack map + data baseline + 5 wins ranked by effort vs lift + 30/60/90 plan.",
-    riskOfMiss: "Refund if fewer than 3 executable wins. 100% credited toward retainer.",
+    option: "Smart Bidding Audit + $129 Diagnostic",
+    cost: "Free, then $129",
+    timeToValue: "Instant, or 24 hours",
+    output: "Bidding signal stack + data baseline + ranked leaks + written remediation plan.",
+    riskOfMiss: "7-day money-back if it does not surface a move you would act on. No call.",
     highlight: true,
   },
   {
     option: "DIY with ChatGPT Pro + tools",
     cost: "~$200/mo subscriptions + your time",
     timeToValue: "Weeks of your evenings",
-    output: "Generic recommendations. No stack inventory. No data baseline.",
-    riskOfMiss: "High &mdash; no operator review, no accountability, no track record behind it",
+    output: "Generic recommendations. No bidding signal audit. No data baseline.",
+    riskOfMiss: "High. No operator review, no accountability, no track record behind it.",
     href: "/compare/vs-chatgpt-pro",
   },
 ];
@@ -54,10 +54,10 @@ export function AuditComparison() {
             How it stacks up
           </p>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-3 tracking-tight leading-tight">
-            $3,500 against the alternatives.
+            $129 against the alternatives.
           </h2>
           <p className="text-muted-foreground leading-relaxed">
-            The Profit Loop Audit is priced against the next-tier hire, not the cheaper tools.
+            The Diagnostic is priced to be a no-brainer next to a senior hire, not the cheaper tools.
             The math gets clearer when you put them next to each other.
           </p>
         </div>
@@ -101,7 +101,7 @@ export function AuditComparison() {
                         href={row.href}
                         className="text-xs text-muted-foreground hover:text-electric mt-1 inline-block underline underline-offset-4"
                       >
-                        Read the comparison &rarr;
+                        Read the comparison
                       </Link>
                     )}
                   </td>
@@ -185,7 +185,7 @@ export function AuditComparison() {
                     href={row.href}
                     className="text-xs text-electric hover:text-electric/80 mt-2 inline-block underline underline-offset-4"
                   >
-                    Read the full comparison &rarr;
+                    Read the full comparison
                   </Link>
                 )}
               </dl>
@@ -199,7 +199,7 @@ export function AuditComparison() {
             href="/compare"
             className="text-electric hover:text-electric/80 underline underline-offset-4"
           >
-            Compare the audit vs every alternative &rarr;
+            Compare the audit vs every alternative
           </Link>
         </p>
       </div>

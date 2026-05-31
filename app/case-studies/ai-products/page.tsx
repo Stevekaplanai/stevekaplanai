@@ -21,7 +21,7 @@ const products = [
   { name: "AIHomeworkHelp", what: "AI tutoring platform (freemium, multi-subject)", stack: "Web", status: "Live", highlight: false },
   { name: "StudentAIDetector", what: "AI text detection (99% accuracy)", stack: "Web", status: "Live", highlight: false },
   { name: "VentureVault", what: "Free startup idea browser", stack: "Web", status: "Live", highlight: false },
-  { name: "GTMVP.com", what: "AI automation agency site", stack: "Web", status: "Live", highlight: false },
+  { name: "GTMVP.com", what: "The paid media OS for B2B founders", stack: "Web", status: "Live", highlight: false },
   { name: "SteveKaplan.ai", what: "Personal portfolio and brand", stack: "Next.js, Tailwind, Vercel", status: "Live", highlight: false },
 ];
 
@@ -84,7 +84,7 @@ export default function AIProductsPage() {
           <h2 className="text-xl font-bold text-foreground mb-6">What This Proves</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              { title: "Steve builds, not just advises", text: "When GTMVP says 'we build bespoke automation stacks,' it is not a metaphor. Steve writes code, deploys infrastructure, and ships production software. Every week." },
+              { title: "Steve builds, not just advises", text: "When GTMVP rebuilds an ad account, it is not a metaphor. Steve writes code, deploys infrastructure, and ships production software. Every week." },
               { title: "AI-first development works", text: "9+ products by one person is only possible with AI-assisted development. Claude Code handles the heavy lifting. The operator provides judgment and domain expertise." },
               { title: "Full-stack technical credibility", text: "React, TypeScript, Supabase, APIs, push notifications, FHIR integrations, geolocation, AI agents. Not no-code. Real software engineering." },
               { title: "Speed as a feature", text: "Barfliz went from idea to v1.4.0 in months. ClaudeSkillsHQ launched with 140+ skills. GTMVP moves at startup speed, not agency speed." },
@@ -99,7 +99,7 @@ export default function AIProductsPage() {
 
         <div className="bg-midnight border border-electric/30 rounded-xl p-8 text-center">
           <h2 className="text-xl font-bold text-foreground mb-3">Need someone who builds, not just advises?</h2>
-          <p className="text-muted-foreground mb-6">The Profit Loop Audit is where it starts. $3,500. 5 days. Real systems, not decks.</p>
+          <p className="text-muted-foreground mb-6">The free Smart Bidding Audit is where it starts. 14 checkpoints, instant PDF, no call. Real systems, not decks.</p>
           <Link href="/audit" className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25">
             Get Your Audit
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>

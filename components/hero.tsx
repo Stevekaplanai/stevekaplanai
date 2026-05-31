@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BookAuditButton } from "@/components/book-audit-modal";
 
 interface Stat {
   value: string;
@@ -82,14 +83,14 @@ export function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-3 items-center">
+              <BookAuditButton className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
+                Work with me directly
+              </BookAuditButton>
               <a
                 href="https://www.gtmvp.com/smart-bidding-audit"
-                className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25"
+                className="inline-flex items-center gap-2 bg-transparent border border-electric text-electric hover:bg-electric/10 font-semibold px-6 py-3.5 rounded-lg transition-colors"
               >
-                Get the free Smart Bidding Audit
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                Or get the free Smart Bidding Audit
               </a>
               <a
                 href="https://www.gtmvp.com"

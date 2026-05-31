@@ -5,51 +5,49 @@ import { Footer } from "@/components/footer";
 import { CompareTable, CompareCTA } from "@/components/compare-helpers";
 
 export const metadata: Metadata = {
-  title: "Profit Loop Audit vs an agency retainer",
+  title: "GTMVP vs an agency retainer",
   description:
-    "Why agency retainers optimize for agency retention, not your pipeline. $6K-25K/mo of dashboard theater vs $3,500 once.",
+    "Why agency retainers optimize for agency retention, not your pipeline. $6K to $25K/mo of dashboard theater vs a $129 operator-written Diagnostic.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-agency-retainer" },
   openGraph: {
-    title: "Profit Loop Audit vs an agency retainer | Steve Kaplan",
+    title: "GTMVP vs an agency retainer | Steve Kaplan",
     description:
-      "Quarterly cadence and dashboard theater, or 5 days and a written audit. $3,500 vs $6K-25K/mo.",
+      "Quarterly cadence and dashboard theater, or a $129 operator-written Diagnostic in 24 hours. $129 vs $6K to $25K/mo.",
     url: "https://stevekaplan.ai/compare/vs-agency-retainer",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs an agency retainer" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Profit Loop Audit vs an agency retainer",
+    title: "GTMVP vs an agency retainer",
     description: "I ran an agency for 10 years. I closed it. Here's why.",
-    images: ["/og-card.jpg"],
   },
 };
 
 const rows = [
   {
     dim: "Cost",
-    alt: "$6K-25K/mo retainer. Often a 6-month minimum.",
-    audit: "$3,500 flat. One engagement. No minimum.",
+    alt: "$6K to $25K/mo retainer. Often a 6-month minimum.",
+    audit: "Free Smart Bidding Audit. $129 Diagnostic, one-time. Rebuild starts at $3,500/mo only if you want me running the account.",
   },
   {
     dim: "Cadence",
     alt: "Quarterly business reviews. Monthly dashboards. Weekly stand-ups.",
-    audit: "5 business days. Then you have the deliverable. Then you decide.",
+    audit: "Instant PDF for the free audit. 24 hours for the $129 Diagnostic. Then you decide.",
   },
   {
     dim: "What it optimizes for",
     alt: "Retention of the retainer. The QBR is theater because cancellation is the alternative.",
-    audit: "The audit IS the deliverable. Nothing renews automatically.",
+    audit: "Finding the leaks in your account. The Diagnostic is the deliverable. Nothing renews automatically.",
   },
   {
     dim: "Skin in the game",
     alt: "Agency keeps billing whether or not the campaigns work. The account manager rotates every 18 months.",
-    audit: "Solo operator. Same person you talk to in the kickoff is the same person on Day 5.",
+    audit: "Solo operator. The person who writes your Diagnostic is the same person running your account on Rebuild. On Rebuild I beat your trailing 90-day CPA by 20% or I work free until I do.",
   },
   {
     dim: "Output",
     alt: "Dashboards, reports, status updates. Sometimes campaigns ship; sometimes they're 'in queue.'",
-    audit: "A written audit document. PDF you can share. 5 wins ranked by effort vs lift, dollar-attached.",
+    audit: "A 22-module Diagnostic. PDF you can share. The signal-stack leaks, dollar-attached, with a written remediation plan.",
   },
 ];
 
@@ -63,18 +61,18 @@ export default function VsAgencyRetainerPage() {
             href="/compare"
             className="inline-flex items-center gap-1 text-sm text-electric hover:text-electric/80 mb-6"
           >
-            &larr; All comparisons
+            Back to all comparisons
           </Link>
 
           <p className="text-sm uppercase tracking-wider text-electric font-mono font-medium mb-3">
-            Profit Loop Audit · vs an agency retainer
+            GTMVP · vs an agency retainer
           </p>
           <h1 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight leading-[1.05]">
             Quarterly cadence and dashboard theater.{" "}
-            <span className="text-emerald">Or 5 days and a written audit.</span>
+            <span className="text-emerald">Or a $129 Diagnostic in 24 hours.</span>
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-            I ran an agency for 10 years &mdash; Click Then Convert, $50M+ in spend
+            I ran an agency for 10 years. Click Then Convert, $50M+ in spend
             across 100+ clients. I know exactly what the retainer is optimized for.
             It isn&apos;t your pipeline.
           </p>
@@ -98,9 +96,8 @@ export default function VsAgencyRetainerPage() {
             slide deck takes 47 pages.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            I closed the agency in 2024 because I&apos;d rather get paid for the
-            ranked list of wins than get paid for the renewal narrative.
-            That&apos;s the audit.
+            I closed the agency in 2024 because I&apos;d rather get paid for fixing
+            the account than get paid for the renewal narrative. That&apos;s GTMVP.
           </p>
 
           <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4 mt-10 tracking-tight">
@@ -108,15 +105,15 @@ export default function VsAgencyRetainerPage() {
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             One case: high-volume execution where the channels are stable and the
-            work is repeatable &mdash; weekly creative refreshes, daily bid
-            management, lifecycle email sends. That&apos;s a labor problem, and
-            agencies are good at labor at scale.
+            work is repeatable. Weekly creative refreshes, daily bid management,
+            lifecycle email sends. That&apos;s a labor problem, and agencies are good
+            at labor at scale.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The audit doesn&apos;t replace that. It tells you whether the labor is
-            being pointed at the right channels in the first place. Run the audit
-            first; then decide if the agency is doing the right work or just doing
-            it efficiently.
+            being pointed at the right channels in the first place. Run the free
+            Smart Bidding Audit first. Then decide if the agency is doing the right
+            work or just doing it efficiently.
           </p>
 
           <CompareCTA />

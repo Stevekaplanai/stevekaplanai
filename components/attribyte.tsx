@@ -84,19 +84,19 @@ export function AttribyteSection() {
 
             <div className="bg-slate/30 border border-border rounded-lg px-4 py-4 space-y-2 text-xs text-muted-foreground">
               <p className="flex items-start gap-2">
-                <span className="text-electric font-mono mt-0.5">→</span>
+                <span className="text-electric font-mono mt-0.5">+</span>
                 <span>
                   Built by Steve. Not a third-party tool. Owned and operated.
                 </span>
               </p>
               <p className="flex items-start gap-2">
-                <span className="text-electric font-mono mt-0.5">→</span>
+                <span className="text-electric font-mono mt-0.5">+</span>
                 <span>
                   Cookieless-primary. Deterministic identity resolution first.
                 </span>
               </p>
               <p className="flex items-start gap-2">
-                <span className="text-electric font-mono mt-0.5">→</span>
+                <span className="text-electric font-mono mt-0.5">+</span>
                 <span>
                   All three measurement methods. One platform. No stitching.
                 </span>

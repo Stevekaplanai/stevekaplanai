@@ -5,23 +5,21 @@ import { Footer } from "@/components/footer";
 import { CompareTable, CompareCTA } from "@/components/compare-helpers";
 
 export const metadata: Metadata = {
-  title: "Profit Loop Audit vs a strategy deck",
+  title: "GTMVP vs a strategy deck",
   description:
-    "Why most consultancy decks decay in 60 days, and what an audit hands you instead. $3,500 vs $8K-15K/mo retainer.",
+    "Why most consultancy decks decay in 60 days, and what an operator-run paid media audit hands you instead. A free Smart Bidding Audit vs an $8K to $15K/mo retainer.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-strategy-deck" },
   openGraph: {
-    title: "Profit Loop Audit vs a strategy deck | Steve Kaplan",
+    title: "GTMVP vs a strategy deck | Steve Kaplan",
     description:
-      "Most consultants ship a deck. I ship the system that executes it. $3,500 vs $8K-15K/mo retainer.",
+      "Most consultants ship a deck. I ship the engine that finds the leaks and rebuilds the account. A free Smart Bidding Audit vs an $8K to $15K/mo retainer.",
     url: "https://stevekaplan.ai/compare/vs-strategy-deck",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs a strategy deck" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Profit Loop Audit vs a strategy deck",
-    description: "Most consultants ship a deck. I ship the system that executes it.",
-    images: ["/og-card.jpg"],
+    title: "GTMVP vs a strategy deck",
+    description: "Most consultants ship a deck. I ship the engine that finds the leaks and rebuilds the account.",
   },
 };
 
@@ -29,27 +27,27 @@ const rows = [
   {
     dim: "Deliverable",
     alt: "47-slide PDF. Sometimes a Notion doc.",
-    audit: "Stack map + data baseline + 5 wins ranked by effort vs lift + 30/60/90 plan. PDF you can share.",
+    audit: "Free Smart Bidding Audit (14 checkpoints, instant PDF) or a $129 operator-written Diagnostic: 22 modules, the signal-stack leaks, a written remediation plan.",
   },
   {
     dim: "Time to first action",
-    alt: "60-90 days for the deck. Then the team has to translate it into work.",
-    audit: "5 business days end-to-end. Day 5 you have the ranked wins, dollar numbers, and the next step.",
+    alt: "60 to 90 days for the deck. Then the team has to translate it into work.",
+    audit: "Instant PDF for the free audit. 24 hours for the $129 Diagnostic. No 90-day wait for a slide.",
   },
   {
     dim: "Cost",
-    alt: "$8K-15K/mo retainer. Often a 6- or 12-month minimum.",
-    audit: "$3,500 flat. No retainer, no minimum, no upsell sequence after.",
+    alt: "$8K to $15K/mo retainer. Often a 6- or 12-month minimum.",
+    audit: "Free Smart Bidding Audit. $129 Diagnostic, one-time. No retainer to start, no minimum.",
   },
   {
     dim: "Half-life",
     alt: "Decays in ~60 days as channels move and the market shifts.",
-    audit: "30-day plan is most fresh; 60- and 90-day track is sequenced so the latest wins are always the highest-leverage ones at that moment.",
+    audit: "The Diagnostic is a snapshot. Rebuild keeps the agent engine running on a live cadence, so the read never goes stale.",
   },
   {
     dim: "Accountability",
     alt: "The deck doesn't ship anything. The consultant is gone before you find out it didn't work.",
-    audit: "Refund if I find fewer than 3 executable wins. 100% credited toward a retainer if you sign within 30 days.",
+    audit: "7-day money-back if the Diagnostic surfaces nothing you'd act on. On Rebuild, I beat your trailing 90-day blended CPA by 20% or I work free until I do.",
   },
 ];
 
@@ -63,15 +61,15 @@ export default function VsStrategyDeckPage() {
             href="/compare"
             className="inline-flex items-center gap-1 text-sm text-electric hover:text-electric/80 mb-6"
           >
-            &larr; All comparisons
+            Back to all comparisons
           </Link>
 
           <p className="text-sm uppercase tracking-wider text-electric font-mono font-medium mb-3">
-            Profit Loop Audit · vs a strategy deck
+            GTMVP · vs a strategy deck
           </p>
           <h1 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight leading-[1.05]">
             Most consultants ship a deck.{" "}
-            <span className="text-emerald">I ship the system that executes it.</span>
+            <span className="text-emerald">I ship the engine that rebuilds the account.</span>
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-12">
             The strategy deck is the most common GTM consulting deliverable in the world.
@@ -99,11 +97,10 @@ export default function VsStrategyDeckPage() {
             sitting in a Slack thread nobody opens.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            The audit doesn&apos;t cure the assignment problem &mdash; nothing does, except
-            executing the work yourself. But it cuts the translation gap to zero. Each
-            of the 5 wins is scoped to one person, with a dollar number, an effort
-            estimate, and a 30/60/90 day track that maps to a sprint your team is already
-            running.
+            The Diagnostic doesn&apos;t cure the assignment problem. Nothing does, except
+            executing the work yourself. But it cuts the translation gap to zero. Each leak
+            comes with a written remediation step, a dollar number, and the order to ship in.
+            Sign up for Rebuild and I do the shipping: I run the account myself.
           </p>
 
           <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4 mt-10 tracking-tight">
@@ -114,15 +111,15 @@ export default function VsStrategyDeckPage() {
           </p>
           <ul className="space-y-2 text-muted-foreground mb-4 list-none pl-0">
             <li className="flex gap-3">
-              <span className="text-emerald font-mono">&rarr;</span>
+              <span className="text-emerald font-mono">+</span>
               <span>You need a board narrative, not an execution plan. A deck is the
-              right shape for an external story; an audit is the right shape for an
-              internal sprint.</span>
+              right shape for an external story. An audit is the right shape for fixing
+              the account.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-emerald font-mono">&rarr;</span>
+              <span className="text-emerald font-mono">+</span>
               <span>You&apos;re pre-PMF and the question is &ldquo;what is our category?&rdquo;
-              not &ldquo;what wins should we ship?&rdquo; Different question, different shape
+              not &ldquo;where is my paid media leaking?&rdquo; Different question, different shape
               of answer.</span>
             </li>
           </ul>
