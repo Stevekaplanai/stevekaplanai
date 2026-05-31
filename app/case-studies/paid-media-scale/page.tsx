@@ -113,8 +113,8 @@ export default function PaidMediaScalePage() {
         {/* Results Table */}
         <section className="mb-12">
           <h2 className="text-xl font-bold text-foreground mb-6">The Numbers</h2>
-          <div className="bg-midnight border border-border rounded-xl overflow-hidden">
-            <table className="w-full text-sm">
+          <div className="bg-midnight border border-border rounded-xl overflow-x-auto">
+            <table className="w-full text-sm min-w-[480px]">
               <thead>
                 <tr className="border-b border-border bg-slate/30">
                   <th className="text-left font-semibold text-foreground px-5 py-3">Metric</th>

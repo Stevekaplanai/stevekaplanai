@@ -25,9 +25,9 @@ const connections = [
 export function StackDiagram() {
   return (
     <div className="bg-midnight border border-border rounded-xl p-6 md:p-8">
-      <div className="flex items-center gap-4 mb-6">
+      <div className="flex flex-wrap items-center gap-3 mb-6">
         <p className="text-xs uppercase tracking-wider text-muted-foreground">Current Data Flow</p>
-        <div className="flex items-center gap-4 ml-auto text-xs">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 sm:ml-auto text-xs">
           <span className="flex items-center gap-1.5"><span className="w-6 h-0.5 bg-emerald inline-block" /> Connected</span>
           <span className="flex items-center gap-1.5"><span className="w-6 h-0.5 bg-coral inline-block opacity-60" style={{ backgroundImage: "repeating-linear-gradient(90deg, transparent, transparent 3px, rgb(15 23 42) 3px, rgb(15 23 42) 6px)" }} /> Broken</span>
           <span className="flex items-center gap-1.5"><span className="w-6 h-0.5 border-t border-dashed border-muted-foreground/30 inline-block" /> Missing</span>
@@ -286,9 +286,9 @@ export function GanttTimeline() {
 
   return (
     <div className="bg-midnight border border-border rounded-xl p-6 md:p-8">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-y-2 mb-6">
         <p className="text-xs uppercase tracking-wider text-muted-foreground">90-Day Implementation Timeline</p>
-        <div className="flex gap-3 text-[10px]">
+        <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px]">
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm bg-emerald inline-block" /> Quick win</span>
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm bg-electric inline-block" /> Core build</span>
           <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-sm bg-amber inline-block" /> Deep work</span>
@@ -372,12 +372,12 @@ export function FunnelImpact() {
         {stages.map((s, i) => (
           <div key={s.label} className="flex items-stretch">
             {/* Before */}
-            <div className="flex-1 text-right pr-4 py-2.5 border-r border-border/30">
+            <div className="flex-1 min-w-0 text-right pr-4 py-2.5 border-r border-border/30">
               <p className="text-sm font-mono text-muted-foreground">{s.before}</p>
             </div>
 
             {/* Center label */}
-            <div className="w-36 flex-shrink-0 flex flex-col items-center justify-center relative">
+            <div className="w-24 sm:w-36 flex-shrink-0 flex flex-col items-center justify-center relative">
               {i > 0 && <div className="absolute -top-1 w-px h-2 bg-border/30" />}
               <div className={`px-2 py-1 rounded text-[10px] font-medium ${i === stages.length - 1 ? "bg-emerald/10 text-emerald border border-emerald/20" : "bg-slate/50 text-muted-foreground"}`}>
                 {s.label}
@@ -390,7 +390,7 @@ export function FunnelImpact() {
             </div>
 
             {/* After */}
-            <div className="flex-1 pl-4 py-2.5 border-l border-border/30 flex items-center gap-2">
+            <div className="flex-1 min-w-0 pl-4 py-2.5 border-l border-border/30 flex items-center gap-2">
               <p className="text-sm font-mono text-foreground font-medium">{s.after}</p>
               {s.changeType === "up" && (
                 <span className="text-[10px] text-emerald font-mono">{s.change}</span>

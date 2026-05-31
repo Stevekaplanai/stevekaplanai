@@ -179,7 +179,7 @@ export default function SampleAuditPage() {
           </h2>
 
           <div className="overflow-x-auto">
-            <table className="w-full bg-midnight border border-border rounded-xl overflow-hidden text-sm">
+            <table className="w-full min-w-[560px] bg-midnight border border-border rounded-xl overflow-hidden text-sm">
               <thead>
                 <tr className="border-b border-border bg-slate/30">
                   <th className="text-left font-semibold text-foreground px-4 py-3">Tool</th>
@@ -312,8 +312,8 @@ export default function SampleAuditPage() {
             The table your board will screenshot.
           </h2>
 
-          <div className="bg-midnight border border-border rounded-xl overflow-hidden">
-            <table className="w-full text-sm">
+          <div className="bg-midnight border border-border rounded-xl overflow-x-auto">
+            <table className="w-full min-w-[480px] text-sm">
               <thead>
                 <tr className="border-b border-border bg-slate/30">
                   <th className="text-left font-semibold text-foreground px-4 py-3">Win</th>
