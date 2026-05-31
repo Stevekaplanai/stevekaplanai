@@ -21,13 +21,11 @@ export const metadata: Metadata = {
     siteName: "stevekaplan.ai",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Free Smart Bidding Audit. $129 Diagnostic in 24 hours." }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Smart Bidding Audit: operator-written paid media audit",
     description: "Free 14-checkpoint Smart Bidding Audit, instant PDF, no call. Or the $129 Diagnostic in 24 hours.",
-    images: ["/og-card.jpg"],
   },
 };
 

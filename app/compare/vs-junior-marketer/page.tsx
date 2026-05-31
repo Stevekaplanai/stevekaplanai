@@ -15,13 +15,11 @@ export const metadata: Metadata = {
       "$70K to $110K a year learning on your dollar, or $129 from an operator who has managed $50M+ in spend.",
     url: "https://stevekaplan.ai/compare/vs-junior-marketer",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "GTMVP vs hiring a junior in-house" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "GTMVP vs hiring a junior in-house",
     description: "$70K to learn, or $129 from an operator who's already shipped.",
-    images: ["/og-card.jpg"],
   },
 };
 

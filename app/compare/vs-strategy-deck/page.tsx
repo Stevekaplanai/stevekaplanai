@@ -15,13 +15,11 @@ export const metadata: Metadata = {
       "Most consultants ship a deck. I ship the engine that finds the leaks and rebuilds the account. A free Smart Bidding Audit vs an $8K to $15K/mo retainer.",
     url: "https://stevekaplan.ai/compare/vs-strategy-deck",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "GTMVP vs a strategy deck" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "GTMVP vs a strategy deck",
     description: "Most consultants ship a deck. I ship the engine that finds the leaks and rebuilds the account.",
-    images: ["/og-card.jpg"],
   },
 };
 

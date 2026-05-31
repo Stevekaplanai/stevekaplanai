@@ -15,13 +15,11 @@ export const metadata: Metadata = {
       "Five honest comparisons. No straw men. Fractional CMO, strategy deck, junior hire, agency retainer, ChatGPT Pro. Where an operator-run paid media audit beats each.",
     url: "https://stevekaplan.ai/compare",
     type: "website",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "GTMVP comparisons" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "GTMVP vs the alternatives",
     description: "Five honest comparisons. No straw men. A free Smart Bidding Audit vs the next-tier hire.",
-    images: ["/og-card.jpg"],
   },
 };
 

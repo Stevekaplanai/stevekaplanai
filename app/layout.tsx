@@ -135,14 +135,6 @@ export const metadata: Metadata = {
     siteName: "stevekaplan.ai",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "/og-card.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Steve Kaplan. Paid media operator, building GTMVP.",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -150,7 +142,6 @@ export const metadata: Metadata = {
     description:
       "Ran my agency Click Then Convert for almost 10 years. $50M+ managed at 3.2x. Now building GTMVP, the paid media OS for founders who still log into Google Ads.",
     creator: "@stevekaplanai",
-    images: ["/og-card.jpg"],
   },
   robots: {
     index: true,

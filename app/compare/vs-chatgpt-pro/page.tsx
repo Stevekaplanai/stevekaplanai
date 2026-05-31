@@ -15,13 +15,11 @@ export const metadata: Metadata = {
       "ChatGPT Pro can't pull your spend, audit your Smart Bidding signal stack, or find the leaks. $200/mo vs a free Smart Bidding Audit.",
     url: "https://stevekaplan.ai/compare/vs-chatgpt-pro",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "GTMVP vs DIY with ChatGPT Pro" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "GTMVP vs DIY with ChatGPT Pro",
     description: "What ChatGPT can't do. And why you still want both.",
-    images: ["/og-card.jpg"],
   },
 };
 

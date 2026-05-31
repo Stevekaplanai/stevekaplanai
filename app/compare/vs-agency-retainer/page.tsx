@@ -15,13 +15,11 @@ export const metadata: Metadata = {
       "Quarterly cadence and dashboard theater, or a $129 operator-written Diagnostic in 24 hours. $129 vs $6K to $25K/mo.",
     url: "https://stevekaplan.ai/compare/vs-agency-retainer",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "GTMVP vs an agency retainer" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "GTMVP vs an agency retainer",
     description: "I ran an agency for 10 years. I closed it. Here's why.",
-    images: ["/og-card.jpg"],
   },
 };
 

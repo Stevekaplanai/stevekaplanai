@@ -15,13 +15,11 @@ export const metadata: Metadata = {
       "Don't fire your in-house growth hire. Quarterback them. A $129 Diagnostic vs an $8K to $15K/mo retainer.",
     url: "https://stevekaplan.ai/compare/vs-fractional-cmo",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "GTMVP vs hiring a fractional CMO" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "GTMVP vs hiring a fractional CMO",
     description: "Quarterback your team. Don't replace it.",
-    images: ["/og-card.jpg"],
   },
 };
 
