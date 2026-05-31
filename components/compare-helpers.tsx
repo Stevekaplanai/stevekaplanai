@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookAuditButton } from "@/components/book-audit-modal";
+import { BookAuditButton } from "./book-audit-modal";
 
 interface CompareRow {
   dim: string;
@@ -22,7 +22,7 @@ export function CompareTable({ rows, altLabel }: { rows: CompareRow[]; altLabel:
                 {altLabel}
               </th>
               <th className="text-left text-xs font-mono uppercase tracking-wider text-electric px-4 py-3">
-                Profit Loop Audit
+                GTMVP
               </th>
             </tr>
           </thead>
@@ -64,7 +64,7 @@ export function CompareTable({ rows, altLabel }: { rows: CompareRow[]; altLabel:
             </div>
             <div className="px-4 py-3 bg-electric/5">
               <p className="text-[10px] font-mono uppercase tracking-wider text-electric mb-1">
-                Profit Loop Audit
+                GTMVP
               </p>
               <p className="text-sm text-foreground leading-relaxed">{r.audit}</p>
             </div>
@@ -79,21 +79,21 @@ export function CompareCTA() {
   return (
     <div className="bg-midnight border border-electric/30 rounded-xl p-6 md:p-8 text-center mt-12">
       <p className="text-sm uppercase tracking-wider text-electric font-mono font-medium mb-3">
-        Ready to skip the comparison shopping?
+        Stop guessing whether your spend backs out
       </p>
       <h2 className="text-2xl md:text-3xl font-extrabold text-foreground mb-4 leading-tight">
-        5 days. $3,500 flat. Money back if fewer than 3 wins.
+        Work with me directly. Or run the free audit yourself.
       </h2>
       <div className="flex flex-wrap justify-center gap-3">
         <BookAuditButton className="inline-flex items-center justify-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-6 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
-          Book your audit
+          Work with me directly
         </BookAuditButton>
-        <Link
-          href="/audit/sample"
+        <a
+          href="https://gtmvp.com"
           className="inline-flex items-center gap-2 bg-transparent border border-electric text-electric hover:bg-electric/10 text-sm font-semibold px-6 py-3.5 rounded-lg transition-colors"
         >
-          See a sample audit &rarr;
-        </Link>
+          Or run the free Smart Bidding Audit
+        </a>
         <Link
           href="/compare"
           className="inline-flex items-center gap-2 bg-transparent border border-muted text-foreground hover:bg-slate text-sm font-semibold px-6 py-3.5 rounded-lg transition-colors"

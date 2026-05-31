@@ -5,21 +5,21 @@ import { Footer } from "@/components/footer";
 import { CompareTable, CompareCTA } from "@/components/compare-helpers";
 
 export const metadata: Metadata = {
-  title: "Profit Loop Audit vs hiring a fractional CMO",
+  title: "GTMVP vs hiring a fractional CMO",
   description:
-    "Why fractional CMOs become slide-deck factories, and when an audit beats the retainer. $3,500 flat vs $8K-15K/mo.",
+    "Why fractional CMOs become slide-deck factories, and when an operator-run audit beats the retainer. A $129 Diagnostic vs an $8K to $15K/mo retainer.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-fractional-cmo" },
   openGraph: {
-    title: "Profit Loop Audit vs hiring a fractional CMO | Steve Kaplan",
+    title: "GTMVP vs hiring a fractional CMO | Steve Kaplan",
     description:
-      "Don't fire your in-house growth hire. Quarterback them. $3,500 flat vs $8K-15K/mo retainer.",
+      "Don't fire your in-house growth hire. Quarterback them. A $129 Diagnostic vs an $8K to $15K/mo retainer.",
     url: "https://stevekaplan.ai/compare/vs-fractional-cmo",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs hiring a fractional CMO" }],
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "GTMVP vs hiring a fractional CMO" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Profit Loop Audit vs hiring a fractional CMO",
+    title: "GTMVP vs hiring a fractional CMO",
     description: "Quarterback your team. Don't replace it.",
     images: ["/og-card.jpg"],
   },
@@ -28,28 +28,28 @@ export const metadata: Metadata = {
 const rows = [
   {
     dim: "Cost structure",
-    alt: "$8K-15K/mo retainer. 6-12 month commitment is the norm.",
-    audit: "$3,500 flat. One engagement. 100% credited if you sign a retainer within 30 days.",
+    alt: "$8K to $15K/mo retainer. 6 to 12 month commitment is the norm.",
+    audit: "Free Smart Bidding Audit. $129 Diagnostic, one-time. Rebuild starts at $3,500/mo done-for-you, only if you want me running the account.",
   },
   {
     dim: "What you get monthly",
     alt: "Standing meetings, a deck, slack messages on strategy. Sometimes one or two new hires sourced.",
-    audit: "Five days, then the audit. After that, you decide if you want me on retainer with the same shape of work.",
+    audit: "The Diagnostic in 24 hours, then you decide. On Rebuild, I run the account and the agent engine watches it continuously. No standups.",
   },
   {
     dim: "Skin in the game",
     alt: "The retainer renews whether or not the work shipped.",
-    audit: "Refund if fewer than 3 executable wins. The audit IS the proof of fit before any retainer.",
+    audit: "7-day money-back on the Diagnostic. On Rebuild, I beat your trailing 90-day blended CPA by 20% or I work free until I do.",
   },
   {
     dim: "Operator credibility",
     alt: "Most fractional CMOs haven't run a P&L or a paid media account in 5+ years.",
-    audit: "I'm currently running $300K/mo in paid media as Director of Marketing at a 76-person firm. The audit is what I do every day, on my own desk.",
+    audit: "I run $300K/mo in live paid media right now. The audit is what I do every day, on my own desk.",
   },
   {
     dim: "Replaces your team",
     alt: "Often positioned as an alternative to hiring. Doesn't actually scale with you.",
-    audit: "Quarterbacks your team. The 30/60/90 plan is what your existing people execute. I'm not trying to replace them; I'm trying to give them sourced evidence.",
+    audit: "Quarterbacks your team. Rebuild Solo and Scale augment your people; they don't replace the CMO or agency. I give them sourced evidence and run the account alongside them.",
   },
 ];
 
@@ -63,11 +63,11 @@ export default function VsFractionalCmoPage() {
             href="/compare"
             className="inline-flex items-center gap-1 text-sm text-electric hover:text-electric/80 mb-6"
           >
-            &larr; All comparisons
+            Back to all comparisons
           </Link>
 
           <p className="text-sm uppercase tracking-wider text-electric font-mono font-medium mb-3">
-            Profit Loop Audit · vs hiring a fractional CMO
+            GTMVP · vs hiring a fractional CMO
           </p>
           <h1 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight leading-[1.05]">
             Don&apos;t fire your in-house growth hire.{" "}
@@ -87,16 +87,15 @@ export default function VsFractionalCmoPage() {
           <p className="text-muted-foreground leading-relaxed mb-4">
             The fractional CMO category exists because $300K full-time CMOs are
             expensive and $80K marketing managers don&apos;t have the strategic surface
-            area for an $8M&ndash;$50M revenue business. So the market split the
+            area for an $8M to $50M revenue business. So the market split the
             difference: senior brain, fractional time, retainer pricing.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The math works on paper. It breaks in practice because of one structural
             flaw: a fractional CMO is paid by the month, not the outcome. The retainer
-            renews regardless of whether the wins shipped. So the cadence becomes
-            standing meetings, slide decks, and slack discussions of strategy &mdash;
-            none of which compound into shipped work without somebody else doing the
-            shipping.
+            renews regardless of whether the work shipped. So the cadence becomes
+            standing meetings, slide decks, and slack discussions of strategy. None of
+            it compounds into a fixed account without somebody else doing the shipping.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Worst case: you replace a team you should have been quarterbacking with
@@ -112,16 +111,16 @@ export default function VsFractionalCmoPage() {
             sourced evidence behind them, or whether they&apos;re shipping by gut.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            The audit gives them: the ranked list of wins, the dollar numbers
-            attached, the effort estimates, and the order to ship in. They don&apos;t
+            The Diagnostic gives them: the signal-stack leaks, the dollar numbers
+            attached, the remediation steps, and the order to ship in. They don&apos;t
             need a retainer-priced strategist standing over their shoulder. They
             need the ammunition.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            If after the audit you decide the team can&apos;t ship the wins on their
-            own &mdash; or you don&apos;t have a team yet &mdash; the audit credits 100%
-            toward a retainer with me. But that&apos;s a decision you make from data,
-            not from a sales call.
+            If after the Diagnostic you decide the team can&apos;t ship the fixes on their
+            own, or you don&apos;t have a team yet, Rebuild puts me on the account
+            running it for you. But that&apos;s a decision you make from data, not from a
+            sales call. The $129 Diagnostic and the free audit are fully self-serve.
           </p>
 
           <CompareCTA />

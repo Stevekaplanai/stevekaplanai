@@ -12,7 +12,7 @@ const posts = [
   {
     slug: "audience-segment-changed-everything",
     title: "The One Audience Segment That Changed Everything",
-    excerpt: "I manage $300K/month in paid media across 3 platforms. Last year I found an audience segment that converts to customers at 15.5%. The firm average is 5%.",
+    excerpt: "I manage $300K/month in paid media across 3 platforms. Last year I found an audience segment that converts to customers at 15.5%. The account average is 5%.",
     date: "April 15, 2026",
     pillar: "AI-Powered Growth Marketing",
     readTime: "4 min",

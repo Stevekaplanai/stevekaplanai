@@ -4,16 +4,16 @@ import { BookAuditButton } from "@/components/book-audit-modal";
 import { StackDiagram, MetricBars, QuadrantChart, GanttTimeline, FunnelImpact } from "@/components/audit-visuals";
 
 export const metadata: Metadata = {
-  title: "Sample Audit Output — Profit Loop Audit",
+  title: "Sample Audit Output: operator-written Diagnostic",
   description:
-    "See exactly what a Profit Loop Audit delivers. Full sample audit for a $28M B2B SaaS company: stack diagram, data baseline, top 5 wins, effort vs lift matrix, 90-day roadmap.",
+    "See exactly what the $129 Diagnostic delivers. Full sample audit for a $28M B2B SaaS company: stack diagram, data baseline, ranked leaks, written remediation plan, 90-day roadmap.",
   alternates: {
     canonical: "https://stevekaplan.ai/audit/sample",
   },
   openGraph: {
-    title: "Sample Audit Output — Profit Loop Audit | Steve Kaplan",
+    title: "Sample Audit Output: operator-written Diagnostic | Steve Kaplan",
     description:
-      "Full sample audit: stack diagram, top 5 wins ranked, 90-day roadmap. See what you get before you buy.",
+      "Full sample audit: stack diagram, ranked leaks, written remediation plan, 90-day roadmap. See what you get before you buy.",
     url: "https://stevekaplan.ai/audit/sample",
     siteName: "stevekaplan.ai",
     locale: "en_US",
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sample Audit Output — See What a Profit Loop Audit Delivers",
-    description: "Full sample: stack diagrams, 5 ranked wins, 90-day roadmap. Fictional company, real depth.",
+    title: "Sample Audit Output: see what the $129 Diagnostic delivers",
+    description: "Full sample: stack diagram, ranked leaks, written remediation plan, 90-day roadmap. Fictional company, real depth.",
   },
 };
 
@@ -58,7 +58,7 @@ const topWins = [
   {
     rank: 3,
     name: "Build real-time executive dashboard replacing Google Sheets",
-    lift: "Save 16 hours/month of manual reporting. Numbers always current, not 5 days stale.",
+    lift: "Save 16 hours/month of manual reporting. Numbers always current, not a week stale.",
     effort: "1 week. Connect HubSpot + ad platforms to a live dashboard.",
     liftScore: 7,
     effortScore: 3,
@@ -108,7 +108,7 @@ const roadmap = {
   ],
   month3: [
     { week: "9-10", action: "A/B test new audience segments built from clean data", result: "Target: $2,100 CAC (from $2,847)" },
-    { week: "11-12", action: "Quarterly review + new audit targets", result: "Profit Loop restarts" },
+    { week: "11-12", action: "Quarterly review + new audit targets", result: "Optimization loop restarts" },
   ],
 };
 
@@ -119,10 +119,10 @@ export default function SampleAuditPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-midnight/80 backdrop-blur-lg border-b border-border">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/audit" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-            &larr; Back to Audit
+            Back to Audit
           </Link>
           <BookAuditButton className="bg-electric hover:bg-electric/90 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 cursor-pointer">
-            Book Your Audit
+            Talk about a Rebuild
           </BookAuditButton>
         </div>
       </nav>
@@ -134,7 +134,7 @@ export default function SampleAuditPage() {
             Sample Output (Fictional Company)
           </div>
           <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
-            Profit Loop Audit: Meridian Analytics
+            Sample Diagnostic: Meridian Analytics
           </h1>
           <div className="flex flex-wrap gap-x-8 gap-y-2 text-muted-foreground mb-6">
             <span>B2B SaaS</span>
@@ -143,7 +143,7 @@ export default function SampleAuditPage() {
             <span>Austin, TX</span>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl">
-            This is a sample of exactly what you receive on Day 5. Real structure. Real level of detail.
+            This is a sample of exactly what the $129 Diagnostic delivers in 24 hours. Real structure. Real level of detail.
             Fictional company, fictional numbers. Yours will be built from your actual data.
           </p>
         </section>
@@ -160,7 +160,7 @@ export default function SampleAuditPage() {
               making every scaling decision a guess.
             </p>
             <p className="text-lg text-foreground leading-relaxed">
-              The top 5 automation wins identified in this audit represent an estimated{" "}
+              The 5 highest-leverage fixes identified in this audit represent an estimated{" "}
               <span className="text-emerald font-bold">$312K in recovered pipeline visibility</span>,{" "}
               <span className="text-emerald font-bold">$50K+ in annual cost savings</span>, and a path
               from $2,847 CAC to under $2,100 within 90 days. The highest-leverage move is fixing
@@ -241,7 +241,7 @@ export default function SampleAuditPage() {
         <section className="py-16 bg-slate/20">
           <div className="max-w-4xl mx-auto px-6">
             <p className="text-sm uppercase tracking-wider text-electric font-medium mb-3">
-              Top 5 Wins (Ranked)
+              Top 5 Fixes (Ranked)
             </p>
             <h2 className="text-2xl font-extrabold text-foreground mb-2">
               What to fix, in what order, and what it is worth.
@@ -459,14 +459,15 @@ export default function SampleAuditPage() {
               Recommendation
             </p>
             <p className="text-lg text-foreground leading-relaxed mb-4">
-              The highest-impact path is a monthly retainer starting with Wins 1 and 2 in the first
-              two weeks. At $4,500/month (with the $3,500 audit fee credited to Month 1), the
-              expected ROI based on Win 1 alone (recovering $312K in invisible pipeline) pays for
-              the first year of the retainer in the first month.
+              The highest-impact path is a done-for-you Rebuild starting with fixes 1 and 2 in the first
+              two weeks. At $180K/month in ad spend, this account fits Rebuild Enterprise. Fix 1 alone
+              (recovering $312K in invisible pipeline) pays back the engagement inside the first month.
+              Rebuild carries a 90-day guarantee: I beat your trailing 90-day blended CPA by 20%, or I work
+              free until I do.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               If you prefer to execute internally, the roadmap above gives your team a sequenced
-              plan. Either path works. Win 2 (Google Ads cleanup) is a 3-day project your existing
+              plan. Either path works. Fix 2 (Google Ads cleanup) is a 3-day project your existing
               marketing manager can handle without me.
             </p>
           </div>
@@ -482,9 +483,17 @@ export default function SampleAuditPage() {
               Want this for your company?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              $3,500 flat. 5 business days. Money-back guarantee.
+              Start free. The 14-checkpoint Smart Bidding Audit is no cost, instant, no call. The $129 Diagnostic ships in 24 hours.
             </p>
-            <BookAuditButton />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://gtmvp.com"
+                className="inline-flex items-center justify-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 text-lg"
+              >
+                Start the free Smart Bidding Audit
+              </a>
+              <BookAuditButton>Talk about a Rebuild</BookAuditButton>
+            </div>
           </div>
         </section>
       </main>

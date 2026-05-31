@@ -12,7 +12,7 @@ const studies = [
   {
     slug: "paid-media-scale",
     title: "Scaling Paid Media from $200K to $300K/Month",
-    subtitle: "76-person financial advisory firm",
+    subtitle: "Financial advisory vertical, $300K+/month",
     stats: [
       { value: "$300K+", label: "Monthly Spend" },
       { value: "15.5%", label: "Customer Rate" },
@@ -101,7 +101,7 @@ export default function CaseStudiesPage() {
 
           <div className="mt-16 text-center">
             <Link href="/audit" className="text-electric hover:text-electric/80 text-sm font-medium underline underline-offset-4 transition-colors">
-              Want results like these? Start with a Profit Loop Audit &rarr;
+              Want results like these? Start with the free Smart Bidding Audit
             </Link>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const baseUrl = "https://stevekaplan.ai";
-const today = "2026-05-03";
+const today = new Date().toISOString().split("T")[0];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const compareSlugs = [
@@ -30,9 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Lead magnet
     { url: `${baseUrl}/white-paper`, lastModified: today, changeFrequency: "monthly", priority: 0.75 },
-
-    // Live event
-    { url: `${baseUrl}/saaspocolypse`, lastModified: today, changeFrequency: "daily", priority: 0.85 },
 
     // Case studies
     { url: `${baseUrl}/case-studies`, lastModified: "2026-04-15", changeFrequency: "weekly", priority: 0.7 },

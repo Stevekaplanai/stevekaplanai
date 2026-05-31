@@ -5,22 +5,22 @@ import { Footer } from "@/components/footer";
 import { CompareTable, CompareCTA } from "@/components/compare-helpers";
 
 export const metadata: Metadata = {
-  title: "Profit Loop Audit vs hiring a junior in-house marketer",
+  title: "GTMVP vs hiring a junior in-house marketer",
   description:
-    "Why a junior marketer learning on your dollar costs more than the audit. $70K-110K/yr + benefits vs $3,500 once.",
+    "Why a junior marketer learning on your dollar costs more than an operator-run audit. $70K to $110K/yr + benefits vs a $129 Diagnostic.",
   alternates: { canonical: "https://stevekaplan.ai/compare/vs-junior-marketer" },
   openGraph: {
-    title: "Profit Loop Audit vs hiring a junior in-house marketer | Steve Kaplan",
+    title: "GTMVP vs hiring a junior in-house marketer | Steve Kaplan",
     description:
-      "$70K-110K/yr learning on your dollar, or $3,500 once for someone who's already managed $50M+ in spend.",
+      "$70K to $110K a year learning on your dollar, or $129 from an operator who has managed $50M+ in spend.",
     url: "https://stevekaplan.ai/compare/vs-junior-marketer",
     type: "article",
-    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "Profit Loop Audit vs hiring a junior in-house" }],
+    images: [{ url: "/og-card.jpg", width: 1200, height: 630, alt: "GTMVP vs hiring a junior in-house" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Profit Loop Audit vs hiring a junior in-house",
-    description: "$70K to learn, or $3,500 from someone who's already shipped.",
+    title: "GTMVP vs hiring a junior in-house",
+    description: "$70K to learn, or $129 from an operator who's already shipped.",
     images: ["/og-card.jpg"],
   },
 };
@@ -28,13 +28,13 @@ export const metadata: Metadata = {
 const rows = [
   {
     dim: "First-year cost",
-    alt: "$70K-110K base + 25-30% for taxes, benefits, equipment, software seats. ~$95K-145K all-in.",
-    audit: "$3,500 once. No benefits load, no software stack to provision.",
+    alt: "$70K to $110K base + 25 to 30% for taxes, benefits, equipment, software seats. ~$95K to $145K all-in.",
+    audit: "Free Smart Bidding Audit. $129 Diagnostic, one-time. No benefits load, no software stack to provision.",
   },
   {
     dim: "Time to value",
-    alt: "3-6 months to ramp on your stack, your data, your customer. Real output in month 6+.",
-    audit: "5 business days. The wins are ranked and dollar-attached on Day 5.",
+    alt: "3 to 6 months to ramp on your stack, your data, your customer. Real output in month 6+.",
+    audit: "Instant PDF for the free audit. 24 hours for the $129 Diagnostic, with the leaks dollar-attached.",
   },
   {
     dim: "Operator depth",
@@ -44,12 +44,12 @@ const rows = [
   {
     dim: "What it produces",
     alt: "Tactical execution: campaign launches, copy iterations, dashboards. Strategic surface area is limited.",
-    audit: "A ranked list of 5 wins with dollar numbers and effort estimates. Strategic by construction.",
+    audit: "A 22-module Diagnostic: the signal-stack leaks, dollar numbers, and a written remediation plan. Strategic by construction.",
   },
   {
     dim: "Risk if it doesn't work",
     alt: "12-month tenure is below market average for marketing hires. You're back to interviewing in 11 months.",
-    audit: "Refund if fewer than 3 executable wins. No HR cleanup, no severance.",
+    audit: "7-day money-back on the Diagnostic. No HR cleanup, no severance.",
   },
 ];
 
@@ -63,15 +63,15 @@ export default function VsJuniorMarketerPage() {
             href="/compare"
             className="inline-flex items-center gap-1 text-sm text-electric hover:text-electric/80 mb-6"
           >
-            &larr; All comparisons
+            Back to all comparisons
           </Link>
 
           <p className="text-sm uppercase tracking-wider text-electric font-mono font-medium mb-3">
-            Profit Loop Audit · vs hiring a junior in-house
+            GTMVP · vs hiring a junior in-house
           </p>
           <h1 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight leading-[1.05]">
             $70K to learn, or{" "}
-            <span className="text-emerald">$3,500 from someone</span>{" "}
+            <span className="text-emerald">$129 from an operator</span>{" "}
             who&apos;s already shipped.
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-12">
@@ -100,7 +100,7 @@ export default function VsJuniorMarketerPage() {
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
             By month 6, when they&apos;re finally producing strategic output, the
-            company has paid ~$67K for the ramp itself. The audit is $3,500. The
+            company has paid ~$67K for the ramp itself. The Diagnostic is $129. The
             math compares unfavorably.
           </p>
 
@@ -110,13 +110,13 @@ export default function VsJuniorMarketerPage() {
           <p className="text-muted-foreground leading-relaxed mb-4">
             Hire the junior if the work is high-cadence execution that needs a
             full-time owner: launching campaigns weekly, managing the lifecycle
-            program, owning the CRM. The audit doesn&apos;t replace that role &mdash;
-            it tells the role what to ship first.
+            program, owning the CRM. The audit doesn&apos;t replace that role. It
+            tells the role what to ship first.
           </p>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            The two work together: the audit hands the junior a 30/60/90 plan with
-            dollar numbers, and the junior executes it without spending 6 months
-            building intuition the audit already condensed.
+            The two work together: the Diagnostic hands the junior the leaks with
+            dollar numbers and a remediation plan, and the junior executes it without
+            spending 6 months building intuition the audit already condensed.
           </p>
 
           <CompareCTA />

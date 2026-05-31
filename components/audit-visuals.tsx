@@ -1,4 +1,4 @@
-// Pure CSS/SVG audit visualizations — no external libraries
+// Pure CSS/SVG audit visualizations. No external libraries.
 
 // --- 1. STACK ARCHITECTURE DIAGRAM ---
 // Shows tool connections with broken links highlighted
@@ -221,8 +221,8 @@ export function QuadrantChart() {
           <text x={pad.left + plotW * 0.75} y={pad.top + plotH * 0.25 + 10} textAnchor="middle" fill="#f59e0b" fontSize="8" opacity="0.3">HIGH EFFORT</text>
 
           {/* Axis labels */}
-          <text x={pad.left + plotW / 2} y={h - 5} textAnchor="middle" fill="#94a3b8" fontSize="10">Effort →</text>
-          <text x={12} y={pad.top + plotH / 2} textAnchor="middle" fill="#94a3b8" fontSize="10" transform={`rotate(-90, 12, ${pad.top + plotH / 2})`}>Lift →</text>
+          <text x={pad.left + plotW / 2} y={h - 5} textAnchor="middle" fill="#94a3b8" fontSize="10">Effort</text>
+          <text x={12} y={pad.top + plotH / 2} textAnchor="middle" fill="#94a3b8" fontSize="10" transform={`rotate(-90, 12, ${pad.top + plotH / 2})`}>Lift</text>
 
           {/* Grid ticks */}
           {[2, 4, 6, 8, 10].map(v => (

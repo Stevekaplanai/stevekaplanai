@@ -14,7 +14,7 @@ export function BookAuditButton({ className, children }: { className?: string; c
       >
         {children || (
           <>
-            Book Your Audit
+            Talk about a Rebuild
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -53,7 +53,7 @@ function BookAuditModal({ onClose }: { onClose: () => void }) {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          _subject: `Profit Loop Audit Request: ${formData.company}`,
+          _subject: `Rebuild Inquiry: ${formData.company}`,
           name: formData.name,
           email: formData.email,
           company: formData.company,
@@ -116,9 +116,9 @@ function BookAuditModal({ onClose }: { onClose: () => void }) {
         ) : (
           <>
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-foreground mb-1">Book Your Profit Loop Audit</h3>
+              <h3 className="text-xl font-bold text-foreground mb-1">Talk about a Rebuild</h3>
               <p className="text-sm text-muted-foreground">
-                $3,500 flat. 5 business days. I reply within 24 hours.
+                Done-for-you paid media from $3,500/month. 90-day CPA guarantee. I reply within 24 hours.
               </p>
             </div>
 
@@ -212,7 +212,7 @@ function BookAuditModal({ onClose }: { onClose: () => void }) {
                 disabled={status === "sending"}
                 className="w-full bg-electric hover:bg-electric/90 disabled:bg-electric/50 text-white font-semibold px-6 py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25 disabled:cursor-not-allowed cursor-pointer"
               >
-                {status === "sending" ? "Sending..." : "Request Your Audit"}
+                {status === "sending" ? "Sending..." : "Request a Rebuild call"}
               </button>
 
               {status === "error" && (

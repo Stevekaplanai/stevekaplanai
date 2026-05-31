@@ -79,7 +79,7 @@ export default function Post() {
                   ["AIHomeworkHelp", "AI tutoring platform (freemium, multi-subject)"],
                   ["StudentAIDetector", "AI text detection (99% accuracy)"],
                   ["VentureVault", "Free startup idea browser"],
-                  ["GTMVP.com", "AI automation agency"],
+                  ["GTMVP.com", "The paid media OS for B2B founders"],
                   ["SteveKaplan.ai", "This site"],
                 ].map(([name, desc]) => (
                   <tr key={name} className="border-b border-border/50 last:border-0">
@@ -98,10 +98,10 @@ export default function Post() {
           </p>
           <p>The barrier to building is gone. The only question left is whether you have something worth building.</p>
           <p>
-            And if you are a company looking for someone who can build the automation, not just describe it,
-            that is what the{" "}
-            <Link href="/audit" className="text-electric hover:text-electric/80 underline underline-offset-2">Profit Loop Audit</Link>{" "}
-            is for. I find the wins. Then I build them.
+            And if you are a founder who wants someone who can rebuild the ad account, not just describe it,
+            that is what the free{" "}
+            <Link href="/audit" className="text-electric hover:text-electric/80 underline underline-offset-2">Smart Bidding Audit</Link>{" "}
+            is for. I find the leaks. Then I rebuild the account.
           </p>
         </div>
       </article>

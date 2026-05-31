@@ -148,7 +148,7 @@ export function GTMVPSection() {
                   {tier.points.map((point) => (
                     <li key={point} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <span className={`font-mono mt-0.5 flex-shrink-0 ${accent.icon}`}>
-                        →
+                        +
                       </span>
                       <span>{point}</span>
                     </li>

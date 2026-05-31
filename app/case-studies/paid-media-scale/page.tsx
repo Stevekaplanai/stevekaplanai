@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Scaling Paid Media to $300K/Month",
   description:
-    "How Steve Kaplan scaled a 76-person firm from $200K to $300K/month in paid media while holding CPA. 15.5% customer rate at $3,448/customer.",
+    "How Steve Kaplan scaled a financial advisory account from $200K to $300K/month in paid media while holding CPA. 15.5% customer rate at $3,448/customer.",
   alternates: { canonical: "https://stevekaplan.ai/case-studies/paid-media-scale" },
   openGraph: {
     title: "Scaling Paid Media to $300K/Month | Steve Kaplan",
@@ -25,7 +25,7 @@ const results = [
   { metric: "Booked meetings", before: "~300/month", after: "636 (437 Meta + 199 Google)" },
   { metric: "Meta CPM", before: "Degrading at scale", after: "$533 (held while scaling 50%)" },
   { metric: "Google CPA (best)", before: "Inconsistent", after: "$267 (PMax + LSA)" },
-  { metric: "Meeting-to-customer (TM_Leads)", before: "~5% (firm avg)", after: "15.5% (3x)" },
+  { metric: "Meeting-to-customer (TM_Leads)", before: "~5% (account avg)", after: "15.5% (3x)" },
   { metric: "Cost per customer (TM_Leads)", before: "Unknown", after: "$3,448" },
   { metric: "Conversion actions (Google)", before: "24 (polluted)", after: "Cleanup in progress" },
 ];
@@ -52,9 +52,8 @@ export default function PaidMediaScalePage() {
           Scaling Paid Media from $200K to $300K/Month While Holding CPA
         </h1>
         <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted-foreground mb-8">
-          <span>76-person financial advisory firm</span>
-          <span>Sunrise, FL</span>
-          <span>2024 to present</span>
+          <span>Financial advisory vertical</span>
+          <span>$300K+/month paid media</span>
         </div>
 
         {/* Stats */}
@@ -71,7 +70,7 @@ export default function PaidMediaScalePage() {
         <section className="mb-12">
           <h2 className="text-xl font-bold text-foreground mb-4">The Problem</h2>
           <p className="text-muted-foreground leading-relaxed">
-            The firm needed to scale booked meetings from ~300/month to 1,000/month across Meta, Google, and TikTok.
+            The account needed to scale booked meetings from ~300/month to 1,000/month across Meta, Google, and TikTok.
             Previous attempts to push Meta past $200K/month degraded CPM and inflated cost per meeting.
             Google Ads had 24 conversion actions polluting Smart Bidding. Attribution was fragmented across platforms.
           </p>
@@ -87,7 +86,7 @@ export default function PaidMediaScalePage() {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>Restructured into three pillars: Prospecting, Retargeting, Testing</li>
                 <li>Interest/Broad at $470 CPR outperformed Lookalike at $705 CPR</li>
-                <li>TM_Leads audience: 15.5% meeting-to-customer rate (3x firm average) at $3,448/customer</li>
+                <li>TM_Leads audience: 15.5% meeting-to-customer rate (3x account average) at $3,448/customer</li>
               </ul>
             </div>
 
@@ -160,7 +159,7 @@ export default function PaidMediaScalePage() {
             <h3 className="font-bold text-amber mb-2">Scaling Bottleneck (honest)</h3>
             <p className="text-sm text-muted-foreground">
               Show rate is stuck at 60%. 1,000 meetings/month is reachable on spend alone,
-              but the firm needs 700+ shows to hit customer targets. This is the active problem being worked on.
+              but the account needs 700+ shows to hit customer targets. This is the active problem being worked on.
             </p>
           </div>
         </section>
@@ -168,7 +167,7 @@ export default function PaidMediaScalePage() {
         {/* CTA */}
         <div className="bg-midnight border border-electric/30 rounded-xl p-8 text-center">
           <h2 className="text-xl font-bold text-foreground mb-3">Want results like these?</h2>
-          <p className="text-muted-foreground mb-6">The Profit Loop Audit finds the same kind of wins in your stack. $3,500 flat. 5 days.</p>
+          <p className="text-muted-foreground mb-6">GTMVP finds the same kind of wins in your account. Start free with the Smart Bidding Audit.</p>
           <Link href="/audit" className="inline-flex items-center gap-2 bg-electric hover:bg-electric/90 text-white font-semibold px-8 py-3.5 rounded-lg transition-all hover:shadow-lg hover:shadow-electric/25">
             Get Your Audit
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>

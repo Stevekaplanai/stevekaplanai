@@ -8,7 +8,7 @@ const products = [
 ];
 
 const resources = [
-  { name: "Profit Loop Audit", url: "/audit", external: false },
+  { name: "Smart Bidding Audit", url: "https://www.gtmvp.com/smart-bidding-audit", external: true },
   { name: "Sample Audit", url: "/audit/sample", external: false },
   { name: "Standards", url: "/standards", external: false },
   { name: "Compare", url: "/compare", external: false },
@@ -42,7 +42,7 @@ export function Footer() {
               Growth marketer who writes code. $50M+ ad spend managed. 9 AI products built. I don&apos;t advise. I build.
             </p>
             <p className="text-sm text-muted-foreground">
-              Alpharetta, GA
+              Fort Lauderdale, FL
             </p>
           </div>
 

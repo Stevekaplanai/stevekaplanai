@@ -507,7 +507,7 @@ function ResultsView({ results, onReset }: { results: Results; onReset: () => vo
       <div className="text-center mb-6">
         <div className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 text-emerald text-sm font-medium px-4 py-2 rounded-full mb-4">
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-          Your Profit Loop estimate is ready
+          Your ROI estimate is ready
         </div>
         <div className="text-4xl md:text-5xl font-extrabold font-mono text-foreground mb-2">
           <AnimatedNumber target={results.totalAnnualROI} prefix="$" suffix="/yr" />
@@ -531,9 +531,9 @@ function ResultsView({ results, onReset }: { results: Results; onReset: () => vo
         </div>
       </div>
 
-      {/* Audit ROI ratio */}
+      {/* Rebuild ROI ratio */}
       <div className="bg-slate/30 border border-border rounded-xl p-4 text-center mb-6">
-        <p className="text-sm text-muted-foreground">Return on a $3,500 Profit Loop Audit</p>
+        <p className="text-sm text-muted-foreground">Return on one month of Rebuild Solo ($3,500)</p>
         <p className="text-3xl font-extrabold font-mono text-emerald"><AnimatedNumber target={results.auditMultiple} suffix="x" /></p>
       </div>
 
@@ -582,7 +582,7 @@ export function ROICalculator() {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          _subject: `Profit Loop Calculator: ${contact.company} (${contact.role})`,
+          _subject: `ROI Calculator: ${contact.company} (${contact.role})`,
           name: contact.name,
           email: contact.email,
           company: contact.company,
