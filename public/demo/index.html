@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="slides-format" content="viewport">
+  <title>Steve Kaplan AI — Growth Marketing & AI Product Engineering</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-bg: #F8F8FC;
+      --color-bg-subtle: #F2F2F8;
+      --color-surface: #FFFFFF;
+      --color-surface-raised: #FAFAFD;
+      --color-border: #E2E2EC;
+      --color-border-strong: #C8C8D8;
+      --color-text: #1A1A2E;
+      --color-text-secondary: #4A4A6A;
+      --color-text-muted: #8A8AAA;
+      --color-text-faint: #BBBBD0;
+      --color-text-inverse: #FFFFFF;
+      --color-brand: #3D50E0;
+      --color-brand-hover: #2F3EC7;
+      --color-brand-subtle: #EEF1FF;
+      --color-brand-muted: #D9DFFF;
+      --color-brand-emphasis: #5B6BF5;
+      --color-success: #2D9B57;
+      --color-glass-bg: rgba(255,255,255,0.72);
+      --color-glass-border: rgba(61,80,224,0.10);
+      --color-vignette: rgba(26,26,46,0.04);
+      --font-display: 'Satoshi', 'Inter', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+  </style>
+
+  <style>
+    :root {
+      --color-bg: #F8F8FC;
+      --color-text: #1A1A2E;
+      --color-brand: #3D50E0;
+      --color-brand-emphasis: #5B6BF5;
+      --glow-color-rgb: 61,80,224;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      background: var(--color-bg);
+      margin: 0;
+      font-family: 'Satoshi', 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body { color: var(--color-text); overflow: hidden; height: 100vh; width: 100vw; }
+    .deck { width: 100vw; height: 100vh; position: relative; }
+    .slide {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--color-bg); display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; transform: scale(0.97);
+      transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
+      pointer-events: none; overflow: hidden;
+    }
+    .slide.active { opacity: 1; transform: scale(1); pointer-events: all; }
+    .slide > .content {
+      position: relative; z-index: 2; width: 100%;
+      max-width: 1100px; padding: clamp(2rem, 4vw, 3.5rem);
+    }
+    .nav-controls {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 14px; z-index: 100;
+      background: rgba(255,255,255,0.88); backdrop-filter: blur(12px);
+      padding: 8px 20px; border-radius: 9999px;
+      border: 1px solid rgba(61,80,224,0.12);
+      box-shadow: 0 4px 20px rgba(26,26,46,0.08);
+    }
+    .nav-btn {
+      width: 36px; height: 36px; border: none;
+      background: transparent; color: var(--color-brand);
+      border-radius: 50%; font-size: 1.25rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: rgba(61,80,224,0.08); }
+    .slide-dots { display: flex; gap: 6px; }
+    .slide-dots .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #BBBBD0; cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .slide-dots .dot.active { background: var(--color-brand); transform: scale(1.4); }
+    .slide-counter { font-size: 12px; color: #8A8AAA; min-width: 36px; text-align: center; font-family: 'JetBrains Mono', monospace; }
+    .reveal { opacity: 0; transform: translateY(16px); }
+
+    /* Thin rule lines — Swiss editorial feel */
+    .rule { height: 1px; background: #E2E2EC; width: 100%; }
+    .rule-brand { height: 2px; background: var(--color-brand); }
+
+    /* Grid mesh background — very subtle */
+    .grid-mesh {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(61,80,224,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(61,80,224,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .grid-mesh::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(61,80,224,0.06) 0%, transparent 70%);
+    }
+
+    /* Blob accent elements */
+    @keyframes float-slow {
+      0%   { transform: translate(0,0) scale(1); }
+      33%  { transform: translate(30px,-20px) scale(1.05); }
+      66%  { transform: translate(-20px,15px) scale(0.97); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(70px); animation: float-slow 14s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .blob-2 { animation-duration: 18s; animation-direction: reverse; }
+    .blob-3 { animation-duration: 22s; }
+
+    /* Stat number glow */
+    .stat-num {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      color: var(--color-brand);
+      text-shadow: 0 0 40px rgba(61,80,224,0.20);
+      line-height: 1;
+    }
+
+    /* Metric chip */
+    .metric-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #EEF1FF; border: 1px solid #D9DFFF;
+      border-radius: 6px; padding: 4px 10px;
+      font-size: 13px; font-weight: 600; color: var(--color-brand);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Tag/badge */
+    .tag {
+      display: inline-block; background: #EEF1FF; color: var(--color-brand);
+      border-radius: 4px; padding: 3px 10px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .tag-dark {
+      background: #3D50E0; color: #fff;
+    }
+
+    /* Divider label slide bg */
+    .slide-divider { background: #1A1A2E !important; }
+    .slide-divider .rule { background: rgba(255,255,255,0.12); }
+
+    /* Card */
+    .card {
+      background: #FFFFFF; border: 1px solid #E2E2EC;
+      border-radius: 12px; padding: 24px;
+      box-shadow: 0 1px 3px rgba(26,26,46,0.06), 0 1px 2px rgba(26,26,46,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(26,26,46,0.08), 0 2px 4px rgba(26,26,46,0.04);
+      transform: translateY(-2px);
+    }
+
+    /* Timeline */
+    .timeline-line {
+      position: absolute; left: 19px; top: 32px; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, #3D50E0, #B4BEFF);
+    }
+    .timeline-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--color-brand); border: 2px solid #EEF1FF;
+      box-shadow: 0 0 0 3px rgba(61,80,224,0.18);
+      flex-shrink: 0; margin-top: 4px;
+    }
+
+    /* Bar fill */
+    .bar-track {
+      height: 8px; background: #EEF1FF; border-radius: 999px; overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%; background: var(--color-brand);
+      border-radius: 999px; width: 0%; transition: width 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    /* Progress ring (SVG) */
+    .donut-ring { stroke-dasharray: 226; stroke-dashoffset: 226; stroke-linecap: round; }
+
+    /* Noise overlay */
+    .slide::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 256px 256px; opacity: 0.02; mix-blend-mode: multiply;
+    }
+
+    /* Mouse spotlight */
+    .mouse-spotlight { position: fixed; inset: 0; z-index: 99; pointer-events: none; }
+
+    /* Particle canvas */
+    .particle-canvas { position: absolute; inset: 0; z-index: 1; }
+
+    /* Deco shapes */
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .float-logo { animation: float 4s ease-in-out infinite; }
+
+    /* Section slide specific overrides */
+    .slide-section { background: #1A1A2E !important; }
+    .slide-section .grid-mesh {
+      background-image:
+        linear-gradient(rgba(91,107,245,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91,107,245,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .slide-section .grid-mesh::after {
+      background: radial-gradient(ellipse at 50% 0%, rgba(61,80,224,0.18) 0%, transparent 70%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mouse-spotlight"></div>
+
+<div class="deck">
+
+  <!-- SLIDE 1: TITLE -->
+  <div class="slide active" data-slide="1">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:500px;height:500px;top:-120px;right:-80px;background:#3D50E0;opacity:0.08;"></div>
+    <div class="blob blob-2" style="width:300px;height:300px;bottom:-60px;left:-60px;background:#5B6BF5;opacity:0.07;"></div>
+    <canvas class="particle-canvas"></canvas>
+    <div class="content text-center" style="max-width:860px;">
+      <div class="float-logo" style="margin-bottom:32px;">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto;">
+          <rect width="64" height="64" rx="16" fill="#3D50E0"/>
+          <path d="M18 44 L28 20 L32 32 L36 20 L46 44" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="32" cy="32" r="3" fill="white" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="reveal">
+        <div class="tag" style="margin-bottom:20px;">Growth Intelligence + AI Product Engineering</div>
+      </div>
+      <h1 class="reveal" style="font-size:clamp(2.8rem,5.5vw,5rem);font-weight:700;letter-spacing:-0.03em;color:#1A1A2E;line-height:1.1;margin-bottom:20px;">
+        Steve Kaplan AI
+      </h1>
+      <p class="reveal" style="font-size:clamp(1rem,1.8vw,1.4rem);color:#4A4A6A;max-width:600px;margin:0 auto 36px;line-height:1.55;font-weight:400;">
+        $50M+ managed. CAC reduced by up to 80%. Nine AI products shipped solo. One operator who builds what others only advise.
+      </p>
+      <div class="reveal" style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <div class="metric-chip">$50M+ Spend</div>
+        <div class="metric-chip">3.2x Avg ROAS</div>
+        <div class="metric-chip">40% Avg CAC Reduction</div>
+        <div class="metric-chip">9 Live AI Products</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: THE BRIEF — WHO IS STEVE -->
+  <div class="slide" data-slide="2">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:400px;height:400px;top:-80px;right:-60px;background:#3D50E0;opacity:0.06;"></div>
+    <div class="content">
+      <div class="rule-brand" style="width:40px;margin-bottom:20px;" class="reveal"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:start;">
+        <div>
+          <div class="tag reveal" style="margin-bottom:16px;">The Brief</div>
+          <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;line-height:1.15;margin-bottom:20px;">
+            Growth architect.<br>AI builder.<br>Revenue operator.
+          </h2>
+          <p class="reveal" style="color:#4A4A6A;font-size:16px;line-height:1.65;margin-bottom:20px;">
+            Steve Kaplan runs a nine-year track record of turning media budgets into compounding revenue engines. He managed $50M in lifetime spend, built attribution systems before most teams knew what incrementality testing meant, and then taught himself to ship production AI products in weeks.
+          </p>
+          <p class="reveal" style="color:#4A4A6A;font-size:16px;line-height:1.65;">
+            He built Attribyte, GTMVP, ClaudeSkillsHQ, and VentureVault as working products, not prototypes. The same operator who reduced CAC by 80% for a B2B SaaS client is now the person building the tools that make that possible at scale.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div class="card reveal">
+            <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:8px;">Lifetime Managed Spend</div>
+            <div class="stat-num">$50M+</div>
+          </div>
+          <div class="card reveal">
+            <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:8px;">Peak CAC Reduction</div>
+            <div class="stat-num" style="font-size:clamp(2rem,4vw,3.5rem);">80%</div>
+          </div>
+          <div class="card reveal">
+            <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:8px;">AI Products Shipped (Solo)</div>
+            <div class="stat-num" style="font-size:clamp(2rem,4vw,3.5rem);">9</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: SECTION DIVIDER — TRACK RECORD -->
+  <div class="slide slide-section" data-slide="3">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:500px;height:500px;top:-100px;left:50%;transform:translateX(-50%);background:#3D50E0;opacity:0.18;"></div>
+    <canvas class="particle-canvas"></canvas>
+    <div class="content text-center">
+      <div class="reveal" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;font-family:'JetBrains Mono',monospace;">Section 01</div>
+      <h2 class="reveal" style="font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;letter-spacing:-0.03em;color:#ffffff;line-height:1.1;margin-bottom:20px;">
+        Nine Years.<br><span style="color:#5B6BF5;">$50M Managed.</span>
+      </h2>
+      <p class="reveal" style="font-size:clamp(0.95rem,1.6vw,1.2rem);color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto;">
+        Performance marketing track record across e-commerce, B2B SaaS, health tech, fintech, regtech, and professional services.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: METRICS WALL -->
+  <div class="slide" data-slide="4">
+    <div class="grid-mesh"></div>
+    <div class="content">
+      <div class="tag reveal" style="margin-bottom:16px;">Performance Track Record</div>
+      <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;margin-bottom:32px;">Numbers that transferred across every vertical</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">
+        <div class="card reveal" style="text-align:center;">
+          <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);" data-count="3" data-suffix=".2x">0x</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-top:6px;font-weight:500;">Average ROAS</div>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);" data-count="40" data-suffix="%">0%</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-top:6px;font-weight:500;">Avg CPA Reduction</div>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);">100+</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-top:6px;font-weight:500;">Clients Served</div>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);">$256K</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-top:6px;font-weight:500;">Profit in 48 Hours (Tax SaaS)</div>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);">437</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-top:6px;font-weight:500;">Booked Meetings/Month (Current)</div>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);">15.5%</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-top:6px;font-weight:500;">Meeting-to-Customer Rate (3x Baseline)</div>
+        </div>
+      </div>
+      <div class="rule reveal"></div>
+      <div class="reveal" style="padding-top:16px;display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:13px;color:#8A8AAA;">Verticals:</span>
+        <span class="tag">B2B SaaS</span><span class="tag">Regtech</span><span class="tag">Health Tech</span>
+        <span class="tag">Fintech</span><span class="tag">E-Commerce</span><span class="tag">Professional Services</span>
+        <span class="tag">Legal / PI</span><span class="tag">Rehab / Treatment</span><span class="tag">Ridesharing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: CASE STUDY 1 — B2B SaaS Attribution -->
+  <div class="slide" data-slide="5">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:350px;height:350px;top:-60px;right:-40px;background:#3D50E0;opacity:0.06;"></div>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,56px);align-items:start;">
+        <div>
+          <div class="tag reveal" style="margin-bottom:14px;">Case Study 01 / B2B SaaS</div>
+          <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;line-height:1.2;margin-bottom:16px;">
+            Revenue attribution system for an identity verification platform
+          </h2>
+          <p class="reveal" style="color:#4A4A6A;font-size:15px;line-height:1.65;margin-bottom:20px;">
+            A Series-A identity verification SaaS had enterprise inbound but no visibility into which channels were closing pipeline. Sales cycles ran 60+ days and CAC was opaque across paid, SEO, and outbound.
+          </p>
+          <div class="reveal" style="margin-bottom:20px;">
+            <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:12px;">What was built</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1A1A2E;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#3D50E0;margin-top:7px;flex-shrink:0;"></div>
+                Full-funnel UTM attribution mapped to HubSpot pipeline stages
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1A1A2E;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#3D50E0;margin-top:7px;flex-shrink:0;"></div>
+                ABM prospecting engine across LinkedIn + outbound automation
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1A1A2E;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#3D50E0;margin-top:7px;flex-shrink:0;"></div>
+                Repositioned technical messaging for enterprise buyers
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1A1A2E;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#3D50E0;margin-top:7px;flex-shrink:0;"></div>
+                Paid acquisition layered into a product-led growth motion
+              </div>
+            </div>
+          </div>
+          <div class="reveal" style="background:#EEF1FF;border-radius:10px;padding:16px 20px;border:1px solid #D9DFFF;">
+            <div style="font-size:13px;color:#4A4A6A;line-height:1.6;font-style:italic;">
+              "They rebuilt how we talk about the product and showed us exactly which channels were generating qualified pipeline. The attribution clarity alone changed how we allocated budget."
+            </div>
+            <div style="font-size:12px;color:#8A8AAA;margin-top:10px;font-weight:600;">VP Marketing, Identity Verification SaaS</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="card reveal" style="text-align:center;border-top:3px solid #3D50E0;">
+            <div class="stat-num" style="font-size:clamp(2.2rem,4vw,3.5rem);">62%</div>
+            <div style="font-size:13px;color:#8A8AAA;margin-top:6px;">CAC Reduction</div>
+          </div>
+          <div class="card reveal" style="text-align:center;border-top:3px solid #5B6BF5;">
+            <div class="stat-num" style="font-size:clamp(2.2rem,4vw,3.5rem);">3x</div>
+            <div style="font-size:13px;color:#8A8AAA;margin-top:6px;">Pipeline Velocity Increase</div>
+          </div>
+          <div class="card reveal" style="text-align:center;border-top:3px solid #B4BEFF;">
+            <div class="stat-num" style="font-size:clamp(2.2rem,4vw,3.5rem);">10mo</div>
+            <div style="font-size:13px;color:#8A8AAA;margin-top:6px;">3 SaaS Platforms GTM'd</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: CASE STUDY 2 — AML / Compliance SaaS -->
+  <div class="slide" data-slide="6">
+    <div class="grid-mesh"></div>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,4vw,56px);align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="card reveal" style="border-top:3px solid #3D50E0;">
+            <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:10px;">SQL Cost</div>
+            <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);">80%</div>
+            <div style="font-size:13px;color:#2D9B57;font-weight:600;margin-top:4px;">Reduction in 90 days</div>
+          </div>
+          <div class="card reveal">
+            <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:10px;">Lead Cost</div>
+            <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);">50%</div>
+            <div style="font-size:13px;color:#2D9B57;font-weight:600;margin-top:4px;">Reduction in 90 days</div>
+          </div>
+          <div class="card reveal">
+            <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:10px;">Spend Scaled</div>
+            <div class="stat-num" style="font-size:clamp(2rem,4vw,3.2rem);">$150K</div>
+            <div style="font-size:13px;color:#8A8AAA;margin-top:4px;">Per month at positive ROI</div>
+          </div>
+        </div>
+        <div>
+          <div class="tag reveal" style="margin-bottom:14px;">Case Study 02 / Compliance Tech</div>
+          <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;line-height:1.2;margin-bottom:16px;">
+            Rebuilding AML screening acquisition at 80% lower SQL cost
+          </h2>
+          <p class="reveal" style="color:#4A4A6A;font-size:15px;line-height:1.65;margin-bottom:20px;">
+            An automated AML screening and sanctions monitoring platform was burning budget on broad paid search that generated volume without qualification. Two prior agencies and two internal hires had failed to fix the signal problem.
+          </p>
+          <div class="reveal" style="margin-bottom:20px;">
+            <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:12px;">How it was solved</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1A1A2E;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#3D50E0;margin-top:7px;flex-shrink:0;"></div>
+                Rebuilt Google Ads structure around compliance buyer intent segments
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1A1A2E;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#3D50E0;margin-top:7px;flex-shrink:0;"></div>
+                Cleaned 24 polluted conversion actions to restore bidding signal quality
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1A1A2E;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#3D50E0;margin-top:7px;flex-shrink:0;"></div>
+                Layered first-party data from CRM into audience exclusions
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1A1A2E;">
+                <div style="width:6px;height:6px;border-radius:50%;background:#3D50E0;margin-top:7px;flex-shrink:0;"></div>
+                90-day sprint: outperformed every prior operator on the account
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: CASE STUDY 3 — High Ticket B2C (Rehab / PI / Finance) -->
+  <div class="slide" data-slide="7">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:350px;height:350px;bottom:-60px;left:-40px;background:#5B6BF5;opacity:0.06;"></div>
+    <div class="content">
+      <div class="tag reveal" style="margin-bottom:14px;">Case Study 03 / High-Ticket Verticals</div>
+      <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;margin-bottom:24px;">
+        CAC reduction at scale: rehab, personal injury, finance
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">
+        <div class="card reveal">
+          <div class="tag" style="margin-bottom:12px;">Rehab / Treatment</div>
+          <div class="stat-num" style="font-size:2.2rem;margin-bottom:8px;">80%</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-bottom:14px;">CAC Reduction</div>
+          <div class="rule" style="margin-bottom:14px;"></div>
+          <div style="font-size:14px;color:#4A4A6A;line-height:1.6;">Full-funnel attribution mapped from call tracking through admissions. Shifted budget away from high-volume, low-intent queries to verified ready-to-admit signals.</div>
+        </div>
+        <div class="card reveal">
+          <div class="tag" style="margin-bottom:12px;">Personal Injury</div>
+          <div class="stat-num" style="font-size:2.2rem;margin-bottom:8px;">60%</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-bottom:14px;">Lead Cost Reduction</div>
+          <div class="rule" style="margin-bottom:14px;"></div>
+          <div style="font-size:14px;color:#4A4A6A;line-height:1.6;">Rebuilt LSA and Google Search structure around injury-specific intent clusters. Custom scripts for continuous bid optimization against signed-retainer outcomes.</div>
+        </div>
+        <div class="card reveal">
+          <div class="tag" style="margin-bottom:12px;">Financial Advisory</div>
+          <div class="stat-num" style="font-size:2.2rem;margin-bottom:8px;">3x</div>
+          <div style="font-size:13px;color:#8A8AAA;margin-bottom:14px;">Baseline Conversion Rate</div>
+          <div class="rule" style="margin-bottom:14px;"></div>
+          <div style="font-size:14px;color:#4A4A6A;line-height:1.6;">Engineered a prospecting pillar targeting UHNW and high-income W2 earners. 437 booked meetings per month at a 15.5% meeting-to-customer rate against 5% firm baseline.</div>
+        </div>
+      </div>
+      <div class="rule reveal"></div>
+      <p class="reveal" style="padding-top:14px;font-size:14px;color:#8A8AAA;">High-ticket verticals require attribution depth, not just spend management. The infrastructure determines the outcome.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: SECTION DIVIDER — AI PRODUCTS -->
+  <div class="slide slide-section" data-slide="8">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:600px;height:600px;top:-150px;left:50%;transform:translateX(-50%);background:#3D50E0;opacity:0.20;"></div>
+    <canvas class="particle-canvas"></canvas>
+    <div class="content text-center">
+      <div class="reveal" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;font-family:'JetBrains Mono',monospace;">Section 02</div>
+      <h2 class="reveal" style="font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;letter-spacing:-0.03em;color:#ffffff;line-height:1.1;margin-bottom:20px;">
+        From Operator<br><span style="color:#5B6BF5;">to Builder.</span>
+      </h2>
+      <p class="reveal" style="font-size:clamp(0.95rem,1.6vw,1.2rem);color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto;">
+        Nine production AI products shipped solo. 2-4 week build cycles. Claude Code, MCP agentic programming, React, Supabase, Next.js.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: AI PRODUCTS GRID -->
+  <div class="slide" data-slide="9">
+    <div class="grid-mesh"></div>
+    <div class="content">
+      <div class="tag reveal" style="margin-bottom:14px;">Live AI Products — Solo Built</div>
+      <h2 class="reveal" style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;margin-bottom:24px;">9 production apps. Weeks, not quarters.</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+        <div class="card reveal" style="padding:18px;">
+          <div style="font-size:11px;color:#8A8AAA;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:6px;">Attribution</div>
+          <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">Attribyte.xyz</div>
+          <div style="font-size:13px;color:#4A4A6A;line-height:1.55;">Multi-touch attribution platform built for growth operators who need revenue signal, not vanity data.</div>
+        </div>
+        <div class="card reveal" style="padding:18px;">
+          <div style="font-size:11px;color:#8A8AAA;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:6px;">GTM Platform</div>
+          <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">GTMVP.com</div>
+          <div style="font-size:13px;color:#4A4A6A;line-height:1.55;">AI-powered go-to-market MVP development for founders who need to move fast without burning a year on strategy.</div>
+        </div>
+        <div class="card reveal" style="padding:18px;">
+          <div style="font-size:11px;color:#8A8AAA;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:6px;">AI Skills Marketplace</div>
+          <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">ClaudeSkillsHQ.com</div>
+          <div style="font-size:13px;color:#4A4A6A;line-height:1.55;">140 verified Claude MCP skills covering agent orchestration, prompt engineering, and AI automation.</div>
+        </div>
+        <div class="card reveal" style="padding:18px;">
+          <div style="font-size:11px;color:#8A8AAA;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:6px;">Marketing OS</div>
+          <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">SynapMarketing.com</div>
+          <div style="font-size:13px;color:#4A4A6A;line-height:1.55;">16-agent marketing automation OS spanning paid media, SEO, lifecycle, and attribution workflows.</div>
+        </div>
+        <div class="card reveal" style="padding:18px;">
+          <div style="font-size:11px;color:#8A8AAA;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:6px;">Healthcare AI</div>
+          <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">DocDoctor.ai</div>
+          <div style="font-size:13px;color:#4A4A6A;line-height:1.55;">AI healthcare documentation with voice recognition, FHIR EHR integration, and predictive analytics.</div>
+        </div>
+        <div class="card reveal" style="padding:18px;">
+          <div style="font-size:11px;color:#8A8AAA;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:6px;">Startup Ecosystem</div>
+          <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">VentureVault.space</div>
+          <div style="font-size:13px;color:#4A4A6A;line-height:1.55;">Startup idea discovery browser — curated signal for founders and investors navigating early-stage bets.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: ATTRIBYTE — FLAGSHIP PRODUCT -->
+  <div class="slide" data-slide="10">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:400px;height:400px;top:-80px;right:-60px;background:#3D50E0;opacity:0.07;"></div>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;">
+        <div>
+          <div class="tag reveal" style="margin-bottom:14px;">Flagship Product</div>
+          <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;line-height:1.15;margin-bottom:16px;">
+            Attribyte<br><span style="color:#3D50E0;">Attribution Intelligence</span>
+          </h2>
+          <p class="reveal" style="color:#4A4A6A;font-size:15px;line-height:1.65;margin-bottom:20px;">
+            Built because the tools that existed were either too expensive, too surface-level, or too disconnected from how growth operators actually work. Attribyte connects paid channel data to revenue outcomes with the signal clarity that makes budget decisions obvious instead of political.
+          </p>
+          <div class="reveal" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:15px;color:#1A1A2E;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D50E0" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Multi-touch attribution across all paid channels
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:15px;color:#1A1A2E;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D50E0" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              First-party data integration + UTM to revenue mapping
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:15px;color:#1A1A2E;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D50E0" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Built for operators, not analysts
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:15px;color:#1A1A2E;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D50E0" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Ships as a working product, not a reporting dashboard add-on
+            </div>
+          </div>
+          <a href="https://attribyte.xyz" target="_blank" class="reveal" style="display:inline-flex;align-items:center;gap:8px;background:#3D50E0;color:#fff;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.2s;">
+            attribyte.xyz
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
+        </div>
+        <div class="reveal" style="background:#F8F8FC;border:1px solid #E2E2EC;border-radius:16px;overflow:hidden;padding:24px;">
+          <div style="font-size:12px;color:#8A8AAA;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:16px;">Channel Performance</div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1A1A2E;margin-bottom:6px;">
+                <span>Meta Ads</span><span style="color:#3D50E0;">4.2x ROAS</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" data-width="84"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1A1A2E;margin-bottom:6px;">
+                <span>Google Search</span><span style="color:#3D50E0;">3.8x ROAS</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" data-width="76"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1A1A2E;margin-bottom:6px;">
+                <span>LinkedIn ABM</span><span style="color:#3D50E0;">2.9x ROAS</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" data-width="58"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:#1A1A2E;margin-bottom:6px;">
+                <span>Organic / SEO</span><span style="color:#2D9B57;">Unmeasured</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="background:#2D9B57;" data-width="40"></div></div>
+            </div>
+          </div>
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid #E2E2EC;font-size:12px;color:#8A8AAA;">
+            Signal-verified attribution. No modeled guesswork.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: SECTION DIVIDER — GTM APPROACH -->
+  <div class="slide slide-section" data-slide="11">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:500px;height:500px;top:-100px;right:-100px;background:#3D50E0;opacity:0.18;"></div>
+    <canvas class="particle-canvas"></canvas>
+    <div class="content text-center">
+      <div class="reveal" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px;font-family:'JetBrains Mono',monospace;">Section 03</div>
+      <h2 class="reveal" style="font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;letter-spacing:-0.03em;color:#ffffff;line-height:1.1;margin-bottom:20px;">
+        The GTM<br><span style="color:#5B6BF5;">Operating System.</span>
+      </h2>
+      <p class="reveal" style="font-size:clamp(0.95rem,1.6vw,1.2rem);color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto;">
+        From ICP definition through paid acquisition, attribution, and lifecycle. GTMVP.com is the framework made into a product.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: GTMVP FRAMEWORK -->
+  <div class="slide" data-slide="12">
+    <div class="grid-mesh"></div>
+    <div class="content">
+      <div class="tag reveal" style="margin-bottom:14px;">GTMVP Framework</div>
+      <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;margin-bottom:28px;">How the GTM Operating System works</h2>
+      <div style="position:relative;padding-left:44px;">
+        <div class="timeline-line"></div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div class="reveal" style="display:flex;gap:16px;align-items:flex-start;">
+            <div class="timeline-dot" style="margin-left:-32px;margin-top:6px;"></div>
+            <div class="card" style="flex:1;padding:18px;">
+              <div style="font-size:12px;color:#8A8AAA;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Phase 01 / Foundation</div>
+              <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">ICP Definition + Positioning Audit</div>
+              <div style="font-size:14px;color:#4A4A6A;line-height:1.6;">Identify the buyer with the shortest sales cycle, highest LTV, and clearest signal. Rebuild messaging around their actual objections, not the product team's assumptions.</div>
+            </div>
+          </div>
+          <div class="reveal" style="display:flex;gap:16px;align-items:flex-start;">
+            <div class="timeline-dot" style="margin-left:-32px;margin-top:6px;"></div>
+            <div class="card" style="flex:1;padding:18px;">
+              <div style="font-size:12px;color:#8A8AAA;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Phase 02 / Acquisition</div>
+              <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">Paid + ABM + Outbound Stack</div>
+              <div style="font-size:14px;color:#4A4A6A;line-height:1.6;">Launch paid search, paid social, and LinkedIn ABM in parallel. Outbound automation layered in within week two. Every channel measured against pipeline, not leads.</div>
+            </div>
+          </div>
+          <div class="reveal" style="display:flex;gap:16px;align-items:flex-start;">
+            <div class="timeline-dot" style="margin-left:-32px;margin-top:6px;background:#2D9B57;"></div>
+            <div class="card" style="flex:1;padding:18px;border-top:2px solid #2D9B57;">
+              <div style="font-size:12px;color:#2D9B57;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Phase 03 / Attribution Loop</div>
+              <div style="font-weight:700;color:#1A1A2E;margin-bottom:6px;">Revenue Signal Closes the Loop</div>
+              <div style="font-size:14px;color:#4A4A6A;line-height:1.6;">First-party data flows back into attribution. Budget decisions become mechanical, not political. CAC by channel, by cohort, by pipeline stage — tracked and reported weekly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: REGTECH GTM CASE -->
+  <div class="slide" data-slide="13">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:350px;height:350px;top:-60px;left:-40px;background:#3D50E0;opacity:0.06;"></div>
+    <div class="content">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start;">
+        <div>
+          <div class="tag reveal" style="margin-bottom:14px;">Case Study 04 / Regtech GTM</div>
+          <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;line-height:1.2;margin-bottom:16px;">
+            Three AI SaaS platforms launched in under ten months
+          </h2>
+          <p class="reveal" style="color:#4A4A6A;font-size:15px;line-height:1.65;margin-bottom:20px;">
+            As Fractional CMO at Market Pro, Steve led a 100-person marketing and growth organization across a multi-product AI regtech portfolio spanning identity verification, KYB compliance, and AML screening. Three platforms. Three separate ICPs. One GTM architecture.
+          </p>
+          <div class="reveal" style="background:#EEF1FF;border-radius:10px;padding:16px 20px;border:1px solid #D9DFFF;margin-bottom:16px;">
+            <div style="font-size:13px;font-weight:700;color:#1A1A2E;margin-bottom:8px;">Platforms Launched</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:14px;color:#4A4A6A;display:flex;align-items:center;gap:8px;">
+                <div style="width:5px;height:5px;border-radius:50%;background:#3D50E0;flex-shrink:0;"></div>
+                <strong>Facia.ai</strong> — AI facial recognition and deepfake detection
+              </div>
+              <div style="font-size:14px;color:#4A4A6A;display:flex;align-items:center;gap:8px;">
+                <div style="width:5px;height:5px;border-radius:50%;background:#3D50E0;flex-shrink:0;"></div>
+                <strong>TheKYB.com</strong> — AI-powered Know Your Business verification
+              </div>
+              <div style="font-size:14px;color:#4A4A6A;display:flex;align-items:center;gap:8px;">
+                <div style="width:5px;height:5px;border-radius:50%;background:#3D50E0;flex-shrink:0;"></div>
+                <strong>AMLWatcher.com</strong> — Automated AML screening and sanctions monitoring
+              </div>
+            </div>
+          </div>
+          <p class="reveal" style="color:#4A4A6A;font-size:14px;line-height:1.65;">
+            Built the end-to-end engine for each: ICP definition, enterprise positioning, pricing strategy, ABM programs, paid acquisition, SEO architecture, outbound automation, and sales enablement. Rebuilt dense technical messaging into clear enterprise value propositions.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div class="card reveal" style="text-align:center;border-top:3px solid #3D50E0;">
+            <div class="stat-num">3</div>
+            <div style="font-size:13px;color:#8A8AAA;margin-top:6px;">SaaS Platforms GTM'd</div>
+          </div>
+          <div class="card reveal" style="text-align:center;">
+            <div class="stat-num" style="font-size:2.5rem;">10mo</div>
+            <div style="font-size:13px;color:#8A8AAA;margin-top:6px;">Total Calendar Time</div>
+          </div>
+          <div class="card reveal" style="text-align:center;">
+            <div class="stat-num" style="font-size:2.5rem;">100</div>
+            <div style="font-size:13px;color:#8A8AAA;margin-top:6px;">Person Org Led</div>
+          </div>
+          <div class="card reveal" style="padding:18px;">
+            <div style="font-size:12px;color:#8A8AAA;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">PLG Integration</div>
+            <div style="font-size:14px;color:#4A4A6A;line-height:1.55;">Steve was featured in product-led growth videos for Facia.ai, demonstrating how performance marketing leadership integrates with PLG acquisition loops rather than working against them.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: SERVICES + ENGAGEMENTS -->
+  <div class="slide" data-slide="14">
+    <div class="grid-mesh"></div>
+    <div class="content">
+      <div class="tag reveal" style="margin-bottom:14px;">How to Work Together</div>
+      <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.025em;color:#1A1A2E;margin-bottom:24px;">Three engagement models. All execution-first.</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;">
+        <div class="card reveal" style="border-top:3px solid #3D50E0;">
+          <div style="font-weight:700;font-size:17px;color:#1A1A2E;margin-bottom:10px;">Fractional CMO</div>
+          <div style="font-size:14px;color:#4A4A6A;line-height:1.65;margin-bottom:14px;">Embed at the executive level. Own paid media P&L, build the attribution stack, and lead the go-to-market motion from ICP through pipeline.</div>
+          <div class="rule" style="margin-bottom:14px;"></div>
+          <div style="font-size:12px;color:#8A8AAA;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Best for</div>
+          <div style="font-size:13px;color:#4A4A6A;">Series A-B SaaS, professional services, regulated verticals.</div>
+        </div>
+        <div class="card reveal" style="border-top:3px solid #5B6BF5;">
+          <div style="font-weight:700;font-size:17px;color:#1A1A2E;margin-bottom:10px;">GTM Sprint</div>
+          <div style="font-size:14px;color:#4A4A6A;line-height:1.65;margin-bottom:14px;">90-day intensive. ICP definition, channel architecture, attribution setup, and first 60 days of paid acquisition. You own it after the sprint ends.</div>
+          <div class="rule" style="margin-bottom:14px;"></div>
+          <div style="font-size:12px;color:#8A8AAA;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Best for</div>
+          <div style="font-size:13px;color:#4A4A6A;">Pre-revenue or early traction SaaS with a defined ICP and budget.</div>
+        </div>
+        <div class="card reveal" style="border-top:3px solid #B4BEFF;">
+          <div style="font-weight:700;font-size:17px;color:#1A1A2E;margin-bottom:10px;">AI Product Build</div>
+          <div style="font-size:14px;color:#4A4A6A;line-height:1.65;margin-bottom:14px;">Scoped AI product development using Claude Code and MCP agentic architecture. 2-4 week build-to-production cycles for marketing automation, attribution, and GTM tooling.</div>
+          <div class="rule" style="margin-bottom:14px;"></div>
+          <div style="font-size:12px;color:#8A8AAA;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Best for</div>
+          <div style="font-size:13px;color:#4A4A6A;">Teams that need a production AI system, not a recommendation deck.</div>
+        </div>
+      </div>
+      <div class="reveal" style="background:#EEF1FF;border-radius:10px;padding:16px 24px;border:1px solid #D9DFFF;display:flex;align-items:center;gap:16px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D50E0" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.12 2.22 2 2 0 012.1 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <div style="font-size:14px;color:#4A4A6A;">Engagements start with a single conversation. <strong style="color:#1A1A2E;">SteveKaplan.ai</strong> or <strong style="color:#1A1A2E;">GTMVP.com</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: CLOSE -->
+  <div class="slide slide-section" data-slide="15">
+    <div class="grid-mesh"></div>
+    <div class="blob" style="width:600px;height:600px;top:-150px;left:50%;transform:translateX(-50%);background:#3D50E0;opacity:0.22;"></div>
+    <div class="blob blob-2" style="width:300px;height:300px;bottom:-60px;right:-60px;background:#5B6BF5;opacity:0.15;"></div>
+    <canvas class="particle-canvas"></canvas>
+    <div class="content text-center">
+      <div class="float-logo" style="margin-bottom:28px;">
+        <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto;">
+          <rect width="64" height="64" rx="16" fill="white" opacity="0.12"/>
+          <path d="M18 44 L28 20 L32 32 L36 20 L46 44" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="32" cy="32" r="3" fill="white" opacity="0.6"/>
+        </svg>
+      </div>
+      <h2 class="reveal" style="font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700;letter-spacing:-0.03em;color:#ffffff;line-height:1.1;margin-bottom:20px;">
+        Build the revenue engine.<br><span style="color:#5B6BF5;">Then measure every dollar of it.</span>
+      </h2>
+      <p class="reveal" style="font-size:clamp(0.95rem,1.6vw,1.15rem);color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto 36px;">
+        $50M managed. 80% CAC reduction. Nine AI products live. The track record is the methodology.
+      </p>
+      <div class="reveal" style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+        <a href="https://stevekaplan.ai" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:white;color:#1A1A2E;border-radius:8px;padding:12px 24px;font-size:14px;font-weight:700;text-decoration:none;">
+          SteveKaplan.ai
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+        <a href="https://gtmvp.com" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);color:white;border-radius:8px;padding:12px 24px;font-size:14px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,0.2);">
+          GTMVP.com
+        </a>
+        <a href="https://attribyte.xyz" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);color:white;border-radius:8px;padding:12px 24px;font-size:14px;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,0.2);">
+          Attribyte.xyz
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAV -->
+<div class="nav-controls">
+  <button class="nav-btn" onclick="changeSlide(-1)">&#8249;</button>
+  <div class="slide-dots" id="dots"></div>
+  <button class="nav-btn" onclick="changeSlide(1)">&#8250;</button>
+  <span class="slide-counter" id="counter">1 / 15</span>
+</div>
+
+<script>
+let current = 1;
+const total = document.querySelectorAll('.slide').length;
+const dotsContainer = document.getElementById('dots');
+const counter = document.getElementById('counter');
+for (let i = 1; i <= total; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 1 ? ' active' : '');
+  dot.onclick = () => goToSlide(i);
+  dotsContainer.appendChild(dot);
+}
+function goToSlide(n) {
+  const prev = document.querySelector('.slide.active');
+  const next = document.querySelector(`.slide[data-slide="${n}"]`);
+  if (prev) prev.classList.remove('active');
+  if (next) { next.classList.add('active'); animateSlide(next); }
+  current = n; updateNav();
+}
+function changeSlide(dir) {
+  let next = current + dir;
+  if (next < 1) next = total;
+  if (next > total) next = 1;
+  goToSlide(next);
+}
+function updateNav() {
+  document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i + 1 === current));
+  counter.textContent = current + ' / ' + total;
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+});
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+});
+
+function animateSlide(slide) {
+  slide.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transition = 'none';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.offsetHeight;
+    const delay = i * 0.07;
+    el.style.transition = `opacity 0.32s ease ${delay}s, transform 0.32s ease ${delay}s`;
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  });
+  animateEffects(slide);
+}
+
+function animateEffects(slide) {
+  slide.querySelectorAll('[data-count]:not(.counted)').forEach(el => {
+    el.classList.add('counted');
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    let cur = 0; const step = target / 40;
+    const timer = setInterval(() => {
+      cur += step;
+      if (cur >= target) { cur = target; clearInterval(timer); }
+      el.textContent = (Number.isInteger(target) ? Math.round(cur) : cur.toFixed(1)) + suffix;
+    }, 30);
+  });
+  slide.querySelectorAll('.bar-fill:not(.fill-init)').forEach((bar, i) => {
+    bar.classList.add('fill-init');
+    bar.style.width = '0%';
+    bar.style.transition = `width 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.1}s`;
+    bar.offsetHeight;
+    bar.style.width = bar.dataset.width + '%';
+  });
+}
+
+document.addEventListener('mousemove', e => {
+  const s = document.querySelector('.mouse-spotlight');
+  if (s) s.style.background = `radial-gradient(500px circle at ${e.clientX}px ${e.clientY}px, rgba(61,80,224,0.04), transparent 40%)`;
+});
+
+window.initParticles = function(canvas, count) {
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight;
+  const particles = Array.from({length: count}, () => ({
+    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+    size: Math.random() * 2 + 0.5, alpha: Math.random() * 0.25 + 0.1
+  }));
+  (function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(91,107,245,${p.alpha})`; ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  })();
+};
+document.querySelectorAll('.particle-canvas').forEach(c => initParticles(c, 40));
+try { animateSlide(document.querySelector('.slide.active')); } catch(e) {}
+</script>
+</body>
+</html>
+DECKEOF
+echo "Deck written"
+Deck written

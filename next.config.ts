@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/demo",
+        destination: "/demo/index.html",
+      },
+      {
         source: "/saaspocolypse",
         destination: "/saaspocolypse/index.html",
       },
