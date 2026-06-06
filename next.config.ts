@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/demo/og-card.jpg",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
+        ],
+      },
+      {
         source: "/saaspocolypse/og-card.jpg",
         headers: [
           { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
@@ -21,6 +27,10 @@ const nextConfig: NextConfig = {
   },
   async rewrites() {
     return [
+      {
+        source: "/demo",
+        destination: "/demo/index.html",
+      },
       {
         source: "/saaspocolypse",
         destination: "/saaspocolypse/index.html",
